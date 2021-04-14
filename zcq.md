@@ -1,11 +1,11 @@
 init code hash
-7b0aaf27338a589f1c3ce050876ebf9c0b5de69b2eaff3188014faadab70b954
+3d5c1d0bc3aa0b9c7b1ba3f66d484f6ef4e649997bcb61df97d5c6a39dd27eac
 
 factory
-0x46c1492920464760084eECe79497a1C035441AfA
+0x1C81d93AF46634b7547d5F9D9fBa2D86439Fe51a
 
 router
-0xe580f189154ae186aBf73DD8810cC2194Ff2c929
+0xa2201a8dF595d00E79c5AAcAB4f3B33c6A7B498A
 
 WHT
 0x7A34743a5ec2B097C7d4bb3F4D0284b81380FA76
@@ -24,10 +24,6 @@ export const ROUTER_ADDRESS = router addr
 删除：node_modules/@uniswap/sdk/dist/sdk.cjs.production.min.js
 删除：node_modules/@uniswap/sdk/dist/sdk.cjs.production.min.js.map
 删除：node_modules/@uniswap/sdk/dist/sdk.esm.js.map
-
-修改
-node_modules/@uniswap/sdk/dist/index.js
-./sdk.cjs.production.min.js 为 ./sdk.cjs.development.js
 
 增加
 node_modules/@uniswap/sdk/dist/constants.d.ts
