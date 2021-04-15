@@ -2,7 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import HomeBottom from './HomeBottom'
+// import {useTranslation} from "react-i18next"
 const HomeTop = styled.div`
+
 height: 45px;
 display: flex;
 flex-flow: row nowrap;
@@ -101,13 +103,14 @@ margin-bottom: 15px;
 display: flex;
 justify-content: center;
 align-items: center;
-color: #2ebc84;
+color: #fff;
 background: #0278FE;
 text-decoration:none;
 `
 
 
 export default function Home() {
+    // let  {t } =  useTranslation();
     return (
         <>
             <HomeTop>
@@ -127,8 +130,8 @@ export default function Home() {
             </TitleDiv>
             <HomeBXH>BXH</HomeBXH>
             <TitleDesc>一个去中心化的交易平台，采取双链挖矿机制。每个人都可以参与！</TitleDesc>
-            <HomeBtn01 id={`mining-nav-link`} to={'/mining'}>兑换</HomeBtn01>
-            <HomeBtn02 id={`pool-nav-link`} to={'/pool'}>流动性挖矿</HomeBtn02>
+            <HomeBtn01 id={`swap-nav-link`} to={'/swap'}>兑换</HomeBtn01>
+            <HomeBtn02 id={`mining-nav-link`} to={'/mining'}>流动性挖矿</HomeBtn02>
             <HomeBottom />
         </>
     )

@@ -11,6 +11,8 @@ import { useModalOpen, useToggleModal } from '../../state/application/hooks'
 import { ExternalLink } from '../../theme'
 // import { ButtonPrimary } from '../Button'
 
+import i18n from  "../../i18n"
+
 const StyledMenuIcon = styled(MenuIcon)`
   path {
     stroke: ${({ theme }) => theme.text1};
@@ -90,6 +92,12 @@ right: 0;
 bottom: 0;
 }
 `
+const Language= styled.p`
+margin:0;
+padding: 0.5rem ;
+text-decoration:none;
+color: ${({ theme }) => theme.text2};
+`
 const NavLinkItem = styled(NavLink)`
 padding: 0.5rem 0.5rem;
 text-decoration:none;
@@ -122,6 +130,7 @@ export default function Menu() {
               <Info size={14} />
             About
            </MenuItem>
+            <Language onClick={ ()=>i18n.changeLanguage(i18n.language ==='en'?'zh':'en')}>En/Zh</Language>
             <MenuItem id="link" href="https://uniswap.org/docs/v2">
               <BookOpen size={14} />
             Doc

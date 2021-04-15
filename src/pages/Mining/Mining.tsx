@@ -159,7 +159,7 @@ export default function Mining() {
                                         </p>
                                         <p>
                                             <span>赚</span>
-                                            <span className="item-span">{` ${item.per_month} `} </span>
+                                            <span className="item-span">{item.per_month}</span>
                                             <span> {item.coin}月</span>
                                         </p>
                                         <div className="item-div">
@@ -171,6 +171,7 @@ export default function Mining() {
                                             <span>{item.tvl}</span>
                                         </div>
                                         <div className="item-btn">
+                                            {/* 跳转到 流动资金到时候  /add/token1/token2 */}
                                             <ItemBtn id={`pool-nav-link`} to={'/pool'}>+流动资金</ItemBtn>
                                         </div>
                                     </div>
