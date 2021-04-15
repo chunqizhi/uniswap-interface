@@ -1,4 +1,4 @@
-import { Token, TokenAmount } from '@uniswap/sdk'
+import { Token, TokenAmount } from 'huiwan-v2-sdk'
 import { useMemo } from 'react'
 
 import { useTokenContract } from '../hooks/useContract'

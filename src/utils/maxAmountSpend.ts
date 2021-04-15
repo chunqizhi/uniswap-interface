@@ -1,4 +1,4 @@
-import { CurrencyAmount, ETHER, JSBI } from '@uniswap/sdk'
+import { CurrencyAmount, ETHER, JSBI } from 'huiwan-v2-sdk'
 import { MIN_ETH } from '../constants'
 
 /**
