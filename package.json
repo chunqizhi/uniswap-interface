@@ -125,6 +125,7 @@
   },
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "@uniswap/default-token-list": "^2.0.0"
+    "@uniswap/default-token-list": "^2.0.0",
+    "huiwan-v1-sdk": "^2.0.4"
   }
 }
