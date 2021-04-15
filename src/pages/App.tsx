@@ -32,7 +32,7 @@ import Vote from './Vote'
 import VotePage from './Vote/VotePage'
 
 import Home from './Home/Home'
-
+import Mining from './Mining/Mining'
 const AppWrapper = styled.div`
   display: flex;
   flex-flow: column;
@@ -94,6 +94,7 @@ export default function App() {
             <Switch>
               <Route exact strict path="/home" component={Home} />
               <Route exact strict path="/swap" component={Swap} />
+              <Route exact strict path="/mining" component={Mining} />
               <Route exact strict path="/claim" component={OpenClaimAddressModalAndRedirectToSwap} />
               <Route exact strict path="/swap/:outputCurrency" component={RedirectToSwap} />
               <Route exact strict path="/send" component={RedirectPathToSwapOnly} />

@@ -127,10 +127,9 @@ export default function Home() {
             </TitleDiv>
             <HomeBXH>BXH</HomeBXH>
             <TitleDesc>一个去中心化的交易平台，采取双链挖矿机制。每个人都可以参与！</TitleDesc>
-            <HomeBtn01 id={`swap-nav-link`} to={'/swap'}>兑换</HomeBtn01>
+            <HomeBtn01 id={`mining-nav-link`} to={'/mining'}>兑换</HomeBtn01>
             <HomeBtn02 id={`pool-nav-link`} to={'/pool'}>流动性挖矿</HomeBtn02>
             <HomeBottom />
         </>
-
     )
 }

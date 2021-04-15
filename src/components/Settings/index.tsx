@@ -74,9 +74,8 @@ const EmojiWrapper = styled.div`
   right: 0px;
   font-size: 14px;
 `
-
+  // margin-left: 0.5rem;
 const StyledMenu = styled.div`
-  margin-left: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
