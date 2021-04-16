@@ -8357,10 +8357,10 @@ https-browserify@^1.0.0:
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
   integrity sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM=
 
-huiwan-v2-sdk@^3.0.4-mainnet:
-  version "3.0.4-mainnet"
-  resolved "https://registry.yarnpkg.com/huiwan-v2-sdk/-/huiwan-v2-sdk-3.0.4-mainnet.tgz#2508101bb87731e4cd5a0b5319bf781c4060d326"
-  integrity sha512-7H/Py4yLeBLLB53RzrqQwSMG976+ar3mRUaGT7P2BdeEoOtVKgQb6PrKExWsdBBfcRrH2aggZcrv9ESSf4ywaw==
+huiwan-v2-sdk@^3.0.6-mainnet:
+  version "3.0.6-mainnet"
+  resolved "https://registry.yarnpkg.com/huiwan-v2-sdk/-/huiwan-v2-sdk-3.0.6-mainnet.tgz#f2cd2a03ea3e7d75e206b01dd98263d1f0165423"
+  integrity sha512-b8cbkG243sAwy9P/Iq1o9mX6ogfLZDYPQ3xlXzywupagNLkgSnlvaGC4UMK5zwVyJhh8O3gZLB5UkhiIPeUPQQ==
   dependencies:
     "@uniswap/v2-core" "^1.0.0"
     big.js "^5.2.2"
