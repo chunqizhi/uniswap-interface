@@ -9,3 +9,7 @@
     { t } = useTranslation()
    {t('key')}
 ```
+### 矿池币对
+```
+    <DoubleCurrencyLogo/>
+```

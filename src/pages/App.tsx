@@ -34,6 +34,7 @@ import VotePage from './Vote/VotePage'
 
 import Home from './Home/Home'
 import Mining from './Mining/Mining'
+import ProvideLiquidity from './ProvideLiquidity/ProvideLiquidity'
 const AppWrapper = styled.div`
   display: flex;
   flex-flow: column;
@@ -93,10 +94,17 @@ export default function App() {
           <TopLevelModals />
           <Web3ReactManager>
             <Switch>
+              {/* Home页面 */}
               <Route exact strict path="/home" component={Home} />
+              {/*  */}
               <Route exact strict path="/swap" component={Swap} />
+              {/* 流动性挖矿 */}
               <Route exact strict path="/mining" component={Mining} />
+              {/* 抵押货币 */}
+              <Route exact strict path="/provideLiquidity" component={ProvideLiquidity} />
+
               <Route exact strict path="/claim" component={OpenClaimAddressModalAndRedirectToSwap} />
+              
               <Route exact strict path="/swap/:outputCurrency" component={RedirectToSwap} />
               <Route exact strict path="/send" component={RedirectPathToSwapOnly} />
               <Route exact strict path="/find" component={PoolFinder} />

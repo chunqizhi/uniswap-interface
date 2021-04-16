@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState ,useMemo} from 'react';
 import './mining.css'
 import styled from 'styled-components'
 import NextCoin from '../../assets/images/mining/next_coin.png'
 import PreCoin from '../../assets/images/mining/pre_coin.png'
 import { NavLink } from 'react-router-dom'
+
+import { toV2LiquidityToken, useTrackedTokenPairs } from '../../state/user/hooks'
+import { useTokenBalancesWithLoadingIndicator } from '../../state/wallet/hooks'
+import { useActiveWeb3React } from '../../hooks'
+import { usePairs } from '../../data/Reserves'
+import { Pair, JSBI } from '@uniswap/sdk'
+import { useStakingInfo } from '../../state/stake/hooks'
+import { BIG_INT_ZERO } from '../../constants'
+// import { Pair } from '@uniswap/sdk'
+// import { unwrappedToken } from '../../utils/wrappedCurrency'
 const TitleDiv = styled.div`
 `
 const TitleSup = styled.span`
@@ -72,6 +82,54 @@ interface Item {
 export default function Mining() {
     const [flag, setFlag] = useState(0)
     const [type, setType] = useState('main')
+    // const currency0 = showUnwrapped ? pair.token0 : unwrappedToken(pair.token0)
+    // const currency1 = showUnwrapped ? pair.token1 : unwrappedToken(pair.token1)
+
+  
+    // fetch the user's balances of all tracked V2 LP tokens
+    const { account } = useActiveWeb3React()
+    const trackedTokenPairs = useTrackedTokenPairs()
+    const tokenPairsWithLiquidityTokens = useMemo(
+      () => trackedTokenPairs.map(tokens => ({ liquidityToken: toV2LiquidityToken(tokens), tokens })),
+      [trackedTokenPairs]
+    )
+    const liquidityTokens = useMemo(() => tokenPairsWithLiquidityTokens.map(tpwlt => tpwlt.liquidityToken), [
+      tokenPairsWithLiquidityTokens
+    ])
+    const [v2PairsBalances] = useTokenBalancesWithLoadingIndicator(
+      account ?? undefined,
+      liquidityTokens
+    )
+  
+    // fetch the reserves for all V2 pools in which the user has a balance
+    const liquidityTokensWithBalances = useMemo(
+      () =>
+        tokenPairsWithLiquidityTokens.filter(({ liquidityToken }) =>
+          v2PairsBalances[liquidityToken.address]?.greaterThan('0')
+        ),
+      [tokenPairsWithLiquidityTokens, v2PairsBalances]
+    )
+  
+    const v2Pairs = usePairs(liquidityTokensWithBalances.map(({ tokens }) => tokens))
+  
+    const allV2PairsWithLiquidity = v2Pairs.map(([, pair]) => pair).filter((v2Pair): v2Pair is Pair => Boolean(v2Pair))
+  
+    // const hasV1Liquidity = useUserHasLiquidityInAllTokens()
+  
+    // show liquidity even if its deposited in rewards contract
+    const stakingInfo = useStakingInfo()
+    const stakingInfosWithBalance = stakingInfo?.filter(pool => JSBI.greaterThan(pool.stakedAmount.raw, BIG_INT_ZERO))
+    const stakingPairs = usePairs(stakingInfosWithBalance?.map(stakingInfo => stakingInfo.tokens))
+  
+    // remove any pairs that also are included in pairs with stake in mining pool
+    const v2PairsWithoutStakedAmount = allV2PairsWithLiquidity.filter(v2Pair => {
+      return (
+        stakingPairs
+          ?.map(stakingPair => stakingPair[1])
+          .filter(stakingPair => stakingPair?.liquidityToken.address === v2Pair.liquidityToken.address).length === 0
+      )
+    })
+  
     const pool_list: object = {
         'main': [
             {
@@ -125,6 +183,9 @@ export default function Mining() {
             <Title />
             <TopContent />
             <MidTitle />
+                  {v2PairsWithoutStakedAmount.map(v2Pair => (
+                    console.log(v2Pair)
+                  ))}
             <ul className="nav-ul">
                 {
                     nav_type.map((item, index) => {
@@ -172,7 +233,7 @@ export default function Mining() {
                                         </div>
                                         <div className="item-btn">
                                             {/* 跳转到 流动资金到时候  /add/token1/token2 */}
-                                            <ItemBtn id={`pool-nav-link`} to={'/pool'}>+流动资金</ItemBtn>
+                                            <ItemBtn id={`/provideLiquidity-nav-link`} to={'/provideLiquidity'}>+流动资金</ItemBtn>
                                         </div>
                                     </div>
                                 </>
