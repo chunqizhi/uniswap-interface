@@ -1,0 +1,17 @@
+export default {
+    text01: '火币生态链heco和APY的双链',
+    text02: 'DEX创新交易平台',
+    text03: '价格',
+    text04: '余额',
+    text05: ' 当前挖矿产出',
+    text06: ' 当前挖矿产出价值',
+    text07: '待奖励金额',
+    text08: '总回购分红数量',
+    text09: '流动性挖矿',
+    text10: '提供流动性，赚取BXH Tokens',
+    text11: '主区',
+    text12: 'FLAT',
+    text13: '创新区',
+    text14: '每天赚',
+    text15: "+流动资金",
+}

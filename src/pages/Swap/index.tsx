@@ -543,6 +543,7 @@ const TitleSub = styled.p`
 color: #949697;
 font-size: 17px;
 margin-top: 5px;
+margin-bottom:10px;
 `
 
 function PageTitle() {

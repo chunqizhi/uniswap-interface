@@ -1,0 +1,16 @@
+export default {
+    text01: '当前流动性质押',
+    text02: '火币生态链heco和APY的双链',
+    text03: 'DEX创新交易平台',
+    text04: '一个去中心化的交易平台，采取双链挖矿机制。每个人都可以参与！',
+    text05: ' 兑换',
+    text06: ' 流动性挖矿',
+    text07: '治理机制',
+    text08: '回购',
+    text09: '回购BXH销毁',
+    text10: 'DAO',
+    text11: '社区议案治理',
+    text12: '奖励',
+    text13: '奖励抵押BXH用户',
+    text14: '审计机构',
+}
