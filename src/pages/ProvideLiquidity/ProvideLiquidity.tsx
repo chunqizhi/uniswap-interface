@@ -2,6 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './provide.css'
 import PreCoin from '../../assets/images/mining/pre_coin.png'
 import NextCoin from '../../assets/images/mining/next_coin.png'
+
+import styled from 'styled-components'
+import { NavLink } from 'react-router-dom'
+
+const ProvideBtn = styled(NavLink)`
+text-decoration: none;
+`
 export default function ProvideLiquidity() {
     const [addFlag, setAddFlag] = useState(false)
     const clickListener = () => {
@@ -14,6 +21,7 @@ export default function ProvideLiquidity() {
     }, [])
 
 
+    //   to={`/remove/${currencyId(currency0)}/${currencyId(currency1)}`
     return (
         <>
             <div className="add">
@@ -52,7 +60,11 @@ export default function ProvideLiquidity() {
                     }>领取收益</div>
                     <div className="add-div-btn other-btn">抵押</div>
                     <div className="add-div-btn other-btn">取回流动性</div>
-                    <div className="add-div-btn other-btn">- 流动资金</div>
+
+                    {/*   跳转到移除 */}
+                    <ProvideBtn id={`remove-nav-link`} to={`/remove/0x53afB93BB1Fbf7FbF8DF9A119807F8d1d495d81A/0xd218695d0312afA08C230315fa506383cA6447a8`}>
+                        <div className="add-div-btn other-btn">- 流动资金</div>
+                    </ProvideBtn>
                 </div>
 
                 {
