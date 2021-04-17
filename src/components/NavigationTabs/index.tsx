@@ -11,7 +11,7 @@ import Settings from '../Settings'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from 'state'
 import { resetMintState } from 'state/mint/actions'
-
+import creatHistory from 'history/createHashHistory'
 const Tabs = styled.div`
   ${({ theme }) => theme.flexRowNoWrap}
   align-items: center;
@@ -87,18 +87,22 @@ export function FindPoolTabs() {
 export function AddRemoveTabs({ adding, creating }: { adding: boolean; creating: boolean }) {
   // reset states on back
   const dispatch = useDispatch<AppDispatch>()
-
+  const history = creatHistory();
   return (
     <Tabs>
       <RowBetween style={{ padding: '1rem 1rem 0 1rem' }}>
-        <HistoryLink
-          to="/pool"
+        {/* <HistoryLink */}
+          {/* to="/pool"
           onClick={() => {
             adding && dispatch(resetMintState())
           }}
-        >
-          <StyledArrowLeft />
-        </HistoryLink>
+        > */}
+          <StyledArrowLeft  onClick={()=>{
+            console.log(12313213)
+            history.goBack();
+             adding && dispatch(resetMintState())
+          }}/>
+        {/* </HistoryLink> */}
         <ActiveText>{creating ? 'Create a pair' : adding ? 'Add Liquidity' : 'Remove Liquidity'}</ActiveText>
         <Settings />
       </RowBetween>

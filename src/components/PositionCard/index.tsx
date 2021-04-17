@@ -198,6 +198,7 @@ export default function FullPositionCard({ pair, border, stakedBalance }: Positi
       <AutoColumn gap="12px">
         <FixedHeightRow>
           <AutoRow gap="8px">
+            {/* 矿池币对 */}
             <DoubleCurrencyLogo currency0={currency0} currency1={currency1} size={20} />
             <Text fontWeight={500} fontSize={20}>
               {!currency0 || !currency1 ? <Dots>Loading</Dots> : `${currency0.symbol}/${currency1.symbol}`}

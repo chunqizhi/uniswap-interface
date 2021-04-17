@@ -49,7 +49,7 @@ import { useIsTransactionUnsupported } from 'hooks/Trades'
 import UnsupportedCurrencyFooter from 'components/swap/UnsupportedCurrencyFooter'
 import { isTradeBetter } from 'utils/trades'
 import { RouteComponentProps } from 'react-router-dom'
-
+import styled from 'styled-components'
 export default function Swap({ history }: RouteComponentProps) {
   const loadedUrlParams = useDefaultsFromURLSearch()
 
@@ -119,13 +119,13 @@ export default function Swap({ history }: RouteComponentProps) {
 
   const parsedAmounts = showWrap
     ? {
-        [Field.INPUT]: parsedAmount,
-        [Field.OUTPUT]: parsedAmount
-      }
+      [Field.INPUT]: parsedAmount,
+      [Field.OUTPUT]: parsedAmount
+    }
     : {
-        [Field.INPUT]: independentField === Field.INPUT ? parsedAmount : trade?.inputAmount,
-        [Field.OUTPUT]: independentField === Field.OUTPUT ? parsedAmount : trade?.outputAmount
-      }
+      [Field.INPUT]: independentField === Field.INPUT ? parsedAmount : trade?.inputAmount,
+      [Field.OUTPUT]: independentField === Field.OUTPUT ? parsedAmount : trade?.outputAmount
+    }
 
   const { onSwitchTokens, onCurrencySelection, onUserInput, onChangeRecipient } = useSwapActionHandlers()
   const isValid = !swapInputError
@@ -219,8 +219,8 @@ export default function Swap({ history }: RouteComponentProps) {
             recipient === null
               ? 'Swap w/o Send'
               : (recipientAddress ?? recipient) === account
-              ? 'Swap w/o Send + recipient'
-              : 'Swap w/ Send',
+                ? 'Swap w/o Send + recipient'
+                : 'Swap w/ Send',
           label: [
             trade?.inputAmount?.currency?.symbol,
             trade?.outputAmount?.currency?.symbol,
@@ -301,6 +301,7 @@ export default function Swap({ history }: RouteComponentProps) {
 
   return (
     <>
+      <PageTitle />
       <TokenWarningModal
         isOpen={importTokensNotInDefault.length > 0 && !dismissTokenWarning}
         tokens={importTokensNotInDefault}
@@ -497,8 +498,8 @@ export default function Swap({ history }: RouteComponentProps) {
                   {swapInputError
                     ? swapInputError
                     : priceImpactSeverity > 3 && !isExpertMode
-                    ? `Price Impact Too High`
-                    : `Swap${priceImpactSeverity > 2 ? ' Anyway' : ''}`}
+                      ? `Price Impact Too High`
+                      : `Swap${priceImpactSeverity > 2 ? ' Anyway' : ''}`}
                 </Text>
               </ButtonError>
             )}
@@ -521,6 +522,37 @@ export default function Swap({ history }: RouteComponentProps) {
       ) : (
         <UnsupportedCurrencyFooter show={swapIsUnsupported} currencies={[currencies.INPUT, currencies.OUTPUT]} />
       )}
+    </>
+  )
+}
+
+
+const TitleDiv = styled.div`
+width: 100%;
+`
+const TitleSup = styled.p`
+color: #000;
+  font-size: 24px;
+  font-weight: 700;
+  width: 100%;
+  padding:0;
+  margin:0;
+`
+
+const TitleSub = styled.p`
+color: #949697;
+font-size: 17px;
+margin-top: 5px;
+margin-bottom:10px;
+`
+
+function PageTitle() {
+  return (
+    <>
+      <TitleDiv>
+        <TitleSup>BXH支持多币种兑换</TitleSup>
+        <TitleSub>交易快、低滑点</TitleSub>
+      </TitleDiv>
     </>
   )
 }
