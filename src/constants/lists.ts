@@ -15,7 +15,8 @@
 // const GEMINI_LIST = 'https://www.gemini.com/uniswap/manifest.json'
 const BA_LIST = 'https://raw.githubusercontent.com/The-Blockchain-Association/sec-notice-list/master/ba-sec-list.json'
 
-const TREESWAP_TOKEN_LIST = 'http://80.251.212.126/logo/treeswap-token-list.json'
+const TREESWAP_TOKEN_LIST =
+  'http://80.251.212.126/logo/treeswap-token-list.json?data=' + new Date().getMilliseconds().toString()
 
 export const UNSUPPORTED_LIST_URLS: string[] = [BA_LIST]
 
