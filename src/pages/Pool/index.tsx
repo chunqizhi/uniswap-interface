@@ -22,7 +22,8 @@ import { CardSection, DataCard, CardNoise, CardBGImage } from '../../components/
 import { useStakingInfo } from '../../state/stake/hooks'
 import { BIG_INT_ZERO } from '../../constants'
 
-const PageWrapper = styled(AutoColumn)`
+
+ const PageWrapper = styled(AutoColumn)`
   max-width: 640px;
   width: 100%;
 `
@@ -74,7 +75,10 @@ const EmptyProposals = styled.div`
   align-items: center;
 `
 
+
 export default function Pool() {
+
+
   const theme = useContext(ThemeContext)
   const { account } = useActiveWeb3React()
 

@@ -126,6 +126,7 @@ export default function Menu() {
           <MenuFlyout>
             <NavLinkItem id={`swap-nav-link`} to={'/swap'}>兑换</NavLinkItem>
             <NavLinkItem id={`mining-nav-link`} to={'/mining'}>流动性挖矿</NavLinkItem>
+            <NavLinkItem id={`pool-nav-link`} to={'/mining'}>流动性</NavLinkItem>
             <MenuItem id="link" href="https://uniswap.org/">
               <Info size={14} />
             About

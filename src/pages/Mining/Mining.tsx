@@ -4,7 +4,8 @@ import styled from 'styled-components'
 import NextCoin from '../../assets/images/mining/next_coin.png'
 import PreCoin from '../../assets/images/mining/pre_coin.png'
 import { NavLink } from 'react-router-dom'
-
+// import {getInitreward,getUnStakedLp,getStakedLp,stakedLpToPool,stakedLpOutPool,isApprove,checkedDeal} from '../../apis/api/data.js'
+import isApprove from '../../apis/api/data.js'
 import { toV2LiquidityToken, useTrackedTokenPairs } from '../../state/user/hooks'
 import { useTokenBalancesWithLoadingIndicator } from '../../state/wallet/hooks'
 import { useActiveWeb3React } from '../../hooks'
@@ -79,7 +80,13 @@ interface Item {
 
 }
 
-export default function Mining() {
+
+console.log(isApprove)
+isApprove.isApprove().then(res=>{
+    console.log(res)
+})
+
+  export default function Mining() {
     const [flag, setFlag] = useState(0)
     const [type, setType] = useState('main')
     // const currency0 = showUnwrapped ? pair.token0 : unwrappedToken(pair.token0)
@@ -143,40 +150,40 @@ export default function Mining() {
                 tvl: "196254628.95",
             },
         ],
-        'flat': [
-            {
-                pre_coin: PreCoin,
-                next_coin: NextCoin,
-                coin_name: "ETH/HBTC",
-                coin: "TRS",
-                per_day: "20000",
-                per_month: "600000",
-                apy: "64.53%",
-                tvl: "196254628.95",
-            },
-            {
-                pre_coin: PreCoin,
-                next_coin: NextCoin,
-                coin_name: "ETH/HBTC",
-                coin: "TRS",
-                per_day: "20000",
-                per_month: "600000",
-                apy: "64.53%",
-                tvl: "196254628.95",
-            },
-        ],
-        'ideas': [
-            {
-                pre_coin: PreCoin,
-                next_coin: NextCoin,
-                coin_name: "ETH/HBTC",
-                coin: "TRS",
-                per_day: "20000",
-                per_month: "600000",
-                apy: "64.53%",
-                tvl: "196254628.95",
-            },
-        ]
+        // 'flat': [
+        //     {
+        //         pre_coin: PreCoin,
+        //         next_coin: NextCoin,
+        //         coin_name: "ETH/HBTC",
+        //         coin: "TRS",
+        //         per_day: "20000",
+        //         per_month: "600000",
+        //         apy: "64.53%",
+        //         tvl: "196254628.95",
+        //     },
+        //     {
+        //         pre_coin: PreCoin,
+        //         next_coin: NextCoin,
+        //         coin_name: "ETH/HBTC",
+        //         coin: "TRS",
+        //         per_day: "20000",
+        //         per_month: "600000",
+        //         apy: "64.53%",
+        //         tvl: "196254628.95",
+        //     },
+        // ],
+        // 'ideas': [
+        //     {
+        //         pre_coin: PreCoin,
+        //         next_coin: NextCoin,
+        //         coin_name: "ETH/HBTC",
+        //         coin: "TRS",
+        //         per_day: "20000",
+        //         per_month: "600000",
+        //         apy: "64.53%",
+        //         tvl: "196254628.95",
+        //     },
+        // ]
     }
     return (
         <>

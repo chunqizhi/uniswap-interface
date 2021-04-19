@@ -5,10 +5,13 @@ import NextCoin from '../../assets/images/mining/next_coin.png'
 
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
+import contract from '../../apis/api/index'
 
 const ProvideBtn = styled(NavLink)`
 text-decoration: none;
 `
+
+
 export default function ProvideLiquidity() {
     const [addFlag, setAddFlag] = useState(false)
     const clickListener = () => {
@@ -54,11 +57,23 @@ export default function ProvideLiquidity() {
                         <span className="num">0.00004</span>
                     </p>
                     <div className="receive-btn add-div-btn" onClick={
+                        ()=>{
+                            contract.initFnPromise().then(res=>{
+                                    contract.getBalanceFromhuiwanUsdtMdexContract(window.accountAddress,function(res){
+                                        console.log(res)
+                                    })
+                                    contract.getReward()
+                            })
+                        }
+                    }
+                    >领取收益</div>
+                    <div className="add-div-btn other-btn"
+                    
+                    onClick={
                         () => {
                             setAddFlag(true)
-                        }
-                    }>领取收益</div>
-                    <div className="add-div-btn other-btn">抵押</div>
+                        }}
+                    >抵押</div>
                     <div className="add-div-btn other-btn">取回流动性</div>
 
                     {/*   跳转到移除 */}
