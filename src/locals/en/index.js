@@ -1,3 +1,8 @@
+import Home from './home'
+import Mining from './mining'
+import ProvideLiquidity from './provideLiquidity'
 export default {
-    text01: 'This is EN',
+    home: {...Home },
+    mining: {...Mining },
+    provideLiquidity: {...ProvideLiquidity },
 }

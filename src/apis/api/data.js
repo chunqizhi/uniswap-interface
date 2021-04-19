@@ -5,6 +5,10 @@ import Web3 from "web3";
 // return Web3.utils.fromWei(str,'ether')
 // 将小数 *18个0
 // return Web3.utils.toWei(str,'ether')
+const allReward = {
+    starttime: 1618827000,
+    rewardRate: Web3.utils.fromWei('5787037037037037', 'ether')
+}
 
 function isApprove() {
     return Contract.initFnPromise().then(res => {
@@ -168,6 +172,7 @@ function getPoolData() {
             Contract.getBalanceFromHuiwanTokenContract(
                 (precoin) => {
                     Contract.getBalanceFromUsdtTokenContract((nextcoin) => {
+
                         let rate = nextcoin / precoin
 
                         getInitreward().then(result => {
@@ -177,8 +182,8 @@ function getPoolData() {
                                 if (res * 1 === 0) {
                                     apy = `0.00%`;
                                 } else {
-                                    // nextcoin = Web3.utils.fromWei(nextcoin, 'ether')
-                                    apy = ((result.per_day * rate) / nextcoin * 2) * 360 * 100 + "%"
+                                    nextcoin = Web3.utils.fromWei(nextcoin, 'ether')
+                                    apy = ((result.per_day * rate) / nextcoin) * 360 * 100 + "%"
                                 }
                                 resolve({
                                     ...result,
@@ -201,6 +206,33 @@ function getPoolData() {
 
     })
 }
+
+
+function getBalanceOf() {
+    return Contract.initFnPromise().then(res => {
+        return new Promise((resolve, reject) => {
+            Contract.getBalanceFromUsdtTokenContract((res) => {
+                resolve(Web3.utils.fromWei(res, 'ether'))
+            }, (err) => {
+                reject(err)
+            })
+        })
+    })
+}
+// 当前挖矿产出
+function getLastTime() {
+    return Contract.initFnPromise().then(res => {
+        return new Promise((resolve, reject) => {
+            // getLastTime
+            Contract.getLastTime(res => {
+                let reword = (res * 1 - allReward.starttime) * allReward.rewardRate
+                resolve(reword.toString())
+            }, err => {
+                reject(err)
+            })
+        })
+    })
+}
 export default {
     isApprove,
     approve,
@@ -212,5 +244,7 @@ export default {
     checkedDeal,
     getEarned,
     getReward,
-    getPoolData
+    getPoolData,
+    getBalanceOf,
+    getLastTime
 }

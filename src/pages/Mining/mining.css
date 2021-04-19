@@ -43,7 +43,7 @@ li {
 }
 
 .mini-1-div p {
-    width: 50%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;

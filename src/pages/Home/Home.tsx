@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import HomeBottom from './HomeBottom'
-// import {useTranslation} from "react-i18next"
+import {useTranslation} from "react-i18next"
 const HomeTop = styled.div`
 
 height: 45px;
@@ -54,11 +54,11 @@ color: #000;
   margin-top: 10px;
 `
 
-const TitleSub = styled.span`
-color: #949697;
-font-size: 17px;
-margin-top: 5px;
-`
+// const TitleSub = styled.span`
+// color: #949697;
+// font-size: 17px;
+// margin-top: 5px;
+// `
 
 const HomeBXH = styled.p`
 margin: 14px 0px ; 
@@ -110,28 +110,28 @@ text-decoration:none;
 
 
 export default function Home() {
-    // let  {t } =  useTranslation();
+    const   {t } =  useTranslation();
     return (
         <>
             <HomeTop>
                 <LeftDiv>
                     <LeftDivSpan>$2.9</LeftDivSpan>
-                    <RightSpan>BXH</RightSpan>
+                    <RightSpan>TRS</RightSpan>
                 </LeftDiv>
                 <RightDiv>
                     <LeftDivSpan>$234153453.236</LeftDivSpan>
-                    <RightSpan>当前流动性质押</RightSpan>
+                    <RightSpan>{t("home.text01")}</RightSpan>
                 </RightDiv>
 
             </HomeTop>
             <TitleDiv>
-                <TitleSup>火币生态链heco和APY的双链</TitleSup>
-                <TitleSub>DEX创新交易平台</TitleSub>
+                <TitleSup>{t("home.text02")}</TitleSup>
+                {/* <TitleSub>DEX创新交易平台</TitleSub> */}
             </TitleDiv>
-            <HomeBXH>BXH</HomeBXH>
-            <TitleDesc>一个去中心化的交易平台，采取双链挖矿机制。每个人都可以参与！</TitleDesc>
-            <HomeBtn01 id={`swap-nav-link`} to={'/swap'}>兑换</HomeBtn01>
-            <HomeBtn02 id={`mining-nav-link`} to={'/mining'}>流动性挖矿</HomeBtn02>
+            <HomeBXH>TRS</HomeBXH>
+            <TitleDesc>{t("home.text03")}</TitleDesc>
+            <HomeBtn01 id={`swap-nav-link`} to={'/swap'}>{t("home.text12")}</HomeBtn01>
+            <HomeBtn02 id={`mining-nav-link`} to={'/mining'}>{t("home.text13")}</HomeBtn02>
             <HomeBottom />
         </>
     )

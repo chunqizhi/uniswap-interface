@@ -106,9 +106,22 @@ class Contract {
 
     // 查询某个用户在 huiwanUsdtLoop 池子中的当前收益
     getEarned(account, callback, errorCallBack) {
+            let _this = this
+            this.huiwanUsdtLoopContract.methods
+                .earned(account)
+                .call(function(error, res) {
+                    if (error) {
+                        errorCallBack && errorCallBack(_this.handleError(error));
+                    } else {
+                        callback && callback(res);
+                    }
+                });
+        }
+        // 最新时间
+    getLastTime(callback, errorCallBack) {
         let _this = this
         this.huiwanUsdtLoopContract.methods
-            .earned(account)
+            .lastTimeRewardApplicable()
             .call(function(error, res) {
                 if (error) {
                     errorCallBack && errorCallBack(_this.handleError(error));
@@ -117,7 +130,6 @@ class Contract {
                 }
             });
     }
-
 
     // 查询 mdex 中配对合约拥有 huiwanToken 的数量
     getBalanceFromHuiwanTokenContract(callback, errorCallBack) {

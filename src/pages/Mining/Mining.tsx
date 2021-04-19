@@ -24,28 +24,7 @@ display:block;
 width:100%;
 height:100%;
 `
-const nav_list = [
-    {
-        text: "当前挖矿产出",
-        end_val: 7397507.51,
-        start_val: 0,
-    },
-    {
-        text: "当前挖矿产出价值",
-        end_val: 7397507.51,
-        start_val: 0,
-    },
-    {
-        text: "待奖励金额",
-        end_val: 397507.51,
-        start_val: 0,
-    },
-    {
-        text: "总回购分红数量",
-        end_val: 7397107.51,
-        start_val: 0,
-    },
-];
+
 const nav_type = [
     {
         text: "主区",
@@ -79,11 +58,52 @@ interface Item {
 export default function Mining() {
     const [flag, setFlag] = useState(0)
     const [type, setType] = useState('main')
-    const [mainList, setMainList] = useState({'main': [], 'flat': [], 'ideas': []})
+    const [mainList, setMainList] = useState({ 'main': [], 'flat': [], 'ideas': [] })
+    const [rate, setRate] = useState(0.00)
+    const [allBlock,setAllBock] =useState(0.00)
+    const [balance, setBalance] = useState(0.00)
 
+    
+
+   
+
+    API.getBalanceOf().then(res => {
+        setBalance(res)
+    })
+
+
+
+    API.getLastTime().then(res=>{
+        setAllBock(res)
+    })
+
+
+    const nav_list = [
+        {
+            text: "当前挖矿产出",
+            end_val: allBlock,
+            start_val: 0,
+        },
+        {
+            text: "当前挖矿产出价值",
+            end_val:allBlock*rate,
+            start_val: 0,
+        },
+        {
+            text: "已回购TRS数量",
+            end_val: 0,
+            start_val: 0,
+        },
+        {
+            text: "个人余额",
+            end_val: balance,
+            start_val: 0,
+        },
+    ];
 
     useEffect(() => {
         API.getPoolData().then(res => {
+            setRate(res.rate)
             setMainList(
                 {
                     'main': [
@@ -95,7 +115,7 @@ export default function Mining() {
                             apy: res.apy,
                             per_day: res.per_day,
                             per_month: res.per_month,
-                            tvl: res.nextcoin
+                            tvl: res.nextcoin * 2
                         },
                     ],
                     'flat': [],
@@ -108,7 +128,7 @@ export default function Mining() {
     return (
         <>
             <Title />
-            <TopContent />
+            <TopContent rate={rate}  nav_list={nav_list} />
             <MidTitle />
             <ul className="nav-ul">
                 {
@@ -184,19 +204,16 @@ function Title() {
     )
 }
 
-function TopContent() {
+function TopContent(props) {
+    let {rate,nav_list} = props
     return (
         <>
             <div className="mini-top">
                 <p className="title">DEX创新交易平台</p>
                 <div className="mini-1-div">
                     <p>
-                        <span>价格</span>
-                        <span>$123456</span>
-                    </p>
-                    <p>
-                        <span>余额</span>
-                        <span>0</span>
+                        <span>TRS价格</span>
+                        <span>${rate}</span>
                     </p>
                 </div>
                 <div className="top-div">
@@ -207,7 +224,7 @@ function TopContent() {
                                     <div className="item" key={item.text}>
                                         <p className="text">{item.text}</p>
                                         <p className="balance">
-                                            {item.end_val}
+                                            {(" "+(item.end_val)).substring(0,6)}
                                         </p>
                                     </div>
                                 </>

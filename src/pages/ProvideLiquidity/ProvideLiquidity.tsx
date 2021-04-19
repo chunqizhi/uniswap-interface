@@ -5,13 +5,13 @@ import NextCoin from '../../assets/images/mining/next_coin.png'
 
 import API from '../../apis/api/data.js'
 
-// import styled from 'styled-components'
-// import { NavLink } from 'react-router-dom'
+import styled from 'styled-components'
+import { NavLink } from 'react-router-dom'
 // import contract from '../../apis/api/index'
 
-// const ProvideBtn = styled(NavLink)`
-// text-decoration: none;
-// `
+const ProvideBtn = styled(NavLink)`
+text-decoration: none;
+`
 
 export default function ProvideLiquidity() {
     const [addFlag, setAddFlag] = useState(false)   //显示隐藏 抵押解押弹框
@@ -106,19 +106,21 @@ export default function ProvideLiquidity() {
                 <div className="add-content">
                     <p className="content-title">
                         <span>未领取挖矿收益</span>
-                        <span className="num">{earned}</span>
+                        <span className="num">{earned.substring(0,6)}</span>
                     </p>
-                    <p className="my-p-text">我的仓位</p>
+                    <p className="my-p-text">我的LP</p>
                     <p className="add-info">
                         <img src={PreCoin} alt="" />
                         <img src={NextCoin} alt="" />
                         <span>USDT/HUSD</span>
-                        <span className="num">0</span>
+                        <span className="num">{
+                            unStakedLp.substring(0,6)
+                        }</span>
                     </p>
-                    <p className="add-info">
+                    {/* <p className="add-info">
                         <span>份额占比</span>
                         <span className="num">{`<0.01%`}</span>
-                    </p>
+                    </p> */}
                     <span className="line"></span>
                     <p className="add-info">
                         <span>抵押</span>
@@ -126,7 +128,7 @@ export default function ProvideLiquidity() {
                     <p className="add-tips">获得流动资金LP，需抵押后才开始流动性挖矿</p>
                     <p className="staked">
                         <span>已抵押LP</span>
-                        <span className="num">{stakedLp}</span>
+                        <span className="num">{stakedLp.substring(0,6)}</span>
                     </p>
                     <div className="receive-btn add-div-btn"
                         onClick={
@@ -166,11 +168,10 @@ export default function ProvideLiquidity() {
                         )
                     }
 
-
-                    {/*   跳转到移除 */}
-                    {/* <ProvideBtn id={`remove-nav-link`} to={`/remove/0x53afB93BB1Fbf7FbF8DF9A119807F8d1d495d81A/0xd218695d0312afA08C230315fa506383cA6447a8`}>
-                        <div className="add-div-btn other-btn">- 流动资金</div>
-                    </ProvideBtn> */}
+                    {/*   返回 */}
+                    <ProvideBtn id={`mining-nav-link`} to={`/mining`}>
+                        <div className="add-div-btn other-btn">返回</div>
+                    </ProvideBtn>
                 </div>
 
                 {

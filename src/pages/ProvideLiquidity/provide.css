@@ -39,7 +39,7 @@ input {
 .add .content-title {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .add .content-title span {
@@ -52,6 +52,7 @@ input {
 
 .add .my-p-text {
     font-size: 14px;
+    margin-bottom: 10px;
 }
 
 .add .add-info {
@@ -59,6 +60,7 @@ input {
     align-items: center;
     height: 32px;
     font-size: 15px;
+    margin-bottom: 10px;
 }
 
 .add .add-info img {
