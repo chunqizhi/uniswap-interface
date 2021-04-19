@@ -1,18 +1,11 @@
-import React, { useState ,useMemo} from 'react';
+import React, { useState, useEffect } from 'react';
 import './mining.css'
 import styled from 'styled-components'
 import NextCoin from '../../assets/images/mining/next_coin.png'
 import PreCoin from '../../assets/images/mining/pre_coin.png'
 import { NavLink } from 'react-router-dom'
 // import {getInitreward,getUnStakedLp,getStakedLp,stakedLpToPool,stakedLpOutPool,isApprove,checkedDeal} from '../../apis/api/data.js'
-import isApprove from '../../apis/api/data.js'
-import { toV2LiquidityToken, useTrackedTokenPairs } from '../../state/user/hooks'
-import { useTokenBalancesWithLoadingIndicator } from '../../state/wallet/hooks'
-import { useActiveWeb3React } from '../../hooks'
-import { usePairs } from '../../data/Reserves'
-import { Pair, JSBI } from 'huiwan-v2-sdk'
-import { useStakingInfo } from '../../state/stake/hooks'
-import { BIG_INT_ZERO } from '../../constants'
+import API from '../../apis/api/data.js'
 // import { Pair } from '@uniswap/sdk'
 // import { unwrappedToken } from '../../utils/wrappedCurrency'
 const TitleDiv = styled.div`
@@ -80,124 +73,48 @@ interface Item {
 
 }
 
-
-console.log(isApprove)
-isApprove.isApprove().then(res=>{
-    console.log(res)
-})
-
-  export default function Mining() {
+// isApprove().then(res=>{
+//     console.log(res)
+// })
+export default function Mining() {
     const [flag, setFlag] = useState(0)
     const [type, setType] = useState('main')
-    // const currency0 = showUnwrapped ? pair.token0 : unwrappedToken(pair.token0)
-    // const currency1 = showUnwrapped ? pair.token1 : unwrappedToken(pair.token1)
+    const [mainList, setMainList] = useState({'main': [], 'flat': [], 'ideas': []})
 
-  
-    // fetch the user's balances of all tracked V2 LP tokens
-    const { account } = useActiveWeb3React()
-    const trackedTokenPairs = useTrackedTokenPairs()
-    const tokenPairsWithLiquidityTokens = useMemo(
-      () => trackedTokenPairs.map(tokens => ({ liquidityToken: toV2LiquidityToken(tokens), tokens })),
-      [trackedTokenPairs]
-    )
-    const liquidityTokens = useMemo(() => tokenPairsWithLiquidityTokens.map(tpwlt => tpwlt.liquidityToken), [
-      tokenPairsWithLiquidityTokens
-    ])
-    const [v2PairsBalances] = useTokenBalancesWithLoadingIndicator(
-      account ?? undefined,
-      liquidityTokens
-    )
-  
-    // fetch the reserves for all V2 pools in which the user has a balance
-    const liquidityTokensWithBalances = useMemo(
-      () =>
-        tokenPairsWithLiquidityTokens.filter(({ liquidityToken }) =>
-          v2PairsBalances[liquidityToken.address]?.greaterThan('0')
-        ),
-      [tokenPairsWithLiquidityTokens, v2PairsBalances]
-    )
-  
-    const v2Pairs = usePairs(liquidityTokensWithBalances.map(({ tokens }) => tokens))
-  
-    const allV2PairsWithLiquidity = v2Pairs.map(([, pair]) => pair).filter((v2Pair): v2Pair is Pair => Boolean(v2Pair))
-  
-    // const hasV1Liquidity = useUserHasLiquidityInAllTokens()
-  
-    // show liquidity even if its deposited in rewards contract
-    const stakingInfo = useStakingInfo()
-    const stakingInfosWithBalance = stakingInfo?.filter(pool => JSBI.greaterThan(pool.stakedAmount.raw, BIG_INT_ZERO))
-    const stakingPairs = usePairs(stakingInfosWithBalance?.map(stakingInfo => stakingInfo.tokens))
-  
-    // remove any pairs that also are included in pairs with stake in mining pool
-    const v2PairsWithoutStakedAmount = allV2PairsWithLiquidity.filter(v2Pair => {
-      return (
-        stakingPairs
-          ?.map(stakingPair => stakingPair[1])
-          .filter(stakingPair => stakingPair?.liquidityToken.address === v2Pair.liquidityToken.address).length === 0
-      )
-    })
-  
-    const pool_list: object = {
-        'main': [
-            {
-                pre_coin: PreCoin,
-                next_coin: NextCoin,
-                coin_name: "ETH/HBTC",
-                coin: "TRS",
-                per_day: "20000",
-                per_month: "600000",
-                apy: "64.53%",
-                tvl: "196254628.95",
-            },
-        ],
-        // 'flat': [
-        //     {
-        //         pre_coin: PreCoin,
-        //         next_coin: NextCoin,
-        //         coin_name: "ETH/HBTC",
-        //         coin: "TRS",
-        //         per_day: "20000",
-        //         per_month: "600000",
-        //         apy: "64.53%",
-        //         tvl: "196254628.95",
-        //     },
-        //     {
-        //         pre_coin: PreCoin,
-        //         next_coin: NextCoin,
-        //         coin_name: "ETH/HBTC",
-        //         coin: "TRS",
-        //         per_day: "20000",
-        //         per_month: "600000",
-        //         apy: "64.53%",
-        //         tvl: "196254628.95",
-        //     },
-        // ],
-        // 'ideas': [
-        //     {
-        //         pre_coin: PreCoin,
-        //         next_coin: NextCoin,
-        //         coin_name: "ETH/HBTC",
-        //         coin: "TRS",
-        //         per_day: "20000",
-        //         per_month: "600000",
-        //         apy: "64.53%",
-        //         tvl: "196254628.95",
-        //     },
-        // ]
-    }
+
+    useEffect(() => {
+        API.getPoolData().then(res => {
+            setMainList(
+                {
+                    'main': [
+                        {
+                            pre_coin: PreCoin,
+                            next_coin: NextCoin,
+                            coin_name: "ETH/HBTC",
+                            coin: "TRS",
+                            apy: res.apy,
+                            per_day: res.per_day,
+                            per_month: res.per_month,
+                            tvl: res.nextcoin
+                        },
+                    ],
+                    'flat': [],
+                    'ideas': []
+                }
+            )
+        })
+
+    }, [])
     return (
         <>
             <Title />
             <TopContent />
             <MidTitle />
-                  {v2PairsWithoutStakedAmount.map(v2Pair => (
-                    console.log(v2Pair)
-                  ))}
             <ul className="nav-ul">
                 {
                     nav_type.map((item, index) => {
                         return (
-                            <li onClick={() => {
+                            <li key={item.type} onClick={() => {
                                 setFlag(index)
                                 setType(item.type)
                             }}
@@ -210,9 +127,11 @@ isApprove.isApprove().then(res=>{
             </ul>
 
             {
-                type && pool_list[type] && (<div className="pool-list">
+                type && mainList[type] && (<div className="pool-list">
                     {
-                        pool_list[type].map((item: Item) => {
+
+                        mainList[type].map((item: Item) => {
+                            console.log(mainList[type])
                             return (
                                 <>
                                     <div className="pool-item" >
@@ -238,6 +157,7 @@ isApprove.isApprove().then(res=>{
                                             <span>TVL</span>
                                             <span>{item.tvl}</span>
                                         </div>
+
                                         <div className="item-btn">
                                             {/* 跳转到 流动资金到时候  /add/token1/token2 */}
                                             <ItemBtn id={`/provideLiquidity-nav-link`} to={'/provideLiquidity'}>+流动资金</ItemBtn>

@@ -1,131 +1,216 @@
 import Contract from './index.js'
-// import Web3 from "web3";
+import Web3 from "web3";
 
 // 将bignumber转换
 // return Web3.utils.fromWei(str,'ether')
 // 将小数 *18个0
 // return Web3.utils.toWei(str,'ether')
-// let res = Contract.initFnPromise().then(result => {
-//         return {
-//             demo: function() {}
-//         }
-//     })
-// Contract.initFnPromise()
-let demo = (function() {
-    Contract.init()
-    return {
-        isApprove: function isApprove() {
-            return new Promise((resolve, reject) => {
-                Contract.getAccountStakedStatus(
-                    (result) => {
-                        resolve(result)
-                    }, (error) => {
-                        reject(error)
-                    }
-                )
-            })
-        }
 
-    }
-})();
-
-export default {
-    ...demo
+function isApprove() {
+    return Contract.initFnPromise().then(res => {
+        return new Promise((resolve, reject) => {
+            Contract.getAccountStakedStatus(
+                (result) => {
+                    if (result === '0') {
+                        resolve(false)
+                    } else resolve(true)
+                }, (error) => {
+                    reject(error)
+                }
+            )
+        })
+    })
 }
-// 获取收益
-// export function getInitreward() {
-//     return new Promise((resolve, reject) => {
-//         Contract.getInitreward((result) => {
-//             let per = Web3.utils.fromWei(result, 'ether')
-//             resolve({
-//                 per_mounth: per,
-//                 per_year: per * 12
-//             })
-//         }, (error) => {
-//             reject(error)
-//         })
-//     })
-// }
-
-
+// 获取矿池月/年收益
+function getInitreward() {
+    return Contract.initFnPromise().then(res => {
+        return new Promise((resolve, reject) => {
+            Contract.getInitreward((result) => {
+                let per = Web3.utils.fromWei(result, 'ether')
+                resolve({
+                    per_day: per * 1,
+                    per_month: per * 30
+                })
+            }, (error) => {
+                reject(error)
+            })
+        })
+    })
+}
 // //获取授权地址未抵押的LP
-// export function getUnStakedLp() {
-//     return new Promise((resolve, reject) => {
-//         Contract.getBalanceFromhuiwanUsdtMdexContract(
-//             window.accountAddress,
-//             (result) => {
-//                 let temp = Web3.utils.fromWei(result, 'ether')
-//                 resolve(temp)
-//             }, (error) => {
-//                 reject(error)
-//             }
-//         )
-//     })
-// }
+function getUnStakedLp() {
 
-// // 获取授权地址在pool中抵押数量
-// export function getStakedLp() {
-//     return new Promise((resolve, reject) => {
-//         Contract.getPoolLP(
-//             window.accountAddress,
-//             (result) => {
-//                 let temp = Web3.utils.fromWei(result, 'ether')
-//                 resolve(temp)
-//             }, (error) => {
-//                 reject(error)
-//             }
-//         )
-//     })
-// }
-
+    return Contract.initFnPromise().then(res => {
+        return new Promise((resolve, reject) => {
+            Contract.getBalanceFromhuiwanUsdtMdexContract(
+                window.accountAddress,
+                (result) => {
+                    let temp = Web3.utils.fromWei(result, 'ether')
+                    resolve(temp)
+                }, (error) => {
+                    reject(error)
+                }
+            )
+        })
+    })
+}
+// 获取授权地址在pool中抵押数量
+function getStakedLp() {
+    return Contract.initFnPromise().then(res => {
+        return new Promise((resolve, reject) => {
+            Contract.getPoolLP(
+                window.accountAddress,
+                (result) => {
+                    let temp = Web3.utils.fromWei(result, 'ether')
+                    resolve(temp)
+                }, (error) => {
+                    reject(error)
+                }
+            )
+        })
+    })
+}
 // // 抵押LP到pool中
-// export function stakedLpToPool(amount) {
-//     return new Promise((resolve, reject) => {
-//         Contract.stakingToHuiwanUsdtLoopContract(
-//             Web3.utils.toWei(amount, 'ether'),
-//             (result) => {
-//                 resolve(result)
-//             }, (error) => {
-//                 reject(error)
-//             }
-//         )
-//     })
-// }
+function stakedLpToPool(amount) {
+    return Contract.initFnPromise().then(res => {
+        return new Promise((resolve, reject) => {
+            Contract.stakingToHuiwanUsdtLoopContract(
+                Web3.utils.toWei(amount, 'ether'),
+                (result) => {
+                    resolve(result)
+                }, (error) => {
+                    reject(error)
+                }
+            )
+        })
+    })
+}
 // // 解押LP到从pool中
-// export function stakedLpOutPool(amount) {
-//     return new Promise((resolve, reject) => {
-//         Contract.withdrawFromHuiwanUsdtLoopContract(
-//             Web3.utils.toWei(amount, 'ether'),
-//             (result) => {
-//                 resolve(result)
-//             }, (error) => {
-//                 reject(error)
-//             }
-//         )
-//     })
-// }
-// // 该池子是否授权
-// export function isApprove() {
+function stakedLpOutPool(amount) {
+    return Contract.initFnPromise().then(res => {
+        return new Promise((resolve, reject) => {
+            Contract.withdrawFromHuiwanUsdtLoopContract(
+                Web3.utils.toWei(amount, 'ether'),
+                (result) => {
+                    resolve(result)
+                }, (error) => {
+                    reject(error)
+                }
+            )
+        })
 
-//     return new Promise((resolve, reject) => {
-//         Contract.getAccountStakedStatus(
-//             (result) => {
-//                 resolve(result)
-//             }, (error) => {
-//                 reject(error)
-//             }
-//         )
-//     })
-// }
-
+    })
+}
 // //检查交易状态
-// export function checkedDeal(hash) {
-//     return new Promise((resolve) => {
-//         Contract.getDealStatusByHash(
-//             hash,
-//             (result) => {
-//                 resolve(result)
-//             },
-//         )
-//     })
-// }
+function checkedDeal(hash) {
+    return Contract.initFnPromise().then(res => {
+        return new Promise((resolve) => {
+            Contract.getDealStatusByHash(
+                hash,
+                function(err, res) {
+                    resolve(err, res)
+                }
+            )
+        })
+    })
+}
+// 未授权进行授权 approveHuiwanUsdtLoopAddr
+function approve() {
+    return Contract.initFnPromise().then(res => {
+        return new Promise((resolve, reject) => {
+            Contract.approveHuiwanUsdtLoopAddr(
+                (result) => {
+                    console.log(result)
+                    resolve(result.result)
+                }, (error) => {
+                    reject(error)
+                }
+            )
+        })
+    })
+}
+
+
+// 获取池子里的当前收益
+function getEarned() {
+    return Contract.initFnPromise().then(res => {
+        return new Promise((resolve, reject) => {
+            Contract.getEarned(
+                window.accountAddress,
+                (result) => {
+                    let temp = Web3.utils.fromWei(result, 'ether')
+                    resolve(temp)
+                }, (error) => {
+                    reject(error)
+                }
+            )
+        })
+    })
+}
+
+function getReward() {
+    return Contract.initFnPromise().then(res => {
+        return new Promise((resolve, reject) => {
+            Contract.getReward((res) => {
+                resolve(res)
+            }, (err) => {
+                reject(err)
+            })
+        })
+    })
+}
+
+
+function getPoolData() {
+    // getBalanceFromHuiwanTokenContract
+    return Contract.initFnPromise().then(res => {
+        return new Promise((resolve, reject) => {
+            Contract.getBalanceFromHuiwanTokenContract(
+                (precoin) => {
+                    Contract.getBalanceFromUsdtTokenContract((nextcoin) => {
+                        let rate = nextcoin / precoin
+
+                        getInitreward().then(result => {
+
+                            Contract.getTotalSupply(res => {
+                                let apy
+                                if (res * 1 === 0) {
+                                    apy = `0.00%`;
+                                } else {
+                                    // nextcoin = Web3.utils.fromWei(nextcoin, 'ether')
+                                    apy = ((result.per_day * rate) / nextcoin * 2) * 360 * 100 + "%"
+                                }
+                                resolve({
+                                    ...result,
+                                    precoin,
+                                    nextcoin,
+                                    rate,
+                                    apy
+                                })
+                            }, (error) => {
+                                reject(error)
+                            })
+
+
+                        })
+
+                    })
+                }
+            )
+        })
+
+    })
+}
+export default {
+    isApprove,
+    approve,
+    getInitreward,
+    getUnStakedLp,
+    getStakedLp,
+    stakedLpToPool,
+    stakedLpOutPool,
+    checkedDeal,
+    getEarned,
+    getReward,
+    getPoolData
+}

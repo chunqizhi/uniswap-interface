@@ -120,10 +120,10 @@ class Contract {
 
 
     // 查询 mdex 中配对合约拥有 huiwanToken 的数量
-    getBalanceFromHuiwanTokenContract(account, callback, errorCallBack) {
+    getBalanceFromHuiwanTokenContract(callback, errorCallBack) {
         let _this = this
         this.huiwanTokenContract.methods
-            .balanceOf(account)
+            .balanceOf(_this.huiwanUsdtMdexAddr)
             .call(function(error, res) {
                 if (error) {
                     errorCallBack && errorCallBack(_this.handleError(error));
@@ -134,10 +134,10 @@ class Contract {
     }
 
     // 查询 mdex 中配对合约拥有 usdtToken 的数量
-    getBalanceFromUsdtTokenContract(account, callback, errorCallBack) {
+    getBalanceFromUsdtTokenContract(callback, errorCallBack) {
         let _this = this
         this.usdtTokenContract.methods
-            .balanceOf(account)
+            .balanceOf(_this.huiwanUsdtMdexAddr)
             .call(function(error, res) {
                 if (error) {
                     errorCallBack && errorCallBack(_this.handleError(error));
