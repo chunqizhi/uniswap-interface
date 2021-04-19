@@ -19,16 +19,16 @@ i18next
         translation: zh
       },
     },
-    backend: {
-      loadPath: `./locales/{{lng}}.json`
-    },
+    // backend: {
+    //   loadPath: `./locales/{{lng}}.json`
+    // },
     react: {
       useSuspense: true
     },
     fallbackLng: 'en',
     preload: ['en','zh'],
-    keySeparator: false,
-    interpolation: { escapeValue: false }
+    // keySeparator: false,
+    // interpolation: { escapeValue: false }
   })
 
 

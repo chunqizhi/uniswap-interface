@@ -229,11 +229,13 @@ export default function ProvideLiquidity() {
                                                 switch (popType) {
                                                     case 'stake':
                                                         API.stakedLpToPool(inputValue).then(res => {
+                                                            setAddFlag(false)
                                                             console.log("stakedLpToPool:" + res)
                                                         })
                                                         break;
                                                     case 'withdraw':
                                                         API.stakedLpOutPool(inputValue).then(res => {
+                                                            setAddFlag(false)
                                                             console.log("stakedLpOutPool:" + res)
                                                         })
                                                         break;
