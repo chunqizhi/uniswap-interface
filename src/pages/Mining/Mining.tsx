@@ -5,7 +5,7 @@ import NextCoin from '../../assets/images/mining/next_coin.png'
 import PreCoin from '../../assets/images/mining/pre_coin.png'
 import { NavLink } from 'react-router-dom'
 // import {getInitreward,getUnStakedLp,getStakedLp,stakedLpToPool,stakedLpOutPool,isApprove,checkedDeal} from '../../apis/api/data.js'
-import API from '../../apis/api/data.js'
+import API from '../../apis/api/one.js'
 // import { Pair } from '@uniswap/sdk'
 // import { unwrappedToken } from '../../utils/wrappedCurrency'
 const TitleDiv = styled.div`
@@ -63,9 +63,6 @@ export default function Mining() {
     const [allBlock,setAllBock] =useState(0.00)
     const [balance, setBalance] = useState(0.00)
 
-    
-
-   
 
     API.getBalanceOf().then(res => {
         setBalance(res)
@@ -115,7 +112,8 @@ export default function Mining() {
                             apy: res.apy,
                             per_day: res.per_day,
                             per_month: res.per_month,
-                            tvl: res.nextcoin * 2
+                            tvl: res.nextcoin * 2,
+                            poolIndex:'one'
                         },
                     ],
                     'flat': [],
@@ -150,11 +148,10 @@ export default function Mining() {
                 type && mainList[type] && (<div className="pool-list">
                     {
 
-                        mainList[type].map((item: Item) => {
-                            console.log(mainList[type])
+                        mainList[type].map((item: Item,index) => {
                             return (
                                 <>
-                                    <div className="pool-item" >
+                                    <div className="pool-item" key={index}>
                                         <div className="item-img">
                                             <img src={item.pre_coin} alt="" className="pre" />
                                             <img src={item.next_coin} alt="" className="next" />
@@ -180,7 +177,7 @@ export default function Mining() {
 
                                         <div className="item-btn">
                                             {/* 跳转到 流动资金到时候  /add/token1/token2 */}
-                                            <ItemBtn id={`/provideLiquidity-nav-link`} to={'/provideLiquidity'}>+流动资金</ItemBtn>
+                                            <ItemBtn id={`/provideLiquidity-nav-link`} to={"/provideLiquidity/"+item.poolIndex}>+流动资金</ItemBtn>
                                         </div>
                                     </div>
                                 </>

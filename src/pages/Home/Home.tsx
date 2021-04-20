@@ -1,8 +1,9 @@
-import React from 'react'
+import React,{useState} from 'react'
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import HomeBottom from './HomeBottom'
 import {useTranslation} from "react-i18next"
+import One from '../../apis/api/one.js'
 const HomeTop = styled.div`
 
 height: 45px;
@@ -110,12 +111,17 @@ text-decoration:none;
 
 
 export default function Home() {
+    // One
     const   {t } =  useTranslation();
+    const [rate, setRate] = useState(0)
+    One.getTrsRate().then(res=>{
+        setRate(res.rate)
+    })
     return (
         <>
             <HomeTop>
                 <LeftDiv>
-                    <LeftDivSpan>$2.9</LeftDivSpan>
+                    <LeftDivSpan>${rate}</LeftDivSpan>
                     <RightSpan>TRS</RightSpan>
                 </LeftDiv>
                 <RightDiv>
@@ -132,7 +138,7 @@ export default function Home() {
             <TitleDesc>{t("home.text03")}</TitleDesc>
             <HomeBtn01 id={`swap-nav-link`} to={'/swap'}>{t("home.text12")}</HomeBtn01>
             <HomeBtn02 id={`mining-nav-link`} to={'/mining'}>{t("home.text13")}</HomeBtn02>
-            <HomeBottom />
+            <HomeBottom key={'home-bottom'}/>
         </>
     )
 }

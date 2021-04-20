@@ -3,17 +3,64 @@ import './provide.css'
 import PreCoin from '../../assets/images/mining/pre_coin.png'
 import NextCoin from '../../assets/images/mining/next_coin.png'
 
-import API from '../../apis/api/data.js'
+import One from '../../apis/api/one.js'
+import Two from '../../apis/api/two.js'
+import Three from '../../apis/api/three.js'
+import Four from '../../apis/api/four.js'
+import Five from '../../apis/api/five.js'
+import Six from '../../apis/api/six.js'
+import Seven from '../../apis/api/seven.js'
+import Eight from '../../apis/api/eight.js'
+import Nine from '../../apis/api/nine.js'
+import Ten from '../../apis/api/ten.js'
 
 import styled from 'styled-components'
-import { NavLink } from 'react-router-dom'
+import { NavLink, RouteComponentProps } from 'react-router-dom'
 // import contract from '../../apis/api/index'
 
 const ProvideBtn = styled(NavLink)`
 text-decoration: none;
 `
+let API
 
-export default function ProvideLiquidity() {
+export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex: string }>) {
+    const poolIndex = props.match.params.poolIndex
+
+    switch (poolIndex) {
+        case "one":
+            API = One
+            break;
+        case "two":
+            API = Two
+            break;
+        case "three":
+            API = Three
+            break;
+        case "four":
+            API = Four
+            break;
+        case "five":
+            API = Five
+            break;
+        case "six":
+            API = Six
+            break;
+        case "seven":
+            API = Seven
+            break;
+        case "eight":
+            API = Eight
+            break;
+        case "nine":
+            API = Nine
+            break;
+        case "ten":
+            API = Ten
+            break;
+        default:
+            console.log('error')
+    }
+
     const [addFlag, setAddFlag] = useState(false)   //显示隐藏 抵押解押弹框
     const [popType, setType] = useState('stake')    //当前弹框类型 stake/抵押    withdraw/解押
     const [isApprove, setApprove] = useState(false) // 授权/非授权
@@ -21,41 +68,15 @@ export default function ProvideLiquidity() {
     const [stakedLp, setStakedLp] = useState('0.00')
     const [unStakedLp, setUnStakedLp] = useState('0.00')
     const [earned, setEarned] = useState('0.00')
-    let  hashTimer
-
-    // cons 
     const clickListener = () => {
         console.log("clickListener")
     }
-
-    const checkedDeal = function (hash) {
-        API.checkedDeal(hash).then((err, res) => {
-            console.log(err)
-            if (res) {
-                hashTimer && clearTimeout(hashTimer)
-                setApprove(true)
-            }
-            else {
-                setApprove(false)
-            }
-        })
-    }
-
-    const approFn = function (hash) {
-        checkedDeal(hash)
-        hashTimer = setTimeout(() => {
-            approFn(hash)
-        }, 500)
-    }
-
-
-
-
 
     useEffect(() => {
         let setTimeoutTimer;
         const timerFn = function () {
             API.isApprove().then(res => {
+                console.log("是否授权" + res)
                 setApprove(res)
             })
             // 抵押的LP
@@ -74,8 +95,6 @@ export default function ProvideLiquidity() {
                 console.log("当前收益：" + res)
             })
         }
-
-
 
 
         const timer = function () {
@@ -106,7 +125,7 @@ export default function ProvideLiquidity() {
                 <div className="add-content">
                     <p className="content-title">
                         <span>未领取挖矿收益</span>
-                        <span className="num">{earned.substring(0,6)}</span>
+                        <span className="num">{earned.substring(0, 6)}</span>
                     </p>
                     <p className="my-p-text">我的LP</p>
                     <p className="add-info">
@@ -114,7 +133,7 @@ export default function ProvideLiquidity() {
                         <img src={NextCoin} alt="" />
                         <span>USDT/HUSD</span>
                         <span className="num">{
-                            unStakedLp.substring(0,6)
+                            unStakedLp.substring(0, 6)
                         }</span>
                     </p>
                     {/* <p className="add-info">
@@ -128,16 +147,14 @@ export default function ProvideLiquidity() {
                     <p className="add-tips">获得流动资金LP，需抵押后才开始流动性挖矿</p>
                     <p className="staked">
                         <span>已抵押LP</span>
-                        <span className="num">{stakedLp.substring(0,6)}</span>
+                        <span className="num">{stakedLp.substring(0, 6)}</span>
                     </p>
                     <div className="receive-btn add-div-btn"
                         onClick={
                             () => {
-                                if(!isApprove) return 
-                                API.getReward().then(res=>{
-                                    console.log(res)
+                                if (!isApprove) return
+                                API.getReward().then(res => {
                                 })
-                                console.log('领取收益')
                             }
                         }
                     >领取收益</div>
@@ -145,14 +162,14 @@ export default function ProvideLiquidity() {
 
                         onClick={
                             () => {
-                                if(!isApprove) return 
+                                if (!isApprove) return
                                 setAddFlag(true)
                                 setType('stake')
                             }}
                     >抵押</div>
                     <div className="add-div-btn other-btn"
                         onClick={() => {
-                            if(!isApprove) return 
+                            if (!isApprove) return
                             setAddFlag(true)
                             setType('withdraw')
                         }}
@@ -162,7 +179,7 @@ export default function ProvideLiquidity() {
                         !isApprove && (
                             <div className="add-div-btn other-btn" onClick={() => {
                                 API.approve().then(res => {
-                                    approFn(res)
+                                    // approFn(res)
                                 })
                             }}>授权</div>
                         )

@@ -101,7 +101,7 @@ export default function App() {
               {/* 流动性挖矿 */}
               <Route exact strict path="/mining" component={Mining} />
               {/* 抵押货币 */}
-              <Route exact strict path="/provideLiquidity" component={ProvideLiquidity} />
+              <Route exact strict path="/provideLiquidity/:poolIndex" component={ProvideLiquidity} />
 
               <Route exact strict path="/claim" component={OpenClaimAddressModalAndRedirectToSwap} />
               
