@@ -184,10 +184,11 @@ class API {
                 this.getInitreward().then(result => {
                     this.contract.getTotalSupply(res => {
                         let apy
+                        nextcoin = (Web3.utils.fromWei(nextcoin, 'ether')) * 1
+                        precoin = (Web3.utils.fromWei(precoin, 'ether')) * 1
                         if (res * 1 === 0) {
                             apy = `0.00%`;
                         } else {
-                            nextcoin = Web3.utils.fromWei(nextcoin, 'ether')
                             apy = ((result.per_day * rate) / nextcoin) * 360 * 100 + "%"
                         }
                         resolve({

@@ -50,7 +50,7 @@ function getCurrentPool(type) {
     return API
 }
 
-function getPoolListData() {
+function getPoolListData(type) {
     return new Promise((resolve, reject) => {
         Promise.all([
             One.getPoolData(),
@@ -69,37 +69,58 @@ function getPoolListData() {
                 "flat": [],
                 "ideas": []
             }
+            let allBalance = 0
             res.forEach((item, index) => {
-                switch (true) {
-                    case index < 5:
-                        data.main.push({
-                            ...item,
-                            ...Icon[index]
-                        })
-                        break;
-                    case index >= 5 && index <= 6:
-                        data.flat.push({
-                            ...item,
-                            ...Icon[index]
-                        })
-                        break;
-                    case index > 6:
-                        data.ideas.push({
-                            ...item,
-                            ...Icon[index]
-                        })
-                        break;
-                    default:
-                        console.log(`error`)
+                let tvl = item.nextcoin * 2
+                allBalance += tvl
+                if (type !== 'all') {
+                    switch (true) {
+                        case index < 5:
+                            data.main.push({
+                                ...item,
+                                ...Icon[index],
+                                tvl
+                            })
+                            break;
+                        case index >= 5 && index <= 6:
+                            data.flat.push({
+                                ...item,
+                                ...Icon[index],
+                                tvl
+                            })
+                            break;
+                        case index > 6:
+                            data.ideas.push({
+                                ...item,
+                                ...Icon[index],
+                                tvl
+
+                            })
+                            break;
+                        default:
+                            console.log(`error`)
+                    }
                 }
+
             })
 
-            resolve(data)
+            if (type === 'all') {
+                resolve(allBalance)
+            } else {
+                resolve(data)
+
+            }
+
         })
     })
 
 }
+
+function getTrsRate() {
+    return One.getTrsRate()
+}
 export default {
     getCurrentPool,
-    getPoolListData
+    getPoolListData,
+    getTrsRate
 }

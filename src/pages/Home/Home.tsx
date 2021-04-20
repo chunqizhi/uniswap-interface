@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import HomeBottom from './HomeBottom'
 import {useTranslation} from "react-i18next"
-import One from '../../apis/api/one.js'
+import Data from '../../apis/api/data.js'
 const HomeTop = styled.div`
 
 height: 45px;
@@ -114,8 +114,13 @@ export default function Home() {
     // One
     const   {t } =  useTranslation();
     const [rate, setRate] = useState(0)
-    One.getTrsRate().then(res=>{
+    const [allBalance,setAllBalance] = useState(0)
+    Data.getTrsRate().then(res=>{
         setRate(res.rate)
+    })
+    Data.getPoolListData('all').then(res=>{
+        console.log(res)
+        setAllBalance(res)
     })
     return (
         <>
@@ -125,7 +130,7 @@ export default function Home() {
                     <RightSpan>TRS</RightSpan>
                 </LeftDiv>
                 <RightDiv>
-                    <LeftDivSpan>$234153453.236</LeftDivSpan>
+                    <LeftDivSpan>${allBalance}</LeftDivSpan>
                     <RightSpan>{t("home.text01")}</RightSpan>
                 </RightDiv>
 
