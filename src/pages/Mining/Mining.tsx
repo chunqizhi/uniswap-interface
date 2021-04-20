@@ -40,12 +40,13 @@ const nav_type = [
 interface Item {
     pre_coin: string,
     next_coin: string,
-    coin_name: string[],
-    coin: string[],
-    per_day: string[] | number[],
-    per_month: string[] | number[],
-    apy: string[] | number[],
-    tvl: string[] | number[],
+    coin_name: string,
+    coin: string,
+    per_day: string | number,
+    per_month: string| number,
+    apy: string | number,
+    tvl: string | number,
+    poolIndex:string
 
 }
 
