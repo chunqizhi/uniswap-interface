@@ -3,20 +3,9 @@ import './provide.css'
 import PreCoin from '../../assets/images/mining/pre_coin.png'
 import NextCoin from '../../assets/images/mining/next_coin.png'
 
-import One from '../../apis/api/one.js'
-import Two from '../../apis/api/two.js'
-import Three from '../../apis/api/three.js'
-import Four from '../../apis/api/four.js'
-import Five from '../../apis/api/five.js'
-import Six from '../../apis/api/six.js'
-import Seven from '../../apis/api/seven.js'
-import Eight from '../../apis/api/eight.js'
-import Nine from '../../apis/api/nine.js'
-import Ten from '../../apis/api/ten.js'
-
+import Data from '../../apis/api/data.js'
 import styled from 'styled-components'
 import { NavLink, RouteComponentProps } from 'react-router-dom'
-// import contract from '../../apis/api/index'
 
 const ProvideBtn = styled(NavLink)`
 text-decoration: none;
@@ -25,42 +14,7 @@ let API
 
 export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex: string }>) {
     const poolIndex = props.match.params.poolIndex
-
-    switch (poolIndex) {
-        case "one":
-            API = One
-            break;
-        case "two":
-            API = Two
-            break;
-        case "three":
-            API = Three
-            break;
-        case "four":
-            API = Four
-            break;
-        case "five":
-            API = Five
-            break;
-        case "six":
-            API = Six
-            break;
-        case "seven":
-            API = Seven
-            break;
-        case "eight":
-            API = Eight
-            break;
-        case "nine":
-            API = Nine
-            break;
-        case "ten":
-            API = Ten
-            break;
-        default:
-            console.log('error')
-    }
-
+    API = Data.getCurrentPool(poolIndex)
     const [addFlag, setAddFlag] = useState(false)   //显示隐藏 抵押解押弹框
     const [popType, setType] = useState('stake')    //当前弹框类型 stake/抵押    withdraw/解押
     const [isApprove, setApprove] = useState(false) // 授权/非授权
@@ -96,7 +50,6 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
             })
         }
 
-
         const timer = function () {
             setTimeoutTimer && clearTimeout(setTimeoutTimer)
             timerFn()
@@ -104,7 +57,6 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
                 timer()
             }, 4000);
         }
-        //使用事件冒泡模型
         window.addEventListener("click", clickListener, false)
         timerFn()
         timer()
@@ -115,7 +67,6 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
     }, [])
 
 
-    //   to={`/remove/${currencyId(currency0)}/${currencyId(currency1)}`
     return (
         <>
             <div className="add">

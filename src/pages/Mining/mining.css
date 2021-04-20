@@ -149,7 +149,8 @@ li {
 }
 
 .pool-item .item-img img {
-    width: 48px;
+    width: 42px;
+    height: 42px;
 }
 
 .pool-item .item-img .pre {

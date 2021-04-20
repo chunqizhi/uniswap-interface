@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './mining.css'
 import styled from 'styled-components'
-import NextCoin from '../../assets/images/mining/next_coin.png'
-import PreCoin from '../../assets/images/mining/pre_coin.png'
 import { NavLink } from 'react-router-dom'
-// import {getInitreward,getUnStakedLp,getStakedLp,stakedLpToPool,stakedLpOutPool,isApprove,checkedDeal} from '../../apis/api/data.js'
+import Data from '../../apis/api/data.js'
 import API from '../../apis/api/one.js'
-// import { Pair } from '@uniswap/sdk'
-// import { unwrappedToken } from '../../utils/wrappedCurrency'
+
 const TitleDiv = styled.div`
 `
 const TitleSup = styled.span`
@@ -63,17 +60,18 @@ export default function Mining() {
     const [allBlock,setAllBock] =useState(0.00)
     const [balance, setBalance] = useState(0.00)
 
-
+    Data.getPoolListData().then(res=>{
+        console.log(res)
+        setMainList(res)
+    })
     API.getBalanceOf().then(res => {
         setBalance(res)
+        
     })
-
-
 
     API.getLastTime().then(res=>{
         setAllBock(res)
     })
-
 
     const nav_list = [
         {
@@ -101,25 +99,6 @@ export default function Mining() {
     useEffect(() => {
         API.getPoolData().then(res => {
             setRate(res.rate)
-            setMainList(
-                {
-                    'main': [
-                        {
-                            pre_coin: PreCoin,
-                            next_coin: NextCoin,
-                            coin_name: "ETH/HBTC",
-                            coin: "TRS",
-                            apy: res.apy,
-                            per_day: res.per_day,
-                            per_month: res.per_month,
-                            tvl: res.nextcoin * 2,
-                            poolIndex:'one'
-                        },
-                    ],
-                    'flat': [],
-                    'ideas': []
-                }
-            )
         })
 
     }, [])

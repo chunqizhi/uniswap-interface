@@ -1,261 +1,37 @@
-import Contract from './index.js'
-import Web3 from "web3";
-
-// 将bignumber转换
-// return Web3.utils.fromWei(str,'ether')
-// 将小数 *18个0
-// return Web3.utils.toWei(str,'ether')
-const allReward = {
-    starttime: 1618827000,
-    rewardRate: Web3.utils.fromWei('5787037037037037', 'ether')
-}
-
-function isApprove() {
-    return Contract.initFnPromise().then(res => {
-        return new Promise((resolve, reject) => {
-            Contract.getAccountStakedStatus(
-                (result) => {
-                    if (result === '0') {
-                        resolve(false)
-                    } else resolve(true)
-                }, (error) => {
-                    reject(error)
-                }
-            )
-        })
-    })
-}
-// 获取矿池月/年收益
-function getInitreward() {
-    return Contract.initFnPromise().then(res => {
-        return new Promise((resolve, reject) => {
-            Contract.getInitreward((result) => {
-                let per = Web3.utils.fromWei(result, 'ether')
-                resolve({
-                    per_day: per * 1,
-                    per_month: per * 30
-                })
-            }, (error) => {
-                reject(error)
-            })
-        })
-    })
-}
-// //获取授权地址未抵押的LP
-function getUnStakedLp() {
-
-    return Contract.initFnPromise().then(res => {
-        return new Promise((resolve, reject) => {
-            Contract.getBalanceFromhuiwanUsdtMdexContract(
-                window.accountAddress,
-                (result) => {
-                    let temp = Web3.utils.fromWei(result, 'ether')
-                    resolve(temp)
-                }, (error) => {
-                    reject(error)
-                }
-            )
-        })
-    })
-}
-// 获取授权地址在pool中抵押数量
-function getStakedLp() {
-    return Contract.initFnPromise().then(res => {
-        return new Promise((resolve, reject) => {
-            Contract.getPoolLP(
-                window.accountAddress,
-                (result) => {
-                    let temp = Web3.utils.fromWei(result, 'ether')
-                    resolve(temp)
-                }, (error) => {
-                    reject(error)
-                }
-            )
-        })
-    })
-}
-// // 抵押LP到pool中
-function stakedLpToPool(amount) {
-    return Contract.initFnPromise().then(res => {
-        return new Promise((resolve, reject) => {
-            Contract.stakingToHuiwanUsdtLoopContract(
-                Web3.utils.toWei(amount, 'ether'),
-                (result) => {
-                    resolve(result)
-                }, (error) => {
-                    reject(error)
-                }
-            )
-        })
-    })
-}
-// // 解押LP到从pool中
-function stakedLpOutPool(amount) {
-    return Contract.initFnPromise().then(res => {
-        return new Promise((resolve, reject) => {
-            Contract.withdrawFromHuiwanUsdtLoopContract(
-                Web3.utils.toWei(amount, 'ether'),
-                (result) => {
-                    resolve(result)
-                }, (error) => {
-                    reject(error)
-                }
-            )
-        })
-
-    })
-}
-// //检查交易状态
-function checkedDeal(hash) {
-    return Contract.initFnPromise().then(res => {
-        return new Promise((resolve) => {
-            Contract.getDealStatusByHash(
-                hash,
-                function(err, res) {
-                    resolve(err, res)
-                }
-            )
-        })
-    })
-}
-// 未授权进行授权 approveHuiwanUsdtLoopAddr
-function approve() {
-    return Contract.initFnPromise().then(res => {
-        return new Promise((resolve, reject) => {
-            Contract.approveHuiwanUsdtLoopAddr(
-                (result) => {
-                    console.log(result)
-                    resolve(result.result)
-                }, (error) => {
-                    reject(error)
-                }
-            )
-        })
-    })
-}
+import { pairAbi } from '../../abi/pair.abi.js' // huiwanUsdtMdexABI
+import { poolAbi } from '../../abi/pool.abi.js' //  huiwanUsdtLoopABI
+import { trsAbi } from '../../abi/trs.abi.js' // huiwanTokenABI
+import { usdtAbi } from '../../abi/usdt.abi.js' // usdtTokenABI
+import Contract from '../contract/index.js'
+import API from '../contract/api.js'
 
 
-// 获取池子里的当前收益
-function getEarned() {
-    return Contract.initFnPromise().then(res => {
-        return new Promise((resolve, reject) => {
-            Contract.getEarned(
-                window.accountAddress,
-                (result) => {
-                    let temp = Web3.utils.fromWei(result, 'ether')
-                    resolve(temp)
-                }, (error) => {
-                    reject(error)
-                }
-            )
-        })
-    })
-}
-
-function getReward() {
-    return Contract.initFnPromise().then(res => {
-        return new Promise((resolve, reject) => {
-            Contract.getReward((res) => {
-                resolve(res)
-            }, (err) => {
-                reject(err)
-            })
-        })
-    })
-}
+const usdtAddr = `0xa71EdC38d189767582C38A3145b5873052c3e47a` // usdtTokenAddr
+const trsAddr = `0x0c88c8698417f8ab01fbf6a8a595b35747a3c1e5` //  huiwanTokenAddr
+const trsUsdtPairAddr = `0x0748328634d1c0d31b479735794b1371ea90170a` //  huiwanUsdtMdexAddr
+const trsUsdtPoolAddr = `0x563b7476589cFEB6ef136Ea4FD9121bd1799F5FA` //  huiwanUsdtLoopAddr
 
 
-// pooldata
-function getPoolData() {
-    return new Promise((resolve, reject) => {
-        getTrsRate().then(res => {
-            let {
-                precoin,
-                nextcoin,
-                rate
-            } = res
-            getInitreward().then(result => {
-                Contract.getTotalSupply(res => {
-                    let apy
-                    if (res * 1 === 0) {
-                        apy = `0.00%`;
-                    } else {
-                        nextcoin = Web3.utils.fromWei(nextcoin, 'ether')
-                        apy = ((result.per_day * rate) / nextcoin) * 360 * 100 + "%"
-                    }
-                    resolve({
-                        ...result,
-                        precoin,
-                        nextcoin,
-                        rate,
-                        apy
-                    })
-                }, (error) => {
-                    reject(error)
-                })
+const usdtTokenAddr = usdtAddr
+const huiwanTokenAddr = trsAddr
+const huiwanUsdtMdexAddr = trsUsdtPairAddr
+const huiwanUsdtLoopAddr = trsUsdtPoolAddr
 
-            })
-        })
-    })
-}
+const huiwanUsdtMdexABI = pairAbi
+const huiwanUsdtLoopABI = poolAbi
+const huiwanTokenABI = trsAbi
+const usdtTokenABI = usdtAbi
 
 
-function getTrsRate() {
-    return Contract.initFnPromise().then(res => {
-        return new Promise((resolve, reject) => {
-            Contract.getBalanceFromHuiwanTokenContract((precoin) => {
-                Contract.getBalanceFromUsdtTokenContract((nextcoin) => {
-                    let rate = nextcoin / precoin
+const contract = new Contract({
+    huiwanUsdtLoopAddr,
+    huiwanTokenAddr,
+    usdtTokenAddr,
+    huiwanUsdtMdexAddr,
+    huiwanUsdtLoopABI,
+    huiwanTokenABI,
+    usdtTokenABI,
+    huiwanUsdtMdexABI
+})
 
-                    resolve({
-                        precoin,
-                        nextcoin,
-                        rate
-                    })
-                })
-            })
-        })
-    })
-}
-
-function getBalanceOf() {
-    return Contract.initFnPromise().then(res => {
-        return new Promise((resolve, reject) => {
-            Contract.getBalanceFromUsdtTokenContract((res) => {
-                resolve(Web3.utils.fromWei(res, 'ether'))
-            }, (err) => {
-                reject(err)
-            })
-        })
-    })
-}
-// 当前挖矿产出
-function getLastTime() {
-    return Contract.initFnPromise().then(res => {
-        return new Promise((resolve, reject) => {
-            // getLastTime
-            Contract.getLastTime(res => {
-                let reword = (res * 1 - allReward.starttime) * allReward.rewardRate
-                resolve(reword.toString())
-            }, err => {
-                reject(err)
-            })
-        })
-    })
-}
-export default {
-    isApprove,
-    approve,
-    getInitreward,
-    getUnStakedLp,
-    getStakedLp,
-    stakedLpToPool,
-    stakedLpOutPool,
-    checkedDeal,
-    getEarned,
-    getReward,
-    getPoolData,
-    getBalanceOf,
-    getLastTime,
-    getTrsRate
-}
+export default new API(contract)
