@@ -112,14 +112,13 @@ text-decoration:none;
 
 export default function Home() {
     // One
-    const   {t } =  useTranslation();
+    const   { t } =  useTranslation();
     const [rate, setRate] = useState(0)
     const [allBalance,setAllBalance] = useState(0)
     Data.getTrsRate().then(res=>{
         setRate(res.rate)
     })
     Data.getPoolListData('all').then(res=>{
-        console.log(res)
         setAllBalance(res)
     })
     return (

@@ -18,6 +18,7 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
     const [addFlag, setAddFlag] = useState(false)   //显示隐藏 抵押解押弹框
     const [popType, setType] = useState('stake')    //当前弹框类型 stake/抵押    withdraw/解押
     const [isApprove, setApprove] = useState(false) // 授权/非授权
+    const [pengingApprove, setPengingApprove] = useState(false)
     const [inputValue, setInputVal] = useState('0')   //input的值
     const [stakedLp, setStakedLp] = useState('0.00')
     const [unStakedLp, setUnStakedLp] = useState('0.00')
@@ -31,6 +32,7 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
         const timerFn = function () {
             API.isApprove().then(res => {
                 console.log("是否授权" + res)
+                setPengingApprove(true)
                 setApprove(res)
             })
             // 抵押的LP
@@ -103,7 +105,17 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
                     <div className="receive-btn add-div-btn"
                         onClick={
                             () => {
-                                if (!isApprove) return
+                                if (!isApprove) {
+                                    if (pengingApprove) {
+                                        alert(`授权中`)
+                                    }
+                                    else {
+                                        setPengingApprove(true)
+                                        API.approve().then(res => {
+                                        })
+                                    }
+                                    return
+                                }
                                 API.getReward().then(res => {
                                 })
                             }
@@ -113,14 +125,34 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
 
                         onClick={
                             () => {
-                                if (!isApprove) return
+                                if (!isApprove) {
+                                    if (pengingApprove) {
+                                        alert(`授权中`)
+                                    }
+                                    else {
+                                        setPengingApprove(true)
+                                        API.approve().then(res => {
+                                        })
+                                    }
+                                    return
+                                }
                                 setAddFlag(true)
                                 setType('stake')
                             }}
                     >抵押</div>
                     <div className="add-div-btn other-btn"
                         onClick={() => {
-                            if (!isApprove) return
+                            if (!isApprove) {
+                                if (pengingApprove) {
+                                    alert(`授权中`)
+                                }
+                                else {
+                                    setPengingApprove(true)
+                                    API.approve().then(res => {
+                                    })
+                                }
+                                return
+                            }
                             setAddFlag(true)
                             setType('withdraw')
                         }}
@@ -129,6 +161,7 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
                     {
                         !isApprove && (
                             <div className="add-div-btn other-btn" onClick={() => {
+                                setPengingApprove(true)
                                 API.approve().then(res => {
                                     // approFn(res)
                                 })

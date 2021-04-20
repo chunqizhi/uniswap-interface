@@ -31,7 +31,7 @@ export default [{
         pre_coin: coin1,
         next_coin: coin11,
         coin_name: "ETH/HBTC",
-        coin: "main",
+        coin: "TRS",
         poolIndex: 'one'
     },
 
@@ -39,7 +39,7 @@ export default [{
         pre_coin: coin2,
         next_coin: coin22,
         coin_name: "USDT/HBTC",
-        coin: "main",
+        coin: "TRS",
         poolIndex: 'two'
     },
 
@@ -47,7 +47,7 @@ export default [{
         pre_coin: coin3,
         next_coin: coin33,
         coin_name: "ETH/USDT",
-        coin: "main",
+        coin: "TRS",
         poolIndex: 'three'
     },
 
@@ -55,7 +55,7 @@ export default [{
         pre_coin: coin4,
         next_coin: coin44,
         coin_name: "HT/HUSD",
-        coin: "main",
+        coin: "TRS",
         poolIndex: 'four'
     },
 
@@ -63,42 +63,42 @@ export default [{
         pre_coin: coin5,
         next_coin: coin55,
         coin_name: "USDT/HUSD",
-        coin: "main",
+        coin: "TRS",
         poolIndex: 'five'
     },
     {
         pre_coin: coin6,
         next_coin: coin66,
         coin_name: "TRS/USDT",
-        coin: "flat",
+        coin: "TRS",
         poolIndex: 'six'
     },
     {
         pre_coin: coin7,
         next_coin: coin77,
         coin_name: "TRS/HT",
-        coin: "flat",
+        coin: "TRS",
         poolIndex: 'seven'
     },
     {
         pre_coin: coin8,
         next_coin: coin88,
         coin_name: "MDX/USDT",
-        coin: "ideas",
+        coin: "TRS",
         poolIndex: 'eight'
     },
     {
         pre_coin: coin9,
         next_coin: coin99,
         coin_name: "BXH/USDT",
-        coin: "ideas",
+        coin: "TRS",
         poolIndex: 'nine'
     },
     {
         pre_coin: coin10,
         next_coin: coin1010,
         coin_name: "TPT/USDT",
-        coin: "ideas",
+        coin: "TRS",
         poolIndex: 'ten'
     },
 ]
