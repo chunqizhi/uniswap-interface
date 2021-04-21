@@ -19,6 +19,7 @@ i18next
         translation: zh
       },
     },
+    lng:'en',
     // backend: {
     //   loadPath: `./locales/{{lng}}.json`
     // },
@@ -26,7 +27,7 @@ i18next
       useSuspense: true
     },
     fallbackLng: 'en',
-    preload: ['en','zh'],
+   preload: ['en','zh'],
     // keySeparator: false,
     // interpolation: { escapeValue: false }
   })
