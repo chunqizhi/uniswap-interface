@@ -190,7 +190,7 @@ class API {
                         if (res * 1 === 0) {
                             apy = `0.00%`;
                         } else {
-                            apy = ((result.per_day * rate) / tvl) * 360 * 100 + "%"
+                            apy = (((result.per_day * rate) / tvl) * 360 * 100).toFixed(2) + "%"
 
                         }
                         resolve({

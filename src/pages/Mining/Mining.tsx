@@ -50,14 +50,19 @@ interface Item {
 
 }
 
-const formatNum = function (str: string) {
+const formatNum = function (str: string|number) {
+    str=""+str
     let flag = str.indexOf('.') > 0
     let temp
     let length = str.length
     switch (true) {
         case length > 7:
             if (flag) {
-                temp = str.split('.')[0]
+                if(str.split('.')[0].length>6){
+                    temp = str.split('.')[0]
+                }
+                else  temp = str.substring(0, 6)
+               
             }
             else temp = str.substring(0, 6)
             break;
@@ -120,7 +125,7 @@ export default function Mining() {
     return (
         <>
             <Title />
-            <TopContent rate={rate} nav_list={nav_list} />
+            <TopContent rate={formatNum(rate)} nav_list={nav_list} />
             <MidTitle />
             <ul className="nav-ul">
                 {

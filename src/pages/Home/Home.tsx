@@ -1,8 +1,8 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import HomeBottom from './HomeBottom'
-import {useTranslation} from "react-i18next"
+import { useTranslation } from "react-i18next"
 import Data from '../../apis/api/data.js'
 const HomeTop = styled.div`
 
@@ -108,24 +108,45 @@ color: #fff;
 background: #0278FE;
 text-decoration:none;
 `
+const formatNum = function (str: string | number) {
+    str = "" + str
+    let flag = str.indexOf('.') > 0
+    let temp
+    let length = str.length
+    switch (true) {
+        case length > 7:
+            if (flag) {
+                if (str.split('.')[0].length > 6) {
+                    temp = str.split('.')[0]
+                }
+                else temp = str.substring(0, 6)
 
+            }
+            else temp = str.substring(0, 6)
+            break;
+        default:
+            temp = str
+            break;
+    }
+    return temp
+}
 
 export default function Home() {
     // One
-    const   { t } =  useTranslation();
+    const { t } = useTranslation();
     const [rate, setRate] = useState(0)
-    const [allBalance,setAllBalance] = useState(0)
-    Data.getTrsRate().then(res=>{
+    const [allBalance, setAllBalance] = useState(0)
+    Data.getTrsRate().then(res => {
         setRate(res.rate)
     })
-    Data.getPoolListData('all').then(res=>{
+    Data.getPoolListData('all').then(res => {
         setAllBalance(res)
     })
     return (
         <>
             <HomeTop>
                 <LeftDiv>
-                    <LeftDivSpan>${rate}</LeftDivSpan>
+                    <LeftDivSpan>${ formatNum(rate) }</LeftDivSpan>
                     <RightSpan>TRS</RightSpan>
                 </LeftDiv>
                 <RightDiv>
@@ -142,7 +163,7 @@ export default function Home() {
             <TitleDesc>{t("home.text03")}</TitleDesc>
             <HomeBtn01 id={`swap-nav-link`} to={'/swap'}>{t("home.text12")}</HomeBtn01>
             <HomeBtn02 id={`mining-nav-link`} to={'/mining'}>{t("home.text13")}</HomeBtn02>
-            <HomeBottom key={'home-bottom'}/>
+            <HomeBottom key={'home-bottom'} />
         </>
     )
 }
