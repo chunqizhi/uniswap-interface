@@ -161,9 +161,10 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
                     {
                         !isApprove && (
                             <div className="add-div-btn other-btn" onClick={() => {
-                                setPengingApprove(true)
                                 API.approve().then(res => {
                                     // approFn(res)
+                                setPengingApprove(true)
+
                                 })
                             }}>授权</div>
                         )
