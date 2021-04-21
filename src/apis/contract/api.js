@@ -185,7 +185,7 @@ class API {
                     this.contract.getTotalSupply(res => {
                         let apy, tvl
                         nextcoin = (Web3.utils.fromWei(nextcoin, 'ether')) * 1
-                        tvl = multiNum(nextcoin, 2)
+                        tvl = ((multiNum(nextcoin, 2)) * 1).toFixed(2)
                         precoin = (Web3.utils.fromWei(precoin, 'ether')) * 1
                         if (res * 1 === 0) {
                             apy = `0.00%`;
