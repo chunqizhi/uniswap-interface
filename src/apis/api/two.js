@@ -5,17 +5,17 @@ import { usdtAbi } from '../../abi/usdt.abi.js' // usdtTokenABI
 import Contract from '../contract/index.js'
 import API from '../contract/api.js'
 
-const HtAddr = `0x5545153CCFcA01fbd7Dd11C0b23ba694D9509A6F` // usdtTokenAddr
-const TrsAddr = `0xb4292e40B33daf0214364Fe27453110C69051D90` //  huiwanTokenAddr
-const TrsHTPairAddr = `0x2d269e91d7bcee61d89450c1cf64c63d1c93edc3` //  huiwanUsdtMdexAddr
-const TrsHTPoolAddr = `0xb6179cDe34d2a2aDaE2E7028A608ab5B7730631a` //  huiwanUsdtLoopAddr
+const usdtAddr = `0xa71EdC38d189767582C38A3145b5873052c3e47a` // usdtTokenAddr
+const trsAddr = `0xb4292e40B33daf0214364Fe27453110C69051D90` //  huiwanTokenAddr
+const trsUsdtPairAddr = `0x6f26ddacd8b9c39deb1ef5aa742157a09c9a3a98` //  huiwanUsdtMdexAddr
+const trsUsdtPoolAddr = `0x3e29F7FB187991DE1DDd7AFd7420870e28199665` //  huiwanUsdtLoopAddr
 
 
 
-const usdtTokenAddr = HtAddr
-const huiwanTokenAddr = TrsAddr
-const huiwanUsdtMdexAddr = TrsHTPairAddr
-const huiwanUsdtLoopAddr = TrsHTPoolAddr
+const usdtTokenAddr = usdtAddr
+const huiwanTokenAddr = trsAddr
+const huiwanUsdtMdexAddr = trsUsdtPairAddr
+const huiwanUsdtLoopAddr = trsUsdtPoolAddr
 
 const huiwanUsdtMdexABI = pairAbi
 const huiwanUsdtLoopABI = poolAbi

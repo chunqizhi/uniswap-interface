@@ -9,8 +9,8 @@ class API {
     constructor(contract) {
         this.contract = contract
         this.allReward = {
-            starttime: 1618827000,
-            rewardRate: Web3.utils.fromWei('5787037037037037', 'ether')
+            starttime: 1618902000,
+            rewardRate: Web3.utils.fromWei('115740740740740740', 'ether')
         }
     }
 
