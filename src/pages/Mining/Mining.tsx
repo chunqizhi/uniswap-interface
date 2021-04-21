@@ -43,56 +43,53 @@ interface Item {
     coin_name: string,
     coin: string,
     per_day: string | number,
-    per_month: string| number,
+    per_month: string | number,
     apy: string | number,
     tvl: string | number,
-    poolIndex:string
+    poolIndex: string
 
 }
 
-// isApprove().then(res=>{
-//     console.log(res)
-// })
+
 export default function Mining() {
     const [flag, setFlag] = useState(0)
     const [type, setType] = useState('main')
     const [mainList, setMainList] = useState({ 'main': [], 'flat': [], 'ideas': [] })
     const [rate, setRate] = useState(0.00)
-    const [allBlock,setAllBock] =useState(0.00)
+    const [allBlock, setAllBock] = useState(0.00)
     const [balance, setBalance] = useState(0.00)
 
-    Data.getPoolListData().then(res=>{
-        console.log(res)
+    Data.getPoolListData().then(res => {
         setMainList(res)
     })
     API.getBalanceOf().then(res => {
         setBalance(res)
-        
+
     })
 
-    API.getLastTime().then(res=>{
+    API.getLastTime().then(res => {
         setAllBock(res)
     })
 
     const nav_list = [
         {
             text: "当前挖矿产出",
-            end_val: allBlock,
+            end_val: allBlock + " ",
             start_val: 0,
         },
         {
             text: "当前挖矿产出价值",
-            end_val:allBlock*rate,
+            end_val: allBlock * rate + " ",
             start_val: 0,
         },
         {
             text: "已回购TRS数量",
-            end_val: 0,
+            end_val: "0",
             start_val: 0,
         },
         {
             text: "个人余额",
-            end_val: balance,
+            end_val: balance+" ",
             start_val: 0,
         },
     ];
@@ -106,7 +103,7 @@ export default function Mining() {
     return (
         <>
             <Title />
-            <TopContent rate={rate}  nav_list={nav_list} />
+            <TopContent rate={rate} nav_list={nav_list} />
             <MidTitle />
             <ul className="nav-ul">
                 {
@@ -128,7 +125,7 @@ export default function Mining() {
                 type && mainList[type] && (<div className="pool-list">
                     {
 
-                        mainList[type].map((item: Item,index) => {
+                        mainList[type].map((item: Item, index:number) => {
                             return (
                                 <>
                                     <div className="pool-item" key={index}>
@@ -157,7 +154,7 @@ export default function Mining() {
 
                                         <div className="item-btn">
                                             {/* 跳转到 流动资金到时候  /add/token1/token2 */}
-                                            <ItemBtn id={`/provideLiquidity-nav-link`} to={"/provideLiquidity/"+item.poolIndex}>+流动资金</ItemBtn>
+                                            <ItemBtn id={`/provideLiquidity-nav-link`} to={"/provideLiquidity/" + item.poolIndex}>+流动资金</ItemBtn>
                                         </div>
                                     </div>
                                 </>
@@ -182,7 +179,7 @@ function Title() {
 }
 
 function TopContent(props) {
-    let {rate,nav_list} = props
+    let { rate, nav_list } = props
     return (
         <>
             <div className="mini-top">
@@ -201,7 +198,10 @@ function TopContent(props) {
                                     <div className="item" key={item.text}>
                                         <p className="text">{item.text}</p>
                                         <p className="balance">
-                                            {(" "+(item.end_val)).substring(0,6)}
+                                            {/* {(" "+(item.end_val)).substring(0,6)} */}
+                                            {
+                                                item.end_val.length > 7 ? item.end_val.substring(0, 6) : item.end_val
+                                            }
                                         </p>
                                     </div>
                                 </>

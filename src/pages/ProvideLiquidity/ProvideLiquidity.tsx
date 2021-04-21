@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import './provide.css'
-import PreCoin from '../../assets/images/mining/pre_coin.png'
-import NextCoin from '../../assets/images/mining/next_coin.png'
 
 import Data from '../../apis/api/data.js'
 import styled from 'styled-components'
 import { NavLink, RouteComponentProps } from 'react-router-dom'
 
+
 const ProvideBtn = styled(NavLink)`
 text-decoration: none;
 `
-let API
+let API,coinInfo
 
 export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex: string }>) {
     const poolIndex = props.match.params.poolIndex
-    API = Data.getCurrentPool(poolIndex)
+    API = Data.getCurrentPool(poolIndex).API
+    coinInfo = Data.getCurrentPool(poolIndex).coinInfo
     const [addFlag, setAddFlag] = useState(false)   //显示隐藏 抵押解押弹框
     const [popType, setType] = useState('stake')    //当前弹框类型 stake/抵押    withdraw/解押
     const [isApprove, setApprove] = useState(false) // 授权/非授权
@@ -73,7 +73,7 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
         <>
             <div className="add">
                 <p className="title">提供流动性</p>
-                <p className="desc">获取 USDT/HUSD-LP 赚取BXH</p>
+                <p className="desc">获取 {coinInfo.coin_name}-LP 赚取BXH</p>
 
                 <div className="add-content">
                     <p className="content-title">
@@ -82,9 +82,9 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
                     </p>
                     <p className="my-p-text">我的LP</p>
                     <p className="add-info">
-                        <img src={PreCoin} alt="" />
-                        <img src={NextCoin} alt="" />
-                        <span>USDT/HUSD</span>
+                        <img src={coinInfo.pre_coin} alt="" />
+                        <img src={coinInfo.next_coin} alt="" />
+                        <span> {coinInfo.coin_name}</span>
                         <span className="num">{
                             unStakedLp.substring(0, 6)
                         }</span>

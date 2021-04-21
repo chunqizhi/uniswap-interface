@@ -12,42 +12,52 @@ import Icon from './icon.js'
 
 
 function getCurrentPool(type) {
-    let API
+    let API, coinInfo
     switch (type) {
         case "one":
+            coinInfo = Icon[0]
             API = One
             break;
         case "two":
+            coinInfo = Icon[1]
             API = Two
             break;
         case "three":
             API = Three
+            coinInfo = Icon[2]
             break;
         case "four":
             API = Four
+            coinInfo = Icon[3]
             break;
         case "five":
             API = Five
+            coinInfo = Icon[4]
             break;
         case "six":
             API = Six
+            coinInfo = Icon[5]
             break;
         case "seven":
             API = Seven
+            coinInfo = Icon[6]
             break;
         case "eight":
             API = Eight
+            coinInfo = Icon[7]
             break;
         case "nine":
             API = Nine
+            coinInfo = Icon[8]
             break;
         case "ten":
             API = Ten
+            coinInfo = Icon[9]
             break;
         default:
             console.log('error')
     }
-    return API
+    return { API, coinInfo }
 }
 
 function getPoolListData(type) {
