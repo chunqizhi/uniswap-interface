@@ -9,7 +9,7 @@ import Eight from './eight.js'
 import Nine from './nine.js'
 import Ten from './ten.js'
 import Icon from './icon.js'
-
+import { multiNum, addNum } from './calc.js'
 
 function getCurrentPool(type) {
     let API, coinInfo
@@ -81,8 +81,8 @@ function getPoolListData(type) {
             }
             let allBalance = 0
             res.forEach((item, index) => {
-                let tvl = item.nextcoin * 2
-                allBalance += tvl
+                let tvl = multiNum(item.nextcoin, 2)
+                allBalance = addNum(tvl, allBalance)
                 if (type !== 'all') {
                     switch (true) {
                         case index < 5:
@@ -126,11 +126,36 @@ function getPoolListData(type) {
 
 }
 
+function getAllBlock() {
+    return new Promise((resolve, reject) => {
+        Promise.all([
+            One.getLastTime(),
+            Two.getLastTime(),
+            Three.getLastTime(),
+            Four.getLastTime(),
+            Five.getLastTime(),
+            Six.getLastTime(),
+            Seven.getLastTime(),
+            Eight.getLastTime(),
+            Nine.getLastTime(),
+            Ten.getLastTime(),
+        ]).then(res => {
+            let allBalance = res.reduce((total, item) => {
+                return total + item * 1
+            }, 0)
+            resolve(allBalance)
+        }, error => {
+            reject(error)
+        })
+    })
+}
+
 function getTrsRate() {
     return One.getTrsRate()
 }
 export default {
     getCurrentPool,
     getPoolListData,
-    getTrsRate
+    getTrsRate,
+    getAllBlock
 }

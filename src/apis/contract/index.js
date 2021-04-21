@@ -18,6 +18,7 @@ class Contract {
             this.usdtTokenContract = null
             this.huiwanUsdtMdexContract = null
             this.web3 = null
+            this.account = null
         }
         // 初始化
     init(callback) {
@@ -43,9 +44,9 @@ class Contract {
                 .then(function(accounts) {
                     //创建web3对象;
                     _this.web3 = new Web3(window.ethereum);
-
-                    // 创建合约
-                    //
+                    _this.account = accounts[0]
+                        // 创建合约
+                        //
                     _this.huiwanUsdtLoopContract = new _this.web3.eth.Contract(_this.huiwanUsdtLoopABI, _this.huiwanUsdtLoopAddr);
                     //
                     _this.huiwanTokenContract = new _this.web3.eth.Contract(_this.huiwanTokenABI, _this.huiwanTokenAddr);
@@ -136,6 +137,20 @@ class Contract {
         let _this = this
         this.huiwanTokenContract.methods
             .balanceOf(_this.huiwanUsdtMdexAddr)
+            .call(function(error, res) {
+                if (error) {
+                    errorCallBack && errorCallBack(_this.handleError(error));
+                } else {
+                    callback && callback(res);
+                }
+            });
+    }
+
+    // 获取用户trs数量 
+    getWalletAllTrs(callback, errorCallBack) {
+        let _this = this
+        this.huiwanTokenContract.methods
+            .balanceOf(_this.account)
             .call(function(error, res) {
                 if (error) {
                     errorCallBack && errorCallBack(_this.handleError(error));

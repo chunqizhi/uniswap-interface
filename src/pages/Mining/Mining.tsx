@@ -3,7 +3,7 @@ import './mining.css'
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import Data from '../../apis/api/data.js'
-import API from '../../apis/api/one.js'
+import API from '../../apis/api/six.js'
 
 const TitleDiv = styled.div`
 `
@@ -50,7 +50,23 @@ interface Item {
 
 }
 
-
+const formatNum = function (str: string) {
+    let flag = str.indexOf('.') > 0
+    let temp
+    let length = str.length
+    switch (true) {
+        case length > 7:
+            if (flag) {
+                temp = str.split('.')[0]
+            }
+            else temp = str.substring(0, 6)
+            break;
+        default:
+            temp = str
+            break;
+    }
+    return temp
+}
 export default function Mining() {
     const [flag, setFlag] = useState(0)
     const [type, setType] = useState('main')
@@ -62,13 +78,12 @@ export default function Mining() {
     Data.getPoolListData().then(res => {
         setMainList(res)
     })
-    API.getBalanceOf().then(res => {
+    Data.getAllBlock().then(res=>{
+        setAllBock(res)
+    })
+    API.getWalletAllTrs().then(res => {
         setBalance(res)
 
-    })
-
-    API.getLastTime().then(res => {
-        setAllBock(res)
     })
 
     const nav_list = [
@@ -89,10 +104,12 @@ export default function Mining() {
         },
         {
             text: "个人余额",
-            end_val: balance+" ",
+            end_val: balance + " ",
             start_val: 0,
         },
     ];
+
+
 
     useEffect(() => {
         API.getPoolData().then(res => {
@@ -125,7 +142,7 @@ export default function Mining() {
                 type && mainList[type] && (<div className="pool-list">
                     {
 
-                        mainList[type].map((item: Item, index:number) => {
+                        mainList[type].map((item: Item, index: number) => {
                             return (
                                 <>
                                     <div className="pool-item" key={index}>
@@ -198,9 +215,10 @@ function TopContent(props) {
                                     <div className="item" key={item.text}>
                                         <p className="text">{item.text}</p>
                                         <p className="balance">
+                                            {/* > 7 ? item.end_val.substring(0, 6) : item.end_val */}
                                             {/* {(" "+(item.end_val)).substring(0,6)} */}
                                             {
-                                                item.end_val.length > 7 ? item.end_val.substring(0, 6) : item.end_val
+                                                formatNum(item.end_val)
                                             }
                                         </p>
                                     </div>

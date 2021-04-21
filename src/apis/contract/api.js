@@ -239,14 +239,26 @@ class API {
         }
         // 当前挖矿产出
     getLastTime() {
+            return this.contract.initFnPromise().then(res => {
+                return new Promise((resolve, reject) => {
+                    // getLastTime
+                    this.contract.getLastTime(res => {
+                        let reword = (res * 1 - this.allReward.starttime) * this.allReward.rewardRate
+                        resolve(reword.toString())
+                    }, err => {
+                        reject(err)
+                    })
+                })
+            })
+        }
+        // 获取用户trs数量 
+    getWalletAllTrs() {
         return this.contract.initFnPromise().then(res => {
             return new Promise((resolve, reject) => {
-                // getLastTime
-                this.contract.getLastTime(res => {
-                    let reword = (res * 1 - this.allReward.starttime) * this.allReward.rewardRate
-                    resolve(reword.toString())
-                }, err => {
-                    reject(err)
+                this.contract.getWalletAllTrs((res) => {
+                    resolve(Web3.utils.fromWei(res, 'ether'))
+                }, (error) => {
+                    reject(error)
                 })
             })
         })
