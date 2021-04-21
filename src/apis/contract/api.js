@@ -1,6 +1,6 @@
 // import Contract from './index.js'
 import Web3 from "web3";
-
+import { multiNum } from '../api/calc.js'
 // 将bignumber转换
 // return Web3.utils.fromWei(str,'ether')
 // 将小数 *18个0
@@ -183,20 +183,23 @@ class API {
                 } = res
                 this.getInitreward().then(result => {
                     this.contract.getTotalSupply(res => {
-                        let apy
+                        let apy, tvl
                         nextcoin = (Web3.utils.fromWei(nextcoin, 'ether')) * 1
+                        tvl = multiNum(nextcoin, 2)
                         precoin = (Web3.utils.fromWei(precoin, 'ether')) * 1
                         if (res * 1 === 0) {
                             apy = `0.00%`;
                         } else {
-                            apy = ((result.per_day * rate) / nextcoin) * 360 * 100 + "%"
+                            apy = ((result.per_day * rate) / tvl) * 360 * 100 + "%"
+
                         }
                         resolve({
                             ...result,
                             precoin,
                             nextcoin,
                             rate,
-                            apy
+                            apy,
+                            tvl
                         })
                     }, (error) => {
                         reject(error)

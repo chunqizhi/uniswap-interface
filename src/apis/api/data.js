@@ -9,7 +9,7 @@ import Eight from './eight.js'
 import Nine from './nine.js'
 import Ten from './ten.js'
 import Icon from './icon.js'
-import { multiNum, addNum } from './calc.js'
+import { addNum } from './calc.js'
 
 function getCurrentPool(type) {
     let API, coinInfo
@@ -81,30 +81,25 @@ function getPoolListData(type) {
             }
             let allBalance = 0
             res.forEach((item, index) => {
-                let tvl = multiNum(item.nextcoin, 2)
-                allBalance = addNum(tvl, allBalance)
+                allBalance = addNum(item.tvl, allBalance)
                 if (type !== 'all') {
                     switch (true) {
                         case index < 5:
                             data.main.push({
                                 ...item,
                                 ...Icon[index],
-                                tvl
                             })
                             break;
                         case index >= 5 && index <= 6:
                             data.flat.push({
                                 ...item,
                                 ...Icon[index],
-                                tvl
                             })
                             break;
                         case index > 6:
                             data.ideas.push({
                                 ...item,
                                 ...Icon[index],
-                                tvl
-
                             })
                             break;
                         default:
