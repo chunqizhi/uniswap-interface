@@ -57,6 +57,7 @@ function getCurrentPool(type) {
             API = Ten
             coinInfo = Icon[9]
             break;
+
         default:
             console.log('error')
     }
@@ -201,7 +202,7 @@ function getAllStartTime() {
 }
 
 function getTrsRate() {
-    return One.getTrsRate()
+    return Six.getTrsRate()
 }
 export default {
     getCurrentPool,

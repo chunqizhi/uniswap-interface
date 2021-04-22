@@ -2,7 +2,7 @@ import USDTICON from '../../assets/images/coin/USDT.png'
 import TRSICON from '../../assets/images/coin/TRS.png'
 import ETHICON from '../../assets/images/coin/ETH.png'
 import HTICON from '../../assets/images/coin/HT.png'
-import BXHICON from '../../assets/images/coin/BXH.jpg'
+import BXHICON from '../../assets/images/coin/BXH.png'
 import MDXICON from '../../assets/images/coin/MDX.png'
 import HUSDICON from '../../assets/images/coin/HUSD.png'
 import TPTICON from '../../assets/images/coin/TPT.png'
@@ -76,6 +76,7 @@ export default [{
         coin: "TRS",
         poolIndex: 'nine'
     },
+
     {
         pre_coin: TPTICON,
         next_coin: USDTICON,

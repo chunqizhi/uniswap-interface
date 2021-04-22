@@ -81,14 +81,16 @@ export default function Mining() {
     const [balance, setBalance] = useState(0.00)
 
     Data.getPoolListData().then(res => {
+        console.log(`setMainList`)
         setMainList(res)
     })
     Data.getAllBlock().then(res=>{
+        console.log(`setAllBock`)
         setAllBock(res)
     })
     API.getWalletAllTrs().then(res => {
+        console.log(`setBalance`)
         setBalance(res)
-
     })
 
     const nav_list = [
@@ -117,10 +119,10 @@ export default function Mining() {
 
 
     useEffect(() => {
-        API.getPoolData().then(res => {
+
+        Data.getTrsRate().then(res => {
             setRate(res.rate)
         })
-
     }, [])
     return (
         <>
@@ -147,7 +149,7 @@ export default function Mining() {
                 type && mainList[type] && (<div className="pool-list">
                     {
 
-                        mainList[type].map((item: Item, index: number) => {
+                        mainList[type].map((item: Item) => {
                             return (
                                 <>
                                     <div className="pool-item" key={item.coin_name}>
@@ -175,7 +177,6 @@ export default function Mining() {
                                         </div>
 
                                         <div className="item-btn">
-                                            {/* 跳转到 流动资金到时候  /add/token1/token2 */}
                                             <ItemBtn id={`/provideLiquidity-nav-link`} to={"/provideLiquidity/" + item.poolIndex}>+流动资金</ItemBtn>
                                         </div>
                                     </div>
@@ -220,8 +221,6 @@ function TopContent(props) {
                                     <div className="item" key={item.text}>
                                         <p className="text">{item.text}</p>
                                         <p className="balance">
-                                            {/* > 7 ? item.end_val.substring(0, 6) : item.end_val */}
-                                            {/* {(" "+(item.end_val)).substring(0,6)} */}
                                             {
                                                 formatNum(item.end_val)
                                             }

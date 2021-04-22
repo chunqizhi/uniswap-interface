@@ -6,11 +6,11 @@ import Contract from '../contract/index.js'
 import API from '../contract/api.js'
 
 // pre-next HT/HUSD
-const trsAddr = `0xb4292e40B33daf0214364Fe27453110C69051D90` // pre
-const usdtAddr = `0xa71EdC38d189767582C38A3145b5873052c3e47a` // next
+const trsAddr = `0x5545153CCFcA01fbd7Dd11C0b23ba694D9509A6F` // pre
+const usdtAddr = `0x0298c2b32eaE4da002a15f36fdf7615BEa3DA047` // next
 
-const trsUsdtPairAddr = `0x6f26ddacd8b9c39deb1ef5aa742157a09c9a3a98` // pre-next-pair
-const trsUsdtPoolAddr = `0x3e29F7FB187991DE1DDd7AFd7420870e28199665` // pre-next-pool
+const trsUsdtPairAddr = `0x916b8a8cd7b5457ed9b193f6f161518dd313fc84` // pre-next-pair
+const trsUsdtPoolAddr = `0xF6f7E132289fd7C96589Cab3d5B6aF0D7b518aaC` // pre-next-pool
 
 
 const usdtTokenAddr = usdtAddr
