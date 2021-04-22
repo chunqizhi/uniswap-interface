@@ -21,6 +21,7 @@ import { Dots } from '../../components/swap/styleds'
 import { CardSection, DataCard, CardNoise, CardBGImage } from '../../components/earn/styled'
 import { useStakingInfo } from '../../state/stake/hooks'
 import { BIG_INT_ZERO } from '../../constants'
+import { useTranslation } from "react-i18next"
 
 
  const PageWrapper = styled(AutoColumn)`
@@ -77,7 +78,7 @@ const EmptyProposals = styled.div`
 
 
 export default function Pool() {
-
+  const { t } = useTranslation();
 
   const theme = useContext(ThemeContext)
   const { account } = useActiveWeb3React()
@@ -139,11 +140,11 @@ export default function Pool() {
                 <CardSection>
             <AutoColumn gap="md">
               <RowBetween>
-                <TYPE.white fontWeight={600}>Liquidity provider rewards</TYPE.white>
+                <TYPE.white fontWeight={600}>{t("pool.text01")}</TYPE.white>
               </RowBetween>
               <RowBetween>
                 <TYPE.white fontSize={14}>
-                  {`Liquidity providers earn a 0.3% fee on all trades proportional to their share of the pool. Fees are added to the pool, accrue in real time and can be claimed by withdrawing your liquidity.`}
+                {t("pool.text02")}
                 </TYPE.white>
               </RowBetween>
               <ExternalLink
@@ -151,7 +152,7 @@ export default function Pool() {
                 target="_blank"
                 href="https://uniswap.org/docs/v2/core-concepts/pools/"
               >
-                <TYPE.white fontSize={14}>Read more about providing liquidity</TYPE.white>
+                <TYPE.white fontSize={14}>{t("pool.text03")}</TYPE.white>
               </ExternalLink>
             </AutoColumn>
           </CardSection>
@@ -166,12 +167,12 @@ export default function Pool() {
             <TitleRow style={{ marginTop: '1rem' }} padding={'0'}>
               <HideSmall>
                 <TYPE.mediumHeader style={{ marginTop: '0.5rem', justifySelf: 'flex-start' }}>
-                  Your liquidity
+                {t("pool.text04")}
                 </TYPE.mediumHeader>
               </HideSmall>
               <ButtonRow>
                 <ResponsiveButtonSecondary as={Link} padding="6px 8px" to="/create/HT">
-                  Create a pair
+                {t("pool.text05")}
                 </ResponsiveButtonSecondary>
                 <ResponsiveButtonPrimary
                   id="join-pool-button"
@@ -181,7 +182,7 @@ export default function Pool() {
                   to="/add/HT"
                 >
                   <Text fontWeight={500} fontSize={16}>
-                    Add Liquidity
+                    {t("pool.text06")}
                   </Text>
                 </ResponsiveButtonPrimary>
               </ButtonRow>
@@ -190,13 +191,13 @@ export default function Pool() {
             {!account ? (
               <Card padding="40px">
                 <TYPE.body color={theme.text3} textAlign="center">
-                  Connect to a wallet to view your liquidity.
+                {t("pool.text07")}
                 </TYPE.body>
               </Card>
             ) : v2IsLoading ? (
               <EmptyProposals>
                 <TYPE.body color={theme.text3} textAlign="center">
-                  <Dots>Loading</Dots>
+                  <Dots>{t("pool.text08")}</Dots>
                 </TYPE.body>
               </EmptyProposals>
             ) : allV2PairsWithLiquidity?.length > 0 || stakingPairs?.length > 0 ? (
@@ -204,7 +205,7 @@ export default function Pool() {
                 <ButtonSecondary>
                   <RowBetween>
                     <ExternalLink href={'https://uniswap.info/account/' + account}>
-                      Account analytics and accrued fees
+                    {t("pool.text09")}
                     </ExternalLink>
                     <span> ↗</span>
                   </RowBetween>
@@ -226,16 +227,16 @@ export default function Pool() {
             ) : (
               <EmptyProposals>
                 <TYPE.body color={theme.text3} textAlign="center">
-                  No liquidity found.
+                {t("pool.text10")}
                 </TYPE.body>
               </EmptyProposals>
             )}
 
             <AutoColumn justify={'center'} gap="md">
               <Text textAlign="center" fontSize={14} style={{ padding: '.5rem 0 .5rem 0' }}>
-                {hasV1Liquidity ? 'Uniswap V1 liquidity found!' : "Don't see a pool you joined?"}{' '}
+                {hasV1Liquidity ? `${t("pool.text11")}` :  `${t("pool.text12")}`}{' '}
                 <StyledInternalLink id="import-pool-link" to={hasV1Liquidity ? '/migrate/v1' : '/find'}>
-                  {hasV1Liquidity ? 'Migrate now.' : 'Import it.'}
+                  {hasV1Liquidity ? `${t("pool.text13")}` : `${t("pool.text14")}`}
                 </StyledInternalLink>
               </Text>
             </AutoColumn>

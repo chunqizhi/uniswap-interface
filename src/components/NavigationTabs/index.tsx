@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux'
 import { AppDispatch } from 'state'
 import { resetMintState } from 'state/mint/actions'
 import creatHistory from 'history/createHashHistory'
+
 const Tabs = styled.div`
   ${({ theme }) => theme.flexRowNoWrap}
   align-items: center;
@@ -71,13 +72,15 @@ export function SwapPoolTabs({ active }: { active: 'swap' | 'pool' }) {
 }
 
 export function FindPoolTabs() {
+  const { t } = useTranslation()
+
   return (
     <Tabs>
       <RowBetween style={{ padding: '1rem 1rem 0 1rem' }}>
         <HistoryLink to="/pool">
           <StyledArrowLeft />
         </HistoryLink>
-        <ActiveText>Import Pool</ActiveText>
+        <ActiveText>{t('add.text14')}</ActiveText>
         <Settings />
       </RowBetween>
     </Tabs>
@@ -85,6 +88,8 @@ export function FindPoolTabs() {
 }
 
 export function AddRemoveTabs({ adding, creating }: { adding: boolean; creating: boolean }) {
+  const { t } = useTranslation()
+
   // reset states on back
   const dispatch = useDispatch<AppDispatch>()
   const history = creatHistory();
@@ -103,7 +108,7 @@ export function AddRemoveTabs({ adding, creating }: { adding: boolean; creating:
              adding && dispatch(resetMintState())
           }}/>
         {/* </HistoryLink> */}
-        <ActiveText>{creating ? 'Create a pair' : adding ? 'Add Liquidity' : 'Remove Liquidity'}</ActiveText>
+        <ActiveText>{creating ? `${t('add.text15')}` : adding ? `${t('add.text16')}` : `${t('add.text17')}`}</ActiveText>
         <Settings />
       </RowBetween>
     </Tabs>

@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import Data from '../../apis/api/data.js'
 import API from '../../apis/api/six.js'
+import { useTranslation } from "react-i18next"
 
 const TitleDiv = styled.div`
 `
@@ -22,20 +23,6 @@ width:100%;
 height:100%;
 `
 
-const nav_type = [
-    {
-        text: "主区",
-        type: "main",
-    },
-    {
-        text: "FLAT",
-        type: "flat",
-    },
-    {
-        text: "创新区",
-        type: "ideas",
-    },
-]
 
 interface Item {
     pre_coin: string,
@@ -73,6 +60,9 @@ const formatNum = function (str: string|number) {
     return temp
 }
 export default function Mining() {
+  
+const { t } = useTranslation()
+
     const [flag, setFlag] = useState(0)
     const [type, setType] = useState('main')
     const [mainList, setMainList] = useState({ 'main': [], 'flat': [], 'ideas': [] })
@@ -91,24 +81,40 @@ export default function Mining() {
 
     })
 
+    const nav_type = [
+        {
+            text: t("mining.text11"),
+            type: "main",
+        },
+        {
+            text: t("mining.text12"),
+            type: "flat",
+        },
+        {
+            text: t("mining.text13"),
+            type: "ideas",
+        },
+    ]
+
+    // {t("navlist.text01")}
     const nav_list = [
         {
-            text: "当前挖矿产出",
+            text: t("mining.text05"),
             end_val: allBlock + " ",
             start_val: 0,
         },
         {
-            text: "当前挖矿产出价值",
+            text: t("mining.text06"),
             end_val: allBlock * rate + " ",
             start_val: 0,
         },
         {
-            text: "已回购TRS数量",
+            text: t("mining.text08"),
             end_val: "0",
             start_val: 0,
         },
         {
-            text: "个人余额",
+            text: t("mining.text04"),
             end_val: balance + " ",
             start_val: 0,
         },
@@ -157,13 +163,14 @@ export default function Mining() {
                                         </div>
                                         <p className="item-coin">{item.coin_name}</p>
                                         <p>
+                                            <span>{t("mining.text17")} {item.coin}</span>
                                             <span className="item-span">{item.per_day}</span>
-                                            <span>每天赚{item.coin}</span>
+                                            <span>{t("mining.text14")}</span>
                                         </p>
                                         <p>
-                                            <span>赚</span>
+                                            <span>{t("mining.text07")} {item.coin}</span>
                                             <span className="item-span">{item.per_month}</span>
-                                            <span> {item.coin}月</span>
+                                            <span>{t("mining.text16")}</span>
                                         </p>
                                         <div className="item-div">
                                             <span>APY</span>
@@ -176,7 +183,7 @@ export default function Mining() {
 
                                         <div className="item-btn">
                                             {/* 跳转到 流动资金到时候  /add/token1/token2 */}
-                                            <ItemBtn id={`/provideLiquidity-nav-link`} to={"/provideLiquidity/" + item.poolIndex}>+流动资金</ItemBtn>
+                                            <ItemBtn id={`/provideLiquidity-nav-link`} to={"/provideLiquidity/" + item.poolIndex}>{t("mining.text15")}</ItemBtn>
                                         </div>
                                     </div>
                                 </>
@@ -191,24 +198,26 @@ export default function Mining() {
 }
 
 function Title() {
+    const { t } = useTranslation();
     return (
         <>
             <TitleDiv>
-                <TitleSup>火币生态链heco和APY的双链</TitleSup>
+                <TitleSup>{t("mining.text01")}</TitleSup>
             </TitleDiv>
         </>
     )
 }
 
 function TopContent(props) {
+    const { t } = useTranslation();
     let { rate, nav_list } = props
     return (
         <>
             <div className="mini-top">
-                <p className="title">DEX创新交易平台</p>
+                <p className="title">{t("mining.text02")}</p>
                 <div className="mini-1-div">
                     <p>
-                        <span>TRS价格</span>
+                        <span>{t("mining.text03")}</span>
                         <span>${rate}</span>
                     </p>
                 </div>
@@ -238,11 +247,13 @@ function TopContent(props) {
 }
 
 function MidTitle() {
+    const { t } = useTranslation();
+
     return (
         <>
             <div className="mid-title">
-                <p className="mid-text">流动性挖矿</p>
-                <p className="mid-sub">提供流动性，赚取BXH Tokens</p>
+                <p className="mid-text">{t("mining.text09")}</p>
+                <p className="mid-sub">{t("mining.text10")}</p>
             </div>
         </>
     )

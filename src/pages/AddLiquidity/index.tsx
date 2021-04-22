@@ -40,6 +40,8 @@ import { currencyId } from '../../utils/currencyId'
 import { PoolPriceBar } from './PoolPriceBar'
 import { useIsTransactionUnsupported } from 'hooks/Trades'
 import UnsupportedCurrencyFooter from 'components/swap/UnsupportedCurrencyFooter'
+import { useTranslation } from "react-i18next"
+
 
 export default function AddLiquidity({
   match: {
@@ -126,6 +128,7 @@ export default function AddLiquidity({
   const addTransaction = useTransactionAdder()
 
   async function onAdd() {
+
     if (!chainId || !library || !account) return
     const router = getRouterContract(chainId, library, account)
 
@@ -308,6 +311,7 @@ export default function AddLiquidity({
   const isCreate = history.location.pathname.includes('/create')
 
   const addIsUnsupported = useIsTransactionUnsupported(currencies?.CURRENCY_A, currencies?.CURRENCY_B)
+  const { t } = useTranslation();
 
   return (
     <>
@@ -321,7 +325,7 @@ export default function AddLiquidity({
             hash={txHash}
             content={() => (
               <ConfirmationModalContent
-                title={noLiquidity ? 'You are creating a pool' : 'You will receive'}
+                title={noLiquidity ? `${t("add.text01")}` : `${t("add.text02")}`}
                 onDismiss={handleDismissConfirmation}
                 topContent={modalHeader}
                 bottomContent={modalBottom}
@@ -337,13 +341,13 @@ export default function AddLiquidity({
                   <BlueCard>
                     <AutoColumn gap="10px">
                       <TYPE.link fontWeight={600} color={'primaryText1'}>
-                        You are the first liquidity provider.
+                      {t("add.text03")}
                       </TYPE.link>
                       <TYPE.link fontWeight={400} color={'primaryText1'}>
-                        The ratio of tokens you add will set the price of this pool.
+                      {t("add.text04")}
                       </TYPE.link>
                       <TYPE.link fontWeight={400} color={'primaryText1'}>
-                        Once you are happy with the rate click supply to review.
+                      {t("add.text05")}
                       </TYPE.link>
                     </AutoColumn>
                   </BlueCard>
@@ -353,9 +357,7 @@ export default function AddLiquidity({
                   <BlueCard>
                     <AutoColumn gap="10px">
                       <TYPE.link fontWeight={400} color={'primaryText1'}>
-                        <b>Tip:</b> When you add liquidity, you will receive pool tokens representing your position.
-                        These tokens automatically earn fees proportional to your share of the pool, and can be redeemed
-                        at any time.
+                        <b>Tip:</b>{t("add.text06")}
                       </TYPE.link>
                     </AutoColumn>
                   </BlueCard>
@@ -393,7 +395,7 @@ export default function AddLiquidity({
                 <LightCard padding="0px" borderRadius={'20px'}>
                   <RowBetween padding="1rem">
                     <TYPE.subHeader fontWeight={500} fontSize={14}>
-                      {noLiquidity ? 'Initial prices' : 'Prices'} and pool share
+                      {noLiquidity ? `${t("add.text07")}` : `${t("add.text08")}`}
                     </TYPE.subHeader>
                   </RowBetween>{' '}
                   <LightCard padding="1rem" borderRadius={'20px'}>
@@ -410,10 +412,10 @@ export default function AddLiquidity({
 
             {addIsUnsupported ? (
               <ButtonPrimary disabled={true}>
-                <TYPE.main mb="4px">Unsupported Asset</TYPE.main>
+                <TYPE.main mb="4px">{t("add.text09")}</TYPE.main>
               </ButtonPrimary>
             ) : !account ? (
-              <ButtonLight onClick={toggleWalletModal}>Connect Wallet</ButtonLight>
+              <ButtonLight onClick={toggleWalletModal}>{t("add.text10")}</ButtonLight>
             ) : (
               <AutoColumn gap={'md'}>
                 {(approvalA === ApprovalState.NOT_APPROVED ||
@@ -429,9 +431,9 @@ export default function AddLiquidity({
                           width={approvalB !== ApprovalState.APPROVED ? '48%' : '100%'}
                         >
                           {approvalA === ApprovalState.PENDING ? (
-                            <Dots>Approving {currencies[Field.CURRENCY_A]?.symbol}</Dots>
+                            <Dots>{t("add.text11")} {currencies[Field.CURRENCY_A]?.symbol}</Dots>
                           ) : (
-                            'Approve ' + currencies[Field.CURRENCY_A]?.symbol
+                            `${t("add.text12")} ` + currencies[Field.CURRENCY_A]?.symbol
                           )}
                         </ButtonPrimary>
                       )}
@@ -442,9 +444,9 @@ export default function AddLiquidity({
                           width={approvalA !== ApprovalState.APPROVED ? '48%' : '100%'}
                         >
                           {approvalB === ApprovalState.PENDING ? (
-                            <Dots>Approving {currencies[Field.CURRENCY_B]?.symbol}</Dots>
+                            <Dots>{t("add.text11")} {currencies[Field.CURRENCY_B]?.symbol}</Dots>
                           ) : (
-                            'Approve ' + currencies[Field.CURRENCY_B]?.symbol
+                            `${t("add.text12")} ` + currencies[Field.CURRENCY_B]?.symbol
                           )}
                         </ButtonPrimary>
                       )}
@@ -458,7 +460,7 @@ export default function AddLiquidity({
                   error={!isValid && !!parsedAmounts[Field.CURRENCY_A] && !!parsedAmounts[Field.CURRENCY_B]}
                 >
                   <Text fontSize={20} fontWeight={500}>
-                    {error ?? 'Supply'}
+                    {error ?? `${t("add.text13")}`}
                   </Text>
                 </ButtonError>
               </AutoColumn>
