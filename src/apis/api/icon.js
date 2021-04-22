@@ -51,6 +51,7 @@ export default [{
         poolIndex: 'three'
     },
 
+
     {
         pre_coin: coin4,
         next_coin: coin44,

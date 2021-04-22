@@ -4,10 +4,13 @@ import { trsAbi } from '../../abi/trs.abi.js' // huiwanTokenABI
 import { usdtAbi } from '../../abi/usdt.abi.js' // usdtTokenABI
 import Contract from '../contract/index.js'
 import API from '../contract/api.js'
-const usdtAddr = `0xa71EdC38d189767582C38A3145b5873052c3e47a` // usdtTokenAddr
-const trsAddr = `0xb4292e40B33daf0214364Fe27453110C69051D90` //  huiwanTokenAddr
-const trsUsdtPairAddr = `0x6f26ddacd8b9c39deb1ef5aa742157a09c9a3a98` //  huiwanUsdtMdexAddr
-const trsUsdtPoolAddr = `0x3e29F7FB187991DE1DDd7AFd7420870e28199665` //  huiwanUsdtLoopAddr
+
+// pre-next  MDX/USDT
+const trsAddr = `0x25D2e80cB6B86881Fd7e07dd263Fb79f4AbE033c` //  pre
+const usdtAddr = `0xa71EdC38d189767582C38A3145b5873052c3e47a` // next
+
+const trsUsdtPairAddr = `0xe9aac23d6bcd2b8cf6fe785cb84adb430079d832` // pre-next-pair
+const trsUsdtPoolAddr = `0x4BeFEDA34C97B1a6572B39DF7b425bc18E30BA80` // pre-next-pool
 
 
 const usdtTokenAddr = usdtAddr
