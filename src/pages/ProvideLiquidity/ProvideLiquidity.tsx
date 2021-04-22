@@ -83,7 +83,7 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
                 <div className="add-content">
                     <p className="content-title">
                         <span>未领取挖矿收益</span>
-                        <span className="num">{earned.substring(0, 6)}</span>
+                        <span className="num">{earned.substring(0, 18)}</span>
                     </p>
                     <p className="my-p-text">我的LP</p>
                     <p className="add-info">
@@ -91,7 +91,7 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
                         <img src={coinInfo.next_coin} alt="" />
                         <span> {coinInfo.coin_name}</span>
                         <span className="num">{
-                            unStakedLp.substring(0, 6)
+                            unStakedLp.substring(0, 18)
                         }</span>
                     </p>
                     {/* <p className="add-info">
@@ -105,7 +105,7 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
                     <p className="add-tips">获得流动资金LP，需抵押后才开始流动性挖矿</p>
                     <p className="staked">
                         <span>已抵押LP</span>
-                        <span className="num">{stakedLp.substring(0, 6)}</span>
+                        <span className="num">{stakedLp.substring(0, 18)}</span>
                     </p>
                     <div className="receive-btn add-div-btn"
                         onClick={
