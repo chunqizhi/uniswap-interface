@@ -152,7 +152,7 @@ class API {
     getReward() {
             return this.contract.initFnPromise().then(res => {
                 return new Promise((resolve, reject) => {
-                    this.contract.getRewardRate((res) => {
+                    this.contract.getReward((res) => {
                         resolve(res)
                     }, (err) => {
                         reject(err)

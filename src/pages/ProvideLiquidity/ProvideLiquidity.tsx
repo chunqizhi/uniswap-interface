@@ -117,6 +117,7 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
                                     else approveFn()
                                     return
                                 }
+                                console.log(isApprove)
                                 API.getReward().then(res => {
                                 })
                             }
