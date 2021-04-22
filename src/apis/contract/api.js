@@ -1,19 +1,7 @@
-// import Contract from './index.js'
 import Web3 from "web3";
-import {
-    multiNum
-} from '../api/calc.js'
-// 将bignumber转换
-// return Web3.utils.fromWei(str,'ether')
-// 将小数 *18个0
-// return Web3.utils.toWei(str,'ether')
 class API {
     constructor(contract) {
         this.contract = contract
-        this.allReward = {
-            starttime: 1619013600,
-            rewardRate: Web3.utils.fromWei('115740740740740740', 'ether')
-        }
     }
 
     isApprove() {
@@ -192,27 +180,16 @@ class API {
                 let {
                     precoin,
                     nextcoin,
-                    rate
                 } = res
                 this.getInitreward().then(result => {
-                    this.contract.getTotalSupply(res => {
-                        let apy, tvl
+                    this.contract.getTotalSupply(supply => {
                         nextcoin = (Web3.utils.fromWei(nextcoin, 'ether')) * 1
-                        tvl = ((multiNum(nextcoin, 2)) * 1).toFixed(2)
                         precoin = (Web3.utils.fromWei(precoin, 'ether')) * 1
-                        if (res * 1 === 0) {
-                            apy = `0.00%`;
-                        } else {
-                            apy = (((result.per_day * rate) / tvl) * 360 * 100).toFixed(2) + "%"
-
-                        }
                         resolve({
                             ...result,
                             precoin,
                             nextcoin,
-                            rate,
-                            apy,
-                            tvl
+                            supply
                         })
                     }, (error) => {
                         reject(error)
@@ -224,13 +201,16 @@ class API {
     }
 
 
-    getTrsRate() {
+    getTrsRate(type) {
         return this.contract.initFnPromise().then(res => {
             return new Promise((resolve, reject) => {
                 this.contract.getBalanceFromHuiwanTokenContract((precoin) => {
                     this.contract.getBalanceFromUsdtTokenContract((nextcoin) => {
+                        if (type && type === 'TPT') {
+                            nextcoin = (Web3.utils.fromWei(nextcoin, 'ether')) * 1
+                            precoin = (Web3.utils.fromWei(precoin, 'kwei')) / 10
+                        }
                         let rate = nextcoin / precoin
-
                         resolve({
                             precoin,
                             nextcoin,

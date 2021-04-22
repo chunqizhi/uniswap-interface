@@ -15,6 +15,7 @@ export function RedirectOldAddLiquidityPathStructure(props: RouteComponentProps<
   } = props
   const match = currencyIdA.match(OLD_PATH_STRUCTURE)
   if (match?.length) {
+    console.log(match,'666666666666')
     return <Redirect to={`/add/${match[1]}/${match[2]}`} />
   }
 

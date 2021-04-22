@@ -57,12 +57,12 @@ const formatNum = function (str: string|number) {
     let temp
     let length = str.length
     switch (true) {
-        case length > 7:
+        case length > 10:
             if (flag) {
-                if(str.split('.')[0].length>6){
+                if(str.split('.')[0].length>8){
                     temp = str.split('.')[0]
                 }
-                else  temp = str.substring(0, 6)
+                else  temp = str.substring(0, str.length-6)
                
             }
             else temp = str.substring(0, 6)
@@ -86,7 +86,7 @@ export default function Mining() {
         setMainList(res)
     })
     Data.getAllBlock().then(res=>{
-        console.log(`setAllBock`)
+        console.log(`setAllBock`,res)
         setAllBock(res)
     })
     API.getWalletAllTrs().then(res => {

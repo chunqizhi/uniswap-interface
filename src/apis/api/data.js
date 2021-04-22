@@ -8,11 +8,15 @@ import Seven from './seven.js'
 import Eight from './eight.js'
 import Nine from './nine.js'
 import Ten from './ten.js'
+import Eleven from './eleven.js'
 import Icon from './icon.js'
 import Web3 from "web3";
+
 import {
+    multiNum,
     addNum
-} from './calc.js'
+} from '../api/calc.js'
+
 
 function getCurrentPool(type) {
     let API, coinInfo
@@ -80,42 +84,53 @@ function getPoolListData(type) {
             Eight.getPoolData(),
             Nine.getPoolData(),
             Ten.getPoolData(),
-        ]).then(res => {
+        ]).then(async res => {
+            let coinRate = await getCoinRate() //  汇率
+            let trsRate = await getTrsRate() //trs 价格
+            let allBalance = 0
             let data = {
                 "main": [],
                 "flat": [],
                 "ideas": []
             }
-            let allBalance = 0
-            res.forEach((item, index) => {
-                allBalance = addNum(item.tvl, allBalance)
-                if (type !== 'all') {
-                    switch (true) {
-                        case index < 5:
-                            data.main.push({
-                                ...item,
-                                ...Icon[index],
-                            })
-                            break;
-                        case index >= 5 && index <= 6:
-                            data.flat.push({
-                                ...item,
-                                ...Icon[index],
-                            })
-                            break;
-                        case index > 6:
-                            data.ideas.push({
-                                ...item,
-                                ...Icon[index],
-                            })
-                            break;
-                        default:
-                            console.log(`error`)
-                    }
+            let tvl, apy
+            Icon.forEach((item, index) => {
+
+                switch (item.coin_price) {
+                    case 'ETHPRE':
+                        tvl = (((multiNum(res[index].precoin, 2)) * 1) * coinRate[0].rate).toFixed(2)
+                        break;
+                    case 'USDTPRE':
+                        tvl = (((multiNum(res[index].precoin, 2)) * 1)).toFixed(2)
+                        break;
+                    case 'USDTNEXT':
+                        tvl = (((multiNum(res[index].nextcoin, 2)) * 1)).toFixed(2)
+                        break;
+                    case 'HTPRE':
+                        tvl = (((multiNum(res[index].precoin, 2)) * 1) * coinRate[5].rate).toFixed(2)
+                        break;
+                    case 'HTNEXT':
+                        tvl = (((multiNum(res[index].nextcoin, 2)) * 1) * coinRate[5].rate).toFixed(2)
+                        break;
+                    default:
+                        console.log(`error`);
                 }
 
+                if (type !== 'all') {
+                    if (res[index].supply === 0) {
+                        apy = `0.00%`
+                    } else {
+                        apy = (((res[index].per_day * trsRate.rate) / tvl) * 360 * 100).toFixed(2) + "%"
+                    }
+                    data[item.key_word].push({
+                        ...item,
+                        ...res[index],
+                        tvl,
+                        apy
+                    })
+                }
+                allBalance = addNum(tvl, allBalance)
             })
-
             if (type === 'all') {
                 resolve(allBalance)
             } else {
@@ -204,9 +219,26 @@ function getAllStartTime() {
 function getTrsRate() {
     return Six.getTrsRate()
 }
+
+function getCoinRate() {
+    return new Promise((resolve, reject) => {
+        Promise.all([
+            Three.getTrsRate(),
+            Six.getTrsRate(),
+            Eight.getTrsRate(),
+            Nine.getTrsRate(),
+            Ten.getTrsRate('TPT'),
+            Eleven.getTrsRate()
+        ]).then(res => {
+            resolve(res)
+        }).catch(err => {
+            reject(err)
+        })
+    })
+}
 export default {
     getCurrentPool,
     getPoolListData,
     getTrsRate,
-    getAllBlock
+    getAllBlock,
 }

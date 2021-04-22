@@ -13,7 +13,9 @@ export default [{
         next_coin: HBTCICON,
         coin_name: "ETH/HBTC",
         coin: "TRS",
-        poolIndex: 'one'
+        poolIndex: 'one',
+        coin_price: 'ETHPRE',
+        key_word: 'main'
     },
 
     {
@@ -21,7 +23,9 @@ export default [{
         next_coin: HBTCICON,
         coin_name: "USDT/HBTC",
         coin: "TRS",
-        poolIndex: 'two'
+        poolIndex: 'two',
+        coin_price: 'USDTPRE',
+        key_word: 'main'
     },
 
     {
@@ -29,7 +33,9 @@ export default [{
         next_coin: USDTICON,
         coin_name: "ETH/USDT",
         coin: "TRS",
-        poolIndex: 'three'
+        poolIndex: 'three',
+        coin_price: 'USDTNEXT',
+        key_word: 'main'
     },
 
 
@@ -38,7 +44,9 @@ export default [{
         next_coin: HUSDICON,
         coin_name: "HT/HUSD",
         coin: "TRS",
-        poolIndex: 'four'
+        poolIndex: 'four',
+        coin_price: 'HTPRE',
+        key_word: 'main'
     },
 
     {
@@ -46,35 +54,45 @@ export default [{
         next_coin: HUSDICON,
         coin_name: "USDT/HUSD",
         coin: "TRS",
-        poolIndex: 'five'
+        poolIndex: 'five',
+        coin_price: 'USDTPRE',
+        key_word: 'main'
     },
     {
         pre_coin: TRSICON,
         next_coin: USDTICON,
         coin_name: "TRS/USDT",
         coin: "TRS",
-        poolIndex: 'six'
+        poolIndex: 'six',
+        coin_price: 'USDTNEXT',
+        key_word: 'flat'
     },
     {
         pre_coin: TRSICON,
         next_coin: HTICON,
         coin_name: "TRS/HT",
         coin: "TRS",
-        poolIndex: 'seven'
+        poolIndex: 'seven',
+        coin_price: 'HTNEXT',
+        key_word: 'flat'
     },
     {
         pre_coin: MDXICON,
         next_coin: USDTICON,
         coin_name: "MDX/USDT",
         coin: "TRS",
-        poolIndex: 'eight'
+        poolIndex: 'eight',
+        coin_price: 'USDTNEXT',
+        key_word: "ideas"
     },
     {
         pre_coin: BXHICON,
         next_coin: USDTICON,
         coin_name: "BXH/USDT",
         coin: "TRS",
-        poolIndex: 'nine'
+        poolIndex: 'nine',
+        coin_price: 'USDTNEXT',
+        key_word: "ideas"
     },
 
     {
@@ -82,6 +100,8 @@ export default [{
         next_coin: USDTICON,
         coin_name: "TPT/USDT",
         coin: "TRS",
-        poolIndex: 'ten'
+        poolIndex: 'ten',
+        coin_price: 'USDTNEXT',
+        key_word: "ideas"
     },
 ]
