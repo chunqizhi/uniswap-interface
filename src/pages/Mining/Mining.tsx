@@ -51,6 +51,7 @@ interface Item {
 }
 
 const formatNum = function (str: string|number) {
+    if(str*1<0) return 0
     str=""+str
     let flag = str.indexOf('.') > 0
     let temp
