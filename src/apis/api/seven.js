@@ -1,7 +1,7 @@
-import { pairAbi } from '../../abi/pair.abi.js' // huiwanUsdtMdexABI
-import { poolAbi } from '../../abi/pool.abi.js' //  huiwanUsdtLoopABI
-import { trsAbi } from '../../abi/trs.abi.js' // huiwanTokenABI
-import { usdtAbi } from '../../abi/ht.abi.js' // usdtTokenABI
+import { pairAbi } from '../../abi/pair.abi.js' // pair-abi
+import { poolAbi } from '../../abi/pool.abi.js' // pool-abi
+import { trsAbi } from '../../abi/trs.abi.js' // pre-abi
+import { htAbi } from '../../abi/ht.abi.js' // next-abi
 import Contract from '../contract/index.js'
 import API from '../contract/api.js'
 
@@ -18,10 +18,12 @@ const huiwanTokenAddr = trsAddr
 const huiwanUsdtMdexAddr = trsUsdtPairAddr
 const huiwanUsdtLoopAddr = trsUsdtPoolAddr
 
+// pre-next TRS/HT
+const huiwanTokenABI = trsAbi //pre-abi
+const usdtTokenABI = htAbi //next-abi
 const huiwanUsdtMdexABI = pairAbi
 const huiwanUsdtLoopABI = poolAbi
-const huiwanTokenABI = trsAbi
-const usdtTokenABI = usdtAbi
+
 
 
 const contract = new Contract({

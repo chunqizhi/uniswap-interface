@@ -150,7 +150,7 @@ export default function Mining() {
                         mainList[type].map((item: Item, index: number) => {
                             return (
                                 <>
-                                    <div className="pool-item" key={index}>
+                                    <div className="pool-item" key={item.coin_name}>
                                         <div className="item-img">
                                             <img src={item.pre_coin} alt="" className="pre" />
                                             <img src={item.next_coin} alt="" className="next" />

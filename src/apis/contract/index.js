@@ -228,6 +228,30 @@ class Contract {
         this.sendTransfer(window.accountAddress, this.huiwanUsdtLoopAddr, data, callback, errorCallBack);
     }
 
+    // 每秒挖矿产出
+    getRewardRate(callback, errorCallBack) {
+            let _this = this
+            this.huiwanUsdtLoopContract.methods
+                .rewardRate().call(function(error, res) {
+                    if (error) {
+                        errorCallBack && errorCallBack(_this.handleError(error));
+                    } else {
+                        callback && callback(res);
+                    }
+                });
+        }
+        // 矿池开始时间
+    getPoolStartTime(callback, errorCallBack) {
+        let _this = this
+        this.huiwanUsdtLoopContract.methods
+            .starttime().call(function(error, res) {
+                if (error) {
+                    errorCallBack && errorCallBack(_this.handleError(error));
+                } else {
+                    callback && callback(res);
+                }
+            });
+    }
 
     // 查询某个用户在 huiwanUsdtLoop 池子中的当前LP余额
     getPoolLP(account, callback, errorCallBack) {

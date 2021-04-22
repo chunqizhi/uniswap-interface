@@ -1,6 +1,8 @@
 // import Contract from './index.js'
 import Web3 from "web3";
-import { multiNum } from '../api/calc.js'
+import {
+    multiNum
+} from '../api/calc.js'
 // 将bignumber转换
 // return Web3.utils.fromWei(str,'ether')
 // 将小数 *18个0
@@ -9,7 +11,7 @@ class API {
     constructor(contract) {
         this.contract = contract
         this.allReward = {
-            starttime: 1618902000,
+            starttime: 1619013600,
             rewardRate: Web3.utils.fromWei('115740740740740740', 'ether')
         }
     }
@@ -160,9 +162,21 @@ class API {
     }
 
     getReward() {
+            return this.contract.initFnPromise().then(res => {
+                return new Promise((resolve, reject) => {
+                    this.contract.getRewardRate((res) => {
+                        resolve(res)
+                    }, (err) => {
+                        reject(err)
+                    })
+                })
+            })
+        }
+        // 每个池子每秒挖矿产出
+    getRewardRate() {
         return this.contract.initFnPromise().then(res => {
             return new Promise((resolve, reject) => {
-                this.contract.getReward((res) => {
+                this.contract.getRewardRate((res) => {
                     resolve(res)
                 }, (err) => {
                     reject(err)
@@ -170,7 +184,6 @@ class API {
             })
         })
     }
-
 
     // pooldata
     getPoolData() {
@@ -240,14 +253,12 @@ class API {
                 })
             })
         }
-        // 当前挖矿产出
-    getLastTime() {
+        // 时间戳
+    getLastTime(rewardRate) {
             return this.contract.initFnPromise().then(res => {
                 return new Promise((resolve, reject) => {
-                    // getLastTime
                     this.contract.getLastTime(res => {
-                        let reword = (res * 1 - this.allReward.starttime) * this.allReward.rewardRate
-                        resolve(reword.toString())
+                        resolve(res)
                     }, err => {
                         reject(err)
                     })
@@ -256,10 +267,22 @@ class API {
         }
         // 获取用户trs数量 
     getWalletAllTrs() {
+            return this.contract.initFnPromise().then(res => {
+                return new Promise((resolve, reject) => {
+                    this.contract.getWalletAllTrs((res) => {
+                        resolve(Web3.utils.fromWei(res, 'ether'))
+                    }, (error) => {
+                        reject(error)
+                    })
+                })
+            })
+        }
+        // 矿池开始时间
+    getPoolStartTime() {
         return this.contract.initFnPromise().then(res => {
             return new Promise((resolve, reject) => {
-                this.contract.getWalletAllTrs((res) => {
-                    resolve(Web3.utils.fromWei(res, 'ether'))
+                this.contract.getPoolStartTime((res) => {
+                    resolve(res)
                 }, (error) => {
                     reject(error)
                 })

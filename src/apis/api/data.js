@@ -9,7 +9,10 @@ import Eight from './eight.js'
 import Nine from './nine.js'
 import Ten from './ten.js'
 import Icon from './icon.js'
-import { addNum } from './calc.js'
+import Web3 from "web3";
+import {
+    addNum
+} from './calc.js'
 
 function getCurrentPool(type) {
     let API, coinInfo
@@ -57,7 +60,10 @@ function getCurrentPool(type) {
         default:
             console.log('error')
     }
-    return { API, coinInfo }
+    return {
+        API,
+        coinInfo
+    }
 }
 
 function getPoolListData(type) {
@@ -134,13 +140,62 @@ function getAllBlock() {
             Eight.getLastTime(),
             Nine.getLastTime(),
             Ten.getLastTime(),
-        ]).then(res => {
-            let allBalance = res.reduce((total, item) => {
-                return total + item * 1
-            }, 0)
-            resolve(allBalance)
+        ]).then(lastTime => {
+            getAllRewardRate().then(allRate => {
+                getAllStartTime().then(allTime => {
+                    let allBalance = 0
+                    allTime.forEach((item, index) => {
+                        allBalance = allBalance + (lastTime[index] * 1 - item * 1) * allRate[index]
+                    })
+                    resolve(allBalance)
+                })
+            })
         }, error => {
             reject(error)
+        })
+    })
+}
+// 所有每秒奖励
+function getAllRewardRate() {
+    return new Promise((resolve, reject) => {
+        Promise.all([
+            One.getRewardRate(),
+            Two.getRewardRate(),
+            Three.getRewardRate(),
+            Four.getRewardRate(),
+            Five.getRewardRate(),
+            Six.getRewardRate(),
+            Seven.getRewardRate(),
+            Eight.getRewardRate(),
+            Nine.getRewardRate(),
+            Ten.getRewardRate(),
+        ]).then(res => {
+            resolve(res.map((item) => {
+                return Web3.utils.fromWei(item, 'ether')
+            }))
+        }).catch(err => {
+            reject(err)
+        })
+    })
+}
+// 所有时间
+function getAllStartTime() {
+    return new Promise((resolve, reject) => {
+        Promise.all([
+            One.getPoolStartTime(),
+            Two.getPoolStartTime(),
+            Three.getPoolStartTime(),
+            Four.getPoolStartTime(),
+            Five.getPoolStartTime(),
+            Six.getPoolStartTime(),
+            Seven.getPoolStartTime(),
+            Eight.getPoolStartTime(),
+            Nine.getPoolStartTime(),
+            Ten.getPoolStartTime(),
+        ]).then(res => {
+            resolve(res)
+        }).catch(err => {
+            reject(err)
         })
     })
 }

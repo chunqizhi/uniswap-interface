@@ -71,7 +71,7 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
 
     return (
         <>
-            <div className="add">
+            <div className="add" key={poolIndex}>
                 <p className="title">提供流动性</p>
                 <p className="desc">获取 {coinInfo.coin_name}-LP 赚取BXH</p>
 

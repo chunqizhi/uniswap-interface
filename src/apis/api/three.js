@@ -1,11 +1,11 @@
-import { pairAbi } from '../../abi/pair.abi.js' // huiwanUsdtMdexABI
-import { poolAbi } from '../../abi/pool.abi.js' //  huiwanUsdtLoopABI
-import { trsAbi } from '../../abi/trs.abi.js' // huiwanTokenABI
-import { usdtAbi } from '../../abi/usdt.abi.js' // usdtTokenABI
+import { pairAbi } from '../../abi/pair.abi.js' // pair-abi
+import { poolAbi } from '../../abi/pool.abi.js' // pool-abi
+import { ethAbi } from '../../abi/eth.abi.js' // pre-abi
+import { usdtAbi } from '../../abi/usdt.abi.js' // next-abi
 import Contract from '../contract/index.js'
 import API from '../contract/api.js'
 
-// pre-next
+// pre-next  ETH/USDT
 const trsAddr = `0xb4292e40B33daf0214364Fe27453110C69051D90` // pre
 const usdtAddr = `0xa71EdC38d189767582C38A3145b5873052c3e47a` // next
 
@@ -18,10 +18,11 @@ const huiwanTokenAddr = trsAddr
 const huiwanUsdtMdexAddr = trsUsdtPairAddr
 const huiwanUsdtLoopAddr = trsUsdtPoolAddr
 
+// pre-next  ETH/USDT
+const huiwanTokenABI = ethAbi //pre-abi
+const usdtTokenABI = usdtAbi //next-abi
 const huiwanUsdtMdexABI = pairAbi
 const huiwanUsdtLoopABI = poolAbi
-const huiwanTokenABI = trsAbi
-const usdtTokenABI = usdtAbi
 
 
 const contract = new Contract({
