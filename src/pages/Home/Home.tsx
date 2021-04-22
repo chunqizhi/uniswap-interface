@@ -108,29 +108,26 @@ color: #fff;
 background: #0278FE;
 text-decoration:none;
 `
-const formatNum = function (str: string | number) {
-    str = "" + str
+const formatNum = function (str: string|number) {
+    if(str*1<0) return 0
+    str=""+str
     let flag = str.indexOf('.') > 0
     let temp
-    let length = str.length
-    switch (true) {
-        case length > 7:
-            if (flag) {
-                if (str.split('.')[0].length > 6) {
-                    temp = str.split('.')[0]
-                }
-                else temp = str.substring(0, 6)
+    if(flag){
+        if( str.split('.')[0].length>4){
+            let pre = str.split('.')[0]
+            let next =  str.split('.')[1]
+            temp =pre+'.'+next.substring(0,2)
+        }
+        else {
+            let pre = str.split('.')[0]
+            let next =  str.split('.')[1]
+            temp =pre+'.'+next.substring(0,4)
+        }
+    } else   temp =str
 
-            }
-            else temp = str.substring(0, 6)
-            break;
-        default:
-            temp = str
-            break;
-    }
     return temp
 }
-
 export default function Home() {
     // One
     const { t } = useTranslation();

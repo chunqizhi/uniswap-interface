@@ -55,22 +55,19 @@ const formatNum = function (str: string|number) {
     str=""+str
     let flag = str.indexOf('.') > 0
     let temp
-    let length = str.length
-    switch (true) {
-        case length > 10:
-            if (flag) {
-                if(str.split('.')[0].length>8){
-                    temp = str.split('.')[0]
-                }
-                else  temp = str.substring(0, str.length-6)
-               
-            }
-            else temp = str.substring(0, 6)
-            break;
-        default:
-            temp = str
-            break;
-    }
+    if(flag){
+        if( str.split('.')[0].length>4){
+            let pre = str.split('.')[0]
+            let next =  str.split('.')[1]
+            temp =pre+'.'+next.substring(0,2)
+        }
+        else {
+            let pre = str.split('.')[0]
+            let next =  str.split('.')[1]
+            temp =pre+'.'+next.substring(0,4)
+        }
+    } else   temp =str
+
     return temp
 }
 export default function Mining() {
