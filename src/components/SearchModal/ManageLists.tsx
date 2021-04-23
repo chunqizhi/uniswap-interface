@@ -28,6 +28,8 @@ import ListToggle from '../Toggle/ListToggle'
 import Card from 'components/Card'
 import { CurrencyModalView } from './CurrencySearchModal'
 import { UNSUPPORTED_LIST_URLS } from 'constants/lists'
+import { useTranslation } from "react-i18next"
+
 
 const Wrapper = styled(Column)`
   width: 100%;
@@ -93,6 +95,9 @@ function listUrlRowHTMLId(listUrl: string) {
 }
 
 const ListRow = memo(function ListRow({ listUrl }: { listUrl: string }) {
+
+const { t } = useTranslation()
+
   const listsByUrl = useSelector<AppState, AppState['lists']['byUrl']>(state => state.lists.byUrl)
   const dispatch = useDispatch<AppDispatch>()
   const { current: list, pendingUpdate: pending } = listsByUrl[listUrl]
@@ -118,7 +123,7 @@ const ListRow = memo(function ListRow({ listUrl }: { listUrl: string }) {
     if (!pending) return
     ReactGA.event({
       category: 'Lists',
-      action: 'Update List from List Select',
+      action: `Update List from List Select`,
       label: listUrl
     })
     dispatch(acceptListUpdate(listUrl))
@@ -169,11 +174,11 @@ const ListRow = memo(function ListRow({ listUrl }: { listUrl: string }) {
       )}
       <Column style={{ flex: '1' }}>
         <Row>
-          <StyledTitleText active={isActive}>{list.name}</StyledTitleText>
+          <StyledTitleText active={isActive}>{list.name}1</StyledTitleText>
         </Row>
         <RowFixed mt="4px">
           <StyledListUrlText active={isActive} mr="6px">
-            {list.tokens.length} tokens
+            {list.tokens.length} {t("managelists.text03")}
           </StyledListUrlText>
           <StyledMenu ref={node as any}>
             <ButtonEmpty onClick={toggle} ref={setReferenceElement} padding="0">
@@ -183,12 +188,12 @@ const ListRow = memo(function ListRow({ listUrl }: { listUrl: string }) {
               <PopoverContainer show={true} ref={setPopperElement as any} style={styles.popper} {...attributes.popper}>
                 <div>{list && listVersionLabel(list.version)}</div>
                 <SeparatorDark />
-                <ExternalLink href={`https://tokenlists.org/token-list?url=${listUrl}`}>View list</ExternalLink>
+                <ExternalLink href={`https://tokenlists.org/token-list?url=${listUrl}`}>{t("managelists.text04")}</ExternalLink>
                 <UnpaddedLinkStyledButton onClick={handleRemoveList} disabled={Object.keys(listsByUrl).length === 1}>
-                  Remove list
+                {t("managelists.text05")}
                 </UnpaddedLinkStyledButton>
                 {pending && (
-                  <UnpaddedLinkStyledButton onClick={handleAcceptListUpdate}>Update list</UnpaddedLinkStyledButton>
+                  <UnpaddedLinkStyledButton onClick={handleAcceptListUpdate}>{t("managelists.text06")}</UnpaddedLinkStyledButton>
                 )}
               </PopoverContainer>
             )}
@@ -222,6 +227,8 @@ export function ManageLists({
   setImportList: (list: TokenList) => void
   setListUrl: (url: string) => void
 }) {
+const { t } = useTranslation()
+
   const theme = useTheme()
 
   const [listUrlInput, setListUrlInput] = useState<string>('')
@@ -321,7 +328,7 @@ export function ManageLists({
           <SearchInput
             type="text"
             id="list-add-input"
-            placeholder="https:// or ipfs:// or ENS name"
+            placeholder={t("managelists.text02")}
             value={listUrlInput}
             onChange={handleInput}
           />
@@ -340,7 +347,7 @@ export function ManageLists({
                 {tempList.logoURI && <ListLogo logoURI={tempList.logoURI} size="40px" />}
                 <AutoColumn gap="4px" style={{ marginLeft: '20px' }}>
                   <TYPE.body fontWeight={600}>{tempList.name}</TYPE.body>
-                  <TYPE.main fontSize={'12px'}>{tempList.tokens.length} tokens</TYPE.main>
+                  <TYPE.main fontSize={'12px'}>{tempList.tokens.length} {t("managelists.text03")}</TYPE.main>
                 </AutoColumn>
               </RowFixed>
               {isImported ? (
@@ -348,7 +355,7 @@ export function ManageLists({
                   <IconWrapper stroke={theme.text2} size="16px" marginRight={'10px'}>
                     <CheckCircle />
                   </IconWrapper>
-                  <TYPE.body color={theme.text2}>Loaded</TYPE.body>
+                  <TYPE.body color={theme.text2}>{t("managelists.text07")}</TYPE.body>
                 </RowFixed>
               ) : (
                 <ButtonPrimary
@@ -357,7 +364,7 @@ export function ManageLists({
                   width="fit-content"
                   onClick={handleImport}
                 >
-                  Import
+                  {t("managelists.text08")}
                 </ButtonPrimary>
               )}
             </RowBetween>

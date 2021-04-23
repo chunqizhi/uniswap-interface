@@ -4,6 +4,7 @@ import './provide.css'
 import Data from '../../apis/api/data.js'
 import styled from 'styled-components'
 import { NavLink, RouteComponentProps } from 'react-router-dom'
+import { useTranslation } from "react-i18next"
 
 
 const ProvideBtn = styled(NavLink)`
@@ -12,6 +13,8 @@ text-decoration: none;
 let API, coinInfo
 
 export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex: string }>) {
+const { t } = useTranslation()
+
     const poolIndex = props.match.params.poolIndex
     API = Data.getCurrentPool(poolIndex).API
     coinInfo = Data.getCurrentPool(poolIndex).coinInfo
@@ -77,15 +80,15 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
     return (
         <>
             <div className="add" key={poolIndex}>
-                <p className="title">提供流动性</p>
-                <p className="desc">获取 {coinInfo.coin_name}-LP 赚取BXH</p>
+                <p className="title">{t("provideLiquidity.text01")}</p>
+                <p className="desc">{t("provideLiquidity.text02")} {coinInfo.coin_name}{t("provideLiquidity.text13")}</p>
 
                 <div className="add-content">
                     <p className="content-title">
-                        <span>未领取挖矿收益</span>
+                        <span>{t("provideLiquidity.text03")}</span>
                         <span className="num">{earned.substring(0, 18)}</span>
                     </p>
-                    <p className="my-p-text">我的LP</p>
+                    <p className="my-p-text">{t("provideLiquidity.text04")}</p>
                     <p className="add-info">
                         <img src={coinInfo.pre_coin} alt="" />
                         <img src={coinInfo.next_coin} alt="" />
@@ -100,11 +103,11 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
                     </p> */}
                     <span className="line"></span>
                     <p className="add-info">
-                        <span>抵押</span>
+                        <span>{t("provideLiquidity.text02")}</span>
                     </p>
-                    <p className="add-tips">获得流动资金LP，需抵押后才开始流动性挖矿</p>
+                    <p className="add-tips">{t("provideLiquidity.text07")}</p>
                     <p className="staked">
-                        <span>已抵押LP</span>
+                        <span>{t("provideLiquidity.text08")}</span>
                         <span className="num">{stakedLp.substring(0, 18)}</span>
                     </p>
                     <div className="receive-btn add-div-btn"
@@ -122,7 +125,7 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
                                 })
                             }
                         }
-                    >领取收益</div>
+                    >{t("provideLiquidity.text09")}</div>
                     <div className="add-div-btn other-btn"
 
                         onClick={
@@ -137,7 +140,7 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
                                 setAddFlag(true)
                                 setType('stake')
                             }}
-                    >抵押</div>
+                    >{t("provideLiquidity.text06")}</div>
                     <div className="add-div-btn other-btn"
                         onClick={() => {
                             if (!isApprove) {
@@ -150,19 +153,19 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
                             setAddFlag(true)
                             setType('withdraw')
                         }}
-                    >取回流动性</div>
+                    >{t("provideLiquidity.text11")}</div>
 
                     {
                         !isApprove && (
                             <div className="add-div-btn other-btn" onClick={() => {
                                 approveFn()
-                            }}>授权</div>
+                            }}>{t("provideLiquidity.text10")}</div>
                         )
                     }
 
                     {/*   返回 */}
                     <ProvideBtn id={`mining-nav-link`} to={`/mining`}>
-                        <div className="add-div-btn other-btn">返回</div>
+                        <div className="add-div-btn other-btn">{t("provideLiquidity.text14")}</div>
                     </ProvideBtn>
                 </div>
 
@@ -178,10 +181,10 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
                                     e.stopPropagation()
                                 }
                             }>
-                                <p className="mask-title">{popType === 'stake' ? '抵押' : '解押'}</p>
+                                <p className="mask-title">{popType === 'stake' ? `${t("provideLiquidity.text06")}` : `${t("provideLiquidity.text16")}`}</p>
                                 <p className="mask-info">
                                     {/* {popType==='stake'?'':''} */}
-                                    <span>可用余额</span>
+                                    <span>{t("provideLiquidity.text15")}</span>
                                     <span className="num">
                                         {/* unStakedLp */}
                                         {popType === 'stake' ? unStakedLp : stakedLp}
@@ -207,7 +210,7 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
 
                                             }
                                         }
-                                    }>最大</span>
+                                    }>{t("provideLiquidity.text17")}</span>
                                 </div>
                                 <div className="mask-bottom">
                                     <div className="bottom-btn left-btn" onClick={
@@ -215,7 +218,7 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
                                             setAddFlag(false)
                                             setInputVal('0')
                                         }
-                                    }>取消</div>
+                                    }>{t("provideLiquidity.text18")}</div>
                                     <div className="bottom-btn right-btn"
                                         onClick={
                                             () => {
@@ -237,7 +240,7 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
                                                 }
                                             }
                                         }
-                                    >确认</div>
+                                    >{t("provideLiquidity.text19")}</div>
                                 </div>
                             </div>
                         </div>

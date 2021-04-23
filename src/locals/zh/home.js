@@ -11,5 +11,5 @@ export default {
     text10: '手续费奖励',
     text11: '审计机构',
     text12: '兑换',
-    text13: '挖矿'
+    text13: '流动性挖矿',
 }

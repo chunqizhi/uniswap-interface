@@ -1,13 +1,13 @@
 import React, { useRef } from 'react'
 import { NavLink } from 'react-router-dom'
-import { BookOpen, Code, Info, MessageCircle, PieChart } from 'react-feather'
+import { Twitter, Info,GitHub } from 'react-feather'
 import styled from 'styled-components'
 import { ReactComponent as MenuIcon } from '../../assets/images/menu.svg'
 // import { useActiveWeb3React } from '../../hooks'
 import { useOnClickOutside } from '../../hooks/useOnClickOutside'
 import { ApplicationModal } from '../../state/application/actions'
 import { useModalOpen, useToggleModal } from '../../state/application/hooks'
-
+import { useTranslation } from "react-i18next"
 import { ExternalLink } from '../../theme'
 // import { ButtonPrimary } from '../Button'
 
@@ -79,6 +79,10 @@ const MenuItem = styled(ExternalLink)`
     cursor: pointer;
     text-decoration: none;
   }
+  > img {
+    margin-right:5px;
+    color:#333;
+  }
   > svg {
     margin-right: 8px;
   }
@@ -107,7 +111,7 @@ color: ${({ theme }) => theme.text2};
 const CODE_LINK = 'https://github.com/Uniswap/uniswap-interface'
 export default function Menu() {
   // const { account } = useActiveWeb3React()
-
+  const { t } = useTranslation();
   const node = useRef<HTMLDivElement>()
   const open = useModalOpen(ApplicationModal.MENU)
   const toggle = useToggleModal(ApplicationModal.MENU)
@@ -124,29 +128,30 @@ export default function Menu() {
       {open && (
         <MuneBox onClick={toggle}>
           <MenuFlyout>
-            <NavLinkItem id={`swap-nav-link`} to={'/swap'}>兑换</NavLinkItem>
-            <NavLinkItem id={`mining-nav-link`} to={'/mining'}>挖矿</NavLinkItem>
-            <NavLinkItem id={`pool-nav-link`} to={'/pool'}>流动性</NavLinkItem>
+            <NavLinkItem id={`swap-nav-link`} to={'/swap'}>{t("navlist.text01")}</NavLinkItem>
+            <NavLinkItem id={`mining-nav-link`} to={'/mining'}>{t("navlist.text02")}</NavLinkItem>
+            <NavLinkItem id={`pool-nav-link`} to={'/pool'}>{t("navlist.text03")}</NavLinkItem>
             <MenuItem id="link" href="https://uniswap.org/">
               <Info size={14} />
-            About
+              {t("navlist.text04")}
            </MenuItem>
-            <Language onClick={ ()=>i18n.changeLanguage(i18n.language ==='en'?'zh':'en')}>En/Zh</Language>
+            <Language onClick={ ()=>i18n.changeLanguage(i18n.language ==='en'?'zh':'en')}>{i18n.language ==='en'?'中文':'English'}</Language>
             <MenuItem id="link" href="https://uniswap.org/docs/v2">
-              <BookOpen size={14} />
-            Doc
+              {/* <BookOpen size={14} /> */}
+              <img src={require('../../assets/images/wx.png')} width='14' height='14' alt='' />
+              {t("navlist.text05")}
             </MenuItem>
             <MenuItem id="link" href={CODE_LINK}>
-              <Code size={14} />
-            Code
+              <GitHub size={14} />
+              {t("navlist.text06")}
           </MenuItem>
             <MenuItem id="link" href="https://discord.gg/FCfyBSbCU5">
-              <MessageCircle size={14} />
-            Discord
+              <Twitter size={14} />
+              {t("navlist.text07")}
           </MenuItem>
             <MenuItem id="link" href="https://uniswap.info/">
-              <PieChart size={14} />
-            Analytics
+              <img src={require('../../assets/images/telegram.png')} width='14' height='14' alt='' />
+              {t("navlist.text08")}
           </MenuItem>
             {/* {account && (
               <ButtonPrimary onClick={openClaimModal} padding="8px 16px" width="100%" borderRadius="12px" mt="0.5rem">

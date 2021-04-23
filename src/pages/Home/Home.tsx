@@ -10,40 +10,48 @@ height: 45px;
 display: flex;
 flex-flow: row nowrap;
 background: #FFF;
-border-radius: 17.5px;
 margin-bottom: 20px;
 justify-content: space-between;
 width:100%;
 `
 const LeftDiv = styled.div`
 width: 115px;
-border-radius: 17.5px;
+justify-content: space-around;
+align-items: center;
+border-radius: 0px;
 background-image: linear-gradient(to right, #40a5ee, #48d675);
+padding:0 20px;
 display: flex;
-flex-direction: column;
-display: flex;
-justify-content: flex-end;
 `
 const LeftDivSpan = styled.span`
 flex: 1;
 padding-left:10px;
+`
+const RightDivSpan = styled.div`
+    height:20px;
+    font-size:14px;
 `
 const RightDiv = styled.div`
 display: flex;
 flex-direction: column;
 margin-right: 10px;
 text-align: right;
+justify-content: center;
 `
 const RightSpan = styled.span`
     flex: 1;
-    padding-left: 10px;
-    line-height: 22px;
-    color: #777;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0278fe;
     display: block;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
+    
 `
-
+const LeftSpan = styled(RightSpan)`
+    font-size:16px
+`
 // width:74%;
 const TitleDiv = styled.div`
 `
@@ -143,11 +151,11 @@ export default function Home() {
         <>
             <HomeTop>
                 <LeftDiv>
+                    <LeftSpan>TRS</LeftSpan>
                     <LeftDivSpan>${ formatNum(rate) }</LeftDivSpan>
-                    <RightSpan>TRS</RightSpan>
                 </LeftDiv>
                 <RightDiv>
-                    <LeftDivSpan>${allBalance}</LeftDivSpan>
+                    <RightDivSpan>${allBalance}</RightDivSpan>
                     <RightSpan>{t("home.text01")}</RightSpan>
                 </RightDiv>
 
