@@ -29,7 +29,6 @@ import Card from 'components/Card'
 import { CurrencyModalView } from './CurrencySearchModal'
 import { UNSUPPORTED_LIST_URLS } from 'constants/lists'
 import { useTranslation } from "react-i18next"
-import managelists from '../../locals/zh/managelists'
 
 
 const Wrapper = styled(Column)`
@@ -175,7 +174,7 @@ const { t } = useTranslation()
       )}
       <Column style={{ flex: '1' }}>
         <Row>
-          <StyledTitleText active={isActive}>{list.name}</StyledTitleText>
+          <StyledTitleText active={isActive}>{list.name}1</StyledTitleText>
         </Row>
         <RowFixed mt="4px">
           <StyledListUrlText active={isActive} mr="6px">

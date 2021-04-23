@@ -38,17 +38,18 @@ interface Item {
 }
 
 const formatNum = function (str: string|number) {
+    if(str*1<0) return 0
     str=""+str
     let flag = str.indexOf('.') > 0
     let temp
     let length = str.length
     switch (true) {
-        case length > 7:
+        case length > 10:
             if (flag) {
-                if(str.split('.')[0].length>6){
+                if(str.split('.')[0].length>8){
                     temp = str.split('.')[0]
                 }
-                else  temp = str.substring(0, 6)
+                else  temp = str.substring(0, str.length-6)
                
             }
             else temp = str.substring(0, 6)
@@ -71,14 +72,16 @@ const { t } = useTranslation()
     const [balance, setBalance] = useState(0.00)
 
     Data.getPoolListData().then(res => {
+        console.log(`setMainList`)
         setMainList(res)
     })
     Data.getAllBlock().then(res=>{
+        console.log(`setAllBock`,res)
         setAllBock(res)
     })
     API.getWalletAllTrs().then(res => {
+        console.log(`setBalance`)
         setBalance(res)
-
     })
 
     const nav_type = [
@@ -123,10 +126,10 @@ const { t } = useTranslation()
 
 
     useEffect(() => {
-        API.getPoolData().then(res => {
+
+        Data.getTrsRate().then(res => {
             setRate(res.rate)
         })
-
     }, [])
     return (
         <>
@@ -153,10 +156,10 @@ const { t } = useTranslation()
                 type && mainList[type] && (<div className="pool-list">
                     {
 
-                        mainList[type].map((item: Item, index: number) => {
+                        mainList[type].map((item: Item) => {
                             return (
                                 <>
-                                    <div className="pool-item" key={index}>
+                                    <div className="pool-item" key={item.coin_name}>
                                         <div className="item-img">
                                             <img src={item.pre_coin} alt="" className="pre" />
                                             <img src={item.next_coin} alt="" className="next" />
@@ -182,6 +185,7 @@ const { t } = useTranslation()
                                         </div>
 
                                         <div className="item-btn">
+
                                             {/* 跳转到 流动资金到时候  /add/token1/token2 */}
                                             <ItemBtn id={`/provideLiquidity-nav-link`} to={"/provideLiquidity/" + item.poolIndex}>{t("mining.text15")}</ItemBtn>
                                         </div>
@@ -229,8 +233,6 @@ function TopContent(props) {
                                     <div className="item" key={item.text}>
                                         <p className="text">{item.text}</p>
                                         <p className="balance">
-                                            {/* > 7 ? item.end_val.substring(0, 6) : item.end_val */}
-                                            {/* {(" "+(item.end_val)).substring(0,6)} */}
                                             {
                                                 formatNum(item.end_val)
                                             }

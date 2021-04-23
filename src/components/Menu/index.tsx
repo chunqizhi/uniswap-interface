@@ -107,9 +107,6 @@ padding: 0.5rem 0.5rem;
 text-decoration:none;
 color: ${({ theme }) => theme.text2};
 `
-const Telegramimg = styled.img`
-
-`
 
 const CODE_LINK = 'https://github.com/Uniswap/uniswap-interface'
 export default function Menu() {
@@ -141,7 +138,7 @@ export default function Menu() {
             <Language onClick={ ()=>i18n.changeLanguage(i18n.language ==='en'?'zh':'en')}>{i18n.language ==='en'?'中文':'English'}</Language>
             <MenuItem id="link" href="https://uniswap.org/docs/v2">
               {/* <BookOpen size={14} /> */}
-              <img src={require('../../assets/images/wx.png')} width='14' height='14' />
+              <img src={require('../../assets/images/wx.png')} width='14' height='14' alt='' />
               {t("navlist.text05")}
             </MenuItem>
             <MenuItem id="link" href={CODE_LINK}>
@@ -153,7 +150,7 @@ export default function Menu() {
               {t("navlist.text07")}
           </MenuItem>
             <MenuItem id="link" href="https://uniswap.info/">
-              <img src={require('../../assets/images/telegram.png')} width='14' height='14' />
+              <img src={require('../../assets/images/telegram.png')} width='14' height='14' alt='' />
               {t("navlist.text08")}
           </MenuItem>
             {/* {account && (

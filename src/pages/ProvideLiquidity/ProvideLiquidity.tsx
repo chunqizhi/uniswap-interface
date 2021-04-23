@@ -9,7 +9,7 @@ import { NavLink, RouteComponentProps } from 'react-router-dom'
 const ProvideBtn = styled(NavLink)`
 text-decoration: none;
 `
-let API,coinInfo
+let API, coinInfo
 
 export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex: string }>) {
     const poolIndex = props.match.params.poolIndex
@@ -24,7 +24,13 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
     const [unStakedLp, setUnStakedLp] = useState('0.00')
     const [earned, setEarned] = useState('0.00')
     const clickListener = () => {
-        console.log("clickListener")
+    }
+    const approveFn = () => {
+        API.approve().then(res => {
+        setPengingApprove(true)
+        }).catch(error => {
+            setPengingApprove(false)
+        })
     }
 
     useEffect(() => {
@@ -32,7 +38,6 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
         const timerFn = function () {
             API.isApprove().then(res => {
                 console.log("是否授权" + res)
-                setPengingApprove(true)
                 setApprove(res)
             })
             // 抵押的LP
@@ -71,14 +76,14 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
 
     return (
         <>
-            <div className="add">
+            <div className="add" key={poolIndex}>
                 <p className="title">提供流动性</p>
-                <p className="desc">获取 {coinInfo.coin_name}-LP 赚取BXH</p>
+                <p className="desc">质押 {coinInfo.coin_name}-LP 赚取Trs</p>
 
                 <div className="add-content">
                     <p className="content-title">
                         <span>未领取挖矿收益</span>
-                        <span className="num">{earned.substring(0, 6)}</span>
+                        <span className="num">{earned.substring(0, 18)}</span>
                     </p>
                     <p className="my-p-text">我的LP</p>
                     <p className="add-info">
@@ -86,7 +91,7 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
                         <img src={coinInfo.next_coin} alt="" />
                         <span> {coinInfo.coin_name}</span>
                         <span className="num">{
-                            unStakedLp.substring(0, 6)
+                            unStakedLp.substring(0, 18)
                         }</span>
                     </p>
                     {/* <p className="add-info">
@@ -100,7 +105,7 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
                     <p className="add-tips">获得流动资金LP，需抵押后才开始流动性挖矿</p>
                     <p className="staked">
                         <span>已抵押LP</span>
-                        <span className="num">{stakedLp.substring(0, 6)}</span>
+                        <span className="num">{stakedLp.substring(0, 18)}</span>
                     </p>
                     <div className="receive-btn add-div-btn"
                         onClick={
@@ -109,11 +114,7 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
                                     if (pengingApprove) {
                                         alert(`授权中`)
                                     }
-                                    else {
-                                        setPengingApprove(true)
-                                        API.approve().then(res => {
-                                        })
-                                    }
+                                    else approveFn()
                                     return
                                 }
                                 API.getReward().then(res => {
@@ -129,11 +130,7 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
                                     if (pengingApprove) {
                                         alert(`授权中`)
                                     }
-                                    else {
-                                        setPengingApprove(true)
-                                        API.approve().then(res => {
-                                        })
-                                    }
+                                    else  approveFn()
                                     return
                                 }
                                 setAddFlag(true)
@@ -146,11 +143,7 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
                                 if (pengingApprove) {
                                     alert(`授权中`)
                                 }
-                                else {
-                                    setPengingApprove(true)
-                                    API.approve().then(res => {
-                                    })
-                                }
+                                else  approveFn()
                                 return
                             }
                             setAddFlag(true)
@@ -161,11 +154,7 @@ export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex:
                     {
                         !isApprove && (
                             <div className="add-div-btn other-btn" onClick={() => {
-                                API.approve().then(res => {
-                                    // approFn(res)
-                                setPengingApprove(true)
-
-                                })
+                                approveFn()
                             }}>授权</div>
                         )
                     }

@@ -1,5 +1,5 @@
 export default {
-    text01: 'TreeSwap：火币生态链的全新去中心化交易平台',
+    text01: '火币生态系统的交易平台',
     text02: 'DEX创新交易平台',
     text03: 'TSR价格',
     text04: '个人余额',

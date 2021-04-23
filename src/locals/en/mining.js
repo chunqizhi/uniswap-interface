@@ -1,5 +1,5 @@
 export default {
-    text01: 'Treeswap: A new decentralized trading platform for the Huobi ecosystem',
+    text01: 'A trading platform for the Huobi ecosystem',
     text02: 'DEX innovative trading platform',
     text03: 'Price',
     text04: 'Balance',
