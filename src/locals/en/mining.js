@@ -1,7 +1,7 @@
 export default {
     text01: 'A trading platform for the Huobi ecosystem',
     text02: 'DEX innovative trading platform',
-    text03: 'Price',
+    text03: 'TRS Price',
     text04: 'Balance',
     text05: ' Created By Mining',
     text06: ' Current market value($)',
