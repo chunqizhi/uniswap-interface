@@ -291,6 +291,7 @@ export const HideSmall = styled.span`
   ${({ theme }) => theme.mediaWidth.upToSmall`
     display: none;
   `};
+  border-radius:6px;
 `
 
 export const HideExtraSmall = styled.span`

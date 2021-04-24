@@ -10,8 +10,8 @@ import API from '../contract/api.js'
 const trsAddr = `0x25D2e80cB6B86881Fd7e07dd263Fb79f4AbE033c` //  pre
 const usdtAddr = `0xa71EdC38d189767582C38A3145b5873052c3e47a` // next
 
-const trsUsdtPairAddr = `0xe9aac23d6bcd2b8cf6fe785cb84adb430079d832` // pre-next-pair
-const trsUsdtPoolAddr = `0x21C91119E54e05f0be9B63e1dE116Ba2B9671741` // pre-next-pool
+const trsUsdtPairAddr = `0x5590fa7db6151f62416cb96f7a3dd07eba033c83` // pre-next-pair
+const trsUsdtPoolAddr = `0x2795eC39acaE6441EAEf5a15929Cba4A403902E5` // pre-next-pool
 
 
 const usdtTokenAddr = usdtAddr

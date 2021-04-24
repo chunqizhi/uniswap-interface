@@ -57,6 +57,7 @@ const ResponsiveButtonPrimary = styled(ButtonPrimary)`
   ${({ theme }) => theme.mediaWidth.upToSmall`
     width: 48%;
   `};
+  border-radius:6px;
 `
 
 const ResponsiveButtonSecondary = styled(ButtonSecondary)`
@@ -64,6 +65,7 @@ const ResponsiveButtonSecondary = styled(ButtonSecondary)`
   ${({ theme }) => theme.mediaWidth.upToSmall`
     width: 48%;
   `};
+  border-radius:6px;
 `
 
 const EmptyProposals = styled.div`

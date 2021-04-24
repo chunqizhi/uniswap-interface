@@ -10,8 +10,8 @@ import API from '../contract/api.js'
 // pre-next USDT/HBTC
 const trsAddr = `0xa71EdC38d189767582C38A3145b5873052c3e47a` // pre
 const usdtAddr = `0x66a79d23e58475d2738179ca52cd0b41d73f0bea` // next
-const trsUsdtPairAddr = `0x55f0c162c23850eec3ac4f448e860c9a4fcc1121` // pre-next-pair
-const trsUsdtPoolAddr = `0x0b26F204769Fe575DaaDA56a9bdfc43DbF8B522B` // pre-next-pool
+const trsUsdtPairAddr = `0x25236e75ad0fc4e8f953eefe56aab4499d81399c` // pre-next-pair
+const trsUsdtPoolAddr = `0x6153481B4B838a3412Bb6e12C6bC4a0e0540Cd30` // pre-next-pool
 
 const huiwanTokenAddr = trsAddr
 const usdtTokenAddr = usdtAddr

@@ -68,6 +68,9 @@ export const ButtonPrimary = styled(Base)`
     height:40px;
     color:white;
   }
+  background-color:transparent;
+  color:#000;
+  border-radius:8px;
 `
 
 export const ButtonLight = styled(Base)`
