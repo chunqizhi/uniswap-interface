@@ -1,27 +1,21 @@
 import { Trade, TradeType } from 'huiwan-v2-sdk'
 import React, { useContext } from 'react'
-import styled, { ThemeContext } from 'styled-components'
+import { ThemeContext } from 'styled-components'
 import { Field } from '../../state/swap/actions'
 import { useUserSlippageTolerance } from '../../state/user/hooks'
-import { TYPE, ExternalLink } from '../../theme'
+import { TYPE } from '../../theme'
 import { computeSlippageAdjustedAmounts, computeTradePriceBreakdown } from '../../utils/prices'
 import { AutoColumn } from '../Column'
 import QuestionHelper from '../QuestionHelper'
 import { RowBetween, RowFixed } from '../Row'
 import FormattedPriceImpact from './FormattedPriceImpact'
 import SwapRoute from './SwapRoute'
+import { useTranslation } from "react-i18next"
 
-const InfoLink = styled(ExternalLink)`
-  width: 100%;
-  border: 1px solid ${({ theme }) => theme.bg3};
-  padding: 6px 6px;
-  border-radius: 8px;
-  text-align: center;
-  font-size: 14px;
-  color: ${({ theme }) => theme.text1};
-`
 
 function TradeSummary({ trade, allowedSlippage }: { trade: Trade; allowedSlippage: number }) {
+  const { t } = useTranslation()
+
   const theme = useContext(ThemeContext)
   const { priceImpactWithoutFee, realizedLPFee } = computeTradePriceBreakdown(trade)
   const isExactIn = trade.tradeType === TradeType.EXACT_INPUT
@@ -33,7 +27,7 @@ function TradeSummary({ trade, allowedSlippage }: { trade: Trade; allowedSlippag
         <RowBetween>
           <RowFixed>
             <TYPE.black fontSize={14} fontWeight={400} color={theme.text2}>
-              {isExactIn ? 'Minimum received' : 'Maximum sold'}
+              {isExactIn ? `${t("debris.text45")}` : `${t("debris.text46")}`}
             </TYPE.black>
             <QuestionHelper text="Your transaction will revert if there is a large, unfavorable price movement before it is confirmed." />
           </RowFixed>
@@ -50,7 +44,7 @@ function TradeSummary({ trade, allowedSlippage }: { trade: Trade; allowedSlippag
         <RowBetween>
           <RowFixed>
             <TYPE.black fontSize={14} fontWeight={400} color={theme.text2}>
-              Price Impact
+            {t("debris.text47")}
             </TYPE.black>
             <QuestionHelper text="The difference between the market price and estimated price due to trade size." />
           </RowFixed>
@@ -60,7 +54,7 @@ function TradeSummary({ trade, allowedSlippage }: { trade: Trade; allowedSlippag
         <RowBetween>
           <RowFixed>
             <TYPE.black fontSize={14} fontWeight={400} color={theme.text2}>
-              Liquidity Provider Fee
+            {t("debris.text48")}
             </TYPE.black>
             <QuestionHelper text="A portion of each trade (0.30%) goes to liquidity providers as a protocol incentive." />
           </RowFixed>
@@ -102,7 +96,7 @@ export function AdvancedSwapDetails({ trade }: AdvancedSwapDetailsProps) {
               </RowBetween>
             </>
           )}
-          {!showRoute && (
+          {/* {!showRoute && (
             <AutoColumn style={{ padding: '12px 16px 0 16px' }}>
               <InfoLink
                 href={'https://info.uniswap.org/pair/' + trade.route.pairs[0].liquidityToken.address}
@@ -111,7 +105,7 @@ export function AdvancedSwapDetails({ trade }: AdvancedSwapDetailsProps) {
                 View pair analytics ↗
               </InfoLink>
             </AutoColumn>
-          )}
+          )} */}
         </>
       )}
     </AutoColumn>

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Twitter, Info,GitHub } from 'react-feather'
+import { Twitter,GitHub } from 'react-feather'
 import styled from 'styled-components'
 import { ReactComponent as MenuIcon } from '../../assets/images/menu.svg'
 // import { useActiveWeb3React } from '../../hooks'
@@ -108,7 +108,7 @@ text-decoration:none;
 color: ${({ theme }) => theme.text2};
 `
 
-const CODE_LINK = 'https://github.com/Uniswap/uniswap-interface'
+const CODE_LINK = 'https://github.com/Tree-Swap/Tree-Swap'
 export default function Menu() {
   // const { account } = useActiveWeb3React()
   const { t } = useTranslation();
@@ -131,8 +131,7 @@ export default function Menu() {
             <NavLinkItem id={`swap-nav-link`} to={'/swap'}>{t("navlist.text01")}</NavLinkItem>
             <NavLinkItem id={`mining-nav-link`} to={'/mining'}>{t("navlist.text02")}</NavLinkItem>
             <NavLinkItem id={`pool-nav-link`} to={'/pool'}>{t("navlist.text03")}</NavLinkItem>
-            <MenuItem id="link" href="https://uniswap.org/">
-              <Info size={14} />
+            <MenuItem id="link" href="https://www.tree-swap.org/data/WhitePapers.pdf">
               {t("navlist.text04")}
            </MenuItem>
             <Language onClick={ ()=>i18n.changeLanguage(i18n.language ==='en'?'zh':'en')}>{i18n.language ==='en'?'中文':'English'}</Language>

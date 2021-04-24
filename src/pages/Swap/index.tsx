@@ -387,7 +387,7 @@ export default function Swap({ history }: RouteComponentProps) {
             ) : null}
 
             {showWrap ? null : (
-              <Card padding={showWrap ? '.25rem 1rem 0 1rem' : '0px'} borderRadius={'20px'}>
+              <Card padding={showWrap ? '0 1rem 0 1rem' : '0px'} borderRadius={'20px'}>
                 <AutoColumn gap="8px" style={{ padding: '0 16px' }}>
                   {Boolean(trade) && (
                     <RowBetween align="center">
@@ -534,10 +534,11 @@ export default function Swap({ history }: RouteComponentProps) {
 const TitleDiv = styled.div`
 width: 100%;
 `
-const TitleSup = styled.p`
+const TitleSup = styled.div`
 color: #000;
   font-size: 24px;
   font-weight: 700;
+  line-height:32px;
   width: 100%;
   padding:0;
   margin:0;

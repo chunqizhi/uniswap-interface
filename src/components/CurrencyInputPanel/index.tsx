@@ -18,10 +18,15 @@ import useTheme from '../../hooks/useTheme'
 const InputRow = styled.div<{ selected: boolean }>`
   ${({ theme }) => theme.flexRowNoWrap}
   align-items: center;
-  padding: ${({ selected }) => (selected ? '0.75rem 0.5rem 0.75rem 1rem' : '0.75rem 0.75rem 0.75rem 1rem')};
+  margin: ${({ selected }) => (selected ? '0.75rem 0.5rem 0.75rem 0.5rem' : '0.75rem 0.75rem 0.75rem 0.5rem')};
+  border:1px dashed #ccc;
+  background-color:#f2f2f2;
+  padding:5px 10px;
 `
+// padding: ${({ selected }) => (selected ? '0.75rem 0.5rem 0.75rem 1rem' : '0.75rem 0.75rem 0.75rem 1rem')};
 
 const CurrencySelect = styled.button<{ selected: boolean }>`
+  display:flex;
   align-items: center;
   height: 2.2rem;
   font-size: 20px;
@@ -29,13 +34,13 @@ const CurrencySelect = styled.button<{ selected: boolean }>`
   background-color: ${({ selected, theme }) => (selected ? theme.bg1 : theme.primary1)};
   color: ${({ selected, theme }) => (selected ? theme.text1 : theme.white)};
   border-radius: 12px;
-  box-shadow: ${({ selected }) => (selected ? 'none' : '0px 6px 10px rgba(0, 0, 0, 0.075)')};
   outline: none;
   cursor: pointer;
   user-select: none;
   border: none;
   padding: 0 0.5rem;
-
+  background-color:#f2f2f2;
+  background-color:transparency;
   :focus,
   :hover {
     background-color: ${({ selected, theme }) => (selected ? theme.bg2 : darken(0.05, theme.primary1))};
@@ -55,10 +60,12 @@ const LabelRow = styled.div`
   }
 `
 
-const Aligner = styled.span`
+const Aligner = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color:#666666;
+
 `
 
 const StyledDropDown = styled(DropDown)<{ selected: boolean }>`
@@ -66,7 +73,7 @@ const StyledDropDown = styled(DropDown)<{ selected: boolean }>`
   height: 35%;
 
   path {
-    stroke: ${({ selected, theme }) => (selected ? theme.text1 : theme.white)};
+    stroke: ${({ theme }) => (theme.text1)};
     stroke-width: 1.5px;
   }
 `
@@ -88,7 +95,7 @@ const Container = styled.div<{ hideInput: boolean }>`
 const StyledTokenName = styled.span<{ active?: boolean }>`
   ${({ active }) => (active ? '  margin: 0 0.25rem 0 0.75rem;' : '  margin: 0 0.25rem 0 0.25rem;')}
   font-size:  ${({ active }) => (active ? '20px' : '16px')};
-
+  color:#666666;
 `
 
 const StyledBalanceMax = styled.button`
@@ -97,7 +104,7 @@ const StyledBalanceMax = styled.button`
   border: 1px solid ${({ theme }) => theme.primary5};
   border-radius: 0.5rem;
   font-size: 0.875rem;
-
+  line-height:28px;
   font-weight: 500;
   cursor: pointer;
   margin-right: 0.5rem;
@@ -113,6 +120,8 @@ const StyledBalanceMax = styled.button`
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
     margin-right: 0.5rem;
   `};
+  background-color: #fff;
+  color:#666666;
 `
 
 interface CurrencyInputPanelProps {
@@ -168,7 +177,7 @@ export default function CurrencyInputPanel({
           <LabelRow>
             <RowBetween>
               <TYPE.body color={theme.text2} fontWeight={500} fontSize={14}>
-                {label}
+                {t("add.text28")}
               </TYPE.body>
               {account && (
                 <TYPE.body
@@ -176,7 +185,7 @@ export default function CurrencyInputPanel({
                   color={theme.text2}
                   fontWeight={500}
                   fontSize={14}
-                  style={{ display: 'inline', cursor: 'pointer' }}
+                  style={{ display: 'inline', cursor: 'pointer',fontFamily: 'CenturyGothic-Bold',fontWeight: 'bold' }}
                 >
                   {!hideBalance && !!currency && selectedCurrencyBalance
                     ? (customBalanceText ?? `${t("add.text18")}`) + selectedCurrencyBalance?.toSignificant(6)

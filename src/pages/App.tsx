@@ -39,7 +39,6 @@ const AppWrapper = styled.div`
   display: flex;
   flex-flow: column;
   align-items: flex-start;
-  overflow-x: hidden;
 `
 
 const HeaderWrapper = styled.div`
@@ -47,6 +46,9 @@ const HeaderWrapper = styled.div`
   width: 100%;
   justify-content: space-between;
   background-color: #0278FE;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 `
 
 const BodyWrapper = styled.div`

@@ -40,6 +40,8 @@ li {
     align-items: center;
     margin-top: 8px;
     width: 100%;
+    border-radius:8px;
+    overflow: hidden;
 }
 
 .mini-1-div p {
@@ -54,19 +56,21 @@ li {
 .item {
     width: 48%;
     background-color: #fff;
-    margin-bottom: 18px;
-    padding: 8px;
+    margin-bottom: 14px;
+    padding:18px 8px;
     box-sizing: border-box;
-}
-
-.item p {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border-radius:10px;
 }
 
 .item .text {
     font-size: 12px;
     font-weight: 500;
     color: #666;
+    line-height: 16px;
 }
 
 .item .balance {
@@ -74,6 +78,8 @@ li {
     font-size: 16px;
     margin-top: 4px;
     font-weight: bold;
+    height: 20px;
+    line-height: 24px;
 }
 
 .mid-title {
@@ -81,11 +87,13 @@ li {
     text-align: center;
     font-weight: 600;
     color: #333333;
+    margin-top:10px;
 }
 
 .mid-text {
     padding: 0;
-    margin: 5px 0;
+    margin-top: 5px;
+    line-height: 16px;
 }
 
 .mid-sub {

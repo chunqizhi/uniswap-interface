@@ -230,12 +230,12 @@ function TopContent(props) {
                             return (
                                 <>
                                     <div className="item" key={item.text}>
-                                        <p className="text">{item.text}</p>
-                                        <p className="balance">
+                                        <div className="text">{item.text}</div>
+                                        <div className="balance">
                                             {
                                                 formatNum(item.end_val)
                                             }
-                                        </p>
+                                        </div>
                                     </div>
                                 </>
                             )

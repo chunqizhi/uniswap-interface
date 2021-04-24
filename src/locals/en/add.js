@@ -26,4 +26,5 @@ export default {
     text25: 'token Search Placeholder',
     text26: 'Common bases',
     text27: 'These tokens are commonly paired with other tokens.',
+    text28: 'Input',
 }

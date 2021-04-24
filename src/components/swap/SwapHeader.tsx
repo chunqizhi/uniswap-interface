@@ -4,6 +4,10 @@ import Settings from '../Settings'
 import { RowBetween } from '../Row'
 import { TYPE } from '../../theme'
 import { useTranslation } from "react-i18next"
+import creatHistory from 'history/createHashHistory'
+import { ArrowLeft } from 'react-feather'
+
+
 
 
 const StyledSwapHeader = styled.div`
@@ -13,14 +17,32 @@ const StyledSwapHeader = styled.div`
   max-width: 420px;
   color: ${({ theme }) => theme.text2};
 `
+const StyledArrowLeft = styled(ArrowLeft)`
+  color: ${({ theme }) => theme.text1};
+  margin-right:5px;
+`
+const Dspdiv = styled.div`
+  display:flex;
+  align-items: center;
+`
 
 export default function SwapHeader() {
   const { t } = useTranslation()
+  const history = creatHistory();
+
 
   return (
     <StyledSwapHeader>
       <RowBetween>
-        <TYPE.black fontWeight={500}>{t("swap.text21")}</TYPE.black>
+        <Dspdiv>
+          <StyledArrowLeft  onClick={()=>{
+            history.goBack();
+          }}/>
+          <TYPE.black fontWeight={500}>
+          {t("swap.text21")}
+          </TYPE.black>
+        </Dspdiv>
+        
         <Settings />
       </RowBetween>
     </StyledSwapHeader>

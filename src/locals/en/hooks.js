@@ -7,4 +7,6 @@ export default {
     text06: 'Select a token',
     text07: 'Enter a recipient',
     text08: 'Invalid recipient',
+    text09: 'Connect Wallet',
+    text10: 'Enter an amount',
 }
