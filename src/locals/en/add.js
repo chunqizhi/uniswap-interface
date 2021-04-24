@@ -27,4 +27,5 @@ export default {
     text26: 'Common bases',
     text27: 'These tokens are commonly paired with other tokens.',
     text28: 'Input',
+    text29: 'Share of Pool',
 }

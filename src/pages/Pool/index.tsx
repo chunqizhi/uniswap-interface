@@ -58,6 +58,9 @@ const ResponsiveButtonPrimary = styled(ButtonPrimary)`
     width: 48%;
   `};
   border-radius:6px;
+  background-color:#0278fe;
+  color:#fff;
+  margin-left:0px;
 `
 
 const ResponsiveButtonSecondary = styled(ButtonSecondary)`

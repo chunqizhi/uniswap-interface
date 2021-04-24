@@ -398,7 +398,7 @@ export default function AddLiquidity({
                       {noLiquidity ? `${t("add.text07")}` : `${t("add.text08")}`}
                     </TYPE.subHeader>
                   </RowBetween>{' '}
-                  <LightCard padding="1rem" borderRadius={'20px'}>
+                  <LightCard padding="1rem 0px" borderRadius={'20px'}>
                     <PoolPriceBar
                       currencies={currencies}
                       poolTokenPercentage={poolTokenPercentage}
