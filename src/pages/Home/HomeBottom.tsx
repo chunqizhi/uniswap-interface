@@ -3,7 +3,7 @@ import './test.css'
 import Icon01 from '../../assets/images/home/icon01.png'
 import Icon02 from '../../assets/images/home/icon02.png'
 import Icon03 from '../../assets/images/home/icon03.png'
-import Icon04 from '../../assets/images/home/logo.png'
+import Icon04 from '../../assets/images/home/logo1.png'
 import {useTranslation} from "react-i18next"
 const DescList = [
     {
