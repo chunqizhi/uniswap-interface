@@ -10,7 +10,24 @@ import { useTranslation } from "react-i18next"
 const ProvideBtn = styled(NavLink)`
 text-decoration: none;
 `
-let API, coinInfo
+const Approvediv = styled.div`
+    padding:10px 20px;
+    background-color:#fff;
+    color:#000;
+    position: fixed;
+    top:30%;
+    left:50%;
+    border-radius:10px;
+    box-shadow: 0px 0px 6px #ccc;
+    font-size:14px;
+    line-height:20px;
+    text-align:center;
+    z-index:2999;
+    transform: translateX(-50%);
+`
+
+let API, coinInfo ,timers
+
 
 export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex: string }>) {
 const { t } = useTranslation()
@@ -21,6 +38,7 @@ const { t } = useTranslation()
     const [addFlag, setAddFlag] = useState(false)   //显示隐藏 抵押解押弹框
     const [popType, setType] = useState('stake')    //当前弹框类型 stake/抵押    withdraw/解押
     const [isApprove, setApprove] = useState(false) // 授权/非授权
+    const [isApprovediv, setApprovediv] = useState(false) // 授权/非授权
     const [pengingApprove, setPengingApprove] = useState(false)
     const [inputValue, setInputVal] = useState('0')   //input的值
     const [stakedLp, setStakedLp] = useState('0.00')
@@ -34,6 +52,12 @@ const { t } = useTranslation()
         }).catch(error => {
             setPengingApprove(false)
         })
+    }
+    const toast = () => {
+        timers = setTimeout(() => {
+            setApprovediv(false)
+            clearTimeout(timers)
+        }, 3000);
     }
 
     useEffect(() => {
@@ -115,7 +139,9 @@ const { t } = useTranslation()
                             () => {
                                 if (!isApprove) {
                                     if (pengingApprove) {
-                                        alert(`授权中`)
+                                        // alert(`授权中`)
+                                        setApprovediv(true)
+                                        toast()
                                     }
                                     else approveFn()
                                     return
@@ -126,13 +152,18 @@ const { t } = useTranslation()
                             }
                         }
                     >{t("provideLiquidity.text09")}</div>
+                    {isApprovediv && (
+                        <Approvediv>授权中...</Approvediv>
+                    )}
                     <div className="add-div-btn other-btn"
 
                         onClick={
                             () => {
                                 if (!isApprove) {
                                     if (pengingApprove) {
-                                        alert(`授权中`)
+                                        // alert(`授权中`)
+                                        setApprovediv(true)
+                                        toast()
                                     }
                                     else  approveFn()
                                     return
@@ -145,7 +176,9 @@ const { t } = useTranslation()
                         onClick={() => {
                             if (!isApprove) {
                                 if (pengingApprove) {
-                                    alert(`授权中`)
+                                    // alert(`授权中`)
+                                    setApprovediv(true)
+                                    toast()
                                 }
                                 else  approveFn()
                                 return
@@ -246,6 +279,11 @@ const { t } = useTranslation()
                         </div>
                     )
                 }
+                {/* {
+                    pengingApprove && (
+                        <isApprovediv>授权中...</isApprovediv>
+                    )
+                } */}
 
             </div>
         </>

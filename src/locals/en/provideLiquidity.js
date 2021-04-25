@@ -1,7 +1,7 @@
 export default {
     text01: 'Provision of liquidity',
     text02: 'staking ',
-    text03: ' No mining income is received',
+    text03: ' Unclaimed earnings',
     text04: 'My share',
     text05: ' Share than',
     text06: ' Stake',

@@ -65,7 +65,7 @@ const TitleDiv = styled.div`
 `
 const TitleSup = styled.span`
 color: #000;
-line-height: 18px;
+line-height: 28px;
   font-size: 24px;
   font-weight: 700;
   width: 80%;

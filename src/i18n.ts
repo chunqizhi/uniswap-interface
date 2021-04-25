@@ -19,7 +19,7 @@ i18next
         translation: zh
       },
     },
-    lng:'en',
+    lng:'zh',
     // backend: {
     //   loadPath: `./locales/{{lng}}.json`
     // },

@@ -48,6 +48,9 @@ const ButtonPrimarybtn = styled(ButtonPrimary)`
   background-color: #0278FE;
   color:#fff;
 `
+const ManageButtonEmpty = styled(ButtonEmpty)`
+  background-color:transparent;
+`
 interface PositionCardProps {
   pair: Pair
   showUnwrapped?: boolean
@@ -212,7 +215,7 @@ export default function FullPositionCard({ pair, border, stakedBalance }: Positi
             </Text>
           </AutoRow>
           <RowFixed gap="8px">
-            <ButtonEmpty
+            <ManageButtonEmpty
               padding="6px 8px"
               borderRadius="12px"
               width="fit-content"
@@ -229,7 +232,7 @@ export default function FullPositionCard({ pair, border, stakedBalance }: Positi
                   <ChevronDown size="20" style={{ marginLeft: '10px' }} />
                 </>
               )}
-            </ButtonEmpty>
+            </ManageButtonEmpty>
           </RowFixed>
         </FixedHeightRow>
 

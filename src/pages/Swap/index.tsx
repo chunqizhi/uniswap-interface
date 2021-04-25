@@ -52,6 +52,12 @@ import { RouteComponentProps } from 'react-router-dom'
 import styled from 'styled-components'
 import { useTranslation } from "react-i18next"
 
+
+const ButtonErrorbtn = styled(ButtonError)`
+  padding:0px;
+  color:#fff;
+  height:40px;
+`
 export default function Swap({ history }: RouteComponentProps) {
   const { t } = useTranslation()
 
@@ -451,7 +457,7 @@ export default function Swap({ history }: RouteComponentProps) {
                     `${t("swap.text14")} ` + currencies[Field.INPUT]?.symbol
                   )}
                 </ButtonConfirmed>
-                <ButtonError
+                <ButtonErrorbtn
                   onClick={() => {
                     if (isExpertMode) {
                       handleSwap()
@@ -477,10 +483,10 @@ export default function Swap({ history }: RouteComponentProps) {
                       ? `${t("swap.text15")}`
                       : `Swap${priceImpactSeverity > 2 ? ' Anyway' : ''}`}
                   </Text>
-                </ButtonError>
+                </ButtonErrorbtn>
               </RowBetween>
             ) : (
-              <ButtonError
+              <ButtonErrorbtn
                 onClick={() => {
                   if (isExpertMode) {
                     handleSwap()
@@ -505,7 +511,7 @@ export default function Swap({ history }: RouteComponentProps) {
                       ? `${t("swap.text16")}`
                       : `Swap${priceImpactSeverity > 2 ? ' Anyway' : ''}`}
                 </Text>
-              </ButtonError>
+              </ButtonErrorbtn>
             )}
             {showApproveFlow && (
               <Column style={{ marginTop: '1rem' }}>

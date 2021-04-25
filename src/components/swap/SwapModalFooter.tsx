@@ -2,7 +2,7 @@ import { Trade, TradeType } from 'huiwan-v2-sdk'
 import React, { useContext, useMemo, useState } from 'react'
 import { Repeat } from 'react-feather'
 import { Text } from 'rebass'
-import { ThemeContext } from 'styled-components'
+import styled, { ThemeContext } from 'styled-components'
 import { Field } from '../../state/swap/actions'
 import { TYPE } from '../../theme'
 import {
@@ -18,6 +18,12 @@ import { AutoRow, RowBetween, RowFixed } from '../Row'
 import FormattedPriceImpact from './FormattedPriceImpact'
 import { StyledBalanceMaxMini, SwapCallbackError } from './styleds'
 
+const ButtonErrorbtn = styled(ButtonError)`
+  padding:0px;
+  color:#fff;
+  height:40px;
+  margin-left:7%;
+`
 export default function SwapModalFooter({
   trade,
   onConfirm,
@@ -109,17 +115,17 @@ export default function SwapModalFooter({
       </AutoColumn>
 
       <AutoRow>
-        <ButtonError
+        <ButtonErrorbtn
           onClick={onConfirm}
           disabled={disabledConfirm}
           error={severity > 2}
-          style={{ margin: '10px 0 0 0' }}
+          style={{ margin: '10px 0 0 7%' }}
           id="confirm-swap-or-send"
         >
-          <Text fontSize={20} fontWeight={500}>
+          <Text fontSize={16} fontWeight={500}>
             {severity > 2 ? 'Swap Anyway' : 'Confirm Swap'}
           </Text>
-        </ButtonError>
+        </ButtonErrorbtn>
 
         {swapErrorMessage ? <SwapCallbackError error={swapErrorMessage} /> : null}
       </AutoRow>

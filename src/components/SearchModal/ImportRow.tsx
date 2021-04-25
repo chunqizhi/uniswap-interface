@@ -39,6 +39,9 @@ const NameOverflow = styled.div`
   max-width: 140px;
   font-size: 12px;
 `
+const ButtonPrimaryinp = styled(ButtonPrimary)`
+background-color: transparent;
+`
 
 export default function ImportRow({
   token,
@@ -85,7 +88,7 @@ export default function ImportRow({
         )}
       </AutoColumn>
       {!isActive && !isAdded ? (
-        <ButtonPrimary
+        <ButtonPrimaryinp
           width="fit-content"
           padding="6px 12px"
           fontWeight={500}
@@ -96,7 +99,7 @@ export default function ImportRow({
           }}
         >
           Import
-        </ButtonPrimary>
+        </ButtonPrimaryinp>
       ) : (
         <RowFixed style={{ minWidth: 'fit-content' }}>
           <CheckIcon />
