@@ -162,7 +162,7 @@ export function ImportToken({ tokens, onBack, onDismiss, handleCurrencySelect }:
           }}
           className=".token-dismiss-button"
         >
-          Import2
+          Import
         </ButtonPrimaryinput>
       </PaddedColumn>
     </Wrapper>

@@ -2,7 +2,7 @@ export default {
     text01: '火币生态系统的交易平台',
     text02: 'DEX创新交易平台',
     text03: 'TRS价格',
-    text04: '个人余额',
+    text04: '我的余额',
     text05: ' 当前挖矿产出',
     text06: ' 当前挖矿产出价值',
     text07: '每月产出',

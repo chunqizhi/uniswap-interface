@@ -165,7 +165,7 @@ export default function Menu() {
         <StyledMenuIcon />
       </StyledMenuButton>
       { isApprovediv && (
-            <Approvediv>已复制好，可贴粘。</Approvediv>
+            <Approvediv>{t("navlist.text10")}</Approvediv>
           )}
       {/* open &&  */}
       {open && (

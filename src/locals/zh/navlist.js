@@ -7,5 +7,6 @@ export default {
     text06: 'GitHub',
     text07: '推特',
     text08: '电报',
-    text09: '审计'
+    text09: '审计报告',
+    text10: '复制成功',
 }

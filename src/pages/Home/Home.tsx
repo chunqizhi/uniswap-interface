@@ -17,12 +17,11 @@ border-radius:20px;
 
 `
 const LeftDiv = styled.div`
-width: 115px;
 justify-content: space-around;
 align-items: center;
 border-radius: 0px;
 background-image: linear-gradient(to right, #40a5ee, #48d675);
-padding:0 20px;
+padding:0 15px;
 display: flex;
 border-radius:20px;
 `

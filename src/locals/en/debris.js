@@ -68,4 +68,5 @@ export default {
     text61: 'Output is estimated. If the price changes by more than ',
     text62: '% your transaction will revert.',
     text63: 'Confirm',
+    text64: 'Please try to refresh the page and reconnect the wallet',
 }

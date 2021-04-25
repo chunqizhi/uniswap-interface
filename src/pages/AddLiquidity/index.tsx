@@ -48,10 +48,13 @@ const ButtonPrimaryinput = styled(ButtonPrimary)`
   padding:0px;
   color:#fff;
   height:40px;
+  margin-left:0px;
+  display: flex;
+  
 `
 
 const ButtonPrimaryinp = styled(ButtonPrimaryinput)`
-  margin-left:0px;
+  justify-content: center;
 `
 const ButtonErrorbtn = styled(ButtonError)`
 background-color: #0278FE;
@@ -59,6 +62,10 @@ color:#fff;
 padding:0px;
 height:40px;
 
+`
+const RowBetweenbtn = styled(RowBetween)`
+display: flex;
+justify-content: space-around;
 `
 
 const LightCarddiv = styled(LightCard)`
@@ -446,12 +453,13 @@ export default function AddLiquidity({
                   approvalB === ApprovalState.NOT_APPROVED ||
                   approvalB === ApprovalState.PENDING) &&
                   isValid && (
-                    <RowBetween>
+                    <RowBetweenbtn>
                       {approvalA !== ApprovalState.APPROVED && (
                         <ButtonPrimaryinp
                           onClick={approveACallback}
                           disabled={approvalA === ApprovalState.PENDING}
-                          width={approvalB !== ApprovalState.APPROVED ? '48%' : '86%'}
+                          width={approvalB !== ApprovalState.APPROVED ? '46%' : '86%'}
+                          marginLeft={approvalB !== ApprovalState.APPROVED ? '0px' : '7%'}
                         >
                           {approvalA === ApprovalState.PENDING ? (
                             <Dots>{t("add.text11")} {currencies[Field.CURRENCY_A]?.symbol}</Dots>
@@ -464,7 +472,8 @@ export default function AddLiquidity({
                         <ButtonPrimaryinput
                           onClick={approveBCallback}
                           disabled={approvalB === ApprovalState.PENDING}
-                          width={approvalA !== ApprovalState.APPROVED ? '48%' : '86%'}
+                          width={approvalA !== ApprovalState.APPROVED ? '46%' : '86%'}
+                          marginLeft={approvalA !== ApprovalState.APPROVED ? '0px' : '7%'}
                         >
                           {approvalB === ApprovalState.PENDING ? (
                             <Dots>{t("add.text11")} {currencies[Field.CURRENCY_B]?.symbol}</Dots>
@@ -473,7 +482,7 @@ export default function AddLiquidity({
                           )}
                         </ButtonPrimaryinput>
                       )}
-                    </RowBetween>
+                    </RowBetweenbtn>
                   )}
                 <ButtonErrorbtn
                   onClick={() => {

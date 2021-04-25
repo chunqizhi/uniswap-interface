@@ -9,7 +9,7 @@ import { AutoRow } from '../Row'
 import Copy from './Copy'
 import Transaction from './Transaction'
 
-// import { SUPPORTED_WALLETS } from '../../constants'
+import { SUPPORTED_WALLETS } from '../../constants'
 import { ReactComponent as Close } from '../../assets/images/x.svg'
 import { getEtherscanLink } from '../../utils'
 import { injected, walletconnect, walletlink, fortmatic, portis } from '../../connectors'
@@ -160,12 +160,12 @@ const CloseColor = styled(Close)`
   }
 `
 
-// const WalletName = styled.div`
-//   width: initial;
-//   font-size: 0.825rem;
-//   font-weight: 500;
-//   color: ${({ theme }) => theme.text3};
-// `
+const WalletName = styled.div`
+  width: initial;
+  font-size: 0.825rem;
+  font-weight: 500;
+  color: ${({ theme }) => theme.text3};
+`
 
 const IconWrapper = styled.div<{ size?: number }>`
   ${({ theme }) => theme.flexColumnNoWrap};
@@ -233,17 +233,17 @@ export default function AccountDetails({
   const theme = useContext(ThemeContext)
   const dispatch = useDispatch<AppDispatch>()
 
-  // function formatConnectorName() {
-  //   const { ethereum } = window
-  //   const isMetaMask = !!(ethereum && ethereum.isMetaMask)
-  //   const name = Object.keys(SUPPORTED_WALLETS)
-  //     .filter(
-  //       k =>
-  //         SUPPORTED_WALLETS[k].connector === connector && (connector !== injected || isMetaMask === (k === 'METAMASK'))
-  //     )
-  //     .map(k => SUPPORTED_WALLETS[k].name)[0]
-  //   return <WalletName>{t("debris.text01")} {name}</WalletName>
-  // }
+  function formatConnectorName() {
+    const { ethereum } = window
+    const isMetaMask = !!(ethereum && ethereum.isMetaMask)
+    const name = Object.keys(SUPPORTED_WALLETS)
+      .filter(
+        k =>
+          SUPPORTED_WALLETS[k].connector === connector && (connector !== injected || isMetaMask === (k === 'METAMASK'))
+      )
+      .map(k => SUPPORTED_WALLETS[k].name)[0]
+    return <WalletName>{t("debris.text01")} {name}</WalletName>
+  }
 
   function getStatusIcon() {
     if (connector === injected) {
@@ -304,7 +304,7 @@ export default function AccountDetails({
           <YourAccount>
             <InfoCard>
               <AccountGroupingRow>
-                {/* {formatConnectorName()} */}
+                {formatConnectorName()}
                 <div>
                   {connector !== injected && connector !== walletlink && (
                     <WalletAction
@@ -316,14 +316,14 @@ export default function AccountDetails({
                       {t("debris.text04")}
                     </WalletAction>
                   )}
-                  {/* <WalletAction
+                  <WalletAction
                     style={{ fontSize: '.825rem', fontWeight: 400 }}
                     onClick={() => {
                       openOptions()
                     }}
                   >
                     {t("debris.text05")}
-                  </WalletAction> */}
+                  </WalletAction>
                 </div>
               </AccountGroupingRow>
               <AccountGroupingRow id="web3-account-identifier-row">

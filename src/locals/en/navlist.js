@@ -8,4 +8,5 @@ export default {
     text07: 'Twitter',
     text08: 'Telegram',
     text09: 'Audit',
+    text10: 'Copy success'
 }

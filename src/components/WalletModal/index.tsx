@@ -19,6 +19,7 @@ import AccountDetails from '../AccountDetails'
 import Modal from '../Modal'
 import Option from './Option'
 import PendingView from './PendingView'
+import { useTranslation } from "react-i18next"
 
 const CloseIcon = styled.div`
   position: absolute;
@@ -109,12 +110,30 @@ const HoverText = styled.div`
   }
 `
 
+const Approvediv = styled.div`
+    padding:10px 20px;
+    background-color:#f2f2f2;
+    color:#000;
+    position: fixed;
+    top:30%;
+    left:50%;
+    border-radius:10px;
+    box-shadow: 0px 0px 6px #ccc;
+    font-size:14px;
+    line-height:20px;
+    text-align:center;
+    z-index:2999;
+    transform: translateX(-50%);
+`
+
 const WALLET_VIEWS = {
   OPTIONS: 'options',
   OPTIONS_SECONDARY: 'options_secondary',
   ACCOUNT: 'account',
   PENDING: 'pending'
 }
+
+let timers
 
 export default function WalletModal({
   pendingTransactions,
@@ -125,6 +144,10 @@ export default function WalletModal({
   confirmedTransactions: string[] // hashes of confirmed
   ENSName?: string
 }) {
+  const { t } = useTranslation()
+
+  const [isApprovediv, setApprovediv] = useState(false) // 授权/非授权
+
   // important that these are destructed from the account-specific web3-react context
   const { active, account, connector, activate, error } = useWeb3React()
 
@@ -138,6 +161,17 @@ export default function WalletModal({
   const toggleWalletModal = useWalletModalToggle()
 
   const previousAccount = usePrevious(account)
+
+  const toast = () => {
+    console.log("提示")
+    setApprovediv(true)
+    setWalletView(WALLET_VIEWS.ACCOUNT)
+    setPendingError(false)
+    timers = setTimeout(() => {
+      setApprovediv(false)
+      clearTimeout(timers)
+    }, 3000);
+  }
 
   // close on connection, when logged out before
   useEffect(() => {
@@ -289,6 +323,7 @@ export default function WalletModal({
   }
 
   function getModalContent() {
+
     if (error) {
       return (
         <UpperSection>
@@ -352,7 +387,8 @@ export default function WalletModal({
           {walletView !== WALLET_VIEWS.PENDING && (
             <Blurb>
               <span>New to Heco? &nbsp;</span>{' '}
-              <ExternalLink href="https://ethereum.org/wallets/">Learn more about wallets</ExternalLink>
+              <ExternalLink onClick ={toast} >Learn more about wallets</ExternalLink>
+              {/* <ExternalLink href="https://ethereum.org/wallets/">Learn more about wallets</ExternalLink> */}
             </Blurb>
           )}
         </ContentWrapper>
@@ -361,7 +397,11 @@ export default function WalletModal({
   }
 
   return (
+    
     <Modal isOpen={walletModalOpen} onDismiss={toggleWalletModal} minHeight={false} maxHeight={90}>
+      { isApprovediv && (
+            <Approvediv>{t("debris.text64")}</Approvediv>
+          )}
       <Wrapper>{getModalContent()}</Wrapper>
     </Modal>
   )
