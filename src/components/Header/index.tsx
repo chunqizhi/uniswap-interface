@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import LogoDark from '../../assets/svg/header-left.png'
 import { useActiveWeb3React } from '../../hooks'
 import { useDarkModeManager } from '../../state/user/hooks'
-import {  useETHBalances } from '../../state/wallet/hooks'
+import { useETHBalances } from '../../state/wallet/hooks'
 import Menu from '../Menu'
 import Row, { RowFixed } from '../Row'
 import Web3Status from '../Web3Status'
@@ -47,6 +47,8 @@ const HeaderRow = styled(RowFixed)`
   ${({ theme }) => theme.mediaWidth.upToMedium`
    width: 100%;
   `};
+  display: flex;
+  align-items: center;
 `
 
 const HeaderLinks = styled(Row)`
@@ -103,6 +105,8 @@ export const StyledMenuButton = styled.button`
 `
 const HomeBtn01 = styled(NavLink)`
 text-decoration:none;
+display:flex;
+align-items: center;
 `
 // const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
 //   [ChainId.RINKEBY]: 'Rinkeby',
@@ -116,7 +120,7 @@ export default function Header() {
   const { account } = useActiveWeb3React()
 
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
-  const [darkMode ] = useDarkModeManager()
+  const [darkMode] = useDarkModeManager()
 
 
   const [showUniBalanceModal, setShowUniBalanceModal] = useState(false)
@@ -157,14 +161,14 @@ export default function Header() {
           </StyledExternalLink> */}
         </HeaderLinks>
         <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
-            {account && userEthBalance ? (
-              <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
-                {userEthBalance?.toSignificant(4)} HT
-              </BalanceText>
-            ) : null}
-            <Web3Status />
-          </AccountElement>
-           <HeaderElementWrap>
+          {account && userEthBalance ? (
+            <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
+              {userEthBalance?.toSignificant(4)} HT
+            </BalanceText>
+          ) : null}
+          <Web3Status />
+        </AccountElement>
+        <HeaderElementWrap>
           <Menu />
         </HeaderElementWrap>
       </HeaderRow>
