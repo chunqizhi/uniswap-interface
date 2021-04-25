@@ -44,7 +44,10 @@ const StyledPositionCard = styled(LightCard)<{ bgColor: any }>`
   position: relative;
   overflow: hidden;
 `
-
+const ButtonPrimarybtn = styled(ButtonPrimary)`
+  background-color: #0278FE;
+  color:#fff;
+`
 interface PositionCardProps {
   pair: Pair
   showUnwrapped?: boolean
@@ -307,7 +310,7 @@ export default function FullPositionCard({ pair, border, stakedBalance }: Positi
             </ButtonSecondary> */}
             {userDefaultPoolBalance && JSBI.greaterThan(userDefaultPoolBalance.raw, BIG_INT_ZERO) && (
               <RowBetween marginTop="10px">
-                <ButtonPrimary
+                <ButtonPrimarybtn
                   padding="8px"
                   borderRadius="8px"
                   as={Link}
@@ -315,8 +318,8 @@ export default function FullPositionCard({ pair, border, stakedBalance }: Positi
                   width="48%"
                 >
                   {t("debris.text42")}
-                </ButtonPrimary>
-                <ButtonPrimary
+                </ButtonPrimarybtn>
+                <ButtonPrimarybtn
                   padding="8px"
                   borderRadius="8px"
                   as={Link}
@@ -324,11 +327,11 @@ export default function FullPositionCard({ pair, border, stakedBalance }: Positi
                   to={`/remove/${currencyId(currency0)}/${currencyId(currency1)}`}
                 >
                   {t("debris.text43")}
-                </ButtonPrimary>
+                </ButtonPrimarybtn>
               </RowBetween>
             )}
             {stakedBalance && JSBI.greaterThan(stakedBalance.raw, BIG_INT_ZERO) && (
-              <ButtonPrimary
+              <ButtonPrimarybtn
                 padding="8px"
                 borderRadius="8px"
                 as={Link}
@@ -336,7 +339,7 @@ export default function FullPositionCard({ pair, border, stakedBalance }: Positi
                 width="100%"
               >
                 {t("debris.text44")}
-              </ButtonPrimary>
+              </ButtonPrimarybtn>
             )}
           </AutoColumn>
         )}

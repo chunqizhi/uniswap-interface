@@ -28,4 +28,8 @@ export default {
     text27: 'These tokens are commonly paired with other tokens.',
     text28: 'Input',
     text29: 'Share of Pool',
+    text30: 'Deposited',
+    text31: 'Rates',
+    text32: 'Create Pool & Supply',
+    text33: 'Confirm Supply',
 }

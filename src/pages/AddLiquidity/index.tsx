@@ -6,7 +6,7 @@ import { Plus } from 'react-feather'
 import ReactGA from 'react-ga'
 import { RouteComponentProps } from 'react-router-dom'
 import { Text } from 'rebass'
-import { ThemeContext } from 'styled-components'
+import styled, { ThemeContext } from 'styled-components'
 import { ButtonError, ButtonLight, ButtonPrimary } from '../../components/Button'
 import { BlueCard, LightCard } from '../../components/Card'
 import { AutoColumn, ColumnCenter } from '../../components/Column'
@@ -42,6 +42,28 @@ import { useIsTransactionUnsupported } from 'hooks/Trades'
 import UnsupportedCurrencyFooter from 'components/swap/UnsupportedCurrencyFooter'
 import { useTranslation } from "react-i18next"
 
+
+const ButtonPrimaryinput = styled(ButtonPrimary)`
+  background-color:#0278fe;
+  padding:0px;
+  color:#fff;
+  height:40px;
+`
+
+const ButtonPrimaryinp = styled(ButtonPrimaryinput)`
+  margin-left:0px;
+`
+const ButtonErrorbtn = styled(ButtonError)`
+background-color: #0278FE;
+color:#fff;
+padding:0px;
+height:40px;
+
+`
+
+const LightCarddiv = styled(LightCard)`
+  padding:10px 16px;
+`
 
 export default function AddLiquidity({
   match: {
@@ -217,9 +239,9 @@ export default function AddLiquidity({
   const modalHeader = () => {
     return noLiquidity ? (
       <AutoColumn gap="20px">
-        <LightCard mt="20px" borderRadius="20px">
+        <LightCarddiv mt="20px" borderRadius="20px">
           <RowFlat>
-            <Text fontSize="48px" fontWeight={500} lineHeight="42px" marginRight={10}>
+            <Text fontSize="24px" fontWeight={500} lineHeight="42px" marginRight={10}>
               {currencies[Field.CURRENCY_A]?.symbol + '/' + currencies[Field.CURRENCY_B]?.symbol}
             </Text>
             <DoubleCurrencyLogo
@@ -228,7 +250,7 @@ export default function AddLiquidity({
               size={30}
             />
           </RowFlat>
-        </LightCard>
+        </LightCarddiv>
       </AutoColumn>
     ) : (
       <AutoColumn gap="20px">
@@ -309,6 +331,7 @@ export default function AddLiquidity({
   }, [onFieldAInput, txHash])
 
   const isCreate = history.location.pathname.includes('/create')
+
 
   const addIsUnsupported = useIsTransactionUnsupported(currencies?.CURRENCY_A, currencies?.CURRENCY_B)
   const { t } = useTranslation();
@@ -425,34 +448,34 @@ export default function AddLiquidity({
                   isValid && (
                     <RowBetween>
                       {approvalA !== ApprovalState.APPROVED && (
-                        <ButtonPrimary
+                        <ButtonPrimaryinp
                           onClick={approveACallback}
                           disabled={approvalA === ApprovalState.PENDING}
-                          width={approvalB !== ApprovalState.APPROVED ? '48%' : '100%'}
+                          width={approvalB !== ApprovalState.APPROVED ? '48%' : '86%'}
                         >
                           {approvalA === ApprovalState.PENDING ? (
                             <Dots>{t("add.text11")} {currencies[Field.CURRENCY_A]?.symbol}</Dots>
                           ) : (
                             `${t("add.text12")} ` + currencies[Field.CURRENCY_A]?.symbol
                           )}
-                        </ButtonPrimary>
+                        </ButtonPrimaryinp>
                       )}
                       {approvalB !== ApprovalState.APPROVED && (
-                        <ButtonPrimary
+                        <ButtonPrimaryinput
                           onClick={approveBCallback}
                           disabled={approvalB === ApprovalState.PENDING}
-                          width={approvalA !== ApprovalState.APPROVED ? '48%' : '100%'}
+                          width={approvalA !== ApprovalState.APPROVED ? '48%' : '86%'}
                         >
                           {approvalB === ApprovalState.PENDING ? (
                             <Dots>{t("add.text11")} {currencies[Field.CURRENCY_B]?.symbol}</Dots>
                           ) : (
                             `${t("add.text12")} ` + currencies[Field.CURRENCY_B]?.symbol
                           )}
-                        </ButtonPrimary>
+                        </ButtonPrimaryinput>
                       )}
                     </RowBetween>
                   )}
-                <ButtonError
+                <ButtonErrorbtn
                   onClick={() => {
                     expertMode ? onAdd() : setShowConfirm(true)
                   }}
@@ -462,7 +485,7 @@ export default function AddLiquidity({
                   <Text fontSize={16} fontWeight={500} >
                     {error ?? `${t("add.text13")}`}
                   </Text>
-                </ButtonError>
+                </ButtonErrorbtn>
               </AutoColumn>
             )}
           </AutoColumn>

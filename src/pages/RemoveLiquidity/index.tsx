@@ -7,7 +7,7 @@ import { ArrowDown, Plus } from 'react-feather'
 import ReactGA from 'react-ga'
 import { RouteComponentProps } from 'react-router'
 import { Text } from 'rebass'
-import { ThemeContext } from 'styled-components'
+import styled, { ThemeContext } from 'styled-components'
 import { ButtonPrimary, ButtonLight, ButtonError, ButtonConfirmed } from '../../components/Button'
 import { BlueCard, LightCard } from '../../components/Card'
 import { AutoColumn, ColumnCenter } from '../../components/Column'
@@ -46,6 +46,20 @@ import { BigNumber } from '@ethersproject/bignumber'
 import { useTranslation } from "react-i18next"
 
 
+const ButtonConfirmedbtn = styled(ButtonConfirmed)`
+  background-color: #0278FE;
+  height:40px !important;
+  margin-left:0px;
+  overflow: hidden;
+  color:#fff;
+`
+
+const ButtonErrorbtn = styled(ButtonError)`
+  height:40px !important;
+  font-size:12px;
+  padding:0 10px;
+  overflow: hidden;
+`
 export default function RemoveLiquidity({
   history,
   match: {
@@ -662,13 +676,13 @@ export default function RemoveLiquidity({
                 <ButtonLight onClick={toggleWalletModal}> {t("debris.text59")}</ButtonLight>
               ) : (
                 <RowBetween>
-                  <ButtonConfirmed
+                  <ButtonConfirmedbtn
                     onClick={onAttemptToApprove}
                     confirmed={approval === ApprovalState.APPROVED || signatureData !== null}
                     disabled={approval !== ApprovalState.NOT_APPROVED || signatureData !== null}
                     mr="0.5rem"
                     fontWeight={500}
-                    fontSize={16}
+                    fontSize={15}
                   >
                     {approval === ApprovalState.PENDING ? (
                       <Dots>{t("debris.text56")}</Dots>
@@ -677,18 +691,18 @@ export default function RemoveLiquidity({
                     ) : (
                       `${t("debris.text58")}`
                     )}
-                  </ButtonConfirmed>
-                  <ButtonError
+                  </ButtonConfirmedbtn>
+                  <ButtonErrorbtn
                     onClick={() => {
                       setShowConfirm(true)
                     }}
                     disabled={!isValid || (signatureData === null && approval !== ApprovalState.APPROVED)}
                     error={!isValid && !!parsedAmounts[Field.CURRENCY_A] && !!parsedAmounts[Field.CURRENCY_B]}
                   >
-                    <Text fontSize={16} fontWeight={500}>
+                    <Text fontSize={15} fontWeight={500}>
                       {error || `${t("debris.text43")}`}
                     </Text>
-                  </ButtonError>
+                  </ButtonErrorbtn>
                 </RowBetween>
               )}
             </div>

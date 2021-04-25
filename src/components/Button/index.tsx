@@ -31,7 +31,7 @@ const Base = styled(RebassButton)<{
   position: relative;
   z-index: 1;
   margin-left:7%;
-  font-size:15px !important;
+  font-size:15px;
   &:disabled {
     cursor: auto;
   }
@@ -68,11 +68,11 @@ export const ButtonPrimary = styled(Base)`
     height:40px;
     color:white;
   }
-  background-color:transparent;
+ background-color:transparent;
   color:#000;
   border-radius:8px;
 `
-
+//  
 export const ButtonLight = styled(Base)`
   background-color: ${({ theme }) => theme.primary5};
   color: ${({ theme }) => theme.primaryText1};
@@ -313,7 +313,7 @@ const ButtonErrorStyle = styled(Base)`
     height:40px;
 
     background-color:#737373;
-    font-size:15px !important;
+    font-size:15px;
     border-radius:0px;
   }
 `

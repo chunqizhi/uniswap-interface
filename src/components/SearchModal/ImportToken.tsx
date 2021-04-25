@@ -30,7 +30,13 @@ const WarningWrapper = styled(Card)<{ highWarning: boolean }>`
     highWarning ? transparentize(0.8, theme.red1) : transparentize(0.8, theme.yellow2)};
   width: fit-content;
 `
-
+const ButtonPrimaryinput = styled(ButtonPrimary)`
+  background-color: #0278FE;
+  color:#fff;
+  height:40px;
+  padding:0px;
+  border: 1px solid transparent;
+`
 const AddressText = styled(TYPE.blue)`
   font-size: 12px;
 
@@ -145,7 +151,7 @@ export function ImportToken({ tokens, onBack, onDismiss, handleCurrencySelect }:
             </TYPE.body>
           </AutoRow>
         </Card>
-        <ButtonPrimary
+        <ButtonPrimaryinput
           disabled={!confirmed}
           altDisabledStyle={true}
           borderRadius="20px"
@@ -156,8 +162,8 @@ export function ImportToken({ tokens, onBack, onDismiss, handleCurrencySelect }:
           }}
           className=".token-dismiss-button"
         >
-          Import
-        </ButtonPrimary>
+          Import2
+        </ButtonPrimaryinput>
       </PaddedColumn>
     </Wrapper>
   )
