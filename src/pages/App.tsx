@@ -1,11 +1,11 @@
 import React, { Suspense } from 'react'
-
 import { Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 import GoogleAnalyticsReporter from '../components/analytics/GoogleAnalyticsReporter'
 import AddressClaimModal from '../components/claim/AddressClaimModal'
 import Header from '../components/Header'
 import Polling from '../components/Header/Polling'
+import Tips from '../components/Tips/tips'
 // import URLWarning from '../components/Header/URLWarning'
 import Popups from '../components/Popups'
 import Web3ReactManager from '../components/Web3ReactManager'
@@ -88,6 +88,7 @@ export default function App() {
       <AppWrapper>
         {/* <URLWarning /> */}
         <HeaderWrapper>
+          <Tips/>
           <Header />
         </HeaderWrapper>
         <BodyWrapper>
@@ -106,7 +107,7 @@ export default function App() {
               <Route exact strict path="/provideLiquidity/:poolIndex" component={ProvideLiquidity} />
 
               <Route exact strict path="/claim" component={OpenClaimAddressModalAndRedirectToSwap} />
-              
+
               <Route exact strict path="/swap/:outputCurrency" component={RedirectToSwap} />
               <Route exact strict path="/send" component={RedirectPathToSwapOnly} />
               <Route exact strict path="/find" component={PoolFinder} />
