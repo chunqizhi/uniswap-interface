@@ -109,7 +109,7 @@ color: ${({ theme }) => theme.text2};
 `
 const Approvediv = styled.div`
     padding:10px 20px;
-    background-color:#fff;
+    background-color:#f2f2f2;
     color:#000;
     position: fixed;
     top:30%;
@@ -170,7 +170,6 @@ export default function Menu() {
       {/* open &&  */}
       {open && (
         <MuneBox onClick={toggle}>
-          
           <MenuFlyout>
             <NavLinkItem id={`swap-nav-link`} to={'/swap'}>{t("navlist.text01")}</NavLinkItem>
             <NavLinkItem id={`mining-nav-link`} to={'/mining'}>{t("navlist.text02")}</NavLinkItem>
