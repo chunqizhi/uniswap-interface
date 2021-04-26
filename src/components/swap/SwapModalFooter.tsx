@@ -17,6 +17,8 @@ import QuestionHelper from '../QuestionHelper'
 import { AutoRow, RowBetween, RowFixed } from '../Row'
 import FormattedPriceImpact from './FormattedPriceImpact'
 import { StyledBalanceMaxMini, SwapCallbackError } from './styleds'
+import { useTranslation } from 'react-i18next'
+
 
 const ButtonErrorbtn = styled(ButtonError)`
   padding:0px;
@@ -45,6 +47,7 @@ export default function SwapModalFooter({
   ])
   const { priceImpactWithoutFee, realizedLPFee } = useMemo(() => computeTradePriceBreakdown(trade), [trade])
   const severity = warningSeverity(priceImpactWithoutFee)
+  const { t } = useTranslation()
 
   return (
     <>
@@ -123,7 +126,7 @@ export default function SwapModalFooter({
           id="confirm-swap-or-send"
         >
           <Text fontSize={16} fontWeight={500}>
-            {severity > 2 ? 'Swap Anyway' : 'Confirm Swap'}
+            {severity > 2 ? `${t("debris.text69")}` : `${t("debris.text70")}`}
           </Text>
         </ButtonErrorbtn>
 

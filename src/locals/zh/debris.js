@@ -74,4 +74,6 @@ export default {
     text66: '新的 Heco？',
     text67: '了解有关钱包的更多信息',
     text68: '连接钱包',
+    text69: '仍然兑换',
+    text70: '确认交换',
 }

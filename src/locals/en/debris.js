@@ -73,4 +73,6 @@ export default {
     text66: 'New to Heco?',
     text67: 'Learn more about wallets',
     text68: 'Connect to a wallet',
+    text69: 'Swap Anyway',
+    text70: 'Confirm Swap',
 }

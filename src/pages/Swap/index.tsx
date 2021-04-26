@@ -481,7 +481,7 @@ export default function Swap({ history }: RouteComponentProps) {
                   <Text fontSize={16} fontWeight={500}>
                     {priceImpactSeverity > 3 && !isExpertMode
                       ? `${t("swap.text15")}`
-                      : `Swap${priceImpactSeverity > 2 ? ' Anyway' : ''}`}
+                      : (priceImpactSeverity > 2) ? `${t("debris.text69")}` : `${t("swap.text21")}`}
                   </Text>
                 </ButtonErrorbtn>
               </RowBetween>
@@ -509,7 +509,7 @@ export default function Swap({ history }: RouteComponentProps) {
                     ? swapInputError
                     : priceImpactSeverity > 3 && !isExpertMode
                       ? `${t("swap.text16")}`
-                      : `Swap${priceImpactSeverity > 2 ? ' Anyway' : ''}`}
+                      : (priceImpactSeverity > 2) ? `${t("debris.text69")}` : `${t("swap.text21")}`}
                 </Text>
               </ButtonErrorbtn>
             )}
