@@ -177,7 +177,7 @@ export default function Menu() {
             <MenuItem id="link" href="https://www.tree-swap.org/data/WhitePapers.pdf">
               {t("navlist.text04")}
             </MenuItem>
-            <MenuItem id="link" href="#">
+            <MenuItem id="link" href="https://www.tree-swap.org/data/SwapAudit.pdf">
               {t("navlist.text09")}
             </MenuItem>
             <Language onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'zh' : 'en')}>{i18n.language === 'en' ? '中文' : 'English'}

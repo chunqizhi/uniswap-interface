@@ -6,7 +6,7 @@ import { hbtcAbi } from '../../abi/hbtc.abi.js' //next-abi
 import Contract from '../contract/index.js'
 import API from '../contract/api.js'
 
-// pre-next  ETH/HBTC
+// pre-next  ETH/HBTC  btc-usdt  usdt-btc 
 const trsAddr = `0x64FF637fB478863B7468bc97D30a5bF3A428a1fD` // pre-coin
 const usdtAddr = `0x66a79d23e58475d2738179ca52cd0b41d73f0bea` // next-coin
 const trsUsdtPairAddr = `0xd7e4615ac45ddb949121613cb638a801881de7d4` // pre-next-pair

@@ -95,7 +95,7 @@ function getPoolListData(type) {
             }
             let tvl, apy ,isall=false
             Icon.forEach((item, index) => {
-
+                // precoin nextcoin 数量 2倍的usdt 取前/后币类的汇率 coinRate[0].rate
                 switch (item.coin_price) {
                     case 'ETHPRE':
                         tvl = (((multiNum(res[index].precoin, 2)) * 1) * coinRate[0].rate).toFixed(2)
@@ -233,7 +233,7 @@ function getAllStartTime() {
 function getTrsRate() {
     return Six.getTrsRate()
 }
-
+//获取汇率
 function getCoinRate() {
     return new Promise((resolve, reject) => {
         Promise.all([
