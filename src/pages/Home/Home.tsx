@@ -108,6 +108,9 @@ align-items: center;
 color: #999;
 background: #FFF;
 text-decoration:none;
+>img{
+    margin-right:5px;
+}
 `
 const HomeBtn02 = styled(NavLink)`
     width: 86%;
@@ -179,7 +182,10 @@ export default function Home() {
             </TitleDiv>
             <HomeBXH>TRS</HomeBXH>
             <TitleDesc>{t("home.text03")}</TitleDesc>
-            <HomeBtn01 id={`swap-nav-link`} to={'/swap'}>{t("home.text12")}</HomeBtn01>
+            <HomeBtn01 id={`swap-nav-link`} to={'/swap'}>
+                <img src={require("../../assets/images/home/button01.png")} height='16' width='16' alt=""/>
+                {t("home.text12")}
+            </HomeBtn01>
             <HomeBtn02 id={`mining-nav-link`} to={'/mining'}>
                 <img src={require("../../assets/images/home/button02.png")} height='16' width='16' alt=""/>
                 {t("home.text13")}
