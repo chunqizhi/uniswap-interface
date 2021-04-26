@@ -365,12 +365,12 @@ export default function WalletModal({
                 setWalletView(WALLET_VIEWS.ACCOUNT)
               }}
             >
-              Back
+              {t("debris.text65")}
             </HoverText>
           </HeaderRow>
         ) : (
           <HeaderRow>
-            <HoverText>Connect to a wallet</HoverText>
+            <HoverText>{t("debris.text68")}</HoverText>
           </HeaderRow>
         )}
         <ContentWrapper>
@@ -386,8 +386,8 @@ export default function WalletModal({
           )}
           {walletView !== WALLET_VIEWS.PENDING && (
             <Blurb>
-              <span>New to Heco? &nbsp;</span>{' '}
-              <ExternalLink onClick ={toast} >Learn more about wallets</ExternalLink>
+              <span>{t("debris.text66")} &nbsp;</span>{' '}
+              <ExternalLink onClick ={toast} >{t("debris.text67")}</ExternalLink>
               {/* <ExternalLink href="https://ethereum.org/wallets/">Learn more about wallets</ExternalLink> */}
             </Blurb>
           )}

@@ -93,7 +93,7 @@ function getPoolListData(type) {
                 "flat": [],
                 "ideas": []
             }
-            let tvl, apy
+            let tvl, apy ,isall=false
             Icon.forEach((item, index) => {
 
                 switch (item.coin_price) {
@@ -115,12 +115,15 @@ function getPoolListData(type) {
                     default:
                         console.log(`error`);
                 }
-
+                
                 if (type !== 'all') {
-                    if (res[index].supply === 0) {
+                    if (res[index].supply === '0') {
                         apy = `0.00%`
                     } else {
                         apy = (((res[index].per_day * trsRate.rate) / tvl) * 360 * 100).toFixed(2) + "%"
+                    }
+                    if (res[index].supply === '0') {
+                        tvl = `0.00`
                     }
                     data[item.key_word].push({
                         ...item,
@@ -131,8 +134,19 @@ function getPoolListData(type) {
                 }
                 allBalance = addNum(tvl, allBalance)
             })
+            Icon.forEach((item, index) => {
+                if (res[index].supply !== '0') {
+                    isall = true;
+                    return;
+                }
+            })
             if (type === 'all') {
-                resolve(allBalance)
+                if(isall){
+                    resolve(allBalance)
+                }else{   
+                    resolve(0)
+                }
+                
             } else {
                 resolve(data)
 

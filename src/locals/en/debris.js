@@ -69,4 +69,8 @@ export default {
     text62: '% your transaction will revert.',
     text63: 'Confirm',
     text64: 'Please try to refresh the page and reconnect the wallet',
+    text65: 'Back',
+    text66: 'New to Heco?',
+    text67: 'Learn more about wallets',
+    text68: 'Connect to a wallet',
 }
