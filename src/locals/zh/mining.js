@@ -8,7 +8,7 @@ export default {
     text07: '每月产出',
     text08: '已回购TRS数量',
     text09: '流动性挖矿',
-    text10: '提供流动性，赚取TRS Tokens',
+    text10: '提供流动性，赚取TRS代币',
     text11: '主区',
     text12: 'FLAT',
     text13: '创新区',

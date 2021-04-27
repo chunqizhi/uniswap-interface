@@ -35,16 +35,16 @@ export default function Tips() {
     }, [])
 
     function left_time_fn() {
-        let year = 2021, month = 3, day = 25, hour = 20, minute = 47, second = 0;
+        let year = 2021, month = 3, day = 27, hour = 10, minute = 5, second = 0;
         let deadTime: any = (new Date(year, month, day, hour, minute, second)).getTime()
         let currentTime: any = (new Date()).getTime()
         let temp = deadTime - currentTime
-        if (temp<-5000) {
+        if (temp<-30000) {
             timer && clearTimeout(timer)
             setShowTips(false)
             return
         }
-        else if (temp>-5000&&temp<0){
+        else if (temp>-30000&&temp<0){
             setCountDown({
                 days: '00',
                 hours: '00',
@@ -81,22 +81,22 @@ export default function Tips() {
                     <ul className="tips-ul">
                         <li className="tips-li">
                             <span className="time-num num-dot">{countDown.days}</span>
-                            <span className="time-text">Day</span>
+                            <span className="time-text">天</span>
                         </li>
                         <li className="tips-li">
                             <span className="time-num num-dot">{countDown.hours}</span>
-                            <span className="time-text">Hour</span>
+                            <span className="time-text">时</span>
                         </li>
                         <li className="tips-li">
                             <span className="time-num num-dot">{countDown.minutes}</span>
-                            <span className="time-text">Minute</span>
+                            <span className="time-text">分</span>
                         </li>
                         <li className="tips-li">
                             <span className="time-num">{countDown.seconds}</span>
-                            <span className="time-text">Second</span>
+                            <span className="time-text">秒</span>
                         </li>
                     </ul>
-                    <div className="tips-bottom">COUNTDOWN</div>
+                    <div className="tips-bottom">启动倒计时</div>
                 </div>
             </div>
             )}
