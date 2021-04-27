@@ -132,7 +132,7 @@ export default function Header() {
         <UniBalanceContent setShowUniBalanceModal={setShowUniBalanceModal} />
       </Modal>
       <HeaderRow>
-        <HomeBtn01 id={`home-nav-link`} to={'/home'}> <img width={'75px'} src={darkMode ? LogoDark : LogoDark} alt="logo" /></HomeBtn01>
+        <HomeBtn01 id={`home-nav-link`} to={'/home'}> <img width={'64px'} src={darkMode ? LogoDark : LogoDark} alt="logo" /></HomeBtn01>
         <HeaderLinks>
           {/* <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
             {t('swap')}
