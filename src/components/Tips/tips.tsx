@@ -35,7 +35,9 @@ export default function Tips() {
     }, [])
 
     function left_time_fn() {
-        let year = 2021, month = 3, day = 27, hour = 10, minute = 5, second = 0;
+        // 正式挖矿时间
+        // let year = 2021, month = 3, day = 28, hour = 20, minute = 0, second = 0;
+        let year = 2021, month = 3, day = 27, hour = 2, minute = 0, second = 0;
         let deadTime: any = (new Date(year, month, day, hour, minute, second)).getTime()
         let currentTime: any = (new Date()).getTime()
         let temp = deadTime - currentTime
