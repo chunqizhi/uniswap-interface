@@ -9,7 +9,7 @@ import API from '../contract/api.js'
 // pre-next HT-USDT
 const trsAddr = `0x5545153CCFcA01fbd7Dd11C0b23ba694D9509A6F` // pre-coin
 const usdtAddr = `0xa71EdC38d189767582C38A3145b5873052c3e47a` // next-coin
-const trsUsdtPairAddr = `0x6c1116dd48ae482078412305babc04f6e659f599` // pre-next-pair
+const trsUsdtPairAddr = `0x82b2e61334dceb8259ba1719054da1348b5efa16` // pre-next-pair
 const trsUsdtPoolAddr = `0x4cf6a99B9e74f952e4e0C704277018883f310d61` // pre-next-pool
 
 

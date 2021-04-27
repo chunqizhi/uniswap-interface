@@ -9,7 +9,7 @@ import API from '../contract/api.js'
 // pre-next  ETH/HBTC  btc-usdt  usdt-btc 
 const trsAddr = `0x64FF637fB478863B7468bc97D30a5bF3A428a1fD` // pre-coin
 const usdtAddr = `0x66a79d23e58475d2738179ca52cd0b41d73f0bea` // next-coin
-const trsUsdtPairAddr = `0xd7e4615ac45ddb949121613cb638a801881de7d4` // pre-next-pair
+const trsUsdtPairAddr = `0x416725ee40e4be808edb9ed7ce6c742371d5621d` // pre-next-pair
 const trsUsdtPoolAddr = `0xD64c9E76f5E716aC6BeF199A5255bfA0B4096219` // pre-next-pool
 
 
