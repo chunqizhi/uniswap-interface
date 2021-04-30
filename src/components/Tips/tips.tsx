@@ -39,16 +39,16 @@ export default function Tips() {
         // let newtime = new Date().toLocaleString('en-US', { timeZone: 'Asia/Shanghai' })
         // console.log('newtime =>',newtime)
         // let year = 2021, month = 3, day = 28, hour = 20, minute = 0, second = 0;
-        let year = 2021, month = 3, day = 1, hour = 20, minute = 0, second = 0;
+        let year = 2021, month = 4, day = 2, hour = 19, minute = 0, second = 0;
         let deadTime: any = (new Date(year, month, day, hour, minute, second)).getTime()
         let currentTime: any = (new Date()).getTime()
         let temp = deadTime - currentTime
-        if (temp<-30000) {
+        if (temp<-20000) {
             timer && clearTimeout(timer)
             setShowTips(false)
             return
         }
-        else if (temp>-30000&&temp<0){
+        else if (temp>-20000&&temp<0){
             setCountDown({
                 days: '00',
                 hours: '00',

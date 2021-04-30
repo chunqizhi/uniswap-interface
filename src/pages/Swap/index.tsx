@@ -329,9 +329,6 @@ export default function Swap({ history }: RouteComponentProps) {
           timer && clearTimeout(timer)
       }
   }, [])
-  console.log(Boolean(isTips))
-  // const istime = isTips-new Date(2021,4,30,19,34,0).getTime() > 3000 ? true : false
-  // console.log("99999",isTips)
   const swapIsUnsupported = useIsTransactionUnsupported(currencies?.INPUT, currencies?.OUTPUT)
  
   return (
