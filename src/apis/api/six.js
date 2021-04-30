@@ -10,7 +10,7 @@ const trsAddr = `0x996c26E85C40dC5A2eF4aAF96E286Af1Cf7C58E1` // pre
 const usdtAddr = `0xa71EdC38d189767582C38A3145b5873052c3e47a` // next
 
 const trsUsdtPairAddr = `0x70cfe24da1999133c24f97f18995cfc79aa77273` // pre-next-pair
-const trsUsdtPoolAddr = `0x32eb20456e8480EB6F084bd845A02B6052C7e30F` // pre-next-pool
+const trsUsdtPoolAddr = `0x93526835998E37463f1B4f685E3C69B669410C65` // pre-next-pool
 
 
 const usdtTokenAddr = usdtAddr

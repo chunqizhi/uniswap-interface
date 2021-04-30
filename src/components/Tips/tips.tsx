@@ -18,7 +18,6 @@ export default function Tips() {
         seconds: '0',
     })
     const [showTips, setShowTips] = useState(true)
-    const [isTips, setisTips] = useState(false)
 
     useEffect(() => {
         let timerFn = function () {
@@ -47,7 +46,6 @@ export default function Tips() {
         if (temp<-30000) {
             timer && clearTimeout(timer)
             setShowTips(false)
-            setisTips(true)
             return
         }
         else if (temp>-30000&&temp<0){

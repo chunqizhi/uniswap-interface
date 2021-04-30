@@ -59,7 +59,7 @@ const ButtonErrorbtn = styled(ButtonError)`
   height:40px;
 `
 
-let timer,newdate
+let timer
 export default function Swap({ history }: RouteComponentProps) {
   const { t } = useTranslation()
 
