@@ -57,10 +57,10 @@ function getCurrentPool(type) {
             API = Nine
             coinInfo = Icon[8]
             break;
-        case "ten":
-            API = Ten
-            coinInfo = Icon[9]
-            break;
+            // case "ten":
+            //     API = Ten
+            //     coinInfo = Icon[9]
+            //     break;
 
         default:
             console.log('error')
@@ -83,7 +83,7 @@ function getPoolListData(type) {
             Seven.getPoolData(),
             Eight.getPoolData(),
             Nine.getPoolData(),
-            Ten.getPoolData(),
+            // Ten.getPoolData(),
         ]).then(async res => {
             let coinRate = await getCoinRate() //  汇率
             let trsRate = await getTrsRate() //trs 价格
@@ -93,7 +93,7 @@ function getPoolListData(type) {
                 "flat": [],
                 "ideas": []
             }
-            let tvl, apy ,isall=false
+            let tvl, apy, isall = false
             Icon.forEach((item, index) => {
                 // precoin nextcoin 数量 2倍的usdt 取前/后币类的汇率 coinRate[0].rate
                 switch (item.coin_price) {
@@ -115,7 +115,7 @@ function getPoolListData(type) {
                     default:
                         console.log(`error`);
                 }
-                
+
                 if (type !== 'all') {
                     if (res[index].supply === '0') {
                         apy = `0.00%`
@@ -141,12 +141,12 @@ function getPoolListData(type) {
                 }
             })
             if (type === 'all') {
-                if(isall){
+                if (isall) {
                     resolve(allBalance)
-                }else{   
+                } else {
                     resolve(0)
                 }
-                
+
             } else {
                 resolve(data)
 
@@ -169,7 +169,7 @@ function getAllBlock() {
             Seven.getLastTime(),
             Eight.getLastTime(),
             Nine.getLastTime(),
-            Ten.getLastTime(),
+            // Ten.getLastTime(),
         ]).then(lastTime => {
             getAllRewardRate().then(allRate => {
                 getAllStartTime().then(allTime => {
@@ -198,7 +198,7 @@ function getAllRewardRate() {
             Seven.getRewardRate(),
             Eight.getRewardRate(),
             Nine.getRewardRate(),
-            Ten.getRewardRate(),
+            // Ten.getRewardRate(),
         ]).then(res => {
             resolve(res.map((item) => {
                 return Web3.utils.fromWei(item, 'ether')
@@ -221,7 +221,7 @@ function getAllStartTime() {
             Seven.getPoolStartTime(),
             Eight.getPoolStartTime(),
             Nine.getPoolStartTime(),
-            Ten.getPoolStartTime(),
+            // Ten.getPoolStartTime(),
         ]).then(res => {
             resolve(res)
         }).catch(err => {

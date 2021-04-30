@@ -5,7 +5,7 @@ import HTICON from '../../assets/images/coin/HT.png'
 import BXHICON from '../../assets/images/coin/BXH.png'
 import MDXICON from '../../assets/images/coin/MDX.png'
 import HUSDICON from '../../assets/images/coin/HUSD.png'
-import TPTICON from '../../assets/images/coin/TPT.png'
+// import TPTICON from '../../assets/images/coin/TPT.png'
 import HBTCICON from '../../assets/images/coin/HBTC.png'
 
 export default [{
@@ -95,13 +95,13 @@ export default [{
         key_word: "ideas"
     },
 
-    {
-        pre_coin: TPTICON,
-        next_coin: USDTICON,
-        coin_name: "TPT/USDT",
-        coin: "TRS",
-        poolIndex: 'ten',
-        coin_price: 'USDTNEXT',
-        key_word: "ideas"
-    },
+    // {
+    //     pre_coin: TPTICON,
+    //     next_coin: USDTICON,
+    //     coin_name: "TPT/USDT",
+    //     coin: "TRS",
+    //     poolIndex: 'ten',
+    //     coin_price: 'USDTNEXT',
+    //     key_word: "ideas"
+    // },
 ]

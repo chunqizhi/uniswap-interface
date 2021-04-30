@@ -58,6 +58,8 @@ const ButtonErrorbtn = styled(ButtonError)`
   color:#fff;
   height:40px;
 `
+
+let timer,newdate
 export default function Swap({ history }: RouteComponentProps) {
   const { t } = useTranslation()
 
@@ -97,7 +99,7 @@ export default function Swap({ history }: RouteComponentProps) {
 
   // get custom setting values for user
   const [allowedSlippage] = useUserSlippageTolerance()
-
+  
   // swap state
   const { independentField, typedValue, recipient } = useSwapState()
   const {
@@ -306,9 +308,32 @@ export default function Swap({ history }: RouteComponentProps) {
   const handleOutputSelect = useCallback(outputCurrency => onCurrencySelection(Field.OUTPUT, outputCurrency), [
     onCurrencySelection
   ])
+  const [isTips, setisTips] = useState(false)
 
+  // timer && clearTimeout(timer)
+  // timer = setTimeout(() => {
+  //     // newdate = new Date().getTime()
+  //     // setisTips(new Date().getTime()-new Date(2021,4,30,19,37,0).getTime() > 5000 ? true : false)
+  //     console('123',new Date().getTime())
+  //   }, 1000);
+  useEffect(() => {
+      let timerFn = function () {
+          timer && clearTimeout(timer)
+          timer = setTimeout(() => {
+              setisTips(new Date().getTime()-new Date(2021,4,2,19,0,0).getTime() > 0 ? true : false)
+              timerFn()
+          }, 1000);
+      }
+      timerFn()
+      return function () {
+          timer && clearTimeout(timer)
+      }
+  }, [])
+  console.log(Boolean(isTips))
+  // const istime = isTips-new Date(2021,4,30,19,34,0).getTime() > 3000 ? true : false
+  // console.log("99999",isTips)
   const swapIsUnsupported = useIsTransactionUnsupported(currencies?.INPUT, currencies?.OUTPUT)
-
+ 
   return (
     <>
       <PageTitle />
@@ -421,8 +446,9 @@ export default function Swap({ history }: RouteComponentProps) {
               </Card>
             )}
           </AutoColumn>
-          <BottomGrouping>
-            {swapIsUnsupported ? (
+        {isTips ?(
+          <BottomGrouping >
+            {swapIsUnsupported && isTips ? (
               <ButtonPrimary disabled={true}>
                 <TYPE.main mb="4px">{t("swap.text09")}</TYPE.main>
               </ButtonPrimary>
@@ -459,9 +485,9 @@ export default function Swap({ history }: RouteComponentProps) {
                 </ButtonConfirmed>
                 <ButtonErrorbtn
                   onClick={() => {
-                    if (isExpertMode) {
+                    if (isExpertMode && isTips) {
                       handleSwap()
-                    } else {
+                    } else if(!isExpertMode && isTips){
                       setSwapState({
                         tradeToConfirm: trade,
                         attemptingTxn: false,
@@ -487,10 +513,11 @@ export default function Swap({ history }: RouteComponentProps) {
               </RowBetween>
             ) : (
               <ButtonErrorbtn
+
                 onClick={() => {
-                  if (isExpertMode) {
+                  if (isExpertMode && isTips) {
                     handleSwap()
-                  } else {
+                  } else if(!isExpertMode && isTips){
                     setSwapState({
                       tradeToConfirm: trade,
                       attemptingTxn: false,
@@ -525,6 +552,8 @@ export default function Swap({ history }: RouteComponentProps) {
               <DefaultVersionLink />
             ) : null}
           </BottomGrouping>
+          ) : null
+        }
         </Wrapper>
       </AppBody>
       {!swapIsUnsupported ? (
