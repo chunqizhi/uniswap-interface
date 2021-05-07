@@ -6,6 +6,7 @@ import BXHICON from '../../assets/images/coin/BXH.png'
 import MDXICON from '../../assets/images/coin/MDX.png'
 import HUSDICON from '../../assets/images/coin/HUSD.png'
 // import TPTICON from '../../assets/images/coin/TPT.png'
+import DOGEICON from '../../assets/images/coin/DOGE.png'
 import HBTCICON from '../../assets/images/coin/HBTC.png'
 import XFICON from '../../assets/images/coin/XF.png'
 
@@ -107,6 +108,15 @@ export default [{
     //     key_word: "ideas"
     // },
     {
+        pre_coin: HTICON,
+        next_coin: USDTICON,
+        coin_name: "HT/USDT",
+        coin: "TRS",
+        poolIndex: 'eleven',
+        coin_price: 'USDTNEXT',
+        key_word: "main"
+    },
+    {
         pre_coin: XFICON,
         next_coin: USDTICON,
         coin_name: "XF/USDT",
@@ -114,5 +124,32 @@ export default [{
         poolIndex: 'twelve',
         coin_price: 'USDTNEXT',
         key_word: "ideas"
+    },
+    {
+        pre_coin: TRSICON,
+        next_coin: DOGEICON,
+        coin_name: "TRS/DOGE",
+        coin: "TRS",
+        poolIndex: 'thirteen',
+        coin_price: 'TRSPRE',
+        key_word: "flat"
+    },
+    {
+        pre_coin: HBTCICON,
+        next_coin: HTICON,
+        coin_name: "HBTC/HT",
+        coin: "TRS",
+        poolIndex: 'fourteen',
+        coin_price: 'HTNEXT',
+        key_word: "main"
+    },
+    {
+        pre_coin: ETHICON,
+        next_coin: HTICON,
+        coin_name: "ETH/HT",
+        coin: "TRS",
+        poolIndex: 'fifteen',
+        coin_price: 'HTNEXT',
+        key_word: "main"
     },
 ]

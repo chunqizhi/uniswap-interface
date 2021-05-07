@@ -10,6 +10,9 @@ import Nine from './nine.js'
 import Ten from './ten.js'
 import Eleven from './eleven.js'
 import Twelve from './twelve.js'
+import Thirteen from './thirteen.js'
+import Fourteen from './fourteen.js'
+import Fifteen from './fifteen.js'
 import Icon from './icon.js'
 import Web3 from "web3";
 
@@ -62,11 +65,26 @@ function getCurrentPool(type) {
             //     API = Ten
             //     coinInfo = Icon[9]
             //     break;
-        case "twelve":
-            API = Twelve
+        case "eleven":
+            API = Eleven
             coinInfo = Icon[9]
             break;
-
+        case "twelve":
+            API = Twelve
+            coinInfo = Icon[10]
+            break;
+        case "thirteen":
+            API = Thirteen
+            coinInfo = Icon[11]
+            break;
+        case "fourteen":
+            API = Fourteen
+            coinInfo = Icon[12]
+            break;
+        case "fifteen":
+            API = Fifteen
+            coinInfo = Icon[13]
+            break;
         default:
             console.log('error')
     }
@@ -88,8 +106,12 @@ function getPoolListData(type) {
             Seven.getPoolData(),
             Eight.getPoolData(),
             Nine.getPoolData(),
-            Twelve.getPoolData(),
             // Ten.getPoolData(),
+            Eleven.getPoolData(),
+            Twelve.getPoolData(),
+            Thirteen.getPoolData(),
+            Fourteen.getPoolData(),
+            Fifteen.getPoolData(),
         ]).then(async res => {
             let coinRate = await getCoinRate() //  汇率
             let trsRate = await getTrsRate() //trs 价格
@@ -117,6 +139,9 @@ function getPoolListData(type) {
                         break;
                     case 'HTNEXT':
                         tvl = (((multiNum(res[index].nextcoin, 2)) * 1) * coinRate[5].rate).toFixed(2)
+                        break;
+                    case 'TRSPRE':
+                        tvl = (((multiNum(res[index].precoin, 2)) * 1) * coinRate[1].rate).toFixed(2)
                         break;
                     default:
                         console.log(`error`);
@@ -176,7 +201,11 @@ function getAllBlock() {
             Eight.getLastTime(),
             Nine.getLastTime(),
             // Ten.getLastTime(),
+            Eleven.getLastTime(),
             Twelve.getLastTime(),
+            Thirteen.getLastTime(),
+            Fourteen.getLastTime(),
+            Fifteen.getLastTime(),
         ]).then(lastTime => {
             getAllRewardRate().then(allRate => {
                 getAllStartTime().then(allTime => {
@@ -205,8 +234,12 @@ function getAllRewardRate() {
             Seven.getRewardRate(),
             Eight.getRewardRate(),
             Nine.getRewardRate(),
+            Eleven.getRewardRate(),
             // Ten.getRewardRate(),
             Twelve.getRewardRate(),
+            Thirteen.getRewardRate(),
+            Fourteen.getRewardRate(),
+            Fifteen.getRewardRate(),
         ]).then(res => {
             resolve(res.map((item) => {
                 return Web3.utils.fromWei(item, 'ether')
@@ -230,7 +263,11 @@ function getAllStartTime() {
             Eight.getPoolStartTime(),
             Nine.getPoolStartTime(),
             // Ten.getPoolStartTime(),
+            Eleven.getPoolStartTime(),
             Twelve.getPoolStartTime(),
+            Thirteen.getPoolStartTime(),
+            Fourteen.getPoolStartTime(),
+            Fifteen.getPoolStartTime(),
         ]).then(res => {
             resolve(res)
         }).catch(err => {

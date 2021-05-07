@@ -13,6 +13,7 @@ input {
 
 .add {
     width: 100%;
+    /* background-color: red; */
 }
 
 .add .title {
@@ -174,7 +175,7 @@ input {
     border: 1px solid #bdbcbf;
     height: 38px;
     position: relative;
-    border-radius:5px;
+    border-radius: 5px;
     overflow: hidden;
     background-color: #bdbcbf;
 }
@@ -186,7 +187,6 @@ input {
     box-sizing: border-box;
     font-size: 14px;
     background-color: #bdbcbf;
-
 }
 
 .add-mask .mask-input-box span {
@@ -209,7 +209,6 @@ input {
     margin: 20px 0 10px;
     display: flex;
     justify-content: space-between;
-
 }
 
 .add-mask .mask-bottom .bottom-btn {
