@@ -6,10 +6,10 @@ import Contract from '../contract/index.js'
 import API from '../contract/api.js'
 
 // pre-next  ETH/HT
-const trsAddr = `0x6Db623116138E132D50B2d201B74A4ff13C1E017` // pre
-const usdtAddr = `0xa71EdC38d189767582C38A3145b5873052c3e47a` // next
+const trsAddr = `0x64FF637fB478863B7468bc97D30a5bF3A428a1fD` // pre
+const usdtAddr = `0x5545153CCFcA01fbd7Dd11C0b23ba694D9509A6F` // next
 
-const trsUsdtPairAddr = `0x329629C5F4E45a55F0cfFe3A7c0b59e27697331F` // pre-next-pair
+const trsUsdtPairAddr = `0x9a0b5108cadbfc413db90392cc81593b7cd91775` // pre-next-pair
 const trsUsdtPoolAddr = `0xfe79295e87a16fFbcdCea65c34582f5B4212A54b` // pre-next-pool
 
 
