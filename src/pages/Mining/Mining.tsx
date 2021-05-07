@@ -71,15 +71,15 @@ const { t } = useTranslation()
     const [balance, setBalance] = useState(0.00)
 
     Data.getPoolListData().then(res => {
-        console.log(`setMainList`,res)
+        // console.log(`setMainList`,res)
         setMainList(res)
     })
     Data.getAllBlock().then(res=>{
-        console.log(`setAllBock`,res)
+        // console.log(`setAllBock`,res)
         setAllBock(res)
     })
     API.getWalletAllTrs().then(res => {
-        console.log(`setBalance`,res)
+        // console.log(`setBalance`,res)
         setBalance(res)
     })
 
