@@ -163,7 +163,6 @@ export default function WalletModal({
   const previousAccount = usePrevious(account)
 
   const toast = () => {
-    console.log("提示")
     setApprovediv(true)
     setWalletView(WALLET_VIEWS.ACCOUNT)
     setPendingError(false)

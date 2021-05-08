@@ -64,23 +64,23 @@ const { t } = useTranslation()
         let setTimeoutTimer;
         const timerFn = function () {
             API.isApprove().then(res => {
-                console.log("是否授权" + res)
+                // console.log("是否授权" + res)
                 setApprove(res)
             })
             // 抵押的LP
             API.getStakedLp().then(res => {
                 setStakedLp(res)
-                console.log("抵押的LP" + res)
+                // console.log("抵押的LP" + res)
             })
             // 未抵押的
             API.getUnStakedLp().then(res => {
                 setUnStakedLp(res)
-                console.log("未抵押的" + res)
+                // console.log("未抵押的" + res)
             })
             // 当前收益
             API.getEarned().then(res => {
                 setEarned(res)
-                console.log("当前收益：" + res)
+                // console.log("当前收益：" + res)
             })
         }
 
@@ -146,7 +146,7 @@ const { t } = useTranslation()
                                     else approveFn()
                                     return
                                 }
-                                console.log(isApprove)
+                                // console.log(isApprove)
                                 API.getReward().then(res => {
                                 })
                             }
@@ -259,13 +259,13 @@ const { t } = useTranslation()
                                                     case 'stake':
                                                         API.stakedLpToPool(inputValue).then(res => {
                                                             setAddFlag(false)
-                                                            console.log("stakedLpToPool:" + res)
+                                                            // console.log("stakedLpToPool:" + res)
                                                         })
                                                         break;
                                                     case 'withdraw':
                                                         API.stakedLpOutPool(inputValue).then(res => {
                                                             setAddFlag(false)
-                                                            console.log("stakedLpOutPool:" + res)
+                                                            // console.log("stakedLpOutPool:" + res)
                                                         })
                                                         break;
                                                     default:

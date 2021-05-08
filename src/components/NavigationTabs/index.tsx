@@ -103,7 +103,7 @@ export function AddRemoveTabs({ adding, creating }: { adding: boolean; creating:
           }}
         > */}
           <StyledArrowLeft  onClick={()=>{
-            console.log(12313213)
+            // console.log(12313213)
             history.goBack();
              adding && dispatch(resetMintState())
           }}/>

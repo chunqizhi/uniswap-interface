@@ -395,14 +395,14 @@ class Contract {
                                     from: account,
                                 },
                                 function(error, hash) {
-                                    console.log(JSON.stringify(hash))
+                                    // console.log(JSON.stringify(hash))
                                     if (error) {
-                                        console.log("发起交易失败：");
+                                        // console.log("发起交易失败：");
                                         errorCallBack && errorCallBack(_this.handleError(error));
                                     } else {
-                                        console.log("交易参数params:");
-                                        console.log(params);
-                                        console.log(`${hash}`);
+                                        // console.log("交易参数params:");
+                                        // console.log(params);
+                                        // console.log(`${hash}`);
                                         callback(JSON.parse(JSON.stringify(hash)));
                                     }
                                 }

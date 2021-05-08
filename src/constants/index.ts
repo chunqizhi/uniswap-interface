@@ -1,7 +1,8 @@
 import { ChainId, JSBI, Percent, Token, WETH } from 'huiwan-v2-sdk'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 
-import { fortmatic, injected, portis, walletconnect, walletlink } from '../connectors'
+// import { fortmatic, injected, portis, walletconnect, walletlink } from '../connectors'
+import {  injected, walletconnect, walletlink } from '../connectors'
 
 export const ROUTER_ADDRESS = '0xB0c94CACC508043D71e25bc53d38065bFd0672d4'
 
