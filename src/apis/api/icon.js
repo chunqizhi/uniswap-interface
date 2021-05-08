@@ -11,6 +11,7 @@ import HBTCICON from '../../assets/images/coin/HBTC.png'
 import XFICON from '../../assets/images/coin/XF.png'
 import HDOTICON from '../../assets/images/coin/HDOT.png'
 import HFILICON from '../../assets/images/coin/HFIL.png'
+import SHIBICON from '../../assets/images/coin/SHIB.png'
 
 
 
@@ -155,15 +156,15 @@ export default [{
         coin_price: 'HTNEXT',
         key_word: "main"
     },
-    {
-        pre_coin: TRSICON,
-        next_coin: ETHICON,
-        coin_name: "TRS/ETH",
-        coin: "TRS",
-        poolIndex: 'trseth',
-        coin_price: 'TRSPRE',
-        key_word: "flat"
-    },
+    // {
+    //     pre_coin: TRSICON,
+    //     next_coin: ETHICON,
+    //     coin_name: "TRS/ETH",
+    //     coin: "TRS",
+    //     poolIndex: 'trseth',
+    //     coin_price: 'TRSPRE',
+    //     key_word: "flat"
+    // },
     {
         pre_coin: HFILICON,
         next_coin: USDTICON,
@@ -181,5 +182,14 @@ export default [{
         poolIndex: 'hdotusdt',
         coin_price: 'USDTNEXT',
         key_word: "main"
+    },
+    {
+        pre_coin: TRSICON,
+        next_coin: SHIBICON,
+        coin_name: "TRS/SHIB",
+        coin: "TRS",
+        poolIndex: 'trsshib',
+        coin_price: 'TRSPRE',
+        key_word: "flat"
     },
 ]

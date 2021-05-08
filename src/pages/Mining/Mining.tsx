@@ -166,12 +166,12 @@ const { t } = useTranslation()
                                         <p className="item-coin">{item.coin_name}</p>
                                         <p>
                                             <span>{t("mining.text17")} {item.coin}</span>
-                                            <span className="item-span">{item.per_day}</span>
+                                            <span className="item-span"> {item.per_day}</span>
                                             <span>{t("mining.text14")}</span>
                                         </p>
                                         <p>
                                             <span>{t("mining.text07")} {item.coin}</span>
-                                            <span className="item-span">{item.per_month}</span>
+                                            <span className="item-span"> {item.per_month}</span>
                                             <span>{t("mining.text16")}</span>
                                         </p>
                                         <div className="item-div">
