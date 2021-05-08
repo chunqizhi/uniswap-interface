@@ -97,9 +97,13 @@ function getCurrentPool(type) {
             API = HfilUsdt
             coinInfo = Icon[14]
             break;
+        case "hdotusdt":
+            API = HdotUsdt
+            coinInfo = Icon[15]
+            break;
         case "trsshib":
             API = TrsShib
-            coinInfo = Icon[15]
+            coinInfo = Icon[16]
             break;
         default:
             console.log('error')
