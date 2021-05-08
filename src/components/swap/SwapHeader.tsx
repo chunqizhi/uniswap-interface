@@ -4,7 +4,8 @@ import Settings from '../Settings'
 import { RowBetween } from '../Row'
 import { TYPE } from '../../theme'
 import { useTranslation } from "react-i18next"
-import creatHistory from 'history/createHashHistory'
+// import creatHistory from 'history/createHashHistory'
+import {createHashHistory} from 'history'
 import { ArrowLeft } from 'react-feather'
 
 
@@ -28,7 +29,8 @@ const Dspdiv = styled.div`
 
 export default function SwapHeader() {
   const { t } = useTranslation()
-  const history = creatHistory();
+  // const history = creatHistory();
+  const history = createHashHistory();
 
 
   return (

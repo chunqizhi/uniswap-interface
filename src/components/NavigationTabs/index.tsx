@@ -11,7 +11,8 @@ import Settings from '../Settings'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from 'state'
 import { resetMintState } from 'state/mint/actions'
-import creatHistory from 'history/createHashHistory'
+// import creatHistory from 'history/createHashHistory'
+import {createHashHistory} from 'history'
 
 const Tabs = styled.div`
   ${({ theme }) => theme.flexRowNoWrap}
@@ -92,7 +93,8 @@ export function AddRemoveTabs({ adding, creating }: { adding: boolean; creating:
 
   // reset states on back
   const dispatch = useDispatch<AppDispatch>()
-  const history = creatHistory();
+  // const history = creatHistory();
+  const history = createHashHistory();
   return (
     <Tabs>
       <RowBetween style={{ padding: '1rem 1rem 0 1rem' }}>
