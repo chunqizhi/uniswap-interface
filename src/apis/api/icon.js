@@ -9,6 +9,9 @@ import HUSDICON from '../../assets/images/coin/HUSD.png'
 import DOGEICON from '../../assets/images/coin/DOGE.png'
 import HBTCICON from '../../assets/images/coin/HBTC.png'
 import XFICON from '../../assets/images/coin/XF.png'
+import HDOTICON from '../../assets/images/coin/HDOT.png'
+import HFILICON from '../../assets/images/coin/HFIL.png'
+
 
 
 export default [{
@@ -150,6 +153,33 @@ export default [{
         coin: "TRS",
         poolIndex: 'fifteen',
         coin_price: 'HTNEXT',
+        key_word: "main"
+    },
+    {
+        pre_coin: TRSICON,
+        next_coin: ETHICON,
+        coin_name: "TRS/ETH",
+        coin: "TRS",
+        poolIndex: 'trseth',
+        coin_price: 'TRSPRE',
+        key_word: "flat"
+    },
+    {
+        pre_coin: HFILICON,
+        next_coin: USDTICON,
+        coin_name: "HFIL/USDT",
+        coin: "TRS",
+        poolIndex: 'hfilusdt',
+        coin_price: 'USDTNEXT',
+        key_word: "main"
+    },
+    {
+        pre_coin: HDOTICON,
+        next_coin: USDTICON,
+        coin_name: "HDOT/USDT",
+        coin: "TRS",
+        poolIndex: 'hdotusdt',
+        coin_price: 'USDTNEXT',
         key_word: "main"
     },
 ]

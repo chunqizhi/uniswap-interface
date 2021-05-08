@@ -13,6 +13,9 @@ import Twelve from './twelve.js'
 import Thirteen from './thirteen.js'
 import Fourteen from './fourteen.js'
 import Fifteen from './fifteen.js'
+import TrsEth from './trs_eth.js'
+import HfilUsdt from './hfil_usdt.js'
+import HdotUsdt from './hdot_usdt.js'
 import Icon from './icon.js'
 import Web3 from "web3";
 
@@ -85,6 +88,18 @@ function getCurrentPool(type) {
             API = Fifteen
             coinInfo = Icon[13]
             break;
+        case "trseth":
+            API = TrsEth
+            coinInfo = Icon[14]
+            break;
+        case "hfilusdt":
+            API = HfilUsdt
+            coinInfo = Icon[15]
+            break;
+        case "hdotusdt":
+            API = HdotUsdt
+            coinInfo = Icon[16]
+            break;
         default:
             console.log('error')
     }
@@ -112,6 +127,10 @@ function getPoolListData(type) {
             Thirteen.getPoolData(),
             Fourteen.getPoolData(),
             Fifteen.getPoolData(),
+            TrsEth.getPoolData(),
+            HfilUsdt.getPoolData(),
+            HdotUsdt.getPoolData(),
+
         ]).then(async res => {
             let coinRate = await getCoinRate() //  汇率
             let trsRate = await getTrsRate() //trs 价格
@@ -206,6 +225,9 @@ function getAllBlock() {
             Thirteen.getLastTime(),
             Fourteen.getLastTime(),
             Fifteen.getLastTime(),
+            TrsEth.getLastTime(),
+            HfilUsdt.getLastTime(),
+            HdotUsdt.getLastTime(),
         ]).then(lastTime => {
             getAllRewardRate().then(allRate => {
                 getAllStartTime().then(allTime => {
@@ -240,6 +262,9 @@ function getAllRewardRate() {
             Thirteen.getRewardRate(),
             Fourteen.getRewardRate(),
             Fifteen.getRewardRate(),
+            TrsEth.getRewardRate(),
+            HfilUsdt.getRewardRate(),
+            HdotUsdt.getRewardRate(),
         ]).then(res => {
             resolve(res.map((item) => {
                 return Web3.utils.fromWei(item, 'ether')
@@ -268,6 +293,10 @@ function getAllStartTime() {
             Thirteen.getPoolStartTime(),
             Fourteen.getPoolStartTime(),
             Fifteen.getPoolStartTime(),
+            TrsEth.getPoolStartTime(),
+            HfilUsdt.getPoolStartTime(),
+            HdotUsdt.getPoolStartTime(),
+
         ]).then(res => {
             resolve(res)
         }).catch(err => {
