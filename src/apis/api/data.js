@@ -13,10 +13,13 @@ import Twelve from './twelve.js'
 import Thirteen from './thirteen.js'
 import Fourteen from './fourteen.js'
 import Fifteen from './fifteen.js'
-// import TrsEth from './trs_eth.js'
+import TrsEth from './trs_eth.js'
 import HfilUsdt from './hfil_usdt.js'
 import HdotUsdt from './hdot_usdt.js'
 import TrsShib from './trs_shib.js'
+import DogeUsdt from './doge_usdt.js'
+import ShibUsdt from './shib_usdt.js'
+import HltcUsdt from './hltc_usdt.js'
 import Icon from './icon.js'
 import Web3 from "web3";
 
@@ -89,10 +92,6 @@ function getCurrentPool(type) {
             API = Fifteen
             coinInfo = Icon[13]
             break;
-            // case "trseth":
-            //     API = TrsEth
-            //     coinInfo = Icon[14]
-            //     break;
         case "hfilusdt":
             API = HfilUsdt
             coinInfo = Icon[14]
@@ -104,6 +103,22 @@ function getCurrentPool(type) {
         case "trsshib":
             API = TrsShib
             coinInfo = Icon[16]
+            break;
+        case "trseth":
+            API = TrsEth
+            coinInfo = Icon[17]
+            break;
+        case "dogeusdt":
+            API = DogeUsdt
+            coinInfo = Icon[18]
+            break;
+        case "shibusdt":
+            API = ShibUsdt
+            coinInfo = Icon[19]
+            break;
+        case "hltcusdt":
+            API = HltcUsdt
+            coinInfo = Icon[20]
             break;
         default:
             console.log('error')
@@ -132,10 +147,13 @@ function getPoolListData(type) {
             Thirteen.getPoolData(),
             Fourteen.getPoolData(),
             Fifteen.getPoolData(),
-            // TrsEth.getPoolData(),
+            TrsEth.getPoolData(),
             HfilUsdt.getPoolData(),
             HdotUsdt.getPoolData(),
             TrsShib.getPoolData(),
+            DogeUsdt.getPoolData(),
+            ShibUsdt.getPoolData(),
+            HltcUsdt.getPoolData(),
 
         ]).then(async res => {
             let coinRate = await getCoinRate() //  汇率
@@ -148,6 +166,7 @@ function getPoolListData(type) {
             }
             let tvl, apy, isall = false
             Icon.forEach((item, index) => {
+                // if (index == 14) { debugger }
                 // precoin nextcoin 数量 2倍的usdt 取前/后币类的汇率 coinRate[0].rate
                 switch (item.coin_price) {
                     case 'ETHPRE':
@@ -175,6 +194,7 @@ function getPoolListData(type) {
                 if (type !== 'all') {
                     if (res[index].supply === '0') {
                         apy = `0.00%`
+
                     } else {
                         apy = (((res[index].per_day * trsRate.rate) / tvl) * 360 * 100).toFixed(2) + "%"
                     }
@@ -189,6 +209,8 @@ function getPoolListData(type) {
                     })
                 }
                 allBalance = addNum(tvl, allBalance)
+                    // console.log('apy ==>', apy, 'tvl ==>', tvl)
+
             })
             Icon.forEach((item, index) => {
                 if (res[index].supply !== '0') {
@@ -231,10 +253,13 @@ function getAllBlock() {
             Thirteen.getLastTime(),
             Fourteen.getLastTime(),
             Fifteen.getLastTime(),
-            // TrsEth.getLastTime(),
+            TrsEth.getLastTime(),
             HfilUsdt.getLastTime(),
             HdotUsdt.getLastTime(),
             TrsShib.getLastTime(),
+            DogeUsdt.getLastTime(),
+            ShibUsdt.getLastTime(),
+            HltcUsdt.getLastTime(),
         ]).then(lastTime => {
             getAllRewardRate().then(allRate => {
                 getAllStartTime().then(allTime => {
@@ -269,10 +294,13 @@ function getAllRewardRate() {
             Thirteen.getRewardRate(),
             Fourteen.getRewardRate(),
             Fifteen.getRewardRate(),
-            // TrsEth.getRewardRate(),
+            TrsEth.getRewardRate(),
             HfilUsdt.getRewardRate(),
             HdotUsdt.getRewardRate(),
             TrsShib.getRewardRate(),
+            DogeUsdt.getRewardRate(),
+            ShibUsdt.getRewardRate(),
+            HltcUsdt.getRewardRate(),
         ]).then(res => {
             resolve(res.map((item) => {
                 return Web3.utils.fromWei(item, 'ether')
@@ -301,11 +329,13 @@ function getAllStartTime() {
             Thirteen.getPoolStartTime(),
             Fourteen.getPoolStartTime(),
             Fifteen.getPoolStartTime(),
-            // TrsEth.getPoolStartTime(),
+            TrsEth.getPoolStartTime(),
             HfilUsdt.getPoolStartTime(),
             HdotUsdt.getPoolStartTime(),
             TrsShib.getPoolStartTime(),
-
+            DogeUsdt.getPoolStartTime(),
+            ShibUsdt.getPoolStartTime(),
+            HltcUsdt.getPoolStartTime(),
         ]).then(res => {
             resolve(res)
         }).catch(err => {

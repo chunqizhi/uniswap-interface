@@ -1,16 +1,16 @@
 import { pairAbi } from '../../abi/pair.abi.js' // pair-abi
 import { poolAbi } from '../../abi/pool.abi.js' // pool-abi
-import { trsAbi } from '../../abi/trs.abi.js' // pre-abi
-import { ethAbi } from '../../abi/eth.abi.js' // next-abi
+// import { bxhAbi } from '../../abi/bxh.abi.js' // pre-abi
+import { usdtAbi } from '../../abi/usdt.abi.js' // next-abi
 import Contract from '../contract/index.js'
 import API from '../contract/api.js'
 
-// pre-next TRS/ETH
-const trsAddr = `0x996c26E85C40dC5A2eF4aAF96E286Af1Cf7C58E1` // pre
-const usdtAddr = `0x64FF637fB478863B7468bc97D30a5bF3A428a1fD` // next
+// pre-next  HLTC/USDT
+const trsAddr = `0xecb56cf772B5c9A6907FB7d32387Da2fCbfB63b4` // pre
+const usdtAddr = `0xa71EdC38d189767582C38A3145b5873052c3e47a` // next
 
-const trsUsdtPairAddr = `0x7F3B3f0D7fBA9FB58eD2FaAD4b063a6730547ec6` // pre-next-pair
-const trsUsdtPoolAddr = `0xb8595331dFAB4Bfc1af0dd8f71500a2a5FB68c4D` // pre-next-pool
+const trsUsdtPairAddr = `0x8c79563a99c343d26b7cf4546e9e9f8336e89521` // pre-next-pair
+const trsUsdtPoolAddr = `0xfE575B3C562255392E2f73Bc228884FBf7846E60` // pre-next-pool
 
 
 const usdtTokenAddr = usdtAddr
@@ -18,9 +18,10 @@ const huiwanTokenAddr = trsAddr
 const huiwanUsdtMdexAddr = trsUsdtPairAddr
 const huiwanUsdtLoopAddr = trsUsdtPoolAddr
 
-// pre-next TRS/ETH
-const huiwanTokenABI = trsAbi //pre-abi
-const usdtTokenABI = ethAbi //next-abi
+// pre-next  HLTC/USDT
+const huiwanTokenABI = usdtAbi //pre-abi
+const usdtTokenABI = usdtAbi //next-abi
+
 const huiwanUsdtMdexABI = pairAbi
 const huiwanUsdtLoopABI = poolAbi
 

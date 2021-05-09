@@ -12,6 +12,7 @@ import XFICON from '../../assets/images/coin/XF.png'
 import HDOTICON from '../../assets/images/coin/HDOT.png'
 import HFILICON from '../../assets/images/coin/HFIL.png'
 import SHIBICON from '../../assets/images/coin/SHIB.png'
+import HLTCICON from '../../assets/images/coin/HLTC.png'
 
 
 
@@ -156,15 +157,6 @@ export default [{
         coin_price: 'HTNEXT',
         key_word: "main"
     },
-    // {
-    //     pre_coin: TRSICON,
-    //     next_coin: ETHICON,
-    //     coin_name: "TRS/ETH",
-    //     coin: "TRS",
-    //     poolIndex: 'trseth',
-    //     coin_price: 'TRSPRE',
-    //     key_word: "flat"
-    // },
     {
         pre_coin: HFILICON,
         next_coin: USDTICON,
@@ -191,5 +183,41 @@ export default [{
         poolIndex: 'trsshib',
         coin_price: 'TRSPRE',
         key_word: "flat"
+    },
+    {
+        pre_coin: TRSICON,
+        next_coin: ETHICON,
+        coin_name: "TRS/ETH",
+        coin: "TRS",
+        poolIndex: 'trseth',
+        coin_price: 'TRSPRE',
+        key_word: "flat"
+    },
+    {
+        pre_coin: DOGEICON,
+        next_coin: USDTICON,
+        coin_name: "DOGE/USDT",
+        coin: "TRS",
+        poolIndex: 'dogeusdt',
+        coin_price: 'USDTNEXT',
+        key_word: "main"
+    },
+    {
+        pre_coin: SHIBICON,
+        next_coin: USDTICON,
+        coin_name: "SHIB/USDT",
+        coin: "TRS",
+        poolIndex: 'shibusdt',
+        coin_price: 'USDTNEXT',
+        key_word: "ideas"
+    },
+    {
+        pre_coin: HLTCICON,
+        next_coin: USDTICON,
+        coin_name: "HLTC/USDT",
+        coin: "TRS",
+        poolIndex: 'hltcusdt',
+        coin_price: 'USDTNEXT',
+        key_word: "main"
     },
 ]
