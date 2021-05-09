@@ -147,10 +147,10 @@ function getPoolListData(type) {
             Thirteen.getPoolData(),
             Fourteen.getPoolData(),
             Fifteen.getPoolData(),
-            TrsEth.getPoolData(),
             HfilUsdt.getPoolData(),
             HdotUsdt.getPoolData(),
             TrsShib.getPoolData(),
+            TrsEth.getPoolData(),
             DogeUsdt.getPoolData(),
             ShibUsdt.getPoolData(),
             HltcUsdt.getPoolData(),
@@ -194,12 +194,9 @@ function getPoolListData(type) {
                 if (type !== 'all') {
                     if (res[index].supply === '0') {
                         apy = `0.00%`
-
+                        tvl = `0.00`
                     } else {
                         apy = (((res[index].per_day * trsRate.rate) / tvl) * 360 * 100).toFixed(2) + "%"
-                    }
-                    if (res[index].supply === '0') {
-                        tvl = `0.00`
                     }
                     data[item.key_word].push({
                         ...item,
@@ -253,10 +250,10 @@ function getAllBlock() {
             Thirteen.getLastTime(),
             Fourteen.getLastTime(),
             Fifteen.getLastTime(),
-            TrsEth.getLastTime(),
             HfilUsdt.getLastTime(),
             HdotUsdt.getLastTime(),
             TrsShib.getLastTime(),
+            TrsEth.getLastTime(),
             DogeUsdt.getLastTime(),
             ShibUsdt.getLastTime(),
             HltcUsdt.getLastTime(),
@@ -294,10 +291,10 @@ function getAllRewardRate() {
             Thirteen.getRewardRate(),
             Fourteen.getRewardRate(),
             Fifteen.getRewardRate(),
-            TrsEth.getRewardRate(),
             HfilUsdt.getRewardRate(),
             HdotUsdt.getRewardRate(),
             TrsShib.getRewardRate(),
+            TrsEth.getRewardRate(),
             DogeUsdt.getRewardRate(),
             ShibUsdt.getRewardRate(),
             HltcUsdt.getRewardRate(),
@@ -329,10 +326,10 @@ function getAllStartTime() {
             Thirteen.getPoolStartTime(),
             Fourteen.getPoolStartTime(),
             Fifteen.getPoolStartTime(),
-            TrsEth.getPoolStartTime(),
             HfilUsdt.getPoolStartTime(),
             HdotUsdt.getPoolStartTime(),
             TrsShib.getPoolStartTime(),
+            TrsEth.getPoolStartTime(),
             DogeUsdt.getPoolStartTime(),
             ShibUsdt.getPoolStartTime(),
             HltcUsdt.getPoolStartTime(),
