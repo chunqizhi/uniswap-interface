@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import HomeBottom from './HomeBottom'
@@ -206,26 +206,11 @@ export default function Home() {
     const [rate, setRate] = useState(0)
     const [allBalance, setAllBalance] = useState(0)
     // 轮播图
-    const [flag, setFlag] = useState(false);
-    const [slideList, setSlideList] = useState([]);
-
-    useEffect(()=> {
-        setSlideList([
-            {
-                title: 'banner1',
-                url: require('../../assets/images/banner.jpg')
-            },
-            {
-                title: 'banner2',
-                url: require('../../assets/images/banner.jpg')
-            },
-            {
-                title: 'banner3',
-                url: require('../../assets/images/banner.jpg')
-            },
-        ]);
-        setFlag(true);
-    },[])
+    const [flag] = useState(true);
+    const [slideList] = useState([{
+        title: 'banner1',
+        url: require('../../assets/images/banner.jpg')
+    }]);
 
     Data.getTrsRate().then(res => {
         setRate(res.rate)
@@ -237,22 +222,23 @@ export default function Home() {
         <>
             {/* 轮播图 */}
             <HomeBanner>
-                { flag&&<Carousel
+                <Carousel
                     autoplay = {true}
                     infinite
                     dotStyle={{ backgroundColor: '#fff' }}
                     dotActiveStyle={{ backgroundColor: '#06DD7A' }}
                     autoplayInterval={2000}>
                     {slideList.map((item, value) => (
-                        <img
-                            src={ item.url }
-                            alt={ item.title }
-                            key={ value }
-                            style={{ width: '100%', verticalAlign: 'top', height: '150px' }}
-                        />
+                        <div style={{ display: 'inline-block', width: '100%', height: '150px' }}>
+                            <img
+                                src={ item.url }
+                                alt={ item.title }
+                                key={ value }
+                                style={{ width: '100%', verticalAlign: 'top', height: '150px' }}
+                            />
+                        </div>
                     ))}
                 </Carousel>
-                }
             </HomeBanner>
             <HomePrice>
                 <HomeItem>
