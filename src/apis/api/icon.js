@@ -13,6 +13,9 @@ import HDOTICON from '../../assets/images/coin/HDOT.png'
 import HFILICON from '../../assets/images/coin/HFIL.png'
 import SHIBICON from '../../assets/images/coin/SHIB.png'
 import HLTCICON from '../../assets/images/coin/HLTC.png'
+import UNIICON from '../../assets/images/coin/UNI.png'
+import XRPICON from '../../assets/images/coin/XRP.png'
+import HBCHICON from '../../assets/images/coin/HBCH.png'
 
 
 
@@ -217,6 +220,33 @@ export default [{
         coin_name: "HLTC/USDT",
         coin: "TRS",
         poolIndex: 'hltcusdt',
+        coin_price: 'USDTNEXT',
+        key_word: "main"
+    },
+    {
+        pre_coin: UNIICON,
+        next_coin: USDTICON,
+        coin_name: "UNI/USDT",
+        coin: "TRS",
+        poolIndex: 'uniusdt',
+        coin_price: 'USDTNEXT',
+        key_word: "main"
+    },
+    {
+        pre_coin: XRPICON,
+        next_coin: USDTICON,
+        coin_name: "XRP/USDT",
+        coin: "TRS",
+        poolIndex: 'xrpusdt',
+        coin_price: 'USDTNEXT',
+        key_word: "main"
+    },
+    {
+        pre_coin: HBCHICON,
+        next_coin: USDTICON,
+        coin_name: "HBCH/USDT",
+        coin: "TRS",
+        poolIndex: 'hbchusdt',
         coin_price: 'USDTNEXT',
         key_word: "main"
     },

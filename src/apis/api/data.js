@@ -20,6 +20,9 @@ import TrsShib from './trs_shib.js'
 import DogeUsdt from './doge_usdt.js'
 import ShibUsdt from './shib_usdt.js'
 import HltcUsdt from './hltc_usdt.js'
+import UniUsdt from './uni_usdt.js'
+import XrpUsdt from './xrp_usdt.js'
+import HbchUsdt from './hbch_usdt.js'
 import Icon from './icon.js'
 import Web3 from "web3";
 
@@ -120,6 +123,18 @@ function getCurrentPool(type) {
             API = HltcUsdt
             coinInfo = Icon[20]
             break;
+        case "uniusdt":
+            API = UniUsdt
+            coinInfo = Icon[21]
+            break;
+        case "xrpusdt":
+            API = XrpUsdt
+            coinInfo = Icon[22]
+            break;
+        case "hbchusdt":
+            API = HbchUsdt
+            coinInfo = Icon[23]
+            break;
         default:
             console.log('error')
     }
@@ -154,6 +169,9 @@ function getPoolListData(type) {
             DogeUsdt.getPoolData(),
             ShibUsdt.getPoolData(),
             HltcUsdt.getPoolData(),
+            UniUsdt.getPoolData(),
+            XrpUsdt.getPoolData(),
+            HbchUsdt.getPoolData(),
 
         ]).then(async res => {
             let coinRate = await getCoinRate() //  汇率
@@ -257,6 +275,9 @@ function getAllBlock() {
             DogeUsdt.getLastTime(),
             ShibUsdt.getLastTime(),
             HltcUsdt.getLastTime(),
+            UniUsdt.getLastTime(),
+            XrpUsdt.getLastTime(),
+            HbchUsdt.getLastTime(),
         ]).then(lastTime => {
             getAllRewardRate().then(allRate => {
                 getAllStartTime().then(allTime => {
@@ -298,6 +319,9 @@ function getAllRewardRate() {
             DogeUsdt.getRewardRate(),
             ShibUsdt.getRewardRate(),
             HltcUsdt.getRewardRate(),
+            UniUsdt.getRewardRate(),
+            XrpUsdt.getRewardRate(),
+            HbchUsdt.getRewardRate(),
         ]).then(res => {
             resolve(res.map((item) => {
                 return Web3.utils.fromWei(item, 'ether')
@@ -333,6 +357,9 @@ function getAllStartTime() {
             DogeUsdt.getPoolStartTime(),
             ShibUsdt.getPoolStartTime(),
             HltcUsdt.getPoolStartTime(),
+            UniUsdt.getPoolStartTime(),
+            XrpUsdt.getPoolStartTime(),
+            HbchUsdt.getPoolStartTime(),
         ]).then(res => {
             resolve(res)
         }).catch(err => {
