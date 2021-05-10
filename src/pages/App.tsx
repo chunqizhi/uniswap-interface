@@ -36,6 +36,9 @@ import Mining from './Mining/Mining'
 import ProvideLiquidity from './ProvideLiquidity/ProvideLiquidity'
 // 公共底部
 import NavBar from "../components/NavBar/index";
+// 董事会页面
+import Director from "./Director/index";
+
 const AppWrapper = styled.div`
   display: flex;
   flex-flow: column;
@@ -131,10 +134,11 @@ export default function App() {
               <Route exact strict path="/migrate/v1/:address" component={MigrateV1Exchange} />
               <Route exact strict path="/uni/:currencyIdA/:currencyIdB" component={Manage} />
               <Route exact strict path="/vote/:id" component={VotePage} />
+              <Route exact strict path="/director" component={Director} />
               <Route component={RedirectPathToSwapOnly} />
             </Switch>
           </Web3ReactManager>
-          {/* <Marginer /> */}
+          <Marginer />
           {/* 公共底部 */}
           <NavBar />
         </BodyWrapper>

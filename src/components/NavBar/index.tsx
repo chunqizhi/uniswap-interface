@@ -24,7 +24,7 @@ export default function NarBar() {
                     <span className="iconfont icon-hangqing"></span>
                     <span>{t("navlist.text14")}</span>
                 </NavLink>
-                <NavLink exact to="/" className="navItem" activeClassName="navItemActive">
+                <NavLink exact to="/director" className="navItem" activeClassName="navItemActive">
                     <span className="iconfont icon-ren"></span>
                     <span>{t("navlist.text15")}</span>
                 </NavLink>
