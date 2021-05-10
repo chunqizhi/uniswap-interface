@@ -50,7 +50,6 @@ const ButtonPrimaryinput = styled(ButtonPrimary)`
   height:40px;
   margin-left:0px;
   display: flex;
-  
 `
 
 const ButtonPrimaryinp = styled(ButtonPrimaryinput)`

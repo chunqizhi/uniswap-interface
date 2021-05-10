@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import HomeBottom from './HomeBottom'
 import { useTranslation } from "react-i18next"
 import Data from '../../apis/api/data.js'
+import { Carousel } from 'antd-mobile';
+import 'antd-mobile/lib/carousel/style/index.less'
 const HomeTop = styled.div`
 
 height: 35px;
@@ -133,6 +135,51 @@ const HomeBtn02 = styled(NavLink)`
     }
 
 `
+
+const HomeBanner = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 15px;
+`
+
+const HomePrice = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+`
+const HomeItem = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    position: relative;
+    > img {
+        max-width: 100%;
+        height: auto;
+    }
+`
+const HomeContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    left: 30px;
+    right: 30px;
+    top: 0;
+    bottom: 0;
+    z-index: 3;
+    > p {
+        font-size: 16px;
+        color: #7984bd;
+        margin-bottom: 5px;
+    }
+    > span {
+        font-size: 20px;
+        color: #fff;
+    }
+`
+
 const formatNum = function (str: string|number) {
     if(str*1<0) return 0
     str=""+str
@@ -158,6 +205,28 @@ export default function Home() {
     const { t } = useTranslation();
     const [rate, setRate] = useState(0)
     const [allBalance, setAllBalance] = useState(0)
+    // 轮播图
+    const [flag, setFlag] = useState(false);
+    const [slideList, setSlideList] = useState([]);
+
+    useEffect(()=> {
+        setSlideList([
+            {
+                title: 'banner1',
+                url: require('../../assets/images/banner.jpg')
+            },
+            {
+                title: 'banner2',
+                url: require('../../assets/images/banner.jpg')
+            },
+            {
+                title: 'banner3',
+                url: require('../../assets/images/banner.jpg')
+            },
+        ]);
+        setFlag(true);
+    },[])
+
     Data.getTrsRate().then(res => {
         setRate(res.rate)
     })
@@ -166,7 +235,42 @@ export default function Home() {
     })
     return (
         <>
-            <HomeTop>
+            {/* 轮播图 */}
+            <HomeBanner>
+                { flag&&<Carousel
+                    autoplay = {true}
+                    infinite
+                    dotStyle={{ backgroundColor: '#fff' }}
+                    dotActiveStyle={{ backgroundColor: '#06DD7A' }}
+                    autoplayInterval={2000}>
+                    {slideList.map((item, value) => (
+                        <img
+                            src={ item.url }
+                            alt={ item.title }
+                            key={ value }
+                            style={{ width: '100%', verticalAlign: 'top', height: '150px' }}
+                        />
+                    ))}
+                </Carousel>
+                }
+            </HomeBanner>
+            <HomePrice>
+                <HomeItem>
+                    <img src={ require('../../assets/images/home_price1.png') } alt="" />
+                    <HomeContent>
+                        <p>当前流动性质押</p>
+                        <span>$123456789</span>
+                    </HomeContent>
+                </HomeItem>
+                <HomeItem>
+                    <img src={ require('../../assets/images/home_price2.png') } alt="" />
+                    <HomeContent>
+                        <p>TRS价格</p>
+                        <span>$10.00</span>
+                    </HomeContent>
+                </HomeItem>
+            </HomePrice>
+            {/* <HomeTop>
                 <LeftDiv>
                     <LeftSpan>TRS</LeftSpan>
                     <LeftDivSpan>${ formatNum(rate) }</LeftDivSpan>
@@ -178,7 +282,7 @@ export default function Home() {
             </HomeTop>
             <TitleDiv>
                 <TitleSup>{t("home.text02")}</TitleSup>
-                {/* <TitleSub>DEX创新交易平台</TitleSub> */}
+                <TitleSub>DEX创新交易平台</TitleSub>
             </TitleDiv>
             <HomeBXH>TRS</HomeBXH>
             <TitleDesc>{t("home.text03")}</TitleDesc>
@@ -189,7 +293,7 @@ export default function Home() {
             <HomeBtn02 id={`mining-nav-link`} to={'/mining'}>
                 <img src={require("../../assets/images/home/button02.png")} height='16' width='16' alt=""/>
                 {t("home.text13")}
-            </HomeBtn02>
+            </HomeBtn02> */}
             <HomeBottom key={'home-bottom'} />
         </>
     )

@@ -16,12 +16,12 @@ const Base = styled(RebassButton)<{
   width: ${({ width }) => (width ? width : '86%')};
   font-weight: 500;
   text-align: center;
-  border-radius: 20px;
-  border-radius: ${({ borderRadius }) => borderRadius && borderRadius};
-  border-radius:0px;
+  // border-radius: 20px;
+  // border-radius: ${({ borderRadius }) => borderRadius && borderRadius};
+  // border-radius:0px;
   outline: none;
-  border: 1px solid transparent;
-  color: white;
+  border: 1px solid transparent!important;
+  color: white!important;
   text-decoration: none;
   display: flex;
   justify-content: center;
@@ -32,6 +32,7 @@ const Base = styled(RebassButton)<{
   z-index: 1;
   margin-left:7%;
   font-size:15px;
+  background-color: #080d38!important;
   &:disabled {
     cursor: auto;
   }
@@ -42,33 +43,35 @@ const Base = styled(RebassButton)<{
 `
 // 默认
 export const ButtonPrimary = styled(Base)`
-  background-color: ${({ theme }) => theme.primary1};
+  // background-color: ${({ theme }) => theme.primary1};
+  background: -webkit-linear-gradient(left, #45b7da, #57dfaa);
+  background: -o-linear-gradient(left,#45b7da, #57dfaa);
+  background: -moz-linear-gradient(left,#45b7da, #57dfaa);
+  background: -ms-linear-gradient(left,#45b7da, #57dfaa);
   color: white;
   &:focus {
     box-shadow: 0 0 0 1pt ${({ theme }) => darken(0.05, theme.primary1)};
-    background-color: ${({ theme }) => darken(0.05, theme.primary1)};
+    // background-color: ${({ theme }) => darken(0.05, theme.primary1)};
   }
   &:hover {
-    background-color: ${({ theme }) => darken(0.05, theme.primary1)};
+    // background-color: ${({ theme }) => darken(0.05, theme.primary1)};
   }
   &:active {
     box-shadow: 0 0 0 1pt ${({ theme }) => darken(0.1, theme.primary1)};
-    background-color: ${({ theme }) => darken(0.1, theme.primary1)};
+    // background-color: ${({ theme }) => darken(0.1, theme.primary1)};
   }
   &:disabled {
-    background-color: ${({ theme, altDisabledStyle, disabled }) =>
-      altDisabledStyle ? (disabled ? '#737373' : theme.primary1) : '#737373'};
-    color: ${({ theme, altDisabledStyle, disabled }) =>
-      altDisabledStyle ? (disabled ? theme.text3 : 'white') : theme.text3};
+    // background-color: ${({ theme, altDisabledStyle, disabled }) => altDisabledStyle ? (disabled ? '#737373' : theme.primary1) : '#737373'};
+    // color: ${({ theme, altDisabledStyle, disabled }) => altDisabledStyle ? (disabled ? theme.text3 : 'white') : theme.text3};
     cursor: auto;
     box-shadow: none;
-    border: 1px solid transparent;
+    // border: 1px solid transparent;
     outline: none;
     opacity: ${({ altDisabledStyle }) => (altDisabledStyle ? '0.5' : '1')};
     height:40px;
     color:white;
   }
-  color:#000;
+  color:#fff;
   border-radius:8px;
 `
 //  
@@ -121,7 +124,7 @@ export const ButtonGray = styled(Base)`
 `
 
 export const ButtonSecondary = styled(Base)`
-  border: 1px solid ${({ theme }) => theme.primary4};
+  // border: 1px solid ${({ theme }) => theme.primary4};
   color: ${({ theme }) => theme.primary1};
   background-color: transparent;
   font-size: 15px !important;
@@ -130,14 +133,14 @@ export const ButtonSecondary = styled(Base)`
 
   &:focus {
     box-shadow: 0 0 0 1pt ${({ theme }) => theme.primary4};
-    border: 1px solid ${({ theme }) => theme.primary3};
+    // border: 1px solid ${({ theme }) => theme.primary3};
   }
   &:hover {
-    border: 1px solid ${({ theme }) => theme.primary3};
+    // border: 1px solid ${({ theme }) => theme.primary3};
   }
   &:active {
     box-shadow: 0 0 0 1pt ${({ theme }) => theme.primary4};
-    border: 1px solid ${({ theme }) => theme.primary3};
+    // border: 1px solid ${({ theme }) => theme.primary3};
   }
   &:disabled {
     opacity: 50%;
@@ -199,7 +202,7 @@ export const ButtonUNIGradient = styled(ButtonPrimary)`
 `
 
 export const ButtonOutlined = styled(Base)`
-  border: 1px solid ${({ theme }) => theme.bg2};
+  // border: 1px solid ${({ theme }) => theme.bg2};
   color: ${({ theme }) => theme.text1};
 
   &:focus {
@@ -247,7 +250,7 @@ export const ButtonEmpty = styled(Base)`
 `
 
 export const ButtonWhite = styled(Base)`
-  border: 1px solid #edeef2;
+  // border: 1px solid #edeef2;
   background-color: ${({ theme }) => theme.bg1};
   color: black;
 
@@ -274,7 +277,7 @@ export const ButtonWhite = styled(Base)`
 const ButtonConfirmedStyle = styled(Base)`
   background-color: ${({ theme }) => lighten(0.5, theme.green1)};
   color: ${({ theme }) => theme.green1};
-  border: 1px solid ${({ theme }) => theme.green1};
+  // border: 1px solid ${({ theme }) => theme.green1};
 
   &:disabled {
     opacity: 50%;
@@ -288,7 +291,7 @@ const ButtonConfirmedStyle = styled(Base)`
 
 const ButtonErrorStyle = styled(Base)`
   background-color: ${({ theme }) => theme.red1};
-  border: 1px solid ${({ theme }) => theme.red1};
+  // border: 1px solid ${({ theme }) => theme.red1};
 
   &:focus {
     box-shadow: 0 0 0 1pt ${({ theme }) => darken(0.05, theme.red1)};
@@ -306,7 +309,7 @@ const ButtonErrorStyle = styled(Base)`
     cursor: auto;
     box-shadow: none;
     background-color: ${({ theme }) => theme.red1};
-    border: 1px solid ${({ theme }) => theme.red1};
+    // border: 1px solid ${({ theme }) => theme.red1};
     height:40px;
 
     background-color:#737373;

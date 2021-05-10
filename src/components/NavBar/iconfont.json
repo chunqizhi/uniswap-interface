@@ -1,0 +1,44 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "357804",
+      "name": "冶金矿产",
+      "font_class": "yejinkuangchan",
+      "unicode": "e6f3",
+      "unicode_decimal": 59123
+    },
+    {
+      "icon_id": "2742634",
+      "name": "行情",
+      "font_class": "hangqing",
+      "unicode": "e66c",
+      "unicode_decimal": 58988
+    },
+    {
+      "icon_id": "14792511",
+      "name": "人",
+      "font_class": "ren",
+      "unicode": "e639",
+      "unicode_decimal": 58937
+    },
+    {
+      "icon_id": "19985212",
+      "name": "首页-选中",
+      "font_class": "index-copy",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
+      "icon_id": "21233105",
+      "name": "兑换",
+      "font_class": "duihuan",
+      "unicode": "f4b0",
+      "unicode_decimal": 62640
+    }
+  ]
+}

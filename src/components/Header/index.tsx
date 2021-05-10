@@ -63,15 +63,15 @@ const AccountElement = styled.div<{ active: boolean }>`
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: ${({ theme, active }) => (!active ? theme.bg1 : theme.bg3)};
-  border-radius: 12px;
+  // background-color: ${({ theme, active }) => (!active ? theme.bg1 : theme.bg3)};
+  // border-radius: 12px;
   white-space: nowrap;
   width: 100%;
   cursor: pointer;
   color: #2EBC84;
-  border: 1px solid #2EBC84;
+  // border: 1px solid #2EBC84;
   :focus {
-    border: 1px solid blue;
+    // border: 1px solid blue;
   }
 `
 
@@ -132,7 +132,7 @@ export default function Header() {
         <UniBalanceContent setShowUniBalanceModal={setShowUniBalanceModal} />
       </Modal>
       <HeaderRow>
-        <HomeBtn01 id={`home-nav-link`} to={'/home'}> <img width={'64px'} src={darkMode ? LogoDark : LogoDark} alt="logo" /></HomeBtn01>
+        <HomeBtn01 id={`home-nav-link`} to={'/home'}> <img width={'132px'} src={darkMode ? LogoDark : LogoDark} alt="logo" /></HomeBtn01>
         <HeaderLinks>
           {/* <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
             {t('swap')}

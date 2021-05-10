@@ -23,6 +23,9 @@ import { useStakingInfo } from '../../state/stake/hooks'
 import { BIG_INT_ZERO } from '../../constants'
 import { useTranslation } from "react-i18next"
 
+import { NavLink } from 'react-router-dom'
+import AppBody from '../AppBody'
+import SwapHeader from "../../components/swap/SwapHeader";
 
  const PageWrapper = styled(AutoColumn)`
   max-width: 640px;
@@ -81,6 +84,45 @@ const EmptyProposals = styled.div`
   align-items: center;
 `
 
+const CreateButton = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48%;
+  height: 45px;
+  border-radius: 5px;
+  border: 2px solid #667182;
+  font-size: 16px;
+  color: #19d88d;
+  box-sizing: border-box;
+  text-decoration: none;
+`
+const AddButton = styled(Link)`
+  width: 48%;
+  height: 45px;
+  border-radius: 4px;
+  border: none;
+  background-color: #19ce8a;
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+  box-sizing: border-box;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+const PoolNot = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  font-size: 16px;
+  color: #667182;
+  > img {
+    margin: 10px 0 20px;
+  }
+`
 
 export default function Pool() {
   const { t } = useTranslation();
@@ -135,6 +177,7 @@ export default function Pool() {
 
   return (
     <>
+      <PageTitle />
       <PageWrapper>
         <SwapPoolTabs active={'pool'} />
         <VoteCard>
@@ -166,9 +209,10 @@ export default function Pool() {
           <CardBGImage />
           <CardNoise />
         </VoteCard>
-
+        <AppBody>
+        <SwapHeader />
         <AutoColumn gap="lg" justify="center">
-          <AutoColumn gap="lg" style={{ width: '100%' }}>
+          <AutoColumn gap="lg" style={{ width: '100%', padding: '1rem', boxSizing: 'border-box' }}>
             <TitleRow style={{ marginTop: '1rem' }} padding={'0'}>
               <HideSmall>
                 <TYPE.mediumHeader style={{ marginTop: '0.5rem', justifySelf: 'flex-start' }}>
@@ -176,10 +220,16 @@ export default function Pool() {
                 </TYPE.mediumHeader>
               </HideSmall>
               <ButtonRow>
-                <ResponsiveButtonSecondary as={Link} padding="6px 8px" to="/create/HT">
+                <CreateButton to={'/create/HT'}>
+                  {t("pool.text05")}
+                </CreateButton>
+                {/* <ResponsiveButtonSecondary as={Link} padding="6px 8px" to="/create/HT">
                 {t("pool.text05")}
-                </ResponsiveButtonSecondary>
-                <ResponsiveButtonPrimary
+                </ResponsiveButtonSecondary> */}
+                <AddButton to={"/add/HT"}>
+                {t("pool.text06")}
+                </AddButton>
+                {/* <ResponsiveButtonPrimary
                   id="join-pool-button"
                   as={Link}
                   padding="6px 8px"
@@ -189,7 +239,7 @@ export default function Pool() {
                   <Text fontWeight={500} fontSize={16}>
                     {t("pool.text06")}
                   </Text>
-                </ResponsiveButtonPrimary>
+                </ResponsiveButtonPrimary> */}
               </ButtonRow>
             </TitleRow>
 
@@ -230,24 +280,76 @@ export default function Pool() {
                 )}
               </>
             ) : (
-              <EmptyProposals>
-                <TYPE.body color={theme.text3} textAlign="center">
-                {t("pool.text10")}
-                </TYPE.body>
-              </EmptyProposals>
+              <PoolNot>
+                <img src={ require('../../assets/images/poolImg.jpg') } alt="" />
+                <span>{t("pool.text10")}</span>
+              </PoolNot>
+              // <EmptyProposals>
+              //   <TYPE.body color={theme.text3} textAlign="center">
+              //   {t("pool.text10")}
+              //   </TYPE.body>
+              // </EmptyProposals>
             )}
 
             <AutoColumn justify={'center'} gap="md">
-              <Text textAlign="center" fontSize={14} style={{ padding: '.5rem 0 .5rem 0' }}>
+              <Text textAlign="center" fontSize={12} style={{ padding: '.5rem 0 .5rem 0', color: '#ABB7CA' }}>
                 {hasV1Liquidity ? `${t("pool.text11")}` :  `${t("pool.text12")}`}{' '}
-                <StyledInternalLink id="import-pool-link" to={hasV1Liquidity ? '/migrate/v1' : '/find'}>
+                <StyledInternalLink style={{ color: '#19E192' }} id="import-pool-link" to={hasV1Liquidity ? '/migrate/v1' : '/find'}>
                   {hasV1Liquidity ? `${t("pool.text13")}` : `${t("pool.text14")}`}
                 </StyledInternalLink>
               </Text>
             </AutoColumn>
           </AutoColumn>
         </AutoColumn>
+        </AppBody>
       </PageWrapper>
+    </>
+  )
+}
+
+const TitleDiv = styled.div`
+width: 100%;
+`
+const TitleText = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  border-radius: 15px;
+  background-color: #101a35;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #ABB7CA;
+  line-height: 27px;
+`
+const TitleSup = styled.div`
+  color: #06DD7A;
+  font-size: 24px;
+  font-weight: 700;
+  line-height:32px;
+  width: 100%;
+  padding:0;
+  margin:0;
+`
+
+const TitleSub = styled.p`
+color: #ACB7CA;
+font-size: 17px;
+margin-top: 5px;
+margin-bottom:20px;
+`
+
+function PageTitle() {
+  const { t } = useTranslation()
+
+  return (
+    <>
+      <TitleDiv>
+        <TitleText>{t("swap.text24")}</TitleText>
+        <TitleSup>{t("swap.text17")}</TitleSup>
+        <TitleSub>{t("swap.text18")}</TitleSub>
+      </TitleDiv>
     </>
   )
 }

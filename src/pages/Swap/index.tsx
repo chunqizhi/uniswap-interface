@@ -370,17 +370,21 @@ export default function Swap({ history }: RouteComponentProps) {
               otherCurrency={currencies[Field.OUTPUT]}
               id="swap-currency-input"
             />
-            <AutoColumn justify="space-between">
+            <AutoColumn justify="space-between" style={{ margin: 0}}>
               <AutoRow justify={isExpertMode ? 'space-between' : 'center'} style={{ padding: '0 1rem' }}>
                 <ArrowWrapper clickable>
-                  <ArrowDown
+                  <img src={ require('../../assets/images/reverse.png') } alt="" onClick={() => {
+                      setApprovalSubmitted(false) // reset 2 step UI for approvals
+                      onSwitchTokens()
+                    }} />
+                  {/* <ArrowDown
                     size="16"
                     onClick={() => {
                       setApprovalSubmitted(false) // reset 2 step UI for approvals
                       onSwitchTokens()
                     }}
                     color={currencies[Field.INPUT] && currencies[Field.OUTPUT] ? theme.primary1 : theme.text2}
-                  />
+                  /> */}
                 </ArrowWrapper>
                 {recipient === null && !showWrap && isExpertMode ? (
                   <LinkStyledButton id="add-recipient-button" onClick={() => onChangeRecipient('')}>
@@ -566,8 +570,21 @@ export default function Swap({ history }: RouteComponentProps) {
 const TitleDiv = styled.div`
 width: 100%;
 `
+const TitleText = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  border-radius: 15px;
+  background-color: #101a35;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #ABB7CA;
+  line-height: 27px;
+`
 const TitleSup = styled.div`
-color: #000;
+  color: #06DD7A;
   font-size: 24px;
   font-weight: 700;
   line-height:32px;
@@ -577,10 +594,10 @@ color: #000;
 `
 
 const TitleSub = styled.p`
-color: #949697;
+color: #ACB7CA;
 font-size: 17px;
 margin-top: 5px;
-margin-bottom:10px;
+margin-bottom:30px;
 `
 
 function PageTitle() {
@@ -589,6 +606,7 @@ function PageTitle() {
   return (
     <>
       <TitleDiv>
+        <TitleText>{t("swap.text24")}</TitleText>
         <TitleSup>{t("swap.text17")}</TitleSup>
         <TitleSub>{t("swap.text18")}</TitleSub>
       </TitleDiv>

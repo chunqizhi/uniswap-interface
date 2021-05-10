@@ -1,8 +1,10 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState,useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Twitter, GitHub } from 'react-feather'
 import styled from 'styled-components'
 import { ReactComponent as MenuIcon } from '../../assets/images/menu.svg'
+// import menu from '../../assets/images/menu.png'
+// import menu1 from '../../assets/images/menu1.png'
 // import { useActiveWeb3React } from '../../hooks'
 import { useOnClickOutside } from '../../hooks/useOnClickOutside'
 import { ApplicationModal } from '../../state/application/actions'
@@ -23,11 +25,11 @@ const StyledMenuButton = styled.button`
   width: 100%;
   height: 100%;
   border: none;
-  background-color: transparent;
+  background-color: #080d38;
   margin: 0;
   padding: 0;
   height: 35px;
-  background-color: ${({ theme }) => theme.bg3};
+  // background-color: ${({ theme }) => theme.bg3};
 
   padding: 0.15rem 0.5rem;
   border-radius: 0.5rem;
@@ -36,7 +38,8 @@ const StyledMenuButton = styled.button`
   :focus {
     cursor: pointer;
     outline: none;
-    background-color: ${({ theme }) => theme.bg4};
+    background-color: #080d38;
+    // background-color: ${({ theme }) => theme.bg4};
   }
 
   svg {
@@ -45,7 +48,7 @@ const StyledMenuButton = styled.button`
 `
 
 const StyledMenu = styled.div`
-  margin-left: 0.5rem;
+  // margin-left: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,7 +63,7 @@ top:0;
 right: 0;
 left:0;
 z-index: 100;
-  background-color: #FFF;
+  background-color: #050822;
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
     0px 24px 32px rgba(0, 0, 0, 0.01);
   padding: 0.5rem;
@@ -73,7 +76,8 @@ z-index: 100;
 const MenuItem = styled(ExternalLink)`
   flex: 1;
   padding: 0.5rem 0.5rem;
-  color: ${({ theme }) => theme.text2};
+  color: #BCC8DC;
+  // color: ${({ theme }) => theme.text2};
   :hover {
     color: ${({ theme }) => theme.text1};
     cursor: pointer;
@@ -100,12 +104,14 @@ const Language = styled.p`
 margin:0;
 padding: 0.5rem ;
 text-decoration:none;
-color: ${({ theme }) => theme.text2};
+color: #BCC8DC;
+// color: ${({ theme }) => theme.text2};
 `
 const NavLinkItem = styled(NavLink)`
 padding: 0.5rem 0.5rem;
 text-decoration:none;
-color: ${({ theme }) => theme.text2};
+color: #BCC8DC;
+// color: ${({ theme }) => theme.text2};
 `
 const Approvediv = styled.div`
     padding:10px 20px;
@@ -132,10 +138,14 @@ export default function Menu() {
   const open = useModalOpen(ApplicationModal.MENU)
   const toggle = useToggleModal(ApplicationModal.MENU)
   const [isApprovediv, setApprovediv] = useState(false) // 授权/非授权
+  const [menu, setMenu] = useState(require('../../assets/images/menu.png'));
+  // 根据open监听是否打开弹窗
+  useEffect(() => {
+    open == false? setMenu(require('../../assets/images/menu.png')) : setMenu(require('../../assets/images/menu1.png'))
+  }, [open]);
 
   useOnClickOutside(node, open ? toggle : undefined)
   // const openClaimModal = useToggleModal(ApplicationModal.ADDRESS_CLAIM)
-
   const toast = () => {
     timers = setTimeout(() => {
       setApprovediv(false)
@@ -162,7 +172,8 @@ export default function Menu() {
     // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/30451
     <StyledMenu ref={node as any}>
       <StyledMenuButton onClick={toggle}>
-        <StyledMenuIcon />
+        <img src={ menu } alt="" />
+        {/* <StyledMenuIcon /> */}
       </StyledMenuButton>
       { isApprovediv && (
             <Approvediv>{t("navlist.text10")}</Approvediv>
@@ -171,9 +182,9 @@ export default function Menu() {
       {open && (
         <MuneBox onClick={toggle}>
           <MenuFlyout>
-            <NavLinkItem id={`swap-nav-link`} to={'/swap'}>{t("navlist.text01")}</NavLinkItem>
+            {/* <NavLinkItem id={`swap-nav-link`} to={'/exchange'}>{t("navlist.text01")}</NavLinkItem> */}
             <NavLinkItem id={`mining-nav-link`} to={'/mining'}>{t("navlist.text02")}</NavLinkItem>
-            <NavLinkItem id={`pool-nav-link`} to={'/pool'}>{t("navlist.text03")}</NavLinkItem>
+            {/* <NavLinkItem id={`pool-nav-link`} to={'/exchange/pool'}>{t("navlist.text03")}</NavLinkItem> */}
             <MenuItem id="link" href="https://www.tree-swap.org/data/WhitePapers.pdf">
               {t("navlist.text04")}
             </MenuItem>
@@ -184,19 +195,19 @@ export default function Menu() {
             </Language>
             <MenuItem onClick={copyUrl}>
               {/* <BookOpen size={14} />  id="link" href="https://uniswap.org/docs/v2" */}
-              <img src={require('../../assets/images/wx.png')} width='14' height='14' alt='' />
+              {/* <img src={require('../../assets/images/wx.png')} width='14' height='14' alt='' /> */}
               {t("navlist.text05")}
             </MenuItem>
             <MenuItem id="link" href={CODE_LINK}>
-              <GitHub size={14} />
+              {/* <GitHub size={14} /> */}
               {t("navlist.text06")}
             </MenuItem>
             <MenuItem id="link" href="https://twitter.com/TreeswapBest">
-              <Twitter size={14} />
+              {/* <Twitter size={14} /> */}
               {t("navlist.text07")}
             </MenuItem>
             <MenuItem id="link" href="https://t.me/treeswaporg">
-              <img src={require('../../assets/images/telegram.png')} width='14' height='14' alt='' />
+              {/* <img src={require('../../assets/images/telegram.png')} width='14' height='14' alt='' /> */}
               {t("navlist.text08")}
             </MenuItem>
             {/* {account && (

@@ -11,8 +11,7 @@ import Settings from '../Settings'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from 'state'
 import { resetMintState } from 'state/mint/actions'
-// import creatHistory from 'history/createHashHistory'
-import {createHashHistory} from 'history'
+import creatHistory from 'history/createHashHistory'
 
 const Tabs = styled.div`
   ${({ theme }) => theme.flexRowNoWrap}
@@ -93,8 +92,7 @@ export function AddRemoveTabs({ adding, creating }: { adding: boolean; creating:
 
   // reset states on back
   const dispatch = useDispatch<AppDispatch>()
-  // const history = creatHistory();
-  const history = createHashHistory();
+  const history = creatHistory();
   return (
     <Tabs>
       <RowBetween style={{ padding: '1rem 1rem 0 1rem' }}>
@@ -104,13 +102,13 @@ export function AddRemoveTabs({ adding, creating }: { adding: boolean; creating:
             adding && dispatch(resetMintState())
           }}
         > */}
-          <StyledArrowLeft  onClick={()=>{
+          <StyledArrowLeft style={{ color: '#fff' }} onClick={()=>{
             // console.log(12313213)
             history.goBack();
              adding && dispatch(resetMintState())
           }}/>
         {/* </HistoryLink> */}
-        <ActiveText>{creating ? `${t('add.text15')}` : adding ? `${t('add.text16')}` : `${t('add.text17')}`}</ActiveText>
+        <ActiveText style={{ color: '#fff' }} >{creating ? `${t('add.text15')}` : adding ? `${t('add.text16')}` : `${t('add.text17')}`}</ActiveText>
         <Settings />
       </RowBetween>
     </Tabs>

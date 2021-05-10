@@ -3,14 +3,15 @@ import styled from 'styled-components'
 import { escapeRegExp } from '../../utils'
 
 const StyledInput = styled.input<{ error?: boolean; fontSize?: string; align?: string }>`
-  color: ${({ error, theme }) => (error ? theme.red1 : theme.text1)};
+  // color: ${({ error, theme }) => (error ? theme.red1 : theme.text1)};
+  color: #14C05D;
   width: 0;
   position: relative;
   font-weight: 500;
   outline: none;
   border: none;
   flex: 1 1 auto;
-  background-color: ${({ theme }) => theme.bg1};
+  // background-color: ${({ theme }) => theme.bg1};
   font-size: ${({ fontSize }) => fontSize ?? '18px'};
   text-align: ${({ align }) => align && align};
   white-space: nowrap;
@@ -18,8 +19,9 @@ const StyledInput = styled.input<{ error?: boolean; fontSize?: string; align?: s
   text-overflow: ellipsis;
   padding: 0px;
   -webkit-appearance: textfield;
-  background-color:#f2f2f2;
-  padding-left:10px;
+  // background-color:#f2f2f2;
+  background-color: #14223d;
+  padding-right:10px;
   ::-webkit-search-decoration {
     -webkit-appearance: none;
   }
@@ -34,7 +36,8 @@ const StyledInput = styled.input<{ error?: boolean; fontSize?: string; align?: s
   }
 
   ::placeholder {
-    color: ${({ theme }) => theme.text4};
+    // color: ${({ theme }) => theme.text4};
+    color: #14C05D;
   }
 `
 

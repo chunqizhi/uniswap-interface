@@ -31,10 +31,11 @@ import Swap from './Swap'
 import { OpenClaimAddressModalAndRedirectToSwap, RedirectPathToSwapOnly, RedirectToSwap } from './Swap/redirects'
 import Vote from './Vote'
 import VotePage from './Vote/VotePage'
-
 import Home from './Home/Home'
 import Mining from './Mining/Mining'
 import ProvideLiquidity from './ProvideLiquidity/ProvideLiquidity'
+// 公共底部
+import NavBar from "../components/NavBar/index";
 const AppWrapper = styled.div`
   display: flex;
   flex-flow: column;
@@ -45,7 +46,7 @@ const HeaderWrapper = styled.div`
   ${({ theme }) => theme.flexRowNoWrap}
   width: 100%;
   justify-content: space-between;
-  background-color: #0278FE;
+  background-color: #080d38;
   position: sticky;
   top: 0;
   z-index: 999;
@@ -61,10 +62,12 @@ const BodyWrapper = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   z-index: 10;
+  margin-bottom: 62px;
 
   ${({ theme }) => theme.mediaWidth.upToSmall`
     padding: 16px;
-    padding-top: 2rem;
+    // padding-top: 2rem;
+    background-color: #050822;
   `};
 
   z-index: 1;
@@ -100,7 +103,7 @@ export default function App() {
               {/* Home页面 */}
               <Route exact strict path="/home" component={Home} />
               {/*  */}
-              <Route exact strict path="/swap" component={Swap} />
+              <Route exact strict path="/exchange" component={Swap} />
               {/* 流动性挖矿 */}
               <Route exact strict path="/mining" component={Mining} />
               {/* 抵押货币 */}
@@ -111,7 +114,7 @@ export default function App() {
               <Route exact strict path="/swap/:outputCurrency" component={RedirectToSwap} />
               <Route exact strict path="/send" component={RedirectPathToSwapOnly} />
               <Route exact strict path="/find" component={PoolFinder} />
-              <Route exact strict path="/pool" component={Pool} />
+              <Route exact strict path="/exchange/pool" component={Pool} />
               <Route exact strict path="/uni" component={Earn} />
               <Route exact strict path="/vote" component={Vote} />
               <Route exact strict path="/create" component={RedirectToAddLiquidity} />
@@ -131,7 +134,9 @@ export default function App() {
               <Route component={RedirectPathToSwapOnly} />
             </Switch>
           </Web3ReactManager>
-          <Marginer />
+          {/* <Marginer /> */}
+          {/* 公共底部 */}
+          <NavBar />
         </BodyWrapper>
       </AppWrapper>
     </Suspense>

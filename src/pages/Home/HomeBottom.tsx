@@ -54,7 +54,7 @@ function Desc() {
             {
                 DescList.map((item) => {
                     return (
-                        <li className="desc-li" key={item.title}>
+                        <li className="desc-li">
                             <img src={item.icon} alt="" />
                             <span className="desc-title">{t(item.title)}</span>
                             <span className="desc-desc">{t(item.desc)}</span>

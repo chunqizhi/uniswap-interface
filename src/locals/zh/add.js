@@ -27,6 +27,7 @@ export default {
     text26: '公共基础',
     text27: '这些令牌通常与其他令牌配对。',
     text28: '输入',
+    // text28: '从',
     text29: '池子份额',
     text30: '质押',
     text31: '汇率',

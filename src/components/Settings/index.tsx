@@ -152,7 +152,7 @@ const { t } = useTranslation()
               <Text fontWeight={500} fontSize={20}>
                 {t("settings.text01")}
               </Text>
-              <StyledCloseIcon onClick={() => setShowConfirmation(false)} />
+              {/* <StyledCloseIcon onClick={() => setShowConfirmation(false)} /> */}
             </RowBetween>
             <Break />
             <AutoColumn gap="lg" style={{ padding: '0 2rem' }}>

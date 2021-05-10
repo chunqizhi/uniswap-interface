@@ -19,8 +19,9 @@ const InputRow = styled.div<{ selected: boolean }>`
   ${({ theme }) => theme.flexRowNoWrap}
   align-items: center;
   margin: ${({ selected }) => (selected ? '0.75rem 0.5rem 0.75rem 0.5rem' : '0.75rem 0.75rem 0.75rem 0.5rem')};
-  border:1px dashed #ccc;
-  background-color:#f2f2f2;
+  border:2px solid #06dd7a;
+  border-radius: 5px;
+  // background-color:#f2f2f2;
   padding:5px 10px;
 `
 // padding: ${({ selected }) => (selected ? '0.75rem 0.5rem 0.75rem 1rem' : '0.75rem 0.75rem 0.75rem 1rem')};
@@ -31,7 +32,7 @@ const CurrencySelect = styled.button<{ selected: boolean }>`
   height: 2.2rem;
   font-size: 20px;
   font-weight: 500;
-  background-color: ${({ selected, theme }) => (selected ? theme.bg1 : theme.primary1)};
+  // background-color: ${({ selected, theme }) => (selected ? theme.bg1 : theme.primary1)};
   color: ${({ selected, theme }) => (selected ? theme.text1 : theme.white)};
   border-radius: 12px;
   outline: none;
@@ -39,11 +40,11 @@ const CurrencySelect = styled.button<{ selected: boolean }>`
   user-select: none;
   border: none;
   padding: 0 0.5rem;
-  background-color:#f2f2f2;
-  background-color:transparency;
+  // background-color:#f2f2f2;
+  background-color: #14223d;
   :focus,
   :hover {
-    background-color: ${({ selected, theme }) => (selected ? theme.bg2 : darken(0.05, theme.primary1))};
+    // background-color: ${({ selected, theme }) => (selected ? theme.bg2 : darken(0.05, theme.primary1))};
   }
 `
 
@@ -64,16 +65,16 @@ const Aligner = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color:#666666;
+  color:#F2F2F2;
 
 `
 
 const StyledDropDown = styled(DropDown)<{ selected: boolean }>`
   margin: 0 0.25rem 0 0.5rem;
   height: 35%;
-
   path {
-    stroke: ${({ theme }) => (theme.text1)};
+    // stroke: ${({ theme }) => (theme.text1)};
+    stroke: #14de8d;
     stroke-width: 1.5px;
   }
 `
@@ -81,35 +82,42 @@ const StyledDropDown = styled(DropDown)<{ selected: boolean }>`
 const InputPanel = styled.div<{ hideInput?: boolean }>`
   ${({ theme }) => theme.flexColumnNoWrap}
   position: relative;
-  border-radius: ${({ hideInput }) => (hideInput ? '8px' : '20px')};
-  background-color: ${({ theme }) => theme.bg2};
+  // border-radius: ${({ hideInput }) => (hideInput ? '8px' : '20px')};
+  // background-color: ${({ theme }) => theme.bg2};
   z-index: 1;
 `
 
 const Container = styled.div<{ hideInput: boolean }>`
-  border-radius: ${({ hideInput }) => (hideInput ? '8px' : '20px')};
-  border: 1px solid ${({ theme }) => theme.bg2};
-  background-color: ${({ theme }) => theme.bg1};
+  // border-radius: ${({ hideInput }) => (hideInput ? '8px' : '20px')};
+  // border: 1px solid ${({ theme }) => theme.bg2};
+  // background-color: ${({ theme }) => theme.bg1};
 `
 
 const StyledTokenName = styled.span<{ active?: boolean }>`
   ${({ active }) => (active ? '  margin: 0 0.25rem 0 0.75rem;' : '  margin: 0 0.25rem 0 0.25rem;')}
-  font-size:  ${({ active }) => (active ? '20px' : '16px')};
+  // font-size:  ${({ active }) => (active ? '20px' : '16px')};
+  font-size: 15px;
   background-color:transparent;
-  color:#666666;
+  // color:#666666;
+  color: #F2F2F2;
 `
 
 const StyledBalanceMax = styled.button`
   height: 28px;
-  background-color: ${({ theme }) => theme.primary5};
-  border: 1px solid ${({ theme }) => theme.primary5};
-  border-radius: 0.5rem;
+  // background-color: ${({ theme }) => theme.primary5};
+  // border: 1px solid ${({ theme }) => theme.primary5};
+  border-radius: 2px;
   font-size: 0.875rem;
   line-height:28px;
   font-weight: 500;
   cursor: pointer;
   margin-right: 0.5rem;
-  color: ${({ theme }) => theme.primaryText1};
+  // color: ${({ theme }) => theme.primaryText1};
+  background-color: rgba(24,180,108,.5);
+  color: #14c05d;
+  border:none;
+  width: 50px;
+  text-align: center;
   :hover {
     border: 1px solid ${({ theme }) => theme.primary1};
   }
@@ -121,8 +129,8 @@ const StyledBalanceMax = styled.button`
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
     margin-right: 0.5rem;
   `};
-  background-color: #fff;
-  color:#666666;
+  // background-color: #fff;
+  // color:#666666;
 `
 
 interface CurrencyInputPanelProps {
@@ -170,21 +178,19 @@ export default function CurrencyInputPanel({
   const handleDismissSearch = useCallback(() => {
     setModalOpen(false)
   }, [setModalOpen])
-
   return (
     <InputPanel id={id}>
       <Container hideInput={hideInput}>
         {!hideInput && (
           <LabelRow>
             <RowBetween>
-              <TYPE.body color={theme.text2} fontWeight={500} fontSize={14}>
+              <TYPE.body color={'#ABB7CA'} fontSize={14}>
                 {t("add.text28")}
               </TYPE.body>
               {account && (
                 <TYPE.body
                   onClick={onMax}
-                  color={theme.text2}
-                  fontWeight={500}
+                  color={'#3AF288'}
                   fontSize={14}
                   style={{ display: 'inline', cursor: 'pointer',fontFamily: 'CenturyGothic-Bold',fontWeight: 'bold' }}
                 >
@@ -224,7 +230,7 @@ export default function CurrencyInputPanel({
               {pair ? (
                 <DoubleCurrencyLogo currency0={pair.token0} currency1={pair.token1} size={24} margin={true} />
               ) : currency ? (
-                <CurrencyLogo currency={currency} size={'24px'} />
+                <CurrencyLogo currency={currency} size={'22px'} />
               ) : null}
               {pair ? (
                 <StyledTokenName className="pair-name-container">

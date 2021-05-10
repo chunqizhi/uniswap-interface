@@ -118,7 +118,7 @@ function CurrencyRow({
   const balance = useCurrencyBalance(account ?? undefined, currency)
 
   // only show add or remove buttons if not on selected list
-  // console.log(`currency`)
+  console.log(`currency`)
   // console.log(balance)
   return (
     <MenuItem

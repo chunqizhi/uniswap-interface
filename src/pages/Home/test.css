@@ -9,14 +9,16 @@
 .home-line .pre {
     width: 90px;
     height: 1px;
-    background: #999999;
-    position: relative;
+    border-bottom: 1px dashed #999;
+    /* background: #999999; */
+    /* position: relative; */
     transform: scaleY(.5);
 }
 
 .home-line span {
     padding: 0 14px;
     font-size: 15px;
+    color: #06DD7A;
 }
 
 .desc-ul-1 {
@@ -40,14 +42,14 @@
 }
 
 .desc-li .desc-title {
-    color: #666666;
+    color: #BCC8DC;
     font-size: 14px;
     margin-top: 8px;
     font-weight: bolder;
 }
 
 .desc-li .desc-desc {
-    color: #666666;
+    color: #667182;
     font-size: 12px;
     margin-top: 2px;
 }
