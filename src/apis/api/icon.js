@@ -7,6 +7,8 @@ import MDXICON from '../../assets/images/coin/MDX.png'
 import HUSDICON from '../../assets/images/coin/HUSD.png'
 // import TPTICON from '../../assets/images/coin/TPT.png'
 import HBTCICON from '../../assets/images/coin/HBTC.png'
+import XFICON from '../../assets/images/coin/XF.png'
+
 
 export default [{
         pre_coin: ETHICON,
@@ -104,4 +106,13 @@ export default [{
     //     coin_price: 'USDTNEXT',
     //     key_word: "ideas"
     // },
+    {
+        pre_coin: XFICON,
+        next_coin: USDTICON,
+        coin_name: "XF/USDT",
+        coin: "TRS",
+        poolIndex: 'twelve',
+        coin_price: 'USDTNEXT',
+        key_word: "ideas"
+    },
 ]

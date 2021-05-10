@@ -9,6 +9,7 @@ import Eight from './eight.js'
 import Nine from './nine.js'
 import Ten from './ten.js'
 import Eleven from './eleven.js'
+import Twelve from './twelve.js'
 import Icon from './icon.js'
 import Web3 from "web3";
 
@@ -61,6 +62,10 @@ function getCurrentPool(type) {
             //     API = Ten
             //     coinInfo = Icon[9]
             //     break;
+        case "twelve":
+            API = Twelve
+            coinInfo = Icon[9]
+            break;
 
         default:
             console.log('error')
@@ -83,6 +88,7 @@ function getPoolListData(type) {
             Seven.getPoolData(),
             Eight.getPoolData(),
             Nine.getPoolData(),
+            Twelve.getPoolData(),
             // Ten.getPoolData(),
         ]).then(async res => {
             let coinRate = await getCoinRate() //  汇率
@@ -170,6 +176,7 @@ function getAllBlock() {
             Eight.getLastTime(),
             Nine.getLastTime(),
             // Ten.getLastTime(),
+            Twelve.getLastTime(),
         ]).then(lastTime => {
             getAllRewardRate().then(allRate => {
                 getAllStartTime().then(allTime => {
@@ -199,6 +206,7 @@ function getAllRewardRate() {
             Eight.getRewardRate(),
             Nine.getRewardRate(),
             // Ten.getRewardRate(),
+            Twelve.getRewardRate(),
         ]).then(res => {
             resolve(res.map((item) => {
                 return Web3.utils.fromWei(item, 'ether')
@@ -222,6 +230,7 @@ function getAllStartTime() {
             Eight.getPoolStartTime(),
             Nine.getPoolStartTime(),
             // Ten.getPoolStartTime(),
+            Twelve.getPoolStartTime(),
         ]).then(res => {
             resolve(res)
         }).catch(err => {
