@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { NavLink } from 'react-router-dom'
+// import { NavLink } from 'react-router-dom'
 import HomeBottom from './HomeBottom'
 import { useTranslation } from "react-i18next"
 import Data from '../../apis/api/data.js'
@@ -206,7 +206,7 @@ export default function Home() {
     const [rate, setRate] = useState(0)
     const [allBalance, setAllBalance] = useState(0)
     // 轮播图
-    const [flag] = useState(true);
+    // const [flag] = useState(true);
     const [slideList] = useState([{
         title: 'banner1',
         url: require('../../assets/images/banner.jpg')

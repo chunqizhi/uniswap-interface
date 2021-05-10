@@ -1,5 +1,6 @@
 import React, { useContext, useRef, useState } from 'react'
-import { Settings, X } from 'react-feather'
+// import { Settings, X } from 'react-feather'
+import { Settings } from 'react-feather'
 import { Text } from 'rebass'
 import styled, { ThemeContext } from 'styled-components'
 import { useOnClickOutside } from '../../hooks/useOnClickOutside'
@@ -35,17 +36,17 @@ const StyledMenuIcon = styled(Settings)`
   }
 `
 
-const StyledCloseIcon = styled(X)`
-  height: 20px;
-  width: 20px;
-  :hover {
-    cursor: pointer;
-  }
+// const StyledCloseIcon = styled(X)`
+//   height: 20px;
+//   width: 20px;
+//   :hover {
+//     cursor: pointer;
+//   }
 
-  > * {
-    stroke: ${({ theme }) => theme.text1};
-  }
-`
+//   > * {
+//     stroke: ${({ theme }) => theme.text1};
+//   }
+// `
 
 const StyledMenuButton = styled.button`
   position: relative;
