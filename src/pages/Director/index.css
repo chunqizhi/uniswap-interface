@@ -4,25 +4,31 @@
     justify-content: space-between;
     width: 100%;
 }
+
 .driectorItem {
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 48%;
     height: 72px;
-    padding: 0 10px 0 30px;
+    /* padding: 0 10px 0 30px; */
     justify-content: center;
     margin-bottom: 10px;
     background: url(../../assets/images/tab-card1-disabled-png.png) no-repeat top center;
 }
+
 .driectorItem:nth-child(2) {
     background: url(../../assets/images/tab-card2-disabled-png.png) no-repeat top center;
 }
+
 .driectorItem:nth-child(3) {
     background: url(../../assets/images/tab-card3-disabled-png.png) no-repeat top center;
 }
+
 .driectorItem:last-child {
     background: url(../../assets/images/tab-card4-disabled-png.png) no-repeat top center;
 }
+
 .driectorTitle {
     display: flex;
     flex-wrap: wrap;
@@ -31,13 +37,16 @@
     color: #ABB7CA;
     margin-bottom: 5px;
 }
+
 .driectorTitle img {
     margin-right: 5px;
 }
+
 .driectorContent {
     font-size: 16px;
     color: #E3F4FD;
 }
+
 .driectorBox {
     display: flex;
     flex-direction: column;
@@ -48,21 +57,25 @@
     box-sizing: border-box;
     align-items: center;
 }
+
 .driectorBoxP1 {
     font-size: 24px;
     color: #E3F4FD;
     margin: 10px 0 5px;
 }
+
 .driectorBoxP2 {
     font-size: 14px;
     color: #7D8796;
 }
+
 .driectorBoxList {
     display: flex;
     flex-direction: column;
     width: 100%;
     margin: 20px 0;
 }
+
 .driectorBoxItem {
     display: flex;
     flex-wrap: wrap;
@@ -73,11 +86,13 @@
     color: #fff;
     font-family: 'MicrosoftYaHei';
 }
+
 .driectorBoxItemSpan {
     color: #E3F4FD;
     font-size: 14px;
     margin: 0 5px;
 }
+
 .drictorBut {
     display: flex;
     flex-wrap: wrap;
@@ -85,6 +100,7 @@
     align-items: center;
     width: 100%;
 }
+
 .drictorBut button {
     display: flex;
     flex-wrap: wrap;
@@ -95,14 +111,16 @@
     box-sizing: border-box;
     font-size: 16px;
 }
+
 .drictorExtract {
     border: 2px solid #19e192;
     border-radius: 3px;
     color: #19E192;
     background-color: transparent;
 }
+
 .drictorLocking {
-    background: -webkit-linear-gradient(left,#45b7da,#57dfaa);
+    background: -webkit-linear-gradient(left, #45b7da, #57dfaa);
     color: #FEFEFE;
     border: none;
 }

@@ -77,9 +77,9 @@ const BodyWrapper = styled.div`
   z-index: 1;
 `
 
-// const Marginer = styled.div`
-//   margin-top: 5rem;
-// `
+const Marginer = styled.div`
+  margin-top: 5rem;
+`
 
 function TopLevelModals() {
   const open = useModalOpen(ApplicationModal.ADDRESS_CLAIM)
