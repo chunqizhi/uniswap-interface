@@ -70,6 +70,9 @@ justify-content: space-around;
 const LightCarddiv = styled(LightCard)`
   padding:10px 16px;
 `
+const LightCardbox = styled(LightCard)`
+  border:none;
+`
 
 export default function AddLiquidity({
   match: {
@@ -369,13 +372,13 @@ export default function AddLiquidity({
                 <ColumnCenter>
                   <BlueCard>
                     <AutoColumn gap="10px">
-                      <TYPE.link fontWeight={600} color={'primaryText1'}>
+                      <TYPE.link fontWeight={600} color={'#2172E5'}>
                       {t("add.text03")}
                       </TYPE.link>
-                      <TYPE.link fontWeight={400} color={'primaryText1'}>
+                      <TYPE.link fontWeight={400} color={'#2172E5'}>
                       {t("add.text04")}
                       </TYPE.link>
-                      <TYPE.link fontWeight={400} color={'primaryText1'}>
+                      <TYPE.link fontWeight={400} color={'#2172E5'}>
                       {t("add.text05")}
                       </TYPE.link>
                     </AutoColumn>
@@ -385,7 +388,7 @@ export default function AddLiquidity({
                 <ColumnCenter>
                   <BlueCard>
                     <AutoColumn gap="10px">
-                      <TYPE.link fontWeight={400} color={'primaryText1'}>
+                      <TYPE.link fontWeight={400} color={'#2172E5'}>
                         <b>Tip:</b>{t("add.text06")}
                       </TYPE.link>
                     </AutoColumn>
@@ -421,20 +424,20 @@ export default function AddLiquidity({
             />
             {currencies[Field.CURRENCY_A] && currencies[Field.CURRENCY_B] && pairState !== PairState.INVALID && (
               <>
-                <LightCard padding="0px" borderRadius={'20px'}>
+                <LightCard padding="0px" borderRadius={'20px'} border={'1px solid #06dd7a'}>
                   <RowBetween padding="1rem">
                     <TYPE.subHeader fontWeight={500} fontSize={14}>
                       {noLiquidity ? `${t("add.text07")}` : `${t("add.text08")}`}
                     </TYPE.subHeader>
                   </RowBetween>{' '}
-                  <LightCard padding="1rem 0px" borderRadius={'20px'}>
+                  <LightCardbox padding="0px" borderRadius={'20px'}>
                     <PoolPriceBar
                       currencies={currencies}
                       poolTokenPercentage={poolTokenPercentage}
                       noLiquidity={noLiquidity}
                       price={price}
                     />
-                  </LightCard>
+                  </LightCardbox>
                 </LightCard>
               </>
             )}

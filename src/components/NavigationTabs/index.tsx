@@ -51,10 +51,12 @@ const StyledNavLink = styled(NavLink).attrs({
 const ActiveText = styled.div`
   font-weight: 500;
   font-size: 20px;
+  color:#ABB7CA;
 `
 
 const StyledArrowLeft = styled(ArrowLeft)`
   color: ${({ theme }) => theme.text1};
+  color:#ABB7CA;
 `
 
 export function SwapPoolTabs({ active }: { active: 'swap' | 'pool' }) {

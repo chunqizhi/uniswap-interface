@@ -93,7 +93,7 @@ const MenuItem = styled(ExternalLink)`
 `
 const MuneBox = styled.div`
 position: fixed;
-background-color: rgba(255,255,255,.6);
+background-color: rgba(0,0,0,.8);
 top: 3.8rem;
 left: 0;
 right: 0;

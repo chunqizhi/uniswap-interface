@@ -75,7 +75,7 @@ export default function PoolFinder() {
   }, [setShowSearch])
 
   const prerequisiteMessage = (
-    <LightCard padding="45px 10px">
+    <LightCard padding="25px 10px">
       <Text textAlign="center">
         {!account ? `${t("pool.text24")}` : `${t("pool.text25")}`}
       </Text>
@@ -88,7 +88,7 @@ export default function PoolFinder() {
       <AutoColumn style={{ padding: '1rem' }} gap="md">
         <BlueCard>
           <AutoColumn gap="10px">
-            <TYPE.link fontWeight={400} color={'primaryText1'}>
+            <TYPE.link fontWeight={400} color={'#2172E5'}>
               <b>Tip:</b>{t("pool.text15")}
             </TYPE.link>
           </AutoColumn>
@@ -155,7 +155,7 @@ export default function PoolFinder() {
             hasPosition && pair ? (
               <MinimalPositionCard pair={pair} border="1px solid #CED0D9" />
             ) : (
-              <LightCard padding="45px 10px">
+              <LightCard padding="25px 10px">
                 <AutoColumn gap="sm" justify="center">
                   <Text textAlign="center">{t("pool.text18")}</Text>
                   <StyledInternalLink to={`/add/${currencyId(currency0)}/${currencyId(currency1)}`}>
@@ -165,7 +165,7 @@ export default function PoolFinder() {
               </LightCard>
             )
           ) : validPairNoLiquidity ? (
-            <LightCard padding="45px 10px">
+            <LightCard padding="25px 10px">
               <AutoColumn gap="sm" justify="center">
                 <Text textAlign="center">{t("pool.text20")}</Text>
                 <StyledInternalLink to={`/add/${currencyId(currency0)}/${currencyId(currency1)}`}>
@@ -174,7 +174,7 @@ export default function PoolFinder() {
               </AutoColumn>
             </LightCard>
           ) : pairState === PairState.INVALID ? (
-            <LightCard padding="45px 10px">
+            <LightCard padding="25px 10px">
               <AutoColumn gap="sm" justify="center">
                 <Text textAlign="center" fontWeight={500}>
                 {t("pool.text21")}
@@ -182,7 +182,7 @@ export default function PoolFinder() {
               </AutoColumn>
             </LightCard>
           ) : pairState === PairState.LOADING ? (
-            <LightCard padding="45px 10px">
+            <LightCard padding="25px 10px">
               <AutoColumn gap="sm" justify="center">
                 <Text textAlign="center">
                 {t("pool.text23")}
