@@ -66,7 +66,6 @@ const BodyWrapper = styled.div`
     padding: 16px;
     padding-top: 2rem;
   `};
-  background-color: #F7F8FA !important;
   z-index: 1;
 `
 
