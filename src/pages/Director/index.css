@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     width: 100%;
+    font-family: 'CenturyGothic-Bold';
 }
 
 .driectorItem {
@@ -37,10 +38,16 @@
     font-size: 12px;
     color: #ABB7CA;
     margin-bottom: 5px;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .driectorTitle img {
     margin-right: 5px;
+}
+.driectorTitle span {
+    display: flex;
+    flex: 1;
 }
 
 .driectorContent {

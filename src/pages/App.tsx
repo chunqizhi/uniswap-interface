@@ -139,10 +139,10 @@ export default function App() {
               <Route component={RedirectPathToSwapOnly} />
             </Switch>
           </Web3ReactManager>
-          <Marginer />
-          {/* 公共底部 */}
-          <NavBar />
+          {/* <Marginer /> */}
         </BodyWrapper>
+        {/* 公共底部 */}
+        <NavBar />
       </AppWrapper>
     </Suspense>
   )

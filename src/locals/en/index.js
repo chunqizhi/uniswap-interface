@@ -9,6 +9,10 @@ import managelists from './managelists'
 import settings from './settings'
 import swap from './swap'
 import debris from './debris'
+// 董事会
+import director from './director'
+// 底部导航栏
+import navbar from "./navbar";
 export default {
     home: {...Home },
     mining: {...Mining },
@@ -21,4 +25,6 @@ export default {
     settings: {...settings },
     swap: {...swap },
     debris: {...debris },
+    director: {...director },
+    navbar: {...navbar }
 }

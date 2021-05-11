@@ -89,32 +89,32 @@ export default function Director() {
             <div className="driectorBox">
                 <img src={ require('../../assets/images/trs-icon-defalt-png.png') } alt="" />
                 <p className="driectorBoxP1">TRS DAO-5</p>
-                <p className="driectorBoxP2">锁仓期：5天</p>
+                <p className="driectorBoxP2">{t("director.text09")}：5{t("director.text10")}</p>
                 <div className="driectorBoxList">
                     <div className="driectorBoxItem">
                         <img src={ require('../../assets/images/lock-icon-defalt-png.png') } alt="" />
-                        <span className="driectorBoxItemSpan">{t("director.text05")}</span>
+                        <span className="driectorBoxItemSpan">{t("director.text05")}：</span>
                         <span>100.000</span>
                     </div>
                     <div className="driectorBoxItem">
                         <img src={ require('../../assets/images/mine-icon-defalt-png.png') } alt="" />
-                        <span className="driectorBoxItemSpan">{t("director.text06")}</span>
+                        <span className="driectorBoxItemSpan">{t("director.text06")}：</span>
                         <span>100.000</span>
                     </div>
                     <div className="driectorBoxItem">
                         <img src={ require('../../assets/images/untie-icon-defalt-png.png') } alt="" />
-                        <span className="driectorBoxItemSpan">{t("director.text07")}</span>
+                        <span className="driectorBoxItemSpan">{t("director.text07")}：</span>
                         <span>100.000</span>
                     </div>
                     <div className="driectorBoxItem">
                         <img src={ require('../../assets/images/wallet-icon-defalt-png.png') } alt="" />
-                        <span className="driectorBoxItemSpan">{t("director.text08")}</span>
+                        <span className="driectorBoxItemSpan">{t("director.text08")}：</span>
                         <span>100.000</span>
                     </div>
                 </div>
                 <div className="drictorBut">
-                    <button className="drictorExtract" onClick={ ()=> extract() } >提取</button>
-                    <button className="drictorLocking" onClick={ ()=> lockin() }>锁仓</button>
+                    <button className="drictorExtract" onClick={ ()=> extract() } >{t("director.text11")}</button>
+                    <button className="drictorLocking" onClick={ ()=> lockin() }>{t("director.text12")}</button>
                 </div>
             </div>
         </>

@@ -45,7 +45,6 @@ const formatNum = function (str: string|number) {
     let flag = str.indexOf('.') > 0
     let temp
 
-    
     if(flag){
         if( str.split('.')[0].length>4){
             let pre = str.split('.')[0]
@@ -62,7 +61,7 @@ const formatNum = function (str: string|number) {
     return temp
 }
 export default function Mining() {
-  
+
 const { t } = useTranslation()
 
     const [flag, setFlag] = useState(0)
@@ -73,7 +72,7 @@ const { t } = useTranslation()
     const [balance, setBalance] = useState(0.00)
 
     Data.getPoolListData().then(res => {
-        // console.log(`setMainList`,res)
+        // console.log(`setMainList`,res);
         setMainList(res)
     })
     Data.getAllBlock().then(res=>{
@@ -199,8 +198,8 @@ const { t } = useTranslation()
                 type && mainList[type] && (
                     <div className="minList">
                         <div className="minHead">
-                            <span>交易对/TVL</span>
-                            <span>产量(TRS)</span>
+                            <span>{ t("mining.text18") }/TVL</span>
+                            <span>{ t("mining.text19") }(TRS)</span>
                             <span>APY</span>
                         </div>
                         {
@@ -218,8 +217,8 @@ const { t } = useTranslation()
                                             <p>${ item.tvl }</p>
                                         </div>
                                         <div className="minItemCol2">
-                                            <p>{ item.per_day }(每天)</p>
-                                            <p>{ item.per_month }(每月)</p>
+                                            <p>{ item.per_day }({ t("mining.text20") })</p>
+                                            <p>{ item.per_month }({ t("mining.text21") })</p>
                                         </div>
                                         <div className="minItemCol3">
                                             <span>{ item.apy }</span>
@@ -284,7 +283,6 @@ function TopContent(props) {
 
 function MidTitle() {
     const { t } = useTranslation();
-
     return (
         <>
             <div className="mid-title">

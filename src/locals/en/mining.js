@@ -15,5 +15,9 @@ export default {
     text14: '(Per Day)',
     text15: "Stake",
     text16: '(Per Month)',
-    text17: 'Earn'
+    text17: 'Earn',
+    text18: 'Trading pair',
+    text19: 'Production',
+    text20: 'day',
+    text21: 'mon'
 }

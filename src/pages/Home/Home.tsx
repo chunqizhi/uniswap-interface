@@ -147,6 +147,7 @@ const HomePrice = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
+    font-family: 'MicrosoftYaHei';
 `
 const HomeItem = styled.div`
     display: flex;
@@ -210,6 +211,9 @@ export default function Home() {
     const [slideList] = useState([{
         title: 'banner1',
         url: require('../../assets/images/banner.jpg')
+    },{
+        title: 'banner2',
+        url: require('../../assets/images/banner1.png')
     }]);
 
     Data.getTrsRate().then(res => {
@@ -229,12 +233,12 @@ export default function Home() {
                     dotActiveStyle={{ backgroundColor: '#06DD7A' }}
                     autoplayInterval={2000}>
                     {slideList.map((item, value) => (
-                        <div style={{ display: 'inline-block', width: '100%', height: '150px' }}>
+                        <div style={{ display: 'inline-block', width: '100%' }}>
                             <img
                                 src={ item.url }
                                 alt={ item.title }
                                 key={ value }
-                                style={{ width: '100%', verticalAlign: 'top', height: '150px' }}
+                                style={{ width: '100%', verticalAlign: 'top' }}
                             />
                         </div>
                     ))}
@@ -251,7 +255,7 @@ export default function Home() {
                 <HomeItem>
                     <img src={ require('../../assets/images/home_price2.png') } alt="" />
                     <HomeContent>
-                        <p>TRS价格</p>
+                        <p>{t("home.text14")}</p>
                         <span>${ formatNum(rate) }</span>
                     </HomeContent>
                 </HomeItem>

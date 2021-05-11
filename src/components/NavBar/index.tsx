@@ -11,23 +11,23 @@ export default function NarBar() {
             <div className="navBar">
                 <NavLink exact to="/home" className="navItem" activeClassName="navItemActive">
                     <span className="iconfont icon-index-copy"></span>
-                    <span>{t("navlist.text11")}</span>
+                    <span>{t("navbar.text01")}</span>
                 </NavLink>
                 <NavLink to="/exchange" className="navItem" activeClassName="navItemActive">
                     <span className="iconfont icon-duihuan"></span>
-                    <span>{t("navlist.text12")}</span>
+                    <span>{t("navbar.text02")}</span>
                 </NavLink>
                 <NavLink exact to="/mining" className="navItem" activeClassName="navItemActive">
                     <span className="iconfont icon-yejinkuangchan"></span>
-                    <span>{t("navlist.text13")}</span>
+                    <span>{t("navbar.text03")}</span>
                 </NavLink>
                 <NavLink exact to="/" className="navItem" activeClassName="navItemActive">
                     <span className="iconfont icon-hangqing"></span>
-                    <span>{t("navlist.text14")}</span>
+                    <span>{t("navbar.text04")}</span>
                 </NavLink>
                 <NavLink exact to="/director" className="navItem" activeClassName="navItemActive">
                     <span className="iconfont icon-ren"></span>
-                    <span>{t("navlist.text15")}</span>
+                    <span>{t("navbar.text05")}</span>
                 </NavLink>
             </div>
         </>

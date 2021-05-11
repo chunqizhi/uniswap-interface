@@ -11,5 +11,6 @@ export default {
     text10: 'fee reward',
     text11: 'Audit institutions',
     text12: 'Exchange',
-    text13: 'Liquidity'
+    text13: 'Liquidity',
+    text14: 'TRS price',
 }

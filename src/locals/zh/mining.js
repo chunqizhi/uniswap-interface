@@ -15,5 +15,9 @@ export default {
     text14: '',
     text15: "质押",
     text16: '',
-    text17: '每天产出'
+    text17: '每天产出',
+    text18: '交易对',
+    text19: '产量',
+    text20: '每天',
+    text21: '每月'
 }

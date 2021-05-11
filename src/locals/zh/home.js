@@ -12,4 +12,5 @@ export default {
     text11: '审计机构',
     text12: '兑换',
     text13: '流动性挖矿',
+    text14: 'TRS价格',
 }

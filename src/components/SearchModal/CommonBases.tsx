@@ -39,7 +39,7 @@ export default function CommonBases({
   const { t } = useTranslation()
 
   return (
-    <AutoColumn gap="md">
+    <AutoColumn gap="md" style={{ marginBottom: 0, ridRowGap: 'none' }}>
       <AutoRow>
         <Text fontWeight={500} fontSize={14}>
           {t("add.text26")}
