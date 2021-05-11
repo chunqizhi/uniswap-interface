@@ -9,6 +9,7 @@ import managelists from './managelists'
 import settings from './settings'
 import swap from './swap'
 import debris from './debris'
+import director from './director'
 
 
 export default {
@@ -23,4 +24,5 @@ export default {
     settings: {...settings },
     swap: {...swap },
     debris: {...debris },
+    director: {...director }
 }

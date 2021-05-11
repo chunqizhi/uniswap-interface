@@ -1,8 +1,8 @@
 import React, { useRef, useState,useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Twitter, GitHub } from 'react-feather'
+// import { Twitter, GitHub } from 'react-feather'
 import styled from 'styled-components'
-import { ReactComponent as MenuIcon } from '../../assets/images/menu.svg'
+// import { ReactComponent as MenuIcon } from '../../assets/images/menu.svg'
 // import menu from '../../assets/images/menu.png'
 // import menu1 from '../../assets/images/menu1.png'
 // import { useActiveWeb3React } from '../../hooks'
@@ -15,11 +15,11 @@ import { ExternalLink } from '../../theme'
 
 import i18n from "../../i18n"
 
-const StyledMenuIcon = styled(MenuIcon)`
-  path {
-    stroke: ${({ theme }) => theme.text1};
-  }
-`
+// const StyledMenuIcon = styled(MenuIcon)`
+//   path {
+//     stroke: ${({ theme }) => theme.text1};
+//   }
+// `
 
 const StyledMenuButton = styled.button`
   width: 100%;
@@ -93,7 +93,7 @@ const MenuItem = styled(ExternalLink)`
 `
 const MuneBox = styled.div`
 position: fixed;
-background-color: rgba(255,255,255,.6);
+background-color: rgba(0,0,0,.8);
 top: 3.8rem;
 left: 0;
 right: 0;
@@ -141,7 +141,7 @@ export default function Menu() {
   const [menu, setMenu] = useState(require('../../assets/images/menu.png'));
   // 根据open监听是否打开弹窗
   useEffect(() => {
-    open == false? setMenu(require('../../assets/images/menu.png')) : setMenu(require('../../assets/images/menu1.png'))
+    open === false? setMenu(require('../../assets/images/menu.png')) : setMenu(require('../../assets/images/menu1.png'))
   }, [open]);
 
   useOnClickOutside(node, open ? toggle : undefined)

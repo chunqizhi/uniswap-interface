@@ -2,11 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import Settings from '../Settings'
 import { RowBetween } from '../Row'
-import { TYPE } from '../../theme'
+// import { TYPE } from '../../theme'
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next"
-import creatHistory from 'history/createHashHistory'
-import { ArrowLeft } from 'react-feather'
+// import creatHistory from 'history/createHashHistory'
+// import { ArrowLeft } from 'react-feather'
 import './index.css';
 
 const StyledSwapHeader = styled.div`
@@ -16,10 +16,10 @@ const StyledSwapHeader = styled.div`
   max-width: 420px;
   color: ${({ theme }) => theme.text2};
 `
-const StyledArrowLeft = styled(ArrowLeft)`
-  color: ${({ theme }) => theme.text1};
-  margin-right:5px;
-`
+// const StyledArrowLeft = styled(ArrowLeft)`
+//   color: ${({ theme }) => theme.text1};
+//   margin-right:5px;
+// `
 const Dspdiv = styled.div`
   display:flex;
   // align-items: center;
@@ -29,7 +29,7 @@ const Dspdiv = styled.div`
 
 export default function SwapHeader() {
   const { t } = useTranslation()
-  const history = creatHistory();
+  // const history = creatHistory();
 
 
   return (

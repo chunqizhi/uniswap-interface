@@ -43,6 +43,7 @@ const AppWrapper = styled.div`
   display: flex;
   flex-flow: column;
   align-items: flex-start;
+  background-color:#050822;
 `
 
 const HeaderWrapper = styled.div`
@@ -65,7 +66,7 @@ const BodyWrapper = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   z-index: 10;
-  margin-bottom: 62px;
+  margin-bottom: 61px;
 
   ${({ theme }) => theme.mediaWidth.upToSmall`
     padding: 16px;

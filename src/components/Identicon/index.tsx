@@ -1,9 +1,10 @@
-import React, { useEffect, useRef } from 'react'
+// import React, { useEffect, useRef } from 'react'
+import React from 'react'
 
 import styled from 'styled-components'
 import headImg from "../../assets/images/wallet-icon-click-png.png"
-import { useActiveWeb3React } from '../../hooks'
-import Jazzicon from 'jazzicon'
+// import { useActiveWeb3React } from '../../hooks'
+// import Jazzicon from 'jazzicon'
 
 const StyledIdenticonContainer = styled.div`
   height: 17px;
@@ -13,9 +14,9 @@ const StyledIdenticonContainer = styled.div`
 `
 
 export default function Identicon() {
-  const ref = useRef<HTMLDivElement>()
+  // const ref = useRef<HTMLDivElement>()
 
-  const { account } = useActiveWeb3React()
+  // const { account } = useActiveWeb3React()
 
   // useEffect(() => {
   //   if (account && ref.current) {

@@ -125,9 +125,10 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
 }
 
 const TextWrapper = styled(Text)<{ color: keyof Colors }>`
-  color: ${({ color, theme }) => (theme as any)[color]};
-`
 
+  color:#ABB7CA;
+`
+// color: ${({ color, theme }) => (theme as any)[color]};
 export const TYPE = {
   main(props: TextProps) {
     return <TextWrapper fontWeight={500} color={'text2'} {...props} />
@@ -226,5 +227,6 @@ body {
   min-height: 100vh;
   background-position: 0 -30vh;
   background-repeat: no-repeat;
+  background-color: #050822;
 }
 `
