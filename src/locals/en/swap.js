@@ -20,4 +20,7 @@ export default {
     text19: 'On',
     text20: 'Off',
     text21: 'Swap',
+    text22: 'Capital pool',
+    text23: 'chain bridge',
+    text24: 'Tree Swap has the same vision as Uniswap (Establish a financial infrastructure that does not require trust and is highly decentralized)'
 }

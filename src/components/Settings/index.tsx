@@ -96,10 +96,18 @@ const MenuFlyout = styled.span`
   display: flex;
   flex-direction: column;
   font-size: 1rem;
-  position: absolute;
-  top: 3rem;
-  right: 0rem;
+  // position: absolute;
+  // top: 3rem;
+  // right: 0rem;
   z-index: 100;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 20.125rem;
+  height: 370px;
+  margin: auto;
 
   ${({ theme }) => theme.mediaWidth.upToMedium`
     min-width: 18.125rem;
@@ -232,7 +240,7 @@ const { t } = useTranslation()
             <RowBetween>
               <RowFixed>
                 <TYPE.black fontWeight={400} fontSize={14} color={theme.text2}>
-                {t("settings.text09")} 
+                {t("settings.text09")}
                 </TYPE.black>
                 <QuestionHelper text={t("settings.text10")} />
               </RowFixed>
