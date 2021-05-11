@@ -15,7 +15,8 @@ const QuestionWrapper = styled.div`
   border-radius: 36px;
   background-color: ${({ theme }) => theme.bg2};
   color: ${({ theme }) => theme.text2};
-
+  background-color:#14223d;
+  color:#565A69;
   :hover,
   :focus {
     opacity: 0.7;
@@ -36,7 +37,7 @@ const LightQuestionWrapper = styled.div`
   height: 24px;
   background-color: rgba(255, 255, 255, 0.1);
   color: ${({ theme }) => theme.white};
-
+  
   :hover,
   :focus {
     opacity: 0.7;
