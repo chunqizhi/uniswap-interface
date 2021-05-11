@@ -16,6 +16,10 @@ import HLTCICON from '../../assets/images/coin/HLTC.png'
 import UNIICON from '../../assets/images/coin/UNI.png'
 import XRPICON from '../../assets/images/coin/XRP.png'
 import HBCHICON from '../../assets/images/coin/HBCH.png'
+import ADAICON from '../../assets/images/coin/ADA.png'
+import EOSICON from '../../assets/images/coin/EOS.png'
+import LINKICON from '../../assets/images/coin/LINK.png'
+import AAVEICON from '../../assets/images/coin/AAVE.png'
 
 
 
@@ -249,5 +253,50 @@ export default [{
         poolIndex: 'hbchusdt',
         coin_price: 'USDTNEXT',
         key_word: "main"
+    },
+    {
+        pre_coin: ADAICON,
+        next_coin: USDTICON,
+        coin_name: "ADA/USDT",
+        coin: "TRS",
+        poolIndex: 'adausdt',
+        coin_price: 'USDTNEXT',
+        key_word: "main"
+    },
+    {
+        pre_coin: EOSICON,
+        next_coin: USDTICON,
+        coin_name: "EOS/USDT",
+        coin: "TRS",
+        poolIndex: 'eosusdt',
+        coin_price: 'USDTNEXT',
+        key_word: "main"
+    },
+    {
+        pre_coin: ETHICON,
+        next_coin: HUSDICON,
+        coin_name: "ETH/HUSD",
+        coin: "TRS",
+        poolIndex: 'ethhusd',
+        coin_price: 'ETHPRE',
+        key_word: "main"
+    },
+    {
+        pre_coin: LINKICON,
+        next_coin: USDTICON,
+        coin_name: "LINK/USDT",
+        coin: "TRS",
+        poolIndex: 'linkusdt',
+        coin_price: 'USDTNEXT',
+        key_word: "ideas"
+    },
+    {
+        pre_coin: AAVEICON,
+        next_coin: USDTICON,
+        coin_name: "AAVE/USDT",
+        coin: "TRS",
+        poolIndex: 'aaveusdt',
+        coin_price: 'USDTNEXT',
+        key_word: "ideas"
     },
 ]
