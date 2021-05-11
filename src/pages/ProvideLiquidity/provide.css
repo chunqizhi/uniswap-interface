@@ -25,25 +25,24 @@ input {
 }
 
 .add .desc {
-    color: #949697;
-    font-size: 17px;
-    margin-top: 5px;
+    color: #06DD7A;
+    font-size: 20px;
+    /* margin-top: 5px; */
 }
 
 .add .add-content {
-    background-color: #fff;
+    background-color: #14223d;
     border-radius: 12px;
     margin-top: 15px;
     padding: 15px;
+    color: #E3F4FD;
+    font-family: 'MicrosoftYaHei';
 }
 
 .add .content-title {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-}
-
-.add .content-title span {
     font-size: 14px;
 }
 
@@ -58,21 +57,37 @@ input {
 
 .add .add-info {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     height: 32px;
     font-size: 15px;
     margin-bottom: 10px;
 }
 
-.add .add-info img {
-    width: 24px;
-    height: 24px;
-    vertical-align: middle;
+.provideTwoImg {
+    display: inline-block;
+    width: 26px;
+    height: 16px;
+    position: relative;
+    margin-right: 7px;
+}
+
+.provideTwoImg img {
+    position: absolute;
+    top: 0;
+    width: 16px;
+    height: 16px;
+}
+.provideTwoImg img:first-child {
+    left: 0;
+}
+.provideTwoImg img:last-child {
+    right: 0;
 }
 
 .add .add-tips {
     font-size: 12px;
-    color: #777;
+    color: #667182;
     margin-bottom: 5px;
 }
 
@@ -115,21 +130,26 @@ input {
     margin: 14px auto;
     box-sizing: border-box;
     height: 45px;
-    font-size: 15px;
-    font-weight: bold;
+    font-size: 16px;
+    /* font-weight: bold; */
     line-height: 45px;
     border-radius: 6px;
     text-align: center;
 }
 
 .add .receive-btn {
-    background-color: #0278FE;
-    color: #fff;
+    background-color: #06dd7a;
+    color: #F4F8FF;
 }
 
 .add .other-btn {
-    border: 1px solid #0278FE;
-    color: #0278FE;
+    border: 1px solid #06dd7a;
+    color: #F4F8FF;
+}
+
+.add .other-back {
+    border: 1px solid #667182;
+    color: #667182;
 }
 
 .add-mask {
@@ -200,8 +220,8 @@ input {
     top: 50%;
     transform: translateY(-50%);
     color: #fff;
-    background-color: #0278FE;
-    border: 1px solid #0278FE;
+    background-color: #06DD7A;
+    border: 1px solid #06DD7A;
     font-size: 14px;
 }
 
@@ -221,11 +241,11 @@ input {
 }
 
 .add-mask .mask-bottom .left-btn {
-    border: 1px solid #0278FE;
-    color: #0278FE;
+    border: 1px solid #06DD7A;
+    color: #06DD7A;
 }
 
 .add-mask .mask-bottom .right-btn {
-    background: #0278FE;
+    background: #06DD7A;
     color: #fff;
 }

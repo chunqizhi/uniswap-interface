@@ -51,10 +51,11 @@ const StyledNavLink = styled(NavLink).attrs({
 const ActiveText = styled.div`
   font-weight: 500;
   font-size: 20px;
+  color: #E3F4FD;
 `
 
 const StyledArrowLeft = styled(ArrowLeft)`
-  color: ${({ theme }) => theme.text1};
+  // color: ${({ theme }) => theme.text1};
 `
 
 export function SwapPoolTabs({ active }: { active: 'swap' | 'pool' }) {
@@ -78,7 +79,7 @@ export function FindPoolTabs() {
     <Tabs>
       <RowBetween style={{ padding: '1rem 1rem 0 1rem' }}>
         <HistoryLink to="/pool">
-          <StyledArrowLeft />
+          <ArrowLeft style={{ color: '#E3F4FD' }} />
         </HistoryLink>
         <ActiveText>{t('add.text14')}</ActiveText>
         <Settings />

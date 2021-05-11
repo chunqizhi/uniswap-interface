@@ -104,7 +104,7 @@ const { t } = useTranslation()
     return (
         <>
             <div className="add" key={poolIndex}>
-                <p className="title">{t("provideLiquidity.text01")}</p>
+                {/* <p className="title">{t("provideLiquidity.text01")}</p> */}
                 <p className="desc">{t("provideLiquidity.text02")} {coinInfo.coin_name}{t("provideLiquidity.text13")}</p>
 
                 <div className="add-content">
@@ -114,8 +114,10 @@ const { t } = useTranslation()
                     </p>
                     <p className="my-p-text">{t("provideLiquidity.text04")}</p>
                     <p className="add-info">
-                        <img src={coinInfo.pre_coin} alt="" />
-                        <img src={coinInfo.next_coin} alt="" />
+                        <div className="provideTwoImg">
+                            <img src={coinInfo.pre_coin} alt="" />
+                            <img src={coinInfo.next_coin} alt="" />
+                        </div>
                         <span> {coinInfo.coin_name}</span>
                         <span className="num">{
                             unStakedLp.substring(0, 18)
@@ -198,7 +200,7 @@ const { t } = useTranslation()
 
                     {/*   返回 */}
                     <ProvideBtn id={`mining-nav-link`} to={`/mining`}>
-                        <div className="add-div-btn other-btn">{t("provideLiquidity.text14")}</div>
+                        <div className="add-div-btn other-back">{t("provideLiquidity.text14")}</div>
                     </ProvideBtn>
                 </div>
 

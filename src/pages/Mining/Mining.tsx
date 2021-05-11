@@ -7,14 +7,16 @@ import API from '../../apis/api/six.js'
 import { useTranslation } from "react-i18next"
 
 const TitleDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 `
 const TitleSup = styled.span`
-color: #000;
-  font-size: 24px;
-  font-weight: 700;
-  width: 80%;
-  margin-top: 10px;
+    font-size: 24px;
+    color: #06DD7A;
 `
+
 const ItemBtn = styled(NavLink)`
 text-decoration:none;
 color:#FFF;
@@ -125,7 +127,6 @@ const { t } = useTranslation()
 
 
     useEffect(() => {
-
         Data.getTrsRate().then(res => {
             setRate(res.rate)
         })
@@ -150,8 +151,8 @@ const { t } = useTranslation()
                     })
                 }
             </ul>
-
-            {
+            {/* 原本的 */}
+            {/* {
                 type && mainList[type] && (<div className="pool-list">
                     {
 
@@ -184,8 +185,6 @@ const { t } = useTranslation()
                                         </div>
 
                                         <div className="item-btn">
-
-                                            {/* 跳转到 流动资金到时候  /add/token1/token2 */}
                                             <ItemBtn id={`/provideLiquidity-nav-link`} to={"/provideLiquidity/" + item.poolIndex}>{t("mining.text15")}</ItemBtn>
                                         </div>
                                     </div>
@@ -194,8 +193,44 @@ const { t } = useTranslation()
                         })
                     }
                 </div>)
+            } */}
+            {/* 更改后的 */}
+            {
+                type && mainList[type] && (
+                    <div className="minList">
+                        <div className="minHead">
+                            <span>交易对/TVL</span>
+                            <span>产量(TRS)</span>
+                            <span>APY</span>
+                        </div>
+                        {
+                            mainList[type].map((item: Item) => {
+                                return (
+                                    <NavLink id={`/provideLiquidity-nav-link`} to={"/provideLiquidity/" + item.poolIndex} className="minItem" key={item.coin_name}>
+                                        <div className="minItemCol1">
+                                            <div className="minItemColH">
+                                                <div className="minItemImg">
+                                                    <img src={ item.pre_coin } alt="" />
+                                                    <img src={ item.next_coin } alt="" />
+                                                </div>
+                                                <span>{ item.coin_name }</span>
+                                            </div>
+                                            <p>${ item.tvl }</p>
+                                        </div>
+                                        <div className="minItemCol2">
+                                            <p>{ item.per_day }(每天)</p>
+                                            <p>{ item.per_month }(每月)</p>
+                                        </div>
+                                        <div className="minItemCol3">
+                                            <span>{ item.apy }</span>
+                                        </div>
+                                    </NavLink>
+                                )
+                            })
+                        }
+                    </div>
+                )
             }
-
         </>
     )
 }
@@ -221,7 +256,7 @@ function TopContent(props) {
                 <div className="mini-1-div">
                     <p>
                         <span>{t("mining.text03")}</span>
-                        <span>${rate}</span>
+                        <span>{rate}</span>
                     </p>
                 </div>
                 <div className="top-div">
