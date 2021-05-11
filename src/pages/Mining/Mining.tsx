@@ -17,13 +17,13 @@ const TitleSup = styled.span`
     color: #06DD7A;
 `
 
-const ItemBtn = styled(NavLink)`
-text-decoration:none;
-color:#FFF;
-display:block;
-width:100%;
-height:100%;
-`
+// const ItemBtn = styled(NavLink)`
+// text-decoration:none;
+// color:#FFF;
+// display:block;
+// width:100%;
+// height:100%;
+// `
 
 
 interface Item {

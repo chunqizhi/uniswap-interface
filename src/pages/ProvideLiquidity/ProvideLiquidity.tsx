@@ -54,6 +54,7 @@ const { t } = useTranslation()
         })
     }
     const toast = () => {
+        timers && clearTimeout(timers)
         timers = setTimeout(() => {
             setApprovediv(false)
             clearTimeout(timers)
