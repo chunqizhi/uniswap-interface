@@ -20,6 +20,14 @@ import TrsShib from './trs_shib.js'
 import DogeUsdt from './doge_usdt.js'
 import ShibUsdt from './shib_usdt.js'
 import HltcUsdt from './hltc_usdt.js'
+import UniUsdt from './uni_usdt.js'
+import XrpUsdt from './xrp_usdt.js'
+import HbchUsdt from './hbch_usdt.js'
+import AdaUsdt from './ada_usdt.js'
+import EosUsdt from './eos_usdt.js'
+import EthHusd from './eth_husd.js'
+import LinkUsdt from './link_usdt.js'
+import AaveUsdt from './aave_usdt.js'
 import Icon from './icon.js'
 import Web3 from "web3";
 
@@ -120,6 +128,38 @@ function getCurrentPool(type) {
             API = HltcUsdt
             coinInfo = Icon[20]
             break;
+        case "uniusdt":
+            API = UniUsdt
+            coinInfo = Icon[21]
+            break;
+        case "xrpusdt":
+            API = XrpUsdt
+            coinInfo = Icon[22]
+            break;
+        case "hbchusdt":
+            API = HbchUsdt
+            coinInfo = Icon[23]
+            break;
+        case "adausdt":
+            API = AdaUsdt
+            coinInfo = Icon[24]
+            break;
+        case "eosusdt":
+            API = EosUsdt
+            coinInfo = Icon[25]
+            break;
+        case "ethhusd":
+            API = EthHusd
+            coinInfo = Icon[26]
+            break;
+        case "linkusdt":
+            API = LinkUsdt
+            coinInfo = Icon[27]
+            break;
+        case "aaveusdt":
+            API = AaveUsdt
+            coinInfo = Icon[28]
+            break;
         default:
             console.log('error')
     }
@@ -154,6 +194,14 @@ function getPoolListData(type) {
             DogeUsdt.getPoolData(),
             ShibUsdt.getPoolData(),
             HltcUsdt.getPoolData(),
+            UniUsdt.getPoolData(),
+            XrpUsdt.getPoolData(),
+            HbchUsdt.getPoolData(),
+            AdaUsdt.getPoolData(),
+            EosUsdt.getPoolData(),
+            EthHusd.getPoolData(),
+            LinkUsdt.getPoolData(),
+            AaveUsdt.getPoolData(),
 
         ]).then(async res => {
             let coinRate = await getCoinRate() //  汇率
@@ -257,6 +305,14 @@ function getAllBlock() {
             DogeUsdt.getLastTime(),
             ShibUsdt.getLastTime(),
             HltcUsdt.getLastTime(),
+            UniUsdt.getLastTime(),
+            XrpUsdt.getLastTime(),
+            HbchUsdt.getLastTime(),
+            AdaUsdt.getLastTime(),
+            EosUsdt.getLastTime(),
+            EthHusd.getLastTime(),
+            LinkUsdt.getLastTime(),
+            AaveUsdt.getLastTime(),
         ]).then(lastTime => {
             getAllRewardRate().then(allRate => {
                 getAllStartTime().then(allTime => {
@@ -298,6 +354,14 @@ function getAllRewardRate() {
             DogeUsdt.getRewardRate(),
             ShibUsdt.getRewardRate(),
             HltcUsdt.getRewardRate(),
+            UniUsdt.getRewardRate(),
+            XrpUsdt.getRewardRate(),
+            HbchUsdt.getRewardRate(),
+            AdaUsdt.getRewardRate(),
+            EosUsdt.getRewardRate(),
+            EthHusd.getRewardRate(),
+            LinkUsdt.getRewardRate(),
+            AaveUsdt.getRewardRate(),
         ]).then(res => {
             resolve(res.map((item) => {
                 return Web3.utils.fromWei(item, 'ether')
@@ -333,6 +397,14 @@ function getAllStartTime() {
             DogeUsdt.getPoolStartTime(),
             ShibUsdt.getPoolStartTime(),
             HltcUsdt.getPoolStartTime(),
+            UniUsdt.getPoolStartTime(),
+            XrpUsdt.getPoolStartTime(),
+            HbchUsdt.getPoolStartTime(),
+            AdaUsdt.getPoolStartTime(),
+            EosUsdt.getPoolStartTime(),
+            EthHusd.getPoolStartTime(),
+            LinkUsdt.getPoolStartTime(),
+            AaveUsdt.getPoolStartTime(),
         ]).then(res => {
             resolve(res)
         }).catch(err => {
