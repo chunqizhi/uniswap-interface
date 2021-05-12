@@ -18,7 +18,7 @@ import useTheme from '../../hooks/useTheme'
 const InputRow = styled.div<{ selected: boolean }>`
   ${({ theme }) => theme.flexRowNoWrap}
   align-items: center;
-  margin: ${({ selected }) => (selected ? '0.75rem 0.5rem 0.75rem 0.5rem' : '0.75rem 0.75rem 0.75rem 0.5rem')};
+  margin: ${({ selected }) => (selected ? '0.75rem 0.5rem 0.75rem 0.5rem' : '0.75rem 0.5rem 0.75rem 0.5rem')};
   border:1px dashed #ccc;
   background-color:#f2f2f2;
   padding:5px 10px;
@@ -38,7 +38,8 @@ const CurrencySelect = styled.button<{ selected: boolean }>`
   cursor: pointer;
   user-select: none;
   border: none;
-  padding: 0 0.5rem;
+  padding: 0;
+  padding-left:5px;
   background-color:#f2f2f2;
   background-color:transparency;
   :focus,
@@ -69,7 +70,7 @@ const Aligner = styled.div`
 `
 
 const StyledDropDown = styled(DropDown)<{ selected: boolean }>`
-  margin: 0 0.25rem 0 0.5rem;
+  margin: 0 0.1rem 0 0.1rem;
   height: 35%;
 
   path {
@@ -93,7 +94,7 @@ const Container = styled.div<{ hideInput: boolean }>`
 `
 
 const StyledTokenName = styled.span<{ active?: boolean }>`
-  ${({ active }) => (active ? '  margin: 0 0.25rem 0 0.75rem;' : '  margin: 0 0.25rem 0 0.25rem;')}
+  ${({ active }) => (active ? '  margin: 0 0.25rem;' : '  margin: 0 0.25rem 0 0.25rem;')}
   font-size:  ${({ active }) => (active ? '20px' : '16px')};
   background-color:transparent;
   color:#666666;
@@ -108,7 +109,7 @@ const StyledBalanceMax = styled.button`
   line-height:28px;
   font-weight: 500;
   cursor: pointer;
-  margin-right: 0.5rem;
+  
   color: ${({ theme }) => theme.primaryText1};
   :hover {
     border: 1px solid ${({ theme }) => theme.primary1};
@@ -117,10 +118,7 @@ const StyledBalanceMax = styled.button`
     border: 1px solid ${({ theme }) => theme.primary1};
     outline: none;
   }
-
-  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-    margin-right: 0.5rem;
-  `};
+  margin-right: 0px;
   background-color: #fff;
   color:#666666;
 `
