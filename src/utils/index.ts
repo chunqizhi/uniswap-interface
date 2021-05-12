@@ -26,7 +26,9 @@ const ETHERSCAN_PREFIXES: { [chainId in ChainId]: string } = {
   256: 'testnet.hecoinfo.com',
   128: 'hecoinfo.com',
   97: 'testnet.bscscan.com',
-  56: 'bscscan.com'
+  56: 'bscscan.com',
+  65: 'oklink.com/okexchain-test',
+  66: 'oklink.com',
 }
 
 export function getEtherscanLink(
