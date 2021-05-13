@@ -21,7 +21,7 @@ export default {
     text20: '关',
     text21: '兑换',
     text22: '资金池',
-    text23: '跨链接',
+    text23: '跨链桥',
     text24: 'Tree Swap有着与Uniswap相同的愿景',
     text25: '(建立一个无需信任及高度去中心化的金融基础设置)'
 }

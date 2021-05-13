@@ -84,7 +84,6 @@ export default function Director() {
     // 提取
     function extract() {
         // console.log('extract');
-        
         toast()
     }
     // 锁定
