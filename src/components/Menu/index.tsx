@@ -157,7 +157,7 @@ export default function Menu() {
   const copyUrl = () => {
     clearTimeout(timers);
     domUrl = document.createElement('input');
-    domUrl.value = 'tingting-ging';
+    domUrl.value = 'treeswap.service@outlook.com';
     domUrl.id = 'creatDom';
     document.body.appendChild(domUrl);
     domUrl.select(); // 选择对象
