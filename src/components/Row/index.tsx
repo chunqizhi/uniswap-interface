@@ -21,11 +21,12 @@ const Row = styled(Box)<{
 
 export const RowBetween = styled(Row)`
   justify-content: space-between;
+  
 `
 
 export const RowFlat = styled.div`
   display: flex;
-  align-items: flex-end;
+  align-items:center;
 `
 
 export const AutoRow = styled(Row)<{ gap?: string; justify?: string }>`
@@ -36,6 +37,7 @@ export const AutoRow = styled(Row)<{ gap?: string; justify?: string }>`
   & > * {
     margin: ${({ gap }) => gap} !important;
   }
+  padding:1rem 0px;
 `
 
 export const RowFixed = styled(Row)<{ gap?: string; justify?: string }>`

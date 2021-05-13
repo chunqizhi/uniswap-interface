@@ -101,7 +101,6 @@ export const StyledInternalLink = styled(Link)`
   cursor: pointer;
   color: ${({ theme }) => theme.primary1};
   font-weight: 500;
-
   :hover {
     text-decoration: underline;
   }
@@ -291,6 +290,7 @@ export const HideSmall = styled.span`
   ${({ theme }) => theme.mediaWidth.upToSmall`
     display: none;
   `};
+  border-radius:6px;
 `
 
 export const HideExtraSmall = styled.span`

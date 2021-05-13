@@ -1,19 +1,19 @@
-import { ChainId, Currency } from '@uniswap/sdk'
+import { ChainId, Currency } from 'huiwan-v2-sdk'
 import React, { useContext } from 'react'
 import styled, { ThemeContext } from 'styled-components'
 import Modal from '../Modal'
 import { ExternalLink } from '../../theme'
 import { Text } from 'rebass'
 import { CloseIcon, CustomLightSpinner } from '../../theme/components'
-import { RowBetween, RowFixed } from '../Row'
-import { AlertTriangle, ArrowUpCircle, CheckCircle } from 'react-feather'
-import { ButtonPrimary, ButtonLight } from '../Button'
+import { RowBetween } from '../Row'
+import { AlertTriangle, ArrowUpCircle } from 'react-feather'
+import { ButtonPrimary } from '../Button'
 import { AutoColumn, ColumnCenter } from '../Column'
 import Circle from '../../assets/images/blue-loader.svg'
-import MetaMaskLogo from '../../assets/images/metamask.png'
+// import MetaMaskLogo from '../../assets/images/metamask.png'
 import { getEtherscanLink } from '../../utils'
 import { useActiveWeb3React } from '../../hooks'
-import useAddTokenToMetamask from 'hooks/useAddTokenToMetamask'
+// import useAddTokenToMetamask from 'hooks/useAddTokenToMetamask'
 
 const Wrapper = styled.div`
   width: 100%;
@@ -31,12 +31,19 @@ const BottomSection = styled(Section)`
 const ConfirmedIcon = styled(ColumnCenter)`
   padding: 60px 0;
 `
-
-const StyledLogo = styled.img`
-  height: 16px;
-  width: 16px;
-  margin-left: 6px;
+const ButtonPrimarybtn = styled(ButtonPrimary)`
+  padding:0px;
+  color:#fff;
+  height:40px;
 `
+// const emptydiv = styled.div`
+//   height:0;
+// `
+// const StyledLogo = styled.img`
+//   height: 16px;
+//   width: 16px;
+//   margin-left: 6px;
+// `
 
 function ConfirmationPendingContent({ onDismiss, pendingText }: { onDismiss: () => void; pendingText: string }) {
   return (
@@ -80,9 +87,9 @@ function TransactionSubmittedContent({
 }) {
   const theme = useContext(ThemeContext)
 
-  const { library } = useActiveWeb3React()
+  // const { library } = useActiveWeb3React()
 
-  const { addToken, success } = useAddTokenToMetamask(currencyToAdd)
+  // const { addToken, success } = useAddTokenToMetamask(currencyToAdd)
 
   return (
     <Wrapper>
@@ -101,11 +108,11 @@ function TransactionSubmittedContent({
           {chainId && hash && (
             <ExternalLink href={getEtherscanLink(chainId, hash, 'transaction')}>
               <Text fontWeight={500} fontSize={14} color={theme.primary1}>
-                View on Etherscan
+                View on Hecoscan
               </Text>
             </ExternalLink>
           )}
-          {currencyToAdd && library?.provider?.isMetaMask && (
+          {/* {currencyToAdd && library?.provider?.isMetaMask && (
             <ButtonLight mt="12px" padding="6px 12px" width="fit-content" onClick={addToken}>
               {!success ? (
                 <RowFixed>
@@ -118,12 +125,12 @@ function TransactionSubmittedContent({
                 </RowFixed>
               )}
             </ButtonLight>
-          )}
-          <ButtonPrimary onClick={onDismiss} style={{ margin: '20px 0 0 0' }}>
+          )} */}
+          <ButtonPrimarybtn onClick={onDismiss} style={{ margin: '20px 0 0 0' }}>
             <Text fontWeight={500} fontSize={20}>
               Close
             </Text>
-          </ButtonPrimary>
+          </ButtonPrimarybtn>
         </AutoColumn>
       </Section>
     </Wrapper>

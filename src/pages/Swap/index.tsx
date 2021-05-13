@@ -1,4 +1,4 @@
-import { CurrencyAmount, JSBI, Token, Trade } from '@uniswap/sdk'
+import { CurrencyAmount, JSBI, Token, Trade } from 'huiwan-v2-sdk'
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { ArrowDown } from 'react-feather'
 import ReactGA from 'react-ga'
@@ -49,8 +49,20 @@ import { useIsTransactionUnsupported } from 'hooks/Trades'
 import UnsupportedCurrencyFooter from 'components/swap/UnsupportedCurrencyFooter'
 import { isTradeBetter } from 'utils/trades'
 import { RouteComponentProps } from 'react-router-dom'
+import styled from 'styled-components'
+import { useTranslation } from "react-i18next"
 
+
+const ButtonErrorbtn = styled(ButtonError)`
+  padding:0px;
+  color:#fff;
+  height:40px;
+`
+
+let timer
 export default function Swap({ history }: RouteComponentProps) {
+  const { t } = useTranslation()
+
   const loadedUrlParams = useDefaultsFromURLSearch()
 
   // token warning stuff
@@ -87,7 +99,7 @@ export default function Swap({ history }: RouteComponentProps) {
 
   // get custom setting values for user
   const [allowedSlippage] = useUserSlippageTolerance()
-
+  
   // swap state
   const { independentField, typedValue, recipient } = useSwapState()
   const {
@@ -119,13 +131,13 @@ export default function Swap({ history }: RouteComponentProps) {
 
   const parsedAmounts = showWrap
     ? {
-        [Field.INPUT]: parsedAmount,
-        [Field.OUTPUT]: parsedAmount
-      }
+      [Field.INPUT]: parsedAmount,
+      [Field.OUTPUT]: parsedAmount
+    }
     : {
-        [Field.INPUT]: independentField === Field.INPUT ? parsedAmount : trade?.inputAmount,
-        [Field.OUTPUT]: independentField === Field.OUTPUT ? parsedAmount : trade?.outputAmount
-      }
+      [Field.INPUT]: independentField === Field.INPUT ? parsedAmount : trade?.inputAmount,
+      [Field.OUTPUT]: independentField === Field.OUTPUT ? parsedAmount : trade?.outputAmount
+    }
 
   const { onSwitchTokens, onCurrencySelection, onUserInput, onChangeRecipient } = useSwapActionHandlers()
   const isValid = !swapInputError
@@ -219,8 +231,8 @@ export default function Swap({ history }: RouteComponentProps) {
             recipient === null
               ? 'Swap w/o Send'
               : (recipientAddress ?? recipient) === account
-              ? 'Swap w/o Send + recipient'
-              : 'Swap w/ Send',
+                ? 'Swap w/o Send + recipient'
+                : 'Swap w/ Send',
           label: [
             trade?.inputAmount?.currency?.symbol,
             trade?.outputAmount?.currency?.symbol,
@@ -296,11 +308,32 @@ export default function Swap({ history }: RouteComponentProps) {
   const handleOutputSelect = useCallback(outputCurrency => onCurrencySelection(Field.OUTPUT, outputCurrency), [
     onCurrencySelection
   ])
+  const [isTips, setisTips] = useState(false)
 
+  // timer && clearTimeout(timer)
+  // timer = setTimeout(() => {
+  //     // newdate = new Date().getTime()
+  //     // setisTips(new Date().getTime()-new Date(2021,4,30,19,37,0).getTime() > 5000 ? true : false)
+  //     console('123',new Date().getTime())
+  //   }, 1000);
+  useEffect(() => {
+      let timerFn = function () {
+          timer && clearTimeout(timer)
+          timer = setTimeout(() => {
+              setisTips(new Date().getTime()-new Date(2021,4,2,19,0,0).getTime() > 0 ? true : false)
+              timerFn()
+          }, 1000);
+      }
+      timerFn()
+      return function () {
+          timer && clearTimeout(timer)
+      }
+  }, [])
   const swapIsUnsupported = useIsTransactionUnsupported(currencies?.INPUT, currencies?.OUTPUT)
-
+ 
   return (
     <>
+      <PageTitle />
       <TokenWarningModal
         isOpen={importTokensNotInDefault.length > 0 && !dismissTokenWarning}
         tokens={importTokensNotInDefault}
@@ -327,7 +360,7 @@ export default function Swap({ history }: RouteComponentProps) {
 
           <AutoColumn gap={'md'}>
             <CurrencyInputPanel
-              label={independentField === Field.OUTPUT && !showWrap && trade ? 'From (estimated)' : 'From'}
+              label={independentField === Field.OUTPUT && !showWrap && trade ? `${t("swap.text02")}` : `${t("swap.text01")}`}
               value={formattedAmounts[Field.INPUT]}
               showMaxButton={!atMaxAmountInput}
               currency={currencies[Field.INPUT]}
@@ -337,21 +370,25 @@ export default function Swap({ history }: RouteComponentProps) {
               otherCurrency={currencies[Field.OUTPUT]}
               id="swap-currency-input"
             />
-            <AutoColumn justify="space-between">
+            <AutoColumn justify="space-between" style={{ margin: 0}}>
               <AutoRow justify={isExpertMode ? 'space-between' : 'center'} style={{ padding: '0 1rem' }}>
                 <ArrowWrapper clickable>
-                  <ArrowDown
+                  <img src={ require('../../assets/images/reverse.png') } alt="" onClick={() => {
+                      setApprovalSubmitted(false) // reset 2 step UI for approvals
+                      onSwitchTokens()
+                    }} />
+                  {/* <ArrowDown
                     size="16"
                     onClick={() => {
                       setApprovalSubmitted(false) // reset 2 step UI for approvals
                       onSwitchTokens()
                     }}
                     color={currencies[Field.INPUT] && currencies[Field.OUTPUT] ? theme.primary1 : theme.text2}
-                  />
+                  /> */}
                 </ArrowWrapper>
                 {recipient === null && !showWrap && isExpertMode ? (
                   <LinkStyledButton id="add-recipient-button" onClick={() => onChangeRecipient('')}>
-                    + Add a send (optional)
+                    {t("swap.text03")}
                   </LinkStyledButton>
                 ) : null}
               </AutoRow>
@@ -359,7 +396,7 @@ export default function Swap({ history }: RouteComponentProps) {
             <CurrencyInputPanel
               value={formattedAmounts[Field.OUTPUT]}
               onUserInput={handleTypeOutput}
-              label={independentField === Field.INPUT && !showWrap && trade ? 'To (estimated)' : 'To'}
+              label={independentField === Field.INPUT && !showWrap && trade ? `${t("swap.text04")}` : `${t("swap.text05")}`}
               showMaxButton={false}
               currency={currencies[Field.OUTPUT]}
               onCurrencySelect={handleOutputSelect}
@@ -374,7 +411,7 @@ export default function Swap({ history }: RouteComponentProps) {
                     <ArrowDown size="16" color={theme.text2} />
                   </ArrowWrapper>
                   <LinkStyledButton id="remove-recipient-button" onClick={() => onChangeRecipient(null)}>
-                    - Remove send
+                  {t("swap.text06")}
                   </LinkStyledButton>
                 </AutoRow>
                 <AddressInputPanel id="recipient" value={recipient} onChange={onChangeRecipient} />
@@ -382,12 +419,12 @@ export default function Swap({ history }: RouteComponentProps) {
             ) : null}
 
             {showWrap ? null : (
-              <Card padding={showWrap ? '.25rem 1rem 0 1rem' : '0px'} borderRadius={'20px'}>
+              <Card padding={showWrap ? '0 1rem 0 1rem' : '0px'} borderRadius={'20px'}>
                 <AutoColumn gap="8px" style={{ padding: '0 16px' }}>
                   {Boolean(trade) && (
                     <RowBetween align="center">
                       <Text fontWeight={500} fontSize={14} color={theme.text2}>
-                        Price
+                      {t("swap.text07")}
                       </Text>
                       <TradePrice
                         price={trade?.executionPrice}
@@ -399,7 +436,7 @@ export default function Swap({ history }: RouteComponentProps) {
                   {allowedSlippage !== INITIAL_ALLOWED_SLIPPAGE && (
                     <RowBetween align="center">
                       <ClickableText fontWeight={500} fontSize={14} color={theme.text2} onClick={toggleSettings}>
-                        Slippage Tolerance
+                      {t("swap.text08")}
                       </ClickableText>
                       <ClickableText fontWeight={500} fontSize={14} color={theme.text2} onClick={toggleSettings}>
                         {allowedSlippage / 100}%
@@ -410,13 +447,14 @@ export default function Swap({ history }: RouteComponentProps) {
               </Card>
             )}
           </AutoColumn>
-          <BottomGrouping>
-            {swapIsUnsupported ? (
+        {isTips ?(
+          <BottomGrouping >
+            {swapIsUnsupported && isTips ? (
               <ButtonPrimary disabled={true}>
-                <TYPE.main mb="4px">Unsupported Asset</TYPE.main>
+                <TYPE.main mb="4px">{t("swap.text09")}</TYPE.main>
               </ButtonPrimary>
             ) : !account ? (
-              <ButtonLight onClick={toggleWalletModal}>Connect Wallet</ButtonLight>
+              <ButtonLight onClick={toggleWalletModal}>{t("swap.text10")}</ButtonLight>
             ) : showWrap ? (
               <ButtonPrimary disabled={Boolean(wrapInputError)} onClick={onWrap}>
                 {wrapInputError ??
@@ -424,8 +462,8 @@ export default function Swap({ history }: RouteComponentProps) {
               </ButtonPrimary>
             ) : noRoute && userHasSpecifiedInputOutput ? (
               <GreyCard style={{ textAlign: 'center' }}>
-                <TYPE.main mb="4px">Insufficient liquidity for this trade.</TYPE.main>
-                {singleHopOnly && <TYPE.main mb="4px">Try enabling multi-hop trades.</TYPE.main>}
+                <TYPE.main mb="4px">{t("swap.text11")}</TYPE.main>
+                {singleHopOnly && <TYPE.main mb="4px">{t("swap.text12")}</TYPE.main>}
               </GreyCard>
             ) : showApproveFlow ? (
               <RowBetween>
@@ -438,19 +476,19 @@ export default function Swap({ history }: RouteComponentProps) {
                 >
                   {approval === ApprovalState.PENDING ? (
                     <AutoRow gap="6px" justify="center">
-                      Approving <Loader stroke="white" />
+                      {t("swap.text13")} <Loader stroke="white" />
                     </AutoRow>
                   ) : approvalSubmitted && approval === ApprovalState.APPROVED ? (
-                    'Approved'
+                    `${t("swap.text13")}`
                   ) : (
-                    'Approve ' + currencies[Field.INPUT]?.symbol
+                    `${t("swap.text14")} ` + currencies[Field.INPUT]?.symbol
                   )}
                 </ButtonConfirmed>
-                <ButtonError
+                <ButtonErrorbtn
                   onClick={() => {
-                    if (isExpertMode) {
+                    if (isExpertMode && isTips) {
                       handleSwap()
-                    } else {
+                    } else if(!isExpertMode && isTips){
                       setSwapState({
                         tradeToConfirm: trade,
                         attemptingTxn: false,
@@ -469,17 +507,18 @@ export default function Swap({ history }: RouteComponentProps) {
                 >
                   <Text fontSize={16} fontWeight={500}>
                     {priceImpactSeverity > 3 && !isExpertMode
-                      ? `Price Impact High`
-                      : `Swap${priceImpactSeverity > 2 ? ' Anyway' : ''}`}
+                      ? `${t("swap.text15")}`
+                      : (priceImpactSeverity > 2) ? `${t("debris.text69")}` : `${t("swap.text21")}`}
                   </Text>
-                </ButtonError>
+                </ButtonErrorbtn>
               </RowBetween>
             ) : (
-              <ButtonError
+              <ButtonErrorbtn
+
                 onClick={() => {
-                  if (isExpertMode) {
+                  if (isExpertMode && isTips) {
                     handleSwap()
-                  } else {
+                  } else if(!isExpertMode && isTips){
                     setSwapState({
                       tradeToConfirm: trade,
                       attemptingTxn: false,
@@ -497,10 +536,10 @@ export default function Swap({ history }: RouteComponentProps) {
                   {swapInputError
                     ? swapInputError
                     : priceImpactSeverity > 3 && !isExpertMode
-                    ? `Price Impact Too High`
-                    : `Swap${priceImpactSeverity > 2 ? ' Anyway' : ''}`}
+                      ? `${t("swap.text16")}`
+                      : (priceImpactSeverity > 2) ? `${t("debris.text69")}` : `${t("swap.text21")}`}
                 </Text>
-              </ButtonError>
+              </ButtonErrorbtn>
             )}
             {showApproveFlow && (
               <Column style={{ marginTop: '1rem' }}>
@@ -514,6 +553,8 @@ export default function Swap({ history }: RouteComponentProps) {
               <DefaultVersionLink />
             ) : null}
           </BottomGrouping>
+          ) : null
+        }
         </Wrapper>
       </AppBody>
       {!swapIsUnsupported ? (
@@ -521,6 +562,60 @@ export default function Swap({ history }: RouteComponentProps) {
       ) : (
         <UnsupportedCurrencyFooter show={swapIsUnsupported} currencies={[currencies.INPUT, currencies.OUTPUT]} />
       )}
+    </>
+  )
+}
+
+
+const TitleDiv = styled.div`
+width: 100%;
+`
+const TitleText = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  border-radius: 15px;
+  background-color: #101a35;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #ABB7CA;
+  line-height: 27px;
+`
+const TitleSup = styled.div`
+  color: #06DD7A;
+  font-size: 24px;
+  font-weight: 700;
+  line-height:32px;
+  width: 100%;
+  padding:0;
+  margin:0;
+`
+
+const TitleSub = styled.p`
+color: #ACB7CA;
+font-size: 17px;
+margin-top: 5px;
+margin-bottom:30px;
+`
+const Textdiv = styled.div`
+  width:100%
+`
+
+function PageTitle() {
+  const { t } = useTranslation()
+
+  return (
+    <>
+      <TitleDiv>
+        <TitleText>
+          <Textdiv>{t("swap.text24")}</Textdiv>
+          <Textdiv>{t("swap.text25")}</Textdiv>
+        </TitleText>
+        <TitleSup>{t("swap.text17")}</TitleSup>
+        <TitleSub>{t("swap.text18")}</TitleSub>
+      </TitleDiv>
     </>
   )
 }

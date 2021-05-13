@@ -5,7 +5,8 @@ import GoogleAnalyticsReporter from '../components/analytics/GoogleAnalyticsRepo
 import AddressClaimModal from '../components/claim/AddressClaimModal'
 import Header from '../components/Header'
 import Polling from '../components/Header/Polling'
-import URLWarning from '../components/Header/URLWarning'
+import Tips from '../components/Tips/tips'
+// import URLWarning from '../components/Header/URLWarning'
 import Popups from '../components/Popups'
 import Web3ReactManager from '../components/Web3ReactManager'
 import { ApplicationModal } from '../state/application/actions'
@@ -30,18 +31,29 @@ import Swap from './Swap'
 import { OpenClaimAddressModalAndRedirectToSwap, RedirectPathToSwapOnly, RedirectToSwap } from './Swap/redirects'
 import Vote from './Vote'
 import VotePage from './Vote/VotePage'
+import Home from './Home/Home'
+import Mining from './Mining/Mining'
+import ProvideLiquidity from './ProvideLiquidity/ProvideLiquidity'
+// 公共底部
+import NavBar from "../components/NavBar/index";
+// 董事会页面
+import Director from "./Director/index";
 
 const AppWrapper = styled.div`
   display: flex;
   flex-flow: column;
   align-items: flex-start;
-  overflow-x: hidden;
+  background-color:#050822;
 `
 
 const HeaderWrapper = styled.div`
   ${({ theme }) => theme.flexRowNoWrap}
   width: 100%;
   justify-content: space-between;
+  background-color: #080d38;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 `
 
 const BodyWrapper = styled.div`
@@ -54,18 +66,20 @@ const BodyWrapper = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   z-index: 10;
+  margin-bottom: 61px;
 
   ${({ theme }) => theme.mediaWidth.upToSmall`
     padding: 16px;
-    padding-top: 2rem;
+    // padding-top: 2rem;
+    background-color: #050822;
   `};
 
   z-index: 1;
 `
 
-const Marginer = styled.div`
-  margin-top: 5rem;
-`
+// const Marginer = styled.div`
+//   margin-top: 5rem;
+// `
 
 function TopLevelModals() {
   const open = useModalOpen(ApplicationModal.ADDRESS_CLAIM)
@@ -79,8 +93,9 @@ export default function App() {
       <Route component={GoogleAnalyticsReporter} />
       <Route component={DarkModeQueryParamReader} />
       <AppWrapper>
-        <URLWarning />
+        {/* <URLWarning /> */}
         <HeaderWrapper>
+          <Tips/>
           <Header />
         </HeaderWrapper>
         <BodyWrapper>
@@ -89,12 +104,21 @@ export default function App() {
           <TopLevelModals />
           <Web3ReactManager>
             <Switch>
-              <Route exact strict path="/swap" component={Swap} />
+              {/* Home页面 */}
+              <Route exact strict path="/home" component={Home} />
+              {/*  */}
+              <Route exact strict path="/exchange" component={Swap} />
+              {/* 流动性挖矿 */}
+              <Route exact strict path="/mining" component={Mining} />
+              {/* 抵押货币 */}
+              <Route exact strict path="/provideLiquidity/:poolIndex" component={ProvideLiquidity} />
+
               <Route exact strict path="/claim" component={OpenClaimAddressModalAndRedirectToSwap} />
+
               <Route exact strict path="/swap/:outputCurrency" component={RedirectToSwap} />
               <Route exact strict path="/send" component={RedirectPathToSwapOnly} />
               <Route exact strict path="/find" component={PoolFinder} />
-              <Route exact strict path="/pool" component={Pool} />
+              <Route exact strict path="/exchange/pool" component={Pool} />
               <Route exact strict path="/uni" component={Earn} />
               <Route exact strict path="/vote" component={Vote} />
               <Route exact strict path="/create" component={RedirectToAddLiquidity} />
@@ -111,11 +135,14 @@ export default function App() {
               <Route exact strict path="/migrate/v1/:address" component={MigrateV1Exchange} />
               <Route exact strict path="/uni/:currencyIdA/:currencyIdB" component={Manage} />
               <Route exact strict path="/vote/:id" component={VotePage} />
+              <Route exact strict path="/director" component={Director} />
               <Route component={RedirectPathToSwapOnly} />
             </Switch>
           </Web3ReactManager>
-          <Marginer />
+          {/* <Marginer /> */}
         </BodyWrapper>
+        {/* 公共底部 */}
+        <NavBar />
       </AppWrapper>
     </Suspense>
   )

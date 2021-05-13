@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text } from 'rebass'
-import { ChainId, Currency, currencyEquals, ETHER, Token } from '@uniswap/sdk'
+import { ChainId, Currency, currencyEquals, ETHER, Token } from 'huiwan-v2-sdk'
 import styled from 'styled-components'
 
 import { SUGGESTED_BASES } from '../../constants'
@@ -8,6 +8,8 @@ import { AutoColumn } from '../Column'
 import QuestionHelper from '../QuestionHelper'
 import { AutoRow } from '../Row'
 import CurrencyLogo from '../CurrencyLogo'
+import { useTranslation } from 'react-i18next'
+
 
 const BaseWrapper = styled.div<{ disable?: boolean }>`
   border: 1px solid ${({ theme, disable }) => (disable ? 'transparent' : theme.bg3)};
@@ -34,13 +36,15 @@ export default function CommonBases({
   selectedCurrency?: Currency | null
   onSelect: (currency: Currency) => void
 }) {
+  const { t } = useTranslation()
+
   return (
-    <AutoColumn gap="md">
+    <AutoColumn gap="md" style={{ marginBottom: 0, ridRowGap: 'none' }}>
       <AutoRow>
         <Text fontWeight={500} fontSize={14}>
-          Common bases
+          {t("add.text26")}
         </Text>
-        <QuestionHelper text="These tokens are commonly paired with other tokens." />
+        <QuestionHelper text={t("add.text27")} />
       </AutoRow>
       <AutoRow gap="4px">
         <BaseWrapper
@@ -53,7 +57,7 @@ export default function CommonBases({
         >
           <CurrencyLogo currency={ETHER} style={{ marginRight: 8 }} />
           <Text fontWeight={500} fontSize={16}>
-            ETH
+            HT
           </Text>
         </BaseWrapper>
         {(chainId ? SUGGESTED_BASES[chainId] : []).map((token: Token) => {

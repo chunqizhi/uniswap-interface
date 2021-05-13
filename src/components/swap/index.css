@@ -1,0 +1,10 @@
+.exchangeLink {
+    font-size: 14px;
+    color: #E3F4FD;
+    line-height: 30px;
+    border-bottom: 1px solid transparent;
+    text-decoration: none;
+}
+.exchangeActive {
+    border-bottom-color: #06DD7A;
+}

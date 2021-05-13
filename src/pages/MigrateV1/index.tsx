@@ -1,4 +1,4 @@
-import { JSBI, Token } from '@uniswap/sdk'
+import { JSBI, Token } from 'huiwan-v2-sdk'
 import React, { useCallback, useContext, useMemo, useState, useEffect } from 'react'
 import { ThemeContext } from 'styled-components'
 import { AutoColumn } from '../../components/Column'
@@ -18,8 +18,12 @@ import { Dots } from '../../components/swap/styleds'
 import { useAddUserToken } from '../../state/user/hooks'
 import { isTokenOnList } from '../../utils'
 import { useCombinedActiveList } from '../../state/lists/hooks'
+import { useTranslation } from "react-i18next"
+
 
 export default function MigrateV1() {
+const { t } = useTranslation()
+
   const theme = useContext(ThemeContext)
   const { account, chainId } = useActiveWeb3React()
 
@@ -71,7 +75,7 @@ export default function MigrateV1() {
       <AutoColumn gap="16px">
         <AutoRow style={{ alignItems: 'center', justifyContent: 'space-between' }} gap="8px">
           <BackArrow to="/pool" />
-          <TYPE.mediumHeader>Migrate V1 Liquidity</TYPE.mediumHeader>
+          <TYPE.mediumHeader>{t("debris.text32")}</TYPE.mediumHeader>
           <div>
             <QuestionHelper text="Migrate your liquidity tokens from Uniswap V1 to Uniswap V2." />
           </div>

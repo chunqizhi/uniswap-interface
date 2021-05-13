@@ -9,9 +9,11 @@ import { CardSection, DataCard, CardNoise, CardBGImage } from '../../components/
 import { Countdown } from './Countdown'
 import Loader from '../../components/Loader'
 import { useActiveWeb3React } from '../../hooks'
-import { JSBI } from '@uniswap/sdk'
+import { JSBI } from 'huiwan-v2-sdk'
 import { BIG_INT_ZERO } from '../../constants'
 import { OutlineCard } from '../../components/Card'
+import { useTranslation } from "react-i18next"
+
 
 const PageWrapper = styled(AutoColumn)`
   max-width: 640px;
@@ -39,6 +41,8 @@ flex-direction: column;
 `
 
 export default function Earn() {
+const { t } = useTranslation()
+
   const { chainId } = useActiveWeb3React()
 
   // staking info for connected account
@@ -62,11 +66,10 @@ export default function Earn() {
           <CardSection>
             <AutoColumn gap="md">
               <RowBetween>
-                <TYPE.white fontWeight={600}>Uniswap liquidity mining</TYPE.white>
+                <TYPE.white fontWeight={600}>{t("debris.text11")}</TYPE.white>
               </RowBetween>
               <RowBetween>
-                <TYPE.white fontSize={14}>
-                  Deposit your Liquidity Provider tokens to receive UNI, the Uniswap protocol governance token.
+                <TYPE.white fontSize={14}>{t("debris.text12")}
                 </TYPE.white>
               </RowBetween>{' '}
               <ExternalLink
@@ -74,7 +77,7 @@ export default function Earn() {
                 href="https://uniswap.org/blog/uni/"
                 target="_blank"
               >
-                <TYPE.white fontSize={14}>Read more about UNI</TYPE.white>
+                <TYPE.white fontSize={14}>{t("debris.text13")}</TYPE.white>
               </ExternalLink>
             </AutoColumn>
           </CardSection>
@@ -85,7 +88,7 @@ export default function Earn() {
 
       <AutoColumn gap="lg" style={{ width: '100%', maxWidth: '720px' }}>
         <DataRow style={{ alignItems: 'baseline' }}>
-          <TYPE.mediumHeader style={{ marginTop: '0.5rem' }}>Participating pools</TYPE.mediumHeader>
+          <TYPE.mediumHeader style={{ marginTop: '0.5rem' }}>{t("debris.text14")}</TYPE.mediumHeader>
           <Countdown exactEnd={stakingInfos?.[0]?.periodFinish} />
         </DataRow>
 
@@ -93,9 +96,9 @@ export default function Earn() {
           {stakingRewardsExist && stakingInfos?.length === 0 ? (
             <Loader style={{ margin: 'auto' }} />
           ) : !stakingRewardsExist ? (
-            <OutlineCard>No active pools</OutlineCard>
+            <OutlineCard>{t("debris.text15")}</OutlineCard>
           ) : stakingInfos?.length !== 0 && stakingInfosWithBalance.length === 0 ? (
-            <OutlineCard>No active pools</OutlineCard>
+            <OutlineCard>{t("debris.text15")}</OutlineCard>
           ) : (
             stakingInfosWithBalance?.map(stakingInfo => {
               // need to sort by added liquidity here

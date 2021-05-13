@@ -14,12 +14,12 @@ const StyledDialogOverlay = styled(AnimatedDialogOverlay)`
     z-index: 2;
     background-color: transparent;
     overflow: hidden;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     background-color: ${({ theme }) => theme.modalBG};
+
+    bottom: 61px;
   }
 `
 

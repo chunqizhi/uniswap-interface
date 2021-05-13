@@ -1,0 +1,251 @@
+div,
+p,
+span,
+input {
+    padding: 0;
+    margin: 0;
+}
+
+input {
+    outline: none;
+    border: none;
+}
+
+.add {
+    width: 100%;
+    /* background-color: red; */
+}
+
+.add .title {
+    color: #000;
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.add .desc {
+    color: #06DD7A;
+    font-size: 20px;
+    /* margin-top: 5px; */
+}
+
+.add .add-content {
+    background-color: #14223d;
+    border-radius: 12px;
+    margin-top: 15px;
+    padding: 15px;
+    color: #E3F4FD;
+    font-family: 'MicrosoftYaHei';
+}
+
+.add .content-title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.add .content-title .num {
+    font-weight: bold;
+}
+
+.add .my-p-text {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.add .add-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 32px;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.provideTwoImg {
+    display: inline-block;
+    width: 26px;
+    height: 16px;
+    position: relative;
+    margin-right: 7px;
+}
+
+.provideTwoImg img {
+    position: absolute;
+    top: 0;
+    width: 16px;
+    height: 16px;
+}
+.provideTwoImg img:first-child {
+    left: 0;
+}
+.provideTwoImg img:last-child {
+    right: 0;
+}
+
+.add .add-tips {
+    font-size: 12px;
+    color: #667182;
+    margin-bottom: 5px;
+}
+
+.add .add-info .num {
+    flex: 1;
+    text-align: right;
+    font-weight: bold;
+}
+
+.add .line {
+    display: block;
+    position: relative;
+    width: 100%;
+}
+
+.add .line::after {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    height: 1px;
+    background-color: rgba(151, 151, 151, 0.1);
+}
+
+.add .staked {
+    padding: 0 5px;
+    display: flex;
+    margin-top: 5px;
+    font-size: 13px;
+}
+
+.add .staked .num {
+    flex: 1;
+    text-align: right;
+    font-weight: bold;
+}
+
+.add .add-div-btn {
+    margin: 14px auto;
+    box-sizing: border-box;
+    height: 45px;
+    font-size: 16px;
+    /* font-weight: bold; */
+    line-height: 45px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.add .receive-btn {
+    background-color: #06dd7a;
+    color: #F4F8FF;
+}
+
+.add .other-btn {
+    border: 1px solid #06dd7a;
+    color: #F4F8FF;
+}
+
+.add .other-back {
+    border: 1px solid #667182;
+    color: #667182;
+}
+
+.add-mask {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.add-mask .add-mask-content {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 12px;
+    margin-top: 15px;
+    padding: 20px 15px;
+}
+
+.add-mask .mask-title {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.add-mask .mask-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.add-mask .mask-info .num {
+    flex: 1;
+    text-align: right;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.add-mask .mask-input-box {
+    border: 1px solid #bdbcbf;
+    height: 38px;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #bdbcbf;
+}
+
+.add-mask .mask-input-box input {
+    height: 100%;
+    padding: 0 80px 0 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+    background-color: #bdbcbf;
+}
+
+.add-mask .mask-input-box span {
+    position: absolute;
+    height: 28px;
+    right: 10px;
+    width: 50px;
+    text-align: center;
+    line-height: 28px;
+    border-radius: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    background-color: #06DD7A;
+    border: 1px solid #06DD7A;
+    font-size: 14px;
+}
+
+.add-mask .mask-bottom {
+    margin: 20px 0 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-mask .mask-bottom .bottom-btn {
+    width: 40%;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.add-mask .mask-bottom .left-btn {
+    border: 1px solid #06DD7A;
+    color: #06DD7A;
+}
+
+.add-mask .mask-bottom .right-btn {
+    background: #06DD7A;
+    color: #fff;
+}

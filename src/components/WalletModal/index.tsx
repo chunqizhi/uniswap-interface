@@ -19,6 +19,7 @@ import AccountDetails from '../AccountDetails'
 import Modal from '../Modal'
 import Option from './Option'
 import PendingView from './PendingView'
+import { useTranslation } from "react-i18next"
 
 const CloseIcon = styled.div`
   position: absolute;
@@ -64,7 +65,7 @@ const ContentWrapper = styled.div`
 
 const UpperSection = styled.div`
   position: relative;
-
+  background-color:#fff;
   h5 {
     margin: 0;
     margin-bottom: 0.5rem;
@@ -109,12 +110,30 @@ const HoverText = styled.div`
   }
 `
 
+const Approvediv = styled.div`
+    padding:10px 20px;
+    background-color:#f2f2f2;
+    color:#000;
+    position: fixed;
+    top:30%;
+    left:50%;
+    border-radius:10px;
+    box-shadow: 0px 0px 6px #ccc;
+    font-size:14px;
+    line-height:20px;
+    text-align:center;
+    z-index:2999;
+    transform: translateX(-50%);
+`
+
 const WALLET_VIEWS = {
   OPTIONS: 'options',
   OPTIONS_SECONDARY: 'options_secondary',
   ACCOUNT: 'account',
   PENDING: 'pending'
 }
+
+let timers
 
 export default function WalletModal({
   pendingTransactions,
@@ -125,10 +144,14 @@ export default function WalletModal({
   confirmedTransactions: string[] // hashes of confirmed
   ENSName?: string
 }) {
+  const { t } = useTranslation()
+
+  const [isApprovediv, setApprovediv] = useState(false) // 授权/非授权
+
   // important that these are destructed from the account-specific web3-react context
   const { active, account, connector, activate, error } = useWeb3React()
 
-  const [walletView, setWalletView] = useState(WALLET_VIEWS.ACCOUNT)
+  const [walletView, setWalletView] = useState(WALLET_VIEWS.OPTIONS)
 
   const [pendingWallet, setPendingWallet] = useState<AbstractConnector | undefined>()
 
@@ -138,6 +161,16 @@ export default function WalletModal({
   const toggleWalletModal = useWalletModalToggle()
 
   const previousAccount = usePrevious(account)
+
+  const toast = () => {
+    setApprovediv(true)
+    setWalletView(WALLET_VIEWS.ACCOUNT)
+    setPendingError(false)
+    timers = setTimeout(() => {
+      setApprovediv(false)
+      clearTimeout(timers)
+    }, 3000);
+  }
 
   // close on connection, when logged out before
   useEffect(() => {
@@ -214,7 +247,7 @@ export default function WalletModal({
           return null
         }
 
-        if (!window.web3 && !window.ethereum && option.mobile) {
+        // if (!window.web3 && !window.ethereum && option.mobile) {
           return (
             <Option
               onClick={() => {
@@ -230,8 +263,8 @@ export default function WalletModal({
               icon={require('../../assets/images/' + option.iconName)}
             />
           )
-        }
-        return null
+        // }
+        // return null
       }
 
       // overwrite injected when needed
@@ -289,6 +322,7 @@ export default function WalletModal({
   }
 
   function getModalContent() {
+    // this.setWalletView(WALLET_VIEWS.OPTIONS)
     if (error) {
       return (
         <UpperSection>
@@ -298,7 +332,7 @@ export default function WalletModal({
           <HeaderRow>{error instanceof UnsupportedChainIdError ? 'Wrong Network' : 'Error connecting'}</HeaderRow>
           <ContentWrapper>
             {error instanceof UnsupportedChainIdError ? (
-              <h5>Please connect to the appropriate Ethereum network.</h5>
+              <h5>Please connect to the appropriate Heco network.</h5>
             ) : (
               'Error connecting. Try refreshing the page.'
             )}
@@ -306,7 +340,9 @@ export default function WalletModal({
         </UpperSection>
       )
     }
+    // console.log('account walletView ==>', account, walletView)
     if (account && walletView === WALLET_VIEWS.ACCOUNT) {
+      // console.log(1111)
       return (
         <AccountDetails
           toggleWalletModal={toggleWalletModal}
@@ -330,12 +366,12 @@ export default function WalletModal({
                 setWalletView(WALLET_VIEWS.ACCOUNT)
               }}
             >
-              Back
+              {t("debris.text65")}
             </HoverText>
           </HeaderRow>
         ) : (
           <HeaderRow>
-            <HoverText>Connect to a wallet</HoverText>
+            <HoverText>{t("debris.text68")}</HoverText>
           </HeaderRow>
         )}
         <ContentWrapper>
@@ -351,17 +387,21 @@ export default function WalletModal({
           )}
           {walletView !== WALLET_VIEWS.PENDING && (
             <Blurb>
-              <span>New to Ethereum? &nbsp;</span>{' '}
-              <ExternalLink href="https://ethereum.org/wallets/">Learn more about wallets</ExternalLink>
+              <span>{t("debris.text66")} &nbsp;</span>{' '}
+              <ExternalLink onClick={toast} >{t("debris.text67")}</ExternalLink>
+              {/* <ExternalLink href="https://ethereum.org/wallets/">Learn more about wallets</ExternalLink> */}
             </Blurb>
           )}
         </ContentWrapper>
       </UpperSection>
     )
-  }
 
+  }
   return (
     <Modal isOpen={walletModalOpen} onDismiss={toggleWalletModal} minHeight={false} maxHeight={90}>
+      { isApprovediv && (
+        <Approvediv>{t("debris.text64")}</Approvediv>
+      )}
       <Wrapper>{getModalContent()}</Wrapper>
     </Modal>
   )

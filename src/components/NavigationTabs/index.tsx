@@ -11,6 +11,7 @@ import Settings from '../Settings'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from 'state'
 import { resetMintState } from 'state/mint/actions'
+import creatHistory from 'history/createHashHistory'
 
 const Tabs = styled.div`
   ${({ theme }) => theme.flexRowNoWrap}
@@ -50,10 +51,11 @@ const StyledNavLink = styled(NavLink).attrs({
 const ActiveText = styled.div`
   font-weight: 500;
   font-size: 20px;
+  color: #E3F4FD;
 `
 
 const StyledArrowLeft = styled(ArrowLeft)`
-  color: ${({ theme }) => theme.text1};
+  // color: ${({ theme }) => theme.text1};
 `
 
 export function SwapPoolTabs({ active }: { active: 'swap' | 'pool' }) {
@@ -71,13 +73,15 @@ export function SwapPoolTabs({ active }: { active: 'swap' | 'pool' }) {
 }
 
 export function FindPoolTabs() {
+  const { t } = useTranslation()
+
   return (
     <Tabs>
       <RowBetween style={{ padding: '1rem 1rem 0 1rem' }}>
         <HistoryLink to="/pool">
-          <StyledArrowLeft />
+          <ArrowLeft style={{ color: '#E3F4FD' }} />
         </HistoryLink>
-        <ActiveText>Import Pool</ActiveText>
+        <ActiveText>{t('add.text14')}</ActiveText>
         <Settings />
       </RowBetween>
     </Tabs>
@@ -85,21 +89,27 @@ export function FindPoolTabs() {
 }
 
 export function AddRemoveTabs({ adding, creating }: { adding: boolean; creating: boolean }) {
+  const { t } = useTranslation()
+
   // reset states on back
   const dispatch = useDispatch<AppDispatch>()
-
+  const history = creatHistory();
   return (
     <Tabs>
       <RowBetween style={{ padding: '1rem 1rem 0 1rem' }}>
-        <HistoryLink
-          to="/pool"
+        {/* <HistoryLink */}
+          {/* to="/pool"
           onClick={() => {
             adding && dispatch(resetMintState())
           }}
-        >
-          <StyledArrowLeft />
-        </HistoryLink>
-        <ActiveText>{creating ? 'Create a pair' : adding ? 'Add Liquidity' : 'Remove Liquidity'}</ActiveText>
+        > */}
+          <StyledArrowLeft style={{ color: '#fff' }} onClick={()=>{
+            // console.log(12313213)
+            history.goBack();
+             adding && dispatch(resetMintState())
+          }}/>
+        {/* </HistoryLink> */}
+        <ActiveText style={{ color: '#fff' }} >{creating ? `${t('add.text15')}` : adding ? `${t('add.text16')}` : `${t('add.text17')}`}</ActiveText>
         <Settings />
       </RowBetween>
     </Tabs>

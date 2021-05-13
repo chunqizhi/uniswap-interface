@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react'
 import styled, { ThemeContext } from 'styled-components'
-import { Pair, JSBI } from '@uniswap/sdk'
+import { Pair, JSBI } from 'huiwan-v2-sdk'
 import { Link } from 'react-router-dom'
 import { SwapPoolTabs } from '../../components/NavigationTabs'
 
@@ -11,7 +11,7 @@ import { StyledInternalLink, ExternalLink, TYPE, HideSmall } from '../../theme'
 import { Text } from 'rebass'
 import Card from '../../components/Card'
 import { RowBetween, RowFixed } from '../../components/Row'
-import { ButtonPrimary, ButtonSecondary } from '../../components/Button'
+// import { ButtonPrimary, ButtonSecondary } from '../../components/Button'
 import { AutoColumn } from '../../components/Column'
 
 import { useActiveWeb3React } from '../../hooks'
@@ -21,8 +21,13 @@ import { Dots } from '../../components/swap/styleds'
 import { CardSection, DataCard, CardNoise, CardBGImage } from '../../components/earn/styled'
 import { useStakingInfo } from '../../state/stake/hooks'
 import { BIG_INT_ZERO } from '../../constants'
+import { useTranslation } from "react-i18next"
 
-const PageWrapper = styled(AutoColumn)`
+// import { NavLink } from 'react-router-dom'
+import AppBody from '../AppBody'
+import SwapHeader from "../../components/swap/SwapHeader";
+
+ const PageWrapper = styled(AutoColumn)`
   max-width: 640px;
   width: 100%;
 `
@@ -50,19 +55,24 @@ const ButtonRow = styled(RowFixed)`
   `};
 `
 
-const ResponsiveButtonPrimary = styled(ButtonPrimary)`
-  width: fit-content;
-  ${({ theme }) => theme.mediaWidth.upToSmall`
-    width: 48%;
-  `};
-`
+// const ResponsiveButtonPrimary = styled(ButtonPrimary)`
+//   width: fit-content;
+//   ${({ theme }) => theme.mediaWidth.upToSmall`
+//     width: 48%;
+//   `};
+//   border-radius:6px;
+//   background-color:#0278fe;
+//   color:#fff;
+//   margin-left:0px;
+// `
 
-const ResponsiveButtonSecondary = styled(ButtonSecondary)`
-  width: fit-content;
-  ${({ theme }) => theme.mediaWidth.upToSmall`
-    width: 48%;
-  `};
-`
+// const ResponsiveButtonSecondary = styled(ButtonSecondary)`
+//   width: fit-content;
+//   ${({ theme }) => theme.mediaWidth.upToSmall`
+//     width: 48%;
+//   `};
+//   border-radius:6px;
+// `
 
 const EmptyProposals = styled.div`
   border: 1px solid ${({ theme }) => theme.text4};
@@ -74,7 +84,49 @@ const EmptyProposals = styled.div`
   align-items: center;
 `
 
+const CreateButton = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48%;
+  height: 45px;
+  border-radius: 5px;
+  border: 2px solid #667182;
+  font-size: 16px;
+  color: #19d88d;
+  box-sizing: border-box;
+  text-decoration: none;
+`
+const AddButton = styled(Link)`
+  width: 48%;
+  height: 45px;
+  border-radius: 4px;
+  border: none;
+  background-color: #19ce8a;
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+  box-sizing: border-box;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+const PoolNot = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  font-size: 16px;
+  color: #667182;
+  > img {
+    margin: 10px 0 20px;
+  }
+`
+
 export default function Pool() {
+  const { t } = useTranslation();
+
   const theme = useContext(ThemeContext)
   const { account } = useActiveWeb3React()
 
@@ -125,19 +177,22 @@ export default function Pool() {
 
   return (
     <>
+      <PageTitle />
       <PageWrapper>
         <SwapPoolTabs active={'pool'} />
         <VoteCard>
           <CardBGImage />
           <CardNoise />
-          <CardSection>
+            {
+              false &&(
+                <CardSection>
             <AutoColumn gap="md">
               <RowBetween>
-                <TYPE.white fontWeight={600}>Liquidity provider rewards</TYPE.white>
+                <TYPE.white fontWeight={600}>{t("pool.text01")}</TYPE.white>
               </RowBetween>
               <RowBetween>
                 <TYPE.white fontSize={14}>
-                  {`Liquidity providers earn a 0.3% fee on all trades proportional to their share of the pool. Fees are added to the pool, accrue in real time and can be claimed by withdrawing your liquidity.`}
+                {t("pool.text02")}
                 </TYPE.white>
               </RowBetween>
               <ExternalLink
@@ -145,62 +200,71 @@ export default function Pool() {
                 target="_blank"
                 href="https://uniswap.org/docs/v2/core-concepts/pools/"
               >
-                <TYPE.white fontSize={14}>Read more about providing liquidity</TYPE.white>
+                <TYPE.white fontSize={14}>{t("pool.text03")}</TYPE.white>
               </ExternalLink>
             </AutoColumn>
           </CardSection>
+              )
+            }
           <CardBGImage />
           <CardNoise />
         </VoteCard>
-
+        <AppBody>
+        <SwapHeader />
         <AutoColumn gap="lg" justify="center">
-          <AutoColumn gap="lg" style={{ width: '100%' }}>
+          <AutoColumn gap="lg" style={{ width: '100%', padding: '1rem', boxSizing: 'border-box' }}>
             <TitleRow style={{ marginTop: '1rem' }} padding={'0'}>
               <HideSmall>
                 <TYPE.mediumHeader style={{ marginTop: '0.5rem', justifySelf: 'flex-start' }}>
-                  Your liquidity
+                {t("pool.text04")}
                 </TYPE.mediumHeader>
               </HideSmall>
               <ButtonRow>
-                <ResponsiveButtonSecondary as={Link} padding="6px 8px" to="/create/ETH">
-                  Create a pair
-                </ResponsiveButtonSecondary>
-                <ResponsiveButtonPrimary
+                <CreateButton to={'/create/HT'}>
+                  {t("pool.text05")}
+                </CreateButton>
+                {/* <ResponsiveButtonSecondary as={Link} padding="6px 8px" to="/create/HT">
+                {t("pool.text05")}
+                </ResponsiveButtonSecondary> */}
+                <AddButton to={"/add/HT"}>
+                {t("pool.text06")}
+                </AddButton>
+                {/* <ResponsiveButtonPrimary
                   id="join-pool-button"
                   as={Link}
                   padding="6px 8px"
                   borderRadius="12px"
-                  to="/add/ETH"
+                  to="/add/HT"
                 >
                   <Text fontWeight={500} fontSize={16}>
-                    Add Liquidity
+                    {t("pool.text06")}
                   </Text>
-                </ResponsiveButtonPrimary>
+                </ResponsiveButtonPrimary> */}
               </ButtonRow>
             </TitleRow>
 
             {!account ? (
               <Card padding="40px">
                 <TYPE.body color={theme.text3} textAlign="center">
-                  Connect to a wallet to view your liquidity.
+                {t("pool.text07")}
                 </TYPE.body>
               </Card>
             ) : v2IsLoading ? (
               <EmptyProposals>
                 <TYPE.body color={theme.text3} textAlign="center">
-                  <Dots>Loading</Dots>
+                  <Dots>{t("pool.text08")}</Dots>
                 </TYPE.body>
               </EmptyProposals>
             ) : allV2PairsWithLiquidity?.length > 0 || stakingPairs?.length > 0 ? (
               <>
-                <ButtonSecondary>
+                {/* <ButtonSecondary>
                   <RowBetween>
                     <ExternalLink href={'https://uniswap.info/account/' + account}>
-                      Account analytics and accrued fees
+                    {t("pool.text09")}
                     </ExternalLink>
                     <span> ↗</span>
                   </RowBetween>
-                </ButtonSecondary>
+                </ButtonSecondary> */}
                 {v2PairsWithoutStakedAmount.map(v2Pair => (
                   <FullPositionCard key={v2Pair.liquidityToken.address} pair={v2Pair} />
                 ))}
@@ -216,24 +280,81 @@ export default function Pool() {
                 )}
               </>
             ) : (
-              <EmptyProposals>
-                <TYPE.body color={theme.text3} textAlign="center">
-                  No liquidity found.
-                </TYPE.body>
-              </EmptyProposals>
+              <PoolNot>
+                <img src={ require('../../assets/images/poolImg.jpg') } alt="" />
+                <span>{t("pool.text10")}</span>
+              </PoolNot>
+              // <EmptyProposals>
+              //   <TYPE.body color={theme.text3} textAlign="center">
+              //   {t("pool.text10")}
+              //   </TYPE.body>
+              // </EmptyProposals>
             )}
 
             <AutoColumn justify={'center'} gap="md">
-              <Text textAlign="center" fontSize={14} style={{ padding: '.5rem 0 .5rem 0' }}>
-                {hasV1Liquidity ? 'Uniswap V1 liquidity found!' : "Don't see a pool you joined?"}{' '}
-                <StyledInternalLink id="import-pool-link" to={hasV1Liquidity ? '/migrate/v1' : '/find'}>
-                  {hasV1Liquidity ? 'Migrate now.' : 'Import it.'}
+              <Text textAlign="center" fontSize={12} style={{ padding: '.5rem 0 .5rem 0', color: '#ABB7CA' }}>
+                {hasV1Liquidity ? `${t("pool.text11")}` :  `${t("pool.text12")}`}{' '}
+                <StyledInternalLink style={{ color: '#19E192' }} id="import-pool-link" to={hasV1Liquidity ? '/migrate/v1' : '/find'}>
+                  {hasV1Liquidity ? `${t("pool.text13")}` : `${t("pool.text14")}`}
                 </StyledInternalLink>
               </Text>
             </AutoColumn>
           </AutoColumn>
         </AutoColumn>
+        </AppBody>
       </PageWrapper>
+    </>
+  )
+}
+
+const TitleDiv = styled.div`
+width: 100%;
+`
+const TitleText = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  border-radius: 15px;
+  background-color: #101a35;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #ABB7CA;
+  line-height: 27px;
+`
+const TitleSup = styled.div`
+  color: #06DD7A;
+  font-size: 24px;
+  font-weight: 700;
+  line-height:32px;
+  width: 100%;
+  padding:0;
+  margin:0;
+`
+
+const TitleSub = styled.p`
+color: #ACB7CA;
+font-size: 17px;
+margin-top: 5px;
+margin-bottom:20px;
+`
+const Textdiv = styled.div`
+  width:100%;
+`
+function PageTitle() {
+  const { t } = useTranslation()
+
+  return (
+    <>
+      <TitleDiv>
+        <TitleText>
+          <Textdiv>{t("swap.text24")}</Textdiv>
+          <Textdiv>{t("swap.text25")}</Textdiv>
+        </TitleText>
+        <TitleSup>{t("swap.text17")}</TitleSup>
+        <TitleSub>{t("swap.text18")}</TitleSub>
+      </TitleDiv>
     </>
   )
 }

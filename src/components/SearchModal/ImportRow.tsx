@@ -1,5 +1,5 @@
 import React, { CSSProperties } from 'react'
-import { Token } from '@uniswap/sdk'
+import { Token } from 'huiwan-v2-sdk'
 import { AutoRow, RowFixed } from 'components/Row'
 import { AutoColumn } from 'components/Column'
 import CurrencyLogo from 'components/CurrencyLogo'
@@ -38,6 +38,9 @@ const NameOverflow = styled.div`
   text-overflow: ellipsis;
   max-width: 140px;
   font-size: 12px;
+`
+const ButtonPrimaryinp = styled(ButtonPrimary)`
+background-color: transparent;
 `
 
 export default function ImportRow({
@@ -85,7 +88,7 @@ export default function ImportRow({
         )}
       </AutoColumn>
       {!isActive && !isAdded ? (
-        <ButtonPrimary
+        <ButtonPrimaryinp
           width="fit-content"
           padding="6px 12px"
           fontWeight={500}
@@ -96,7 +99,7 @@ export default function ImportRow({
           }}
         >
           Import
-        </ButtonPrimary>
+        </ButtonPrimaryinp>
       ) : (
         <RowFixed style={{ minWidth: 'fit-content' }}>
           <CheckIcon />
