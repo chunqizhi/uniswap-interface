@@ -55,6 +55,7 @@ const HeaderLinks = styled(Row)`
   justify-content: center;
   ${({ theme }) => theme.mediaWidth.upToMedium`
     padding: 1rem 0 1rem 1rem;
+    padding:0px;
     justify-content: flex-end;
 `};
 `

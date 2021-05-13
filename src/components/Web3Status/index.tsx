@@ -107,9 +107,10 @@ const Text = styled.p`
   text-overflow: ellipsis;
   white-space: nowrap;
   margin: 0 0.5rem 0 0.25rem;
-  font-size: 1rem;
+  font-size: 14px;
   width: fit-content;
   font-weight: 500;
+
 `
 
 const NetworkIcon = styled(Activity)`
