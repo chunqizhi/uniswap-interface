@@ -109,6 +109,11 @@ text-decoration:none;
 display:flex;
 align-items: center;
 `
+const Titlename = styled.div`
+  font-size:4.3vw;
+  width:98px;
+  color:#ccc;
+`
 // const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
 //   [ChainId.RINKEBY]: 'Rinkeby',
 //   [ChainId.ROPSTEN]: 'Ropsten',
@@ -133,7 +138,11 @@ export default function Header() {
         <UniBalanceContent setShowUniBalanceModal={setShowUniBalanceModal} />
       </Modal>
       <HeaderRow>
-        <HomeBtn01 id={`home-nav-link`} to={'/home'}> <img width={'132px'} src={darkMode ? LogoDark : LogoDark} alt="logo" /></HomeBtn01>
+        <HomeBtn01 id={`home-nav-link`} to={'/home'}> <img width={'36px'} src={darkMode ? LogoDark : LogoDark} alt="logo" />
+          <Titlename>
+            tree-swap.org
+          </Titlename>
+        </HomeBtn01>
         <HeaderLinks>
           {/* <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
             {t('swap')}
