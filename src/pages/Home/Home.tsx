@@ -6,6 +6,8 @@ import { useTranslation } from "react-i18next"
 import Data from '../../apis/api/data.js'
 import { Carousel } from 'antd-mobile';
 import 'antd-mobile/lib/carousel/style/index.less'
+// import home_price1 from "../../assets/images/home_price1.png"
+// import home_price2 from "../../assets/images/home_price2.png"
 // const HomeTop = styled.div`
 
 // height: 35px;
@@ -155,11 +157,21 @@ const HomeItem = styled.div`
     width: 100%;
     align-items: center;
     position: relative;
+    height:90px;
+    margin:2vw 0;
     > img {
-        max-width: 100%;
+        max-width: 102%;
         height: auto;
+        transform: scale(1.03);
     }
 `
+
+// const HomeItem2 = styled(HomeItem)`
+//     background-image: url(${home_price2});
+//      background-image: url(${home_price1});
+//     background-repeat: no-repeat;
+//     background-size: cover;
+// `
 const HomeContent = styled.div`
     display: flex;
     flex-direction: column;
