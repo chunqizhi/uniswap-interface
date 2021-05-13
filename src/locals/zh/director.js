@@ -10,5 +10,8 @@ export default {
     text09: '锁仓期',
     text10: '天',
     text11: '提取',
-    text12: '锁仓'
+    text12: '锁仓',
+    text13: '暂未开放',
+    text14: '即将开放',
+
 }

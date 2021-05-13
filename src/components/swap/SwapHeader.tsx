@@ -70,7 +70,7 @@ export default function SwapHeader() {
   return (
     <StyledSwapHeader>
       {isApprovediv && (
-                        <Approvediv>即将开放</Approvediv>
+                        <Approvediv>{t("director.text14")}</Approvediv>
                     )}
       <RowBetween>
         <Dspdiv>

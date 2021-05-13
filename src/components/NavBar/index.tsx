@@ -52,7 +52,7 @@ export default function NarBar() {
     return (
         <>
         {isApprovediv && (
-                        <Approvediv>暂未开放</Approvediv>
+                        <Approvediv>{t("director.text13")}</Approvediv>
                     )}
             <div className="navBar">
                 <NavLink exact to="/home" className="navItem" activeClassName="navItemActive">

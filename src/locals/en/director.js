@@ -10,5 +10,7 @@ export default {
     text09: 'Lock-up period',
     text10: 'days',
     text11: 'extract',
-    text12: 'Lock up'
+    text12: 'Lock up',
+    text13: 'Temporarily not opened',
+    text14: 'Temporarily not opened',
 }

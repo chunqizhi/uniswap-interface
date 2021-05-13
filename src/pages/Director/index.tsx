@@ -95,7 +95,7 @@ export default function Director() {
         <>
             <div className="driectorList">
             {isApprovediv && (
-                        <Approvediv>暂未开放</Approvediv>
+                        <Approvediv>{t("director.text13")}</Approvediv>
                     )}
                 <div className="driectorItem">
                     <div className="driectorTitle">
