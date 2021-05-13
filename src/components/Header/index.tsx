@@ -55,6 +55,7 @@ const HeaderLinks = styled(Row)`
   justify-content: center;
   ${({ theme }) => theme.mediaWidth.upToMedium`
     padding: 1rem 0 1rem 1rem;
+    padding:0px;
     justify-content: flex-end;
 `};
 `
@@ -108,6 +109,11 @@ text-decoration:none;
 display:flex;
 align-items: center;
 `
+const Titlename = styled.div`
+  font-size:4.3vw;
+  width:35vw;
+  color:#ccc;
+`
 // const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
 //   [ChainId.RINKEBY]: 'Rinkeby',
 //   [ChainId.ROPSTEN]: 'Ropsten',
@@ -132,7 +138,11 @@ export default function Header() {
         <UniBalanceContent setShowUniBalanceModal={setShowUniBalanceModal} />
       </Modal>
       <HeaderRow>
-        <HomeBtn01 id={`home-nav-link`} to={'/home'}> <img width={'100px'} src={darkMode ? LogoDark : LogoDark} alt="logo" /></HomeBtn01>
+        <HomeBtn01 id={`home-nav-link`} to={'/home'}> <img width={'100px'} src={darkMode ? LogoDark : LogoDark} alt="logo" />
+          <Titlename>
+            tree-swap.org
+          </Titlename>
+        </HomeBtn01>
         <HeaderLinks>
           {/* <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
             {t('swap')}
