@@ -111,7 +111,7 @@ align-items: center;
 `
 const Titlename = styled.div`
   font-size:4.3vw;
-  width:35vw;
+  width:32vw;
   color:#ccc;
 `
 // const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
