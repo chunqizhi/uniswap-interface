@@ -13,6 +13,8 @@ const AdvancedDetailsFooter = styled.div<{ show: boolean }>`
   border-bottom-right-radius: 20px;
   color: ${({ theme }) => theme.text2};
   background-color: ${({ theme }) => theme.advancedBG};
+  background-color:#14223d;
+  color:#565A69;
   z-index: -1;
 
   transform: ${({ show }) => (show ? 'translateY(0%)' : 'translateY(-100%)')};

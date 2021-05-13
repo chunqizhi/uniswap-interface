@@ -257,6 +257,16 @@ li {
     justify-content: space-between;
     /* justify-content: space-around; */
     align-items: center;
+    text-align: center;
+}
+.headspant{
+    width: 45%;
+}
+.headspanm{
+    width: 30%;
+}
+.headspanb{
+    width: 25%;
 }
 .minItem {
     display: flex;
@@ -309,6 +319,7 @@ li {
     height: 100%;
     justify-content: center;
     line-height: 20px;
+    text-align: center;
 }
 .minItemCol3 {
     display: flex;

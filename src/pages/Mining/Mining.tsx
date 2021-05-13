@@ -220,9 +220,9 @@ const { t } = useTranslation()
                 type && mainList[type] && (
                     <div className="minList">
                         <div className="minHead">
-                            <span>{ t("mining.text18") }/TVL</span>
-                            <span>{ t("mining.text19") }(TRS)</span>
-                            <span>APY</span>
+                            <span className="headspant">{ t("mining.text18") }/TVL</span>
+                            <span className="headspanm">{ t("mining.text19") }(TRS)</span>
+                            <span className="headspanb">APY</span>
                         </div>
                         {
                             mainList[type].map((item: Item) => {

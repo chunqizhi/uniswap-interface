@@ -154,7 +154,7 @@ const { t } = useTranslation()
                                 })
                             }
                         }
-                    >{t("provideLiquidity.text09")}</div>
+                    >{t("")}</div>
                     {isApprovediv && (
                         <Approvediv>授权中...</Approvediv>
                     )}
