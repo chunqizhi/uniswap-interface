@@ -8952,10 +8952,10 @@ https-browserify@^1.0.0:
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
   integrity sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM=
 
-huiwan-v2-sdk@^0.0.5-oketestmain:
-  version "0.0.5-oketestmain"
-  resolved "https://registry.nlark.com/huiwan-v2-sdk/download/huiwan-v2-sdk-0.0.5-oketestmain.tgz#bda180e8e05614fdddcf01ce2f8f69098bd4a8d6"
-  integrity sha1-vaGA6OBWFP3dzwHOL49pCYvUqNY=
+huiwan-v2-sdk@^0.0.6-oketestmain:
+  version "0.0.6-oketestmain"
+  resolved "https://registry.yarnpkg.com/huiwan-v2-sdk/-/huiwan-v2-sdk-0.0.6-oketestmain.tgz#b039acd44909b1a3cbcdf34fe8981181774694b5"
+  integrity sha512-vqWhk72E1wnkt35rETeCbm1pdivy5h3onqUbMnTkAy/+YB1tuy7uHfG3n28auofdTV+XYy2haIU1t2jqyyF45w==
   dependencies:
     "@uniswap/v2-core" "^1.0.0"
     big.js "^5.2.2"
