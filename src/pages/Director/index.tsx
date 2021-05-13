@@ -128,8 +128,8 @@ export default function Director() {
             </div>
             <div className="driectorBox">
                 <img src={ require('../../assets/images/trs-icon-defalt-png.png') } alt="" />
-                <p className="driectorBoxP1">TRS DAO-5</p>
-                <p className="driectorBoxP2">{t("director.text09")}：5{t("director.text10")}</p>
+                <p className="driectorBoxP1">TRS DAO-30</p>
+                <p className="driectorBoxP2">{t("director.text09")}：30{t("director.text10")}</p>
                 <div className="driectorBoxList">
                     <div className="driectorBoxItem">
                         <img src={ require('../../assets/images/lock-icon-defalt-png.png') } alt="" />
