@@ -339,14 +339,19 @@ font-size: 17px;
 margin-top: 5px;
 margin-bottom:20px;
 `
-
+const Textdiv = styled.div`
+  width:100%;
+`
 function PageTitle() {
   const { t } = useTranslation()
 
   return (
     <>
       <TitleDiv>
-        <TitleText>{t("swap.text24")}</TitleText>
+        <TitleText>
+          <Textdiv>{t("swap.text24")}</Textdiv>
+          <Textdiv>{t("swap.text25")}</Textdiv>
+        </TitleText>
         <TitleSup>{t("swap.text17")}</TitleSup>
         <TitleSub>{t("swap.text18")}</TitleSub>
       </TitleDiv>
