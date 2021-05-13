@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 // import { NavLink } from 'react-router-dom'
 import HomeBottom from './HomeBottom'
@@ -206,22 +206,40 @@ export default function Home() {
     const { t } = useTranslation();
     const [rate, setRate] = useState(0)
     const [allBalance, setAllBalance] = useState(0)
+    // 判断是否是第一次加载页面  判断发送请求
+    const [ pageFlag, setPageFlag ] = useState(false);
     // 轮播图
     // const [flag] = useState(true);
     const [slideList] = useState([{
         title: 'banner1',
-        url: require('../../assets/images/banner.jpg')
+        url: require('../../assets/images/banner.png')
     },{
         title: 'banner2',
         url: require('../../assets/images/banner1.png')
     }]);
 
-    Data.getTrsRate().then(res => {
-        setRate(res.rate)
-    })
-    Data.getPoolListData('all').then(res => {
-        setAllBalance(res)
-    })
+    // 如果是true 持续加载更新
+    if (pageFlag) {
+        setTimeout(() => {
+            Data.getTrsRate().then(res => {
+                setRate(res.rate)
+            })
+            Data.getPoolListData('all').then(res => {
+                setAllBalance(res)
+            })
+        }, 1500);
+    }
+    useEffect(()=>{
+        if (!pageFlag) {
+            Data.getTrsRate().then(res => {
+                setRate(res.rate)
+            })
+            Data.getPoolListData('all').then(res => {
+                setAllBalance(res)
+                setPageFlag(true)
+            })
+        }
+    },[pageFlag])
     return (
         <>
             {/* 轮播图 */}
