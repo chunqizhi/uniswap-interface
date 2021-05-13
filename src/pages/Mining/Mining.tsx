@@ -70,19 +70,27 @@ const { t } = useTranslation()
     const [rate, setRate] = useState(0.00)
     const [allBlock, setAllBock] = useState(0.00)
     const [balance, setBalance] = useState(0.00)
+    // 判断是否是第一次加载页面  判断发送请求
+    const [ pageFlag, setPageFlag ] = useState(false);
 
-    Data.getPoolListData().then(res => {
-        // console.log(`setMainList`,res);
-        setMainList(res)
-    })
-    Data.getAllBlock().then(res=>{
-        // console.log(`setAllBock`,res)
-        setAllBock(res)
-    })
-    API.getWalletAllTrs().then(res => {
-        // console.log(`setBalance`,res)
-        setBalance(res)
-    })
+    // 如果是true 持续加载更新
+    if (pageFlag) {
+        // console.log(pageFlag);
+        setTimeout(() => {
+            Data.getPoolListData().then(res => {
+                // console.log(`setMainList`, res);
+                setMainList(res)
+            })
+            Data.getAllBlock().then(res=>{
+                // console.log(`setAllBock`,res)
+                setAllBock(res)
+            })
+            API.getWalletAllTrs().then(res => {
+                // console.log(`setBalance`,res)
+                setBalance(res)
+            })
+        }, 1500);
+    }
 
     const nav_type = [
         {
@@ -123,13 +131,27 @@ const { t } = useTranslation()
         },
     ];
 
-
-
     useEffect(() => {
         Data.getTrsRate().then(res => {
             setRate(res.rate)
         })
-    }, [])
+        // 判断 如果是false 每个方法请求一次 加载出页面
+        if(!pageFlag) {
+            Data.getPoolListData().then(res => {
+                // console.log(`setMainList`, res);
+                setMainList(res);
+                setPageFlag(true);
+            })
+            Data.getAllBlock().then(res=>{
+                // console.log(`setAllBock`, res)
+                setAllBock(res)
+            })
+            API.getWalletAllTrs().then(res => {
+                // console.log(`setBalance`, res)
+                setBalance(res)
+            })
+        }
+    }, [pageFlag])
     return (
         <>
             <Title />

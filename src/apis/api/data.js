@@ -170,6 +170,7 @@ function getCurrentPool(type) {
 }
 
 function getPoolListData(type) {
+    // console.log('getPoolListData');
     return new Promise((resolve, reject) => {
         Promise.all([
             One.getPoolData(),
@@ -254,15 +255,20 @@ function getPoolListData(type) {
                     })
                 }
                 allBalance = addNum(tvl, allBalance)
-                    // console.log('apy ==>', apy, 'tvl ==>', tvl)
+                // console.log('apy ==>', apy, 'tvl ==>', tvl)
 
-            })
-            Icon.forEach((item, index) => {
                 if (res[index].supply !== '0') {
                     isall = true;
-                    return;
+                    // return;
                 }
+
             })
+            // Icon.forEach((item, index) => {
+            //     if (res[index].supply !== '0') {
+            //         isall = true;
+            //         return;
+            //     }
+            // })
             if (type === 'all') {
                 if (isall) {
                     resolve(allBalance)
