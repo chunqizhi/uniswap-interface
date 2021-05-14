@@ -37,7 +37,6 @@ export const AutoRow = styled(Row)<{ gap?: string; justify?: string }>`
   & > * {
     margin: ${({ gap }) => gap} !important;
   }
-  padding:1rem 0px;
 `
 
 export const RowFixed = styled(Row)<{ gap?: string; justify?: string }>`

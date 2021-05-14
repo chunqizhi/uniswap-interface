@@ -16,6 +16,7 @@ const QuestionWrapper = styled.div`
   background-color: ${({ theme }) => theme.bg2};
   color: ${({ theme }) => theme.text2};
   background-color:#14223d;
+  background-color:#FFF;
   color:#565A69;
   :hover,
   :focus {
