@@ -173,7 +173,7 @@ export default function Menu() {
     // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/30451
     <StyledMenu ref={node as any}>
       <StyledMenuButton onClick={toggle}>
-        <img src={ menu } alt="" />
+        <img src={ menu } width="16px" height="16px" alt="" />
         {/* <StyledMenuIcon /> */}
       </StyledMenuButton>
       { isApprovediv && (

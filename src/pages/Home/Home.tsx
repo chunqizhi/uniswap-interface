@@ -232,26 +232,27 @@ export default function Home() {
 
     // 如果是true 持续加载更新
     if (pageFlag) {
-        setTimeout(() => {
-            Data.getTrsRate().then(res => {
-                setRate(res.rate)
-            })
-            Data.getPoolListData('all').then(res => {
-                setAllBalance(res)
-            })
-        }, 1500);
-    }
-    useEffect(()=>{
-        if (!pageFlag) {
-            Data.getTrsRate().then(res => {
-                setRate(res.rate)
-            })
-            Data.getPoolListData('all').then(res => {
-                setAllBalance(res)
-                setPageFlag(true)
-            })
-        }
-    },[pageFlag])
+          setTimeout(() => {
+              Data.getTrsRate().then(res => {
+                  setRate(res.rate)
+              })
+              Data.getPoolListData('all').then(res => {
+                  setAllBalance(res)
+                  setPageFlag(false)
+              })
+          }, 1500);
+      }
+      useEffect(()=>{
+          if (!pageFlag) {
+              Data.getTrsRate().then(res => {
+                  setRate(res.rate)
+              })
+              Data.getPoolListData('all').then(res => {
+                  setAllBalance(res)
+                  setPageFlag(true)
+              })
+          }
+      },[pageFlag])
     return (
         <>
             {/* 轮播图 */}

@@ -80,6 +80,7 @@ const { t } = useTranslation()
             Data.getPoolListData().then(res => {
                 // console.log(`setMainList`, res);
                 setMainList(res)
+                setPageFlag(false);
             })
             Data.getAllBlock().then(res=>{
                 // console.log(`setAllBock`,res)
@@ -89,7 +90,7 @@ const { t } = useTranslation()
                 // console.log(`setBalance`,res)
                 setBalance(res)
             })
-        }, 1500);
+        }, 3000);
     }
 
     const nav_type = [

@@ -95,7 +95,7 @@ export default function App() {
       <AppWrapper>
         {/* <URLWarning /> */}
         <HeaderWrapper>
-          <Tips/>
+          {/* <Tips/> */}
           <Header />
         </HeaderWrapper>
         <BodyWrapper>
