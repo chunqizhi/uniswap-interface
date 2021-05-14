@@ -299,4 +299,13 @@ export default [{
         coin_price: 'USDTNEXT',
         key_word: "ideas"
     },
+    {
+        pre_coin: TRSICON,
+        next_coin: HUSDICON,
+        coin_name: "TRS/HUSD",
+        coin: "TRS",
+        poolIndex: 'trshusd',
+        coin_price: 'TRSPRE',
+        key_word: "flat"
+    },
 ]

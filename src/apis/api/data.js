@@ -28,6 +28,7 @@ import EosUsdt from './eos_usdt.js'
 import EthHusd from './eth_husd.js'
 import LinkUsdt from './link_usdt.js'
 import AaveUsdt from './aave_usdt.js'
+import TrsHusd from './trs_husd.js'
 import Icon from './icon.js'
 import Web3 from "web3";
 
@@ -160,6 +161,10 @@ function getCurrentPool(type) {
             API = AaveUsdt
             coinInfo = Icon[28]
             break;
+        case "trshusd":
+            API = TrsHusd
+            coinInfo = Icon[29]
+            break;
         default:
             console.log('error')
     }
@@ -203,6 +208,7 @@ function getPoolListData(type) {
             EthHusd.getPoolData(),
             LinkUsdt.getPoolData(),
             AaveUsdt.getPoolData(),
+            TrsHusd.getPoolData(),
 
         ]).then(async res => {
             let coinRate = await getCoinRate() //  汇率
@@ -319,6 +325,7 @@ function getAllBlock() {
             EthHusd.getLastTime(),
             LinkUsdt.getLastTime(),
             AaveUsdt.getLastTime(),
+            TrsHusd.getLastTime(),
         ]).then(lastTime => {
             getAllRewardRate().then(allRate => {
                 getAllStartTime().then(allTime => {
@@ -368,6 +375,7 @@ function getAllRewardRate() {
             EthHusd.getRewardRate(),
             LinkUsdt.getRewardRate(),
             AaveUsdt.getRewardRate(),
+            TrsHusd.getRewardRate(),
         ]).then(res => {
             resolve(res.map((item) => {
                 return Web3.utils.fromWei(item, 'ether')
@@ -411,6 +419,7 @@ function getAllStartTime() {
             EthHusd.getPoolStartTime(),
             LinkUsdt.getPoolStartTime(),
             AaveUsdt.getPoolStartTime(),
+            TrsHusd.getPoolStartTime(),
         ]).then(res => {
             resolve(res)
         }).catch(err => {

@@ -224,10 +224,10 @@ export default function Home() {
     // const [flag] = useState(true);
     const [slideList] = useState([{
         title: 'banner1',
-        url: require('../../assets/images/banner.png')
+        url: require('../../assets/images/banner2.png')
     },{
         title: 'banner2',
-        url: require('../../assets/images/banner1.png')
+        url: require('../../assets/images/banner3.png')
     }]);
 
     // 如果是true 持续加载更新
