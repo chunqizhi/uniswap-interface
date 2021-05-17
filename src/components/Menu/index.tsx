@@ -34,7 +34,9 @@ const StyledMenuButton = styled.button`
   padding: 0.15rem 0.5rem;
   padding:0px;
   border-radius: 0.5rem;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
   :hover,
   :focus {
     cursor: pointer;
@@ -173,7 +175,7 @@ export default function Menu() {
     // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/30451
     <StyledMenu ref={node as any}>
       <StyledMenuButton onClick={toggle}>
-        <img src={ menu } width="16px" height="16px" alt="" />
+        <img src={ menu } width="18px" height="18px" alt="" />
         {/* <StyledMenuIcon /> */}
       </StyledMenuButton>
       { isApprovediv && (

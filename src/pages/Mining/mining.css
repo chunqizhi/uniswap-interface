@@ -67,20 +67,26 @@ li {
     padding: 0 10px;
     justify-content: center;
     margin-bottom: 10px;
-    background: url(../../assets/images/tab-card1-disabled-png.png) no-repeat top center;
+    border-radius: 6px;
+    overflow: hidden;
+    background: url(../../assets/images/mining-card1.png) no-repeat center right;
+    background-size: cover;
 }
 .item:nth-child(2) {
-    background: url(../../assets/images/tab-card2-disabled-png.png) no-repeat top center;
+    background: url(../../assets/images/mining-card2.png) no-repeat center right;
+    background-size: cover;
 }
 .item:nth-child(3) {
-    background: url(../../assets/images/tab-card3-disabled-png.png) no-repeat top center;
+    background: url(../../assets/images/mining-card3.png) no-repeat center right;
+    background-size: cover;
 }
 .item:last-child {
-    background: url(../../assets/images/tab-card4-disabled-png.png) no-repeat top center;
+    background: url(../../assets/images/mining-card4.png) no-repeat center right;
+    background-size: cover;
 }
 .item .text {
     font-size: 12px;
-    color: #ABB7CA;
+    color: #CECECE;
     line-height: 16px;
     text-align: center;
 }

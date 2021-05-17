@@ -7,7 +7,7 @@ import headImg from "../../assets/images/wallet-icon-click-png.png"
 // import Jazzicon from 'jazzicon'
 
 const StyledIdenticonContainer = styled.div`
-  height: 17px;
+  height: 18px;
   width: 22px;
   // border-radius: 1.125rem;
   // background-color: ${({ theme }) => theme.bg4};
@@ -29,7 +29,7 @@ export default function Identicon() {
   // return <StyledIdenticonContainer ref={ref as any} />
   return (
     <StyledIdenticonContainer>
-      <img src={ headImg } alt="" />
+      <img src={ headImg } alt="" style={{height:'100%'}} />
     </StyledIdenticonContainer>
   )
 }

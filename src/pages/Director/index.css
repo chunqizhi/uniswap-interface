@@ -16,19 +16,25 @@
     justify-content: center;
     text-align: center;
     margin-bottom: 10px;
-    background: url(../../assets/images/tab-card1-disabled-png.png) no-repeat top center;
+    border-radius: 6px;
+    overflow: hidden;
+    background: url(../../assets/images/tab-card1-disabled-png.png) no-repeat top right;
+    background-size: cover;
 }
 
 .driectorItem:nth-child(2) {
-    background: url(../../assets/images/tab-card2-disabled-png.png) no-repeat top center;
+    background: url(../../assets/images/tab-card2-disabled-png.png) no-repeat top right;
+    background-size: cover;
 }
 
 .driectorItem:nth-child(3) {
-    background: url(../../assets/images/tab-card3-disabled-png.png) no-repeat top center;
+    background: url(../../assets/images/tab-card3-disabled-png.png) no-repeat top right;
+    background-size: cover;
 }
 
 .driectorItem:last-child {
-    background: url(../../assets/images/tab-card4-disabled-png.png) no-repeat top center;
+    background: url(../../assets/images/tab-card4-disabled-png.png) no-repeat top right;
+    background-size: cover;
 }
 
 .driectorTitle {
@@ -36,13 +42,14 @@
     flex-wrap: wrap;
     align-items: center;
     font-size: 12px;
-    color: #ABB7CA;
+    color: #CECECE;
     margin-bottom: 5px;
     box-sizing: border-box;
 }
 
 .driectorTitle img {
     margin-right: 5px;
+    width: 18px;
 }
 .driectorTitle span {
     display: flex;
@@ -93,7 +100,9 @@
     color: #fff;
     font-family: 'MicrosoftYaHei';
 }
-
+.driectorBoxItem img{
+    width: 19px;
+}
 .driectorBoxItemSpan {
     color: #E3F4FD;
     font-size: 14px;
