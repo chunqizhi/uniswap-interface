@@ -20,6 +20,7 @@ import ADAICON from '../../assets/images/coin/ADA.png'
 import EOSICON from '../../assets/images/coin/EOS.png'
 import LINKICON from '../../assets/images/coin/LINK.png'
 import AAVEICON from '../../assets/images/coin/AAVE.png'
+import DEFAULTICON from '../../assets/images/coin/DEFAULT.png'
 
 
 
@@ -307,5 +308,23 @@ export default [{
         poolIndex: 'trshusd',
         coin_price: 'TRSPRE',
         key_word: "flat"
+    },
+    {
+        pre_coin: DEFAULTICON,
+        next_coin: USDTICON,
+        coin_name: "TS1/USDT",
+        coin: "TRS",
+        poolIndex: 'ts1usdt',
+        coin_price: 'USDTNEXT',
+        key_word: "ideas"
+    },
+    {
+        pre_coin: DEFAULTICON,
+        next_coin: USDTICON,
+        coin_name: "TS4/USDT",
+        coin: "TRS",
+        poolIndex: 'ts4usdt',
+        coin_price: 'USDTNEXT',
+        key_word: "ideas"
     },
 ]

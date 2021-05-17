@@ -29,6 +29,8 @@ import EthHusd from './eth_husd.js'
 import LinkUsdt from './link_usdt.js'
 import AaveUsdt from './aave_usdt.js'
 import TrsHusd from './trs_husd.js'
+import Ts1Usdt from './ts1_usdt.js'
+import Ts4Usdt from './ts4_usdt.js'
 import Icon from './icon.js'
 import Web3 from "web3";
 
@@ -165,6 +167,14 @@ function getCurrentPool(type) {
             API = TrsHusd
             coinInfo = Icon[29]
             break;
+        case "ts1usdt":
+            API = Ts1Usdt
+            coinInfo = Icon[30]
+            break;
+        case "ts4usdt":
+            API = Ts4Usdt
+            coinInfo = Icon[30]
+            break;
         default:
             console.log('error')
     }
@@ -209,7 +219,8 @@ function getPoolListData(type) {
             LinkUsdt.getPoolData(),
             AaveUsdt.getPoolData(),
             TrsHusd.getPoolData(),
-
+            Ts1Usdt.getPoolData(),
+            Ts4Usdt.getPoolData(),
         ]).then(async res => {
             let coinRate = await getCoinRate() //  汇率
             let trsRate = await getTrsRate() //trs 价格
@@ -326,6 +337,8 @@ function getAllBlock() {
             LinkUsdt.getLastTime(),
             AaveUsdt.getLastTime(),
             TrsHusd.getLastTime(),
+            Ts1Usdt.getLastTime(),
+            Ts4Usdt.getLastTime(),
         ]).then(lastTime => {
             getAllRewardRate().then(allRate => {
                 getAllStartTime().then(allTime => {
@@ -376,6 +389,8 @@ function getAllRewardRate() {
             LinkUsdt.getRewardRate(),
             AaveUsdt.getRewardRate(),
             TrsHusd.getRewardRate(),
+            Ts1Usdt.getRewardRate(),
+            Ts4Usdt.getRewardRate(),
         ]).then(res => {
             resolve(res.map((item) => {
                 return Web3.utils.fromWei(item, 'ether')
@@ -420,6 +435,8 @@ function getAllStartTime() {
             LinkUsdt.getPoolStartTime(),
             AaveUsdt.getPoolStartTime(),
             TrsHusd.getPoolStartTime(),
+            Ts1Usdt.getPoolStartTime(),
+            Ts4Usdt.getPoolStartTime(),
         ]).then(res => {
             resolve(res)
         }).catch(err => {
