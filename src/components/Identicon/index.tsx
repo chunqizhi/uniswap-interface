@@ -7,7 +7,7 @@ import headImg from "../../assets/images/wallet-icon-click-png.png"
 // import Jazzicon from 'jazzicon'
 
 const StyledIdenticonContainer = styled.div`
-  height: 18px;
+  height: 20px;
   width: 22px;
   // border-radius: 1.125rem;
   // background-color: ${({ theme }) => theme.bg4};

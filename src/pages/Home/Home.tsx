@@ -142,7 +142,7 @@ const HomeBanner = styled.div`
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 `
 
 const HomePrice = styled.div`
@@ -157,8 +157,7 @@ const HomeItem = styled.div`
     width: 100%;
     align-items: center;
     position: relative;
-    height:90px;
-    margin:2vw 0;
+    //margin:2vw 0;
     > img {
         max-width: 102%;
         height: auto;
