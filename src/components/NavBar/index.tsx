@@ -68,14 +68,14 @@ export default function NarBar() {
                     <span>{t("navbar.text03")}</span>
                 </NavLink>
                 {/* to="/" */}
-                {/* <NavLink onClick={ ()=> opentoast() } exact  className="navItem" activeClassName="navItemActive">
+                <NavLink exact to="/market" className="navItem" activeClassName="navItemActive">
                     <span className="iconfont icon-hangqing"></span>
                     <span>{t("navbar.text04")}</span>
-                </NavLink> */}
-                <Narberdiv onClick={ ()=> opentoast() }  className="navItem" activeClassName="navItemActive">
+                </NavLink>
+                {/* <Narberdiv onClick={ ()=> opentoast() }  className="navItem" activeClassName="navItemActive">
                     <span className="iconfont icon-hangqing"></span>
                     <span>{t("navbar.text04")}</span>
-                </Narberdiv>
+                </Narberdiv> */}
 
                 <NavLink exact to="/director" className="navItem" activeClassName="navItemActive">
                     <span className="iconfont icon-ren"></span>

@@ -210,7 +210,23 @@ class API {
                             nextcoin = (Web3.utils.fromWei(nextcoin, 'ether')) * 1
                             precoin = (Web3.utils.fromWei(precoin, 'kwei')) / 10
                         }
-                        let rate = nextcoin / precoin
+                        let rate = 0
+                        if (type && type === 'USDTPRE') {
+                            rate = precoin / nextcoin
+                        }else if(type && type === 'HUSD') {
+                            rate = precoin / (nextcoin * 10000000000)
+                        }else if(type && type === 'DOGE') {
+                            rate = (nextcoin ) / (precoin * 10000000000)
+                        }else if(type && type === 'XRP') {
+                            rate = (nextcoin * 10000000000 ) / (precoin)
+                        }else if(type && type === 'ADA') {
+                            rate = (nextcoin * 100000000000 ) / (precoin)
+                        }else if(type && type === 'EOS') {
+                            rate = (nextcoin * 10000000000000000 ) / (precoin)
+                        }else{
+                            rate = nextcoin / precoin
+                        }
+                        
                         resolve({
                             precoin,
                             nextcoin,

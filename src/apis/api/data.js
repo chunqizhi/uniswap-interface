@@ -333,6 +333,7 @@ function getAllBlock() {
                     allTime.forEach((item, index) => {
                         allBalance = allBalance + (lastTime[index] * 1 - item * 1) * allRate[index]
                     })
+                    // let a = allBalance - 100000
                     resolve(allBalance)
                 })
             })
@@ -427,10 +428,44 @@ function getAllStartTime() {
         })
     })
 }
-
+//获取行情的每一个价格 判断usdt前/后
+function getAllTrsRate(){
+    return new Promise((resolve, reject) => {
+        Promise.all([
+            Six.getTrsRate(),
+            Two.getTrsRate('USDTPRE'),
+            Three.getTrsRate(),
+            Five.getTrsRate('HUSD'),
+            Eleven.getTrsRate(),
+            HfilUsdt.getTrsRate(),
+            HdotUsdt.getTrsRate(),
+            DogeUsdt.getTrsRate('DOGE'),
+            HltcUsdt.getTrsRate(),
+            UniUsdt.getTrsRate(),
+            XrpUsdt.getTrsRate('XRP'),
+            HbchUsdt.getTrsRate(),
+            AdaUsdt.getTrsRate('ADA'),
+            EosUsdt.getTrsRate('EOS'),
+            Eight.getTrsRate(),
+            Nine.getTrsRate(),
+            Twelve.getTrsRate(),
+            ShibUsdt.getTrsRate(),
+            LinkUsdt.getTrsRate(),
+            AaveUsdt.getTrsRate(),
+        ]).then(res => {
+            resolve(res)
+        }).catch(err => {
+            reject(err)
+        })
+    })
+}
 function getTrsRate() {
     return Six.getTrsRate()
 }
+function getTrsRate1() {
+    return Two.getTrsRate('USDTPRE')
+}
+
 //获取汇率
 function getCoinRate() {
     return new Promise((resolve, reject) => {
@@ -453,4 +488,6 @@ export default {
     getPoolListData,
     getTrsRate,
     getAllBlock,
+    getTrsRate1,
+    getAllTrsRate
 }

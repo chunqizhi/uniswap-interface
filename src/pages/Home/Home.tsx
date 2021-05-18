@@ -235,6 +235,7 @@ export default function Home() {
               Data.getTrsRate().then(res => {
                   setRate(res.rate)
               })
+
               Data.getPoolListData('all').then(res => {
                   setAllBalance(res)
                   setPageFlag(false)
@@ -252,6 +253,9 @@ export default function Home() {
               })
           }
       },[pageFlag])
+      Data.getTrsRate1().then(res => {
+        console.log("9999 =>",res.rate)
+    })
     return (
         <>
             {/* 轮播图 */}
