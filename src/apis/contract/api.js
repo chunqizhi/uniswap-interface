@@ -19,8 +19,154 @@ class API {
             })
         })
     }
+    //
+    //董事会 授权
+    isApproveDao() {
+        return this.contract.initFnPromise().then(res => {
+            return new Promise((resolve, reject) => {
+                this.contract.getDaoAccountStakedStatus(
+                    (result) => {
+                        if (result === '0') {
+                            resolve(false)
+                        } else resolve(true)
+                    }, (error) => {
+                        reject(error)
+                    }
+                )
+            })
+        })
+    }
+    // 查询 董事会仓名
+    getDaoName() {
+        return this.contract.initFnPromise().then(res => {
+            return new Promise((resolve, reject) => {
+                this.contract.getDaoName(
+                    (result) => {
+                        resolve(result)
+                    }, (error) => {
+                        reject(error)
+                    }
+                )
+            })
+        })
+    }
+    // 查询 董事会 总锁仓量
+    getDaoTotalSupply() {
+        return this.contract.initFnPromise().then(res => {
+            return new Promise((resolve, reject) => {
+                this.contract.getDaoTotalSupply(
+                    (result) => {
+                        let per = Web3.utils.fromWei(result, 'ether')
+                        resolve(per)
+                    }, (error) => {
+                        reject(error)
+                    }
+                )
+            })
+        })
+    }
+    // 查询 董事会 我的锁仓
+    getDaoBalanceOf() {
+        return this.contract.initFnPromise().then(res => {
+            return new Promise((resolve, reject) => {
+                this.contract.getDaoBalanceOf(
+                    (result) => {
+                        let per = Web3.utils.fromWei(result, 'ether')
+                        resolve(per)
+                    }, (error) => {
+                        reject(error)
+                    }
+                )
+            })
+        })
+    }
+    // 查询 董事会 解锁数量
+    getDaoallAvailableAmount() {
+        return this.contract.initFnPromise().then(res => {
+            return new Promise((resolve, reject) => {
+                this.contract.getDaoallAvailableAmount(
+                    (result) => {
+                        let per = Web3.utils.fromWei(result, 'ether')
+                        resolve(per)
+                    }, (error) => {
+                        reject(error)
+                    }
+                )
+            })
+        })
+    }
+    // 查询 董事会 解锁时间
+    getDaoRestBlocks() {
+        return this.contract.initFnPromise().then(res => {
+            return new Promise((resolve, reject) => {
+                this.contract.getDaoRestBlocks(
+                    (result) => {
+                        resolve(result)
+                    }, (error) => {
+                        reject(error)
+                    }
+                )
+            })
+        })
+    }
+    // 查询 董事会 是否可领取
+    getDaoCanWithdraw() {
+        return this.contract.initFnPromise().then(res => {
+            return new Promise((resolve, reject) => {
+                this.contract.getDaoCanWithdraw(
+                    (result) => {
+                        resolve(result)
+                    }, (error) => {
+                        reject(error)
+                    }
+                )
+            })
+        })
+    }
+     // 董事会 提取
+     DaoWithdraw() {
+        return this.contract.initFnPromise().then(res => {
+            return new Promise((resolve, reject) => {
+                this.contract.DaoWithdraw(
+                    (result) => {
+                        resolve(result)
+                    }, (error) => {
+                        reject(error)
+                    }
+                )
+            })
+        })
+    }
 
-
+    // 董事会 锁仓
+    DaoDeposit(amount) {
+        return this.contract.initFnPromise().then(res => {
+            return new Promise((resolve, reject) => {
+                this.contract.DaoDeposit(
+                    Web3.utils.toWei(amount, 'ether'),
+                    (result) => {
+                        resolve(result)
+                    }, (error) => {
+                        reject(error)
+                    }
+                )
+            })
+        })
+    }
+    // 董事会 未授权进行授权 approveHuiwanUsdtLoopAddr
+    approveDao() {
+        return this.contract.initFnPromise().then(res => {
+            return new Promise((resolve, reject) => {
+                this.contract.approveDaoHuiwanUsdtLoopAddr(
+                    (result) => {
+                        resolve(result.result)
+                    }, (error) => {
+                        reject(error)
+                    }
+                )
+            })
+        })
+    }
 
     // 获取矿池月/年收益
     getInitreward() {
@@ -115,13 +261,13 @@ class API {
                 })
             })
         }
+         
         // 未授权进行授权 approveHuiwanUsdtLoopAddr
     approve() {
         return this.contract.initFnPromise().then(res => {
             return new Promise((resolve, reject) => {
                 this.contract.approveHuiwanUsdtLoopAddr(
                     (result) => {
-                        console.log(result)
                         resolve(result.result)
                     }, (error) => {
                         reject(error)

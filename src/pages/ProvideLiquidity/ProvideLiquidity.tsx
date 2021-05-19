@@ -217,7 +217,8 @@ const { t } = useTranslation()
                                     e.stopPropagation()
                                 }
                             }>
-                                <p className="mask-title">{popType === 'stake' ? `${t("provideLiquidity.text06")}` : `${t("provideLiquidity.text16")}`}</p>
+                                <p className="mask-title">
+                                    {popType === 'stake' ? `${t("provideLiquidity.text06")}` : `${t("provideLiquidity.text16")}`}</p>
                                 <p className="mask-info">
                                     {/* {popType==='stake'?'':''} */}
                                     <span>{t("provideLiquidity.text15")}</span>

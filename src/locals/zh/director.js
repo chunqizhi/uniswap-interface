@@ -13,5 +13,8 @@ export default {
     text12: '锁仓',
     text13: '暂未开放',
     text14: '即将开放',
-
+    text15: '解锁时间',
+    text16: '我的余额',
+    text17: '暂未到解锁时间',
+    text18: '授权中...'
 }
