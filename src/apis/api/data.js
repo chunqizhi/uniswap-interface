@@ -175,7 +175,6 @@ function getCurrentPool(type) {
 }
 
 function getPoolListData(type) {
-    // console.log('getPoolListData');
     return new Promise((resolve, reject) => {
         Promise.all([
             One.getPoolData(),

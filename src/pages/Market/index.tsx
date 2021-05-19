@@ -119,20 +119,20 @@ const formatNum = function (str: string|number) {
 }
 let timers
 
-
-export default function Director() {
+export default function Market() {
     const { t } = useTranslation();
-    const [isApprovediv, setApprovediv] = useState(false) // 授权/非授权
+    // const [isApprovediv, setApprovediv] = useState(false) // 授权/非授权
 
     // 判断是否是第一次加载页面  判断发送请求
     const [ pageFlag, setPageFlag ] = useState(false);
     const [rate, setRate] = useState(0)
-    const [mainList, setMainList] = useState()
     const [allpoollist, setAllpoollist] = useState([])
     // const [defaultlist, setDefaultlist] = useState([])
     // 如果是true 持续加载更新
-    if (pageFlag) {
-        setTimeout(() => {
+    // if (pageFlag) {
+    const bbb = () =>{
+    timers && clearTimeout(timers)
+      timers = setTimeout(() => {
             Data.getAllTrsRate().then(res => {
                 setRate(res)
             })
@@ -146,71 +146,72 @@ export default function Director() {
                     if (value.coin_name.indexOf('USDT') !== -1 && value.coin_name.indexOf('TRS') !== -1) {
                         arr.unshift(value)
                     }
-
                 });
                 setAllpoollist(arr)
-                setMainList(res);
-                setPageFlag(false);
-
+                setPageFlag(!pageFlag);
             })
-        }, 1500);
-    }
-    useEffect(()=>{
-        if (!pageFlag) {
-            Data.getAllTrsRate().then(res => {
-                setRate(res)
-            })
-            Data.getPoolListData().then(res => {
-                var nums = res.main.concat(res.flat, res.ideas);
-                let arr = []
-                nums.map(function (value, index, array) {
-                    if (value.coin_name.indexOf('USDT') !== -1 && value.coin_name.indexOf('TRS') == -1) {
-                        arr.push(value)
-                    }
-                    if (value.coin_name.indexOf('USDT') !== -1 && value.coin_name.indexOf('TRS') !== -1) {
-                        arr.unshift(value)
-                    }
-
-                });
-                setAllpoollist(arr)
-                setMainList(res);
-                setPageFlag(true);
-            })
-        }
-    },[pageFlag])
-    const toast = () => {
-        setApprovediv(true)
-        timers && clearTimeout(timers)
-        timers = setTimeout(() => {
-            setApprovediv(false)
             clearTimeout(timers)
-        }, 2000);
+        }, 1500);
+    // }
     }
 
+    useEffect(()=>{
+        let isUnmount = false;
+        const aaa = () => {
+                Data.getAllTrsRate().then(res => {
+                    setRate(res)
+                })
+                Data.getPoolListData().then(res => {
+                    var nums = res.main.concat(res.flat, res.ideas);
+                    let arr = []
+                    nums.map(function (value, index, array) {
+                        if (value.coin_name.indexOf('USDT') !== -1 && value.coin_name.indexOf('TRS') == -1) {
+                            arr.push(value)
+                        }
+                        if (value.coin_name.indexOf('USDT') !== -1 && value.coin_name.indexOf('TRS') !== -1) {
+                            arr.unshift(value)
+                        }
+
+                    });
+                    setAllpoollist(arr)
+                    bbb()
+                })
+        }
+        aaa()
+        return () => isUnmount = true;
+    },[pageFlag])
+    // const toast = () => {
+    //     setApprovediv(true)
+    //     timers && clearTimeout(timers)
+    //     timers = setTimeout(() => {
+    //         setApprovediv(false)
+    //         clearTimeout(timers)
+    //     }, 2000);
+    // }
     return (
         <>
             <div className="market">
-            {isApprovediv && (
+            {/* {isApprovediv && (
                 <Approvediv>{t("director.text13")}</Approvediv>
-            )}
+            )} */}
                 <Headertext>
                     <img width="24px" height="24px" src={ require('../../assets/images/market_top_icon.png') } alt=""/>
-                    <div  className="head">行情中心</div>
+                    <div  className="head">{t("market.text01")}</div>
                 </Headertext>
                 <Marketlistbox>
                 {
-                    allpoollist.map((item: Item,index:Index) => {
+                  allpoollist && allpoollist.map((item: Item,index:Index) => {
                         return (
                             <>
-                                <Marketlist>
+                                <Marketlist key={item.coin_name}>
                                     <Marketlisttop>
-                                        <div className="topname">交易
+                                        <div className="topname">{t("market.text02")}
                                             <img src={ require('../../assets/images/market-top-icon.png') } alt="" />
                                         </div>
-                                        <div className="topprice">最新价
+                                        <div className="topprice">{t("market.text03")}
                                             <img src={ require('../../assets/images/market-top-icon.png') } alt="" />
                                         </div>
-                                        <div className="topapy">APY
+                                        <div className="topapy">{t("market.text04")}
                                             <img src={ require('../../assets/images/market-top-icon.png') } alt="" />
                                         </div>
                                     </Marketlisttop>
@@ -225,8 +226,8 @@ export default function Director() {
                                         }
                                     </Marketlistmiddle>
                                     <Marketlistbottom>
-                                        <Dealbtn to="/exchange">交易</Dealbtn>
-                                        <Mining to={"/provideLiquidity/" + item.poolIndex}>挖矿</Mining>
+                                        <Dealbtn to="/exchange">{t("market.text02")}</Dealbtn>
+                                        <Mining to={"/provideLiquidity/" + item.poolIndex}>{t("market.text05")}</Mining>
                                     </Marketlistbottom>
                                 </Marketlist>
                             </>

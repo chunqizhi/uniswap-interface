@@ -13,6 +13,9 @@ import debris from './debris'
 import director from './director'
 // 底部导航栏
 import navbar from "./navbar";
+// 行情
+import market from "./market";
+
 export default {
     home: {...Home },
     mining: {...Mining },
@@ -26,5 +29,6 @@ export default {
     swap: {...swap },
     debris: {...debris },
     director: {...director },
-    navbar: {...navbar }
+    navbar: {...navbar },
+    market: {...market }
 }
