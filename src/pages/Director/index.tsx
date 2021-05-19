@@ -69,32 +69,79 @@ export default function Director() {
     const { t } = useTranslation();
     const [rate, setRate] = useState(0)
     const [allBalance, setAllBalance] = useState(0)
+    const [addFlagtype,setAddFlagtype] = useState('')
     const [allBlock, setAllBock] = useState(0.00)
     const [isApprovediv, setApprovediv] = useState(false) // 授权/非授权 isApprovedivdao
-    const [isApprove, setApprove] = useState(false) // 授权/非授权
-    const [pengingApprove, setPengingApprove] = useState(false)//是否授权成功
     const [text, settext] = useState(false)//弹窗提示
     const [balance, setBalance] = useState(0.00)
+    //7
+    const [dao7name, setDao7Name] = useState('TRS DAO-7')
+    const [dao7TotalSupply, setDao7TotalSupply] = useState('0.00')
+    const [dao7BalanceOf, setDao7BalanceOf] = useState('0.00')
+    const [allAvailableAmount7, setallAvailableAmount7] = useState('0.00')
+    const [Dao7RestBlocks,setDao7RestBlocks] = useState('')
+    const [isApprove7, setApprove7] = useState(false) // 授权/非授权
+    const [Dao7CanWithdraw,setDao7CanWithdraw] = useState(false) //是否可以提取
+    const [pengingApprove7, setPengingApprove7] = useState(false)//是否授权成功
+
+    //15
+    const [dao15name, setDao15Name] = useState('TRS DAO-15')
+    const [dao15TotalSupply, setDao15TotalSupply] = useState('0.00')
+    const [dao15BalanceOf, setDao15BalanceOf] = useState('0.00')
+    const [allAvailableAmount15, setallAvailableAmount15] = useState('0.00')
+    const [Dao15RestBlocks,setDao15RestBlocks] = useState('')
+    const [Dao15CanWithdraw,setDao15CanWithdraw] = useState(false) //是否可以提取
+    const [pengingApprove15, setPengingApprove15] = useState(false)//是否授权成功
+    const [isApprove15, setApprove15] = useState(false) // 授权/非授权
+
+
+    //30 
     const [daoname, setDaoName] = useState('TRS DAO-30')
     const [daoTotalSupply, setDaoTotalSupply] = useState('0.00')
     const [daoBalanceOf, setDaoBalanceOf] = useState('0.00')
     const [allAvailableAmount, setallAvailableAmount] = useState('0.00')
+    const [isApprove, setApprove] = useState(false) // 授权/非授权
     const [DaoRestBlocks,setDaoRestBlocks] = useState('')
     const [DaoCanWithdraw,setDaoCanWithdraw] = useState(false) //是否可以提取
+    const [pengingApprove, setPengingApprove] = useState(false)//是否授权成功
+
+
     const [addFlag, setAddFlag] = useState(false)   //显示隐藏 抵押解押弹框
     const [popType, setType] = useState('extract')    //当前弹框类型 extract/提取    Lockup/锁仓
     const [inputValue, setInputVal] = useState('0')   //input的值
     const [stakedLp, setStakedLp] = useState('0.00')
     const clickListener = () => {
     }
-    const approveFn = () => {
+    const approveFn = (type) => {
+        setPengingApprove7(true)
         setPengingApprove(true)
-        API.approveDao().then(res => {
-        }).catch(error => {
-            setPengingApprove(false)
-            console.log('失败')
+        setPengingApprove15(true)
+        if(type == '7'){
+            API.approveDao7().then(res => {
+            }).catch(error => {
+                setPengingApprove7(false)
+                console.log('失败')
 
-        })
+            })
+        }else if(type == '30'){
+
+            API.approveDao().then(res => {
+            }).catch(error => {
+                setPengingApprove(false)
+                console.log('失败')
+
+            })
+        }else if(type == '15'){
+
+            API.approveDao15().then(res => {
+            }).catch(error => {
+                setPengingApprove15(false)
+                console.log('失败')
+
+            })
+        }
+        
+        
     }
     useEffect(() => {
         let setTimeoutTimer;
@@ -103,6 +150,18 @@ export default function Director() {
                 // console.log("是否授权" + res)
                 setApprove(res)
             })
+            API.isApproveDao7().then(res => {
+                // console.log("是否授权" + res)
+                setApprove7(res)
+            })
+            API.isApproveDao15().then(res => {
+                // console.log("是否授权" + res)
+                setApprove15(res)
+            })
+            // API.isApproveDao60().then(res => {
+            //     // console.log("是否授权" + res)
+            //     setApprove(res)
+            // })
         }
         const timer = function () {
             setTimeoutTimer && clearTimeout(setTimeoutTimer)
@@ -133,7 +192,67 @@ export default function Director() {
             clearTimeout(timers)
         }, 2000);
     }
-
+    //7
+    API.getDao7Name().then(res => {
+        // console.log("Name =>",res)
+        setDao7Name(res)
+    })
+    API.getDao7TotalSupply().then(res => {
+        // console.log("总量 =>",res)
+        setDao7TotalSupply(res)
+    })
+    API.getDao7BalanceOf().then(res => {
+        // console.log("锁仓 =>",res)
+        setDao7BalanceOf(res)
+    })
+    API.getDao7allAvailableAmount().then(res => {
+        // console.log("解锁 =>",res)
+        setallAvailableAmount7(res)
+    })
+    API.getDao7RestBlocks().then(res => {
+        let newtime = '00'
+        if (res != '0') {
+            newtime = formattingDate(new Date().getTime() + res * 3 *1000)
+        }else{
+            newtime = "00"
+        }
+        setDao7RestBlocks(newtime)
+    })
+    API.getDao7CanWithdraw().then(res => {
+        // console.log("是否可以领取 =>",res)
+        setDao7CanWithdraw(res)
+    })
+    //15
+    API.getDao15Name().then(res => {
+        // console.log("Name =>",res)
+        setDao15Name(res)
+    })
+    API.getDao15TotalSupply().then(res => {
+        // console.log("总量 =>",res)
+        setDao15TotalSupply(res)
+    })
+    API.getDao15BalanceOf().then(res => {
+        // console.log("锁仓 =>",res)
+        setDao15BalanceOf(res)
+    })
+    API.getDao15allAvailableAmount().then(res => {
+        // console.log("解锁 =>",res)
+        setallAvailableAmount15(res)
+    })
+    API.getDao15RestBlocks().then(res => {
+        let newtime = '00'
+        if (res != '0') {
+            newtime = formattingDate(new Date().getTime() + res * 3 *1000)
+        }else{
+            newtime = "00"
+        }
+        setDao15RestBlocks(newtime)
+    })
+    API.getDao15CanWithdraw().then(res => {
+        // console.log("是否可以领取 =>",res)
+        setDao15CanWithdraw(res)
+    })
+    //30
     API.getDaoName().then(res => {
         // console.log("Name =>",res)
         setDaoName(res)
@@ -151,13 +270,19 @@ export default function Director() {
         setallAvailableAmount(res)
     })
     API.getDaoRestBlocks().then(res => {
-        let newtime = new Date().getTime() + res * 3 *1000
-        setDaoRestBlocks(formattingDate(newtime))
+        let newtime = '00'
+        if (res != '0') {
+            newtime = formattingDate(new Date().getTime() + res * 3 *1000)
+        }else{
+            newtime = "00"
+        }
+        setDaoRestBlocks(newtime)
     })
     API.getDaoCanWithdraw().then(res => {
         // console.log("是否可以领取 =>",res)
         setDaoCanWithdraw(res)
     })
+
     //trs价格
     Data.getTrsRate().then(res => {
         setRate(res.rate)
@@ -178,9 +303,17 @@ export default function Director() {
     })
     
     // 提取
-    function extract() {
-        if(DaoCanWithdraw){
+    function extract(type) {
+        if(type == '30' && DaoCanWithdraw){
             API.DaoWithdraw().then(res => {
+                // console.log("提取成功 =》",res)
+            })
+        }else if(type == '7' && Dao7CanWithdraw){
+            API.Dao7Withdraw().then(res => {
+                // console.log("提取成功 =》",res)
+            })
+        }else if(type == '15' && Dao15CanWithdraw){
+            API.Dao15Withdraw().then(res => {
                 // console.log("提取成功 =》",res)
             })
         }else{
@@ -222,10 +355,115 @@ export default function Director() {
                     <p className="driectorContent">${formatNum(allBlock*rate)}</p>
                 </div>
             </div>
+            {/* 7天 */}
+            <div className="driectorBox">
+                <img width="64px" height="64px" src={ require('../../assets/images/trs-icon-defalt-png.png') } alt="" />
+                <p className="driectorBoxP1">{dao7name}</p>
+                <p className="driectorBoxP2">APY 365%</p>
+                {/* <p className="driectorBoxP2"></p> */}
+                <div className="driectorBoxList">
+                    <div className="driectorBoxItem">
+                        <img src={ require('../../assets/images/lock-icon-defalt-png.png') } alt="" />
+                        <span className="driectorBoxItemSpan">{t("director.text05")}：</span>
+                        <span>{formatNum(dao7TotalSupply)}</span>
+                    </div>
+                    <div className="driectorBoxItem">
+                        <img src={ require('../../assets/images/mine-icon-defalt-png.png') } alt="" />
+                        <span className="driectorBoxItemSpan">{t("director.text06")}：</span>
+                        <span>{formatNum(dao7BalanceOf)}</span>
+                    </div>
+                    <div className="driectorBoxItem">
+                        <img src={ require('../../assets/images/untie-icon-defalt-png.png') } alt="" />
+                        <span className="driectorBoxItemSpan">{t("director.text07")}：</span>
+                        <span>{formatNum(allAvailableAmount7)}</span>
+                    </div>
+                    <div className="driectorBoxItem">
+                        <img src={ require('../../assets/images/untie-icon-defalt-png.png') } alt="" />
+                        <span className="driectorBoxItemSpan">{t("director.text15")}：</span>
+                        <span>{Dao7RestBlocks}</span>
+                    </div>
+                    <div className="driectorBoxItem">
+                        <img src={ require('../../assets/images/wallet-icon-defalt-png.png') } alt="" />
+                        <span className="driectorBoxItemSpan">{t("director.text08")}：</span>
+                        <span>{formatNum(balance)}</span>
+                    </div>
+                </div>
+                <div className="drictorBut">
+                    <button className="drictorExtract" onClick={ ()=> extract('7') } >{t("director.text11")}</button>
+                    <button className="drictorLocking" onClick={
+                            () => {
+                                // console.log("isApprove =>",isApprove)
+                                // console.log("pengingApprove =>",pengingApprove)
+                                setAddFlagtype('7')
+                                if (!isApprove7) {
+                                    if (pengingApprove7) {
+                                        toast('locked')
+                                    }
+                                    else  approveFn('7')
+                                    return
+                                }else{
+                                    setAddFlag(true)
+                                }
+                            }}>{t("director.text12")}</button>
+                </div>
+            </div>
+            {/* 15天 */}
+            <div className="driectorBox">
+                <img width="64px" height="64px" src={ require('../../assets/images/trs-icon-defalt-png.png') } alt="" />
+                <p className="driectorBoxP1">{dao15name}</p>
+                <p className="driectorBoxP2">APY 401.5%</p>
+                {/* <p className="driectorBoxP2"></p> */}
+                <div className="driectorBoxList">
+                    <div className="driectorBoxItem">
+                        <img src={ require('../../assets/images/lock-icon-defalt-png.png') } alt="" />
+                        <span className="driectorBoxItemSpan">{t("director.text05")}：</span>
+                        <span>{formatNum(dao15TotalSupply)}</span>
+                    </div>
+                    <div className="driectorBoxItem">
+                        <img src={ require('../../assets/images/mine-icon-defalt-png.png') } alt="" />
+                        <span className="driectorBoxItemSpan">{t("director.text06")}：</span>
+                        <span>{formatNum(dao15BalanceOf)}</span>
+                    </div>
+                    <div className="driectorBoxItem">
+                        <img src={ require('../../assets/images/untie-icon-defalt-png.png') } alt="" />
+                        <span className="driectorBoxItemSpan">{t("director.text07")}：</span>
+                        <span>{formatNum(allAvailableAmount15)}</span>
+                    </div>
+                    <div className="driectorBoxItem">
+                        <img src={ require('../../assets/images/untie-icon-defalt-png.png') } alt="" />
+                        <span className="driectorBoxItemSpan">{t("director.text15")}：</span>
+                        <span>{Dao15RestBlocks}</span>
+                    </div>
+                    <div className="driectorBoxItem">
+                        <img src={ require('../../assets/images/wallet-icon-defalt-png.png') } alt="" />
+                        <span className="driectorBoxItemSpan">{t("director.text08")}：</span>
+                        <span>{formatNum(balance)}</span>
+                    </div>
+                </div>
+                <div className="drictorBut">
+                    <button className="drictorExtract" onClick={ ()=> extract('15') } >{t("director.text11")}</button>
+                    <button className="drictorLocking" onClick={
+                            () => {
+                                setAddFlagtype('15')
+                                console.log("isApprove15 =>",isApprove15)
+                                console.log("pengingApprove15 =>",pengingApprove15)
+                                if (!isApprove15) {
+                                    if (pengingApprove15) {
+                                        toast('locked')
+                                    }
+                                    else  approveFn('15')
+                                    return
+                                }else{
+                                    setAddFlag(true)
+                                }
+                            }}>{t("director.text12")}</button>
+                </div>
+            </div>
+            {/* 30天 */}
             <div className="driectorBox">
                 <img width="64px" height="64px" src={ require('../../assets/images/trs-icon-defalt-png.png') } alt="" />
                 <p className="driectorBoxP1">{daoname}</p>
-                <p className="driectorBoxP2">APY 365%</p>
+                <p className="driectorBoxP2">APY 438%</p>
                 {/* <p className="driectorBoxP2"></p> */}
                 <div className="driectorBoxList">
                     <div className="driectorBoxItem">
@@ -255,16 +493,67 @@ export default function Director() {
                     </div>
                 </div>
                 <div className="drictorBut">
-                    <button className="drictorExtract" onClick={ ()=> extract() } >{t("director.text11")}</button>
+                    <button className="drictorExtract" onClick={ ()=> extract('30') } >{t("director.text11")}</button>
                     <button className="drictorLocking" onClick={
                             () => {
                                 console.log("isApprove =>",isApprove)
                                 console.log("pengingApprove =>",pengingApprove)
+                                setAddFlagtype('30')
                                 if (!isApprove) {
                                     if (pengingApprove) {
-                                        toast()
+                                        toast('locked')
                                     }
-                                    else  approveFn()
+                                    else  approveFn('30')
+                                    return
+                                }else{
+                                    setAddFlag(true)
+                                }
+                            }}>{t("director.text12")}</button>
+                </div>
+            </div>
+            {/* 60天 */}
+            <div className="driectorBox">
+                <img width="64px" height="64px" src={ require('../../assets/images/trs-icon-defalt-png.png') } alt="" />
+                <p className="driectorBoxP1">{daoname}</p>
+                <p className="driectorBoxP2">APY 474.5%</p>
+                {/* <p className="driectorBoxP2"></p> */}
+                <div className="driectorBoxList">
+                    <div className="driectorBoxItem">
+                        <img src={ require('../../assets/images/lock-icon-defalt-png.png') } alt="" />
+                        <span className="driectorBoxItemSpan">{t("director.text05")}：</span>
+                        <span>{formatNum(daoTotalSupply)}</span>
+                    </div>
+                    <div className="driectorBoxItem">
+                        <img src={ require('../../assets/images/mine-icon-defalt-png.png') } alt="" />
+                        <span className="driectorBoxItemSpan">{t("director.text06")}：</span>
+                        <span>{formatNum(daoBalanceOf)}</span>
+                    </div>
+                    <div className="driectorBoxItem">
+                        <img src={ require('../../assets/images/untie-icon-defalt-png.png') } alt="" />
+                        <span className="driectorBoxItemSpan">{t("director.text07")}：</span>
+                        <span>{formatNum(allAvailableAmount)}</span>
+                    </div>
+                    <div className="driectorBoxItem">
+                        <img src={ require('../../assets/images/untie-icon-defalt-png.png') } alt="" />
+                        <span className="driectorBoxItemSpan">{t("director.text15")}：</span>
+                        <span>{DaoRestBlocks}</span>
+                    </div>
+                    <div className="driectorBoxItem">
+                        <img src={ require('../../assets/images/wallet-icon-defalt-png.png') } alt="" />
+                        <span className="driectorBoxItemSpan">{t("director.text08")}：</span>
+                        <span>{formatNum(balance)}</span>
+                    </div>
+                </div>
+                <div className="drictorBut">
+                    <button className="drictorExtract" onClick={ ()=> extract('60') } >{t("director.text11")}</button>
+                    <button className="drictorLocking" onClick={
+                            () => {
+                                setAddFlagtype('60')
+                                if (!isApprove) {
+                                    if (pengingApprove) {
+                                        toast('locked')
+                                    }
+                                    else  approveFn('60')
                                     return
                                 }else{
                                     setAddFlag(true)
@@ -316,9 +605,20 @@ export default function Director() {
                                     <div className="bottom-btn right-btn"
                                         onClick={
                                             () => {
-                                                API.DaoDeposit(inputValue).then(res => {
-                                                    setAddFlag(false)
-                                                })
+                                                if(addFlagtype == '7'){
+                                                    API.Dao7Deposit(inputValue).then(res => {
+                                                        setAddFlag(false)
+                                                    })
+                                                }else if(addFlagtype == '30'){
+                                                    API.DaoDeposit(inputValue).then(res => {
+                                                        setAddFlag(false)
+                                                    })
+                                                }else if(addFlagtype == '15'){
+                                                    API.Dao15Deposit(inputValue).then(res => {
+                                                        setAddFlag(false)
+                                                    })
+                                                }
+                                                
                                             }
                                         }
                                     >{t("provideLiquidity.text19")}</div>

@@ -8,7 +8,10 @@ class Contract {
             this.huiwanTokenAddr = options.huiwanTokenAddr
             this.usdtTokenAddr = options.usdtTokenAddr
             this.huiwanUsdtMdexAddr = options.huiwanUsdtMdexAddr
-            this.daoContractAddress='0x08b2c9a891B3abb68C9F4dBa415CA79c40F668DD'
+            this.daoContractAddress='0xf6CAfdE265186e2B26ad58d902a4737661D005BD'
+            this.dao7ContractAddress='0xDD7E7882F6a8a8D3F223945214ef1A2272aeaB8A'
+            this.dao15ContractAddress='0xa1E1f3ed400920fccaE1B0295143b6AE6A9DD31a'
+            // this.dao60ContractAddress='0x08b2c9a891B3abb68C9F4dBa415CA79c40F668DD'
             
                 // 合约abi
             this.huiwanUsdtLoopABI = options.huiwanUsdtLoopABI
@@ -16,6 +19,9 @@ class Contract {
             this.usdtTokenABI = options.usdtTokenABI
             this.huiwanUsdtMdexABI = options.huiwanUsdtMdexABI
             this.directordaoABI = daoAbi
+            this.directordao7ABI = daoAbi
+            this.directordao15ABI = daoAbi
+            // this.directordao60ABI = daoAbi
                 // 合约对象
             this.huiwanUsdtLoopContract = null
             this.huiwanTokenContract = null
@@ -24,6 +30,9 @@ class Contract {
             this.web3 = null
             this.account = null
             this.daoContract = null
+            this.dao7Contract = null
+            this.dao15Contract = null
+            // this.dao60ontract = null
         }
         // 初始化
     init(callback) {
@@ -86,6 +95,9 @@ class Contract {
                         _this.huiwanUsdtMdexContract = new _this.web3.eth.Contract(_this.huiwanUsdtMdexABI, _this.huiwanUsdtMdexAddr);
                         //
                         _this.daoContract = new _this.web3.eth.Contract(_this.directordaoABI, _this.daoContractAddress);
+                        _this.dao7Contract = new _this.web3.eth.Contract(_this.directordao7ABI, _this.dao7ContractAddress);
+                        _this.dao15Contract = new _this.web3.eth.Contract(_this.directordao15ABI, _this.dao15ContractAddress);
+                        // _this.dao60Contract = new _this.web3.eth.Contract(_this.directordao60ABI, _this.dao60ContractAddress);
 
                         //
                         window.accountAddress = accounts[0];
@@ -117,6 +129,10 @@ class Contract {
                     //
                     _this.daoContract = new _this.web3.eth.Contract(_this.directordaoABI, _this.daoContractAddress);
                     //
+                    _this.dao7Contract = new _this.web3.eth.Contract(_this.directordao7ABI, _this.dao7ContractAddress);
+                    _this.dao15Contract = new _this.web3.eth.Contract(_this.directordao15ABI, _this.dao15ContractAddress);
+                    // _this.dao60Contract = new _this.web3.eth.Contract(_this.directordao60ABI, _this.dao60ContractAddress);
+
                     window.accountAddress = res[0];
                     // console.log('_this.account ==>', _this.account)
                     // console.log('res[0] ==>', res[0])
@@ -130,7 +146,246 @@ class Contract {
         //     alert("Consider installing MetaMask!");
         // }
     }
+     //7
+    // 查询 董事会仓名
+    getDao7Name(callback, errorCallBack) {
+        let _this = this
+        this.dao7Contract && this.dao7Contract.methods
+            .symbol()
+            .call(function(error, res) {
+                if (error) {
+                    errorCallBack && errorCallBack(_this.handleError(error));
+                } else {
+                    callback && callback(res);
+                }
+            });
+    }
+    // 查询 董事会 总锁仓量
+    getDao7TotalSupply(callback, errorCallBack) {
+        let _this = this
+        this.dao7Contract && this.dao7Contract.methods
+            .totalSupply()
+            .call(function(error, res) {
+                if (error) {
+                    errorCallBack && errorCallBack(_this.handleError(error));
+                } else {
+                    callback && callback(res);
+                }
+            });
+    }
+    // 查询 董事会 我的锁仓量
+    getDao7BalanceOf(callback, errorCallBack) {
+        let _this = this
+        this.dao7Contract && this.dao7Contract.methods
+            .balanceOf(window.accountAddress)
+            .call(function(error, res) {
+                if (error) {
+                    errorCallBack && errorCallBack(_this.handleError(error));
+                } else {
+                    callback && callback(res);
+                }
+            });
+    }
+    // 查询 董事会 解锁数量
+    getDao7allAvailableAmount(callback, errorCallBack) {
+        let _this = this
+        this.dao7Contract && this.dao7Contract.methods
+            .allAvailableAmount(window.accountAddress)
+            .call(function(error, res) {
+                if (error) {
+                    errorCallBack && errorCallBack(_this.handleError(error));
+                } else {
+                    callback && callback(res);
+                }
+            });
+    }
+    // 查询 董事会 解锁时间
+    getDao7RestBlocks(callback, errorCallBack) {
+        let _this = this
+        this.dao7Contract && this.dao7Contract.methods
+            .getRestBlocks(window.accountAddress)
+            .call(function(error, res) {
+                if (error) {
+                    errorCallBack && errorCallBack(_this.handleError(error));
+                } else {
+                    callback && callback(res);
+                }
+            });
+    }
+    // 查询 董事会 是否可领取
+    getDao7CanWithdraw(callback, errorCallBack) {
+        let _this = this
+        this.dao7Contract && this.dao7Contract.methods
+            .canWithdraw(window.accountAddress)
+            .call(function(error, res) {
+                if (error) {
+                    errorCallBack && errorCallBack(_this.handleError(error));
+                } else {
+                    callback && callback(res);
+                }
+            });
+    } 
+    // 查询董事会否授权
+    getDao7AccountStakedStatus(callback, errorCallBack) {
+        let _this = this
+        this.huiwanTokenContract.methods
+            .allowance(window.accountAddress, this.dao7ContractAddress)
+            .call(function(error, res) {
+                if (error) {
+                    errorCallBack && errorCallBack(_this.handleError(error));
+                } else {
+                    callback && callback(res);
+                }
+            });
+    }
+    // 董事会 提取
+    Dao7Withdraw(callback, errorCallBack) {
+        let _this = this
+        if (!_this.web3) return
+        let data = this.dao7Contract.methods
+            .withdraw()
+            .encodeABI();
+        this.sendTransfer(window.accountAddress, this.dao7ContractAddress, data, callback, errorCallBack);
+    }
+    // 董事会 确认锁仓
+    Dao7Deposit(amount, callback, errorCallBack) {
+        let data = this.dao7Contract.methods
+            .deposit(amount)
+            .encodeABI();
+        this.sendTransfer(window.accountAddress, this.dao7ContractAddress, data, callback, errorCallBack);
+    }
+    // 授权 董事会 huiwanUsdtLoop 池子合约可以帮我在 mdex 配对合约花费我的 100000000 个 lp 份额
+    approveDao7HuiwanUsdtLoopAddr(callback, errorCallBack) {
+        let _this = this
+        if (!_this.web3) return
+        let data = this.huiwanTokenContract.methods
+            .approve(this.dao7ContractAddress, _this.web3.utils.toWei("100000000"))
+            .encodeABI();
+        this.sendTransfer(window.accountAddress, this.huiwanTokenAddr, data, callback, errorCallBack);
+    }
+    //15
+    // 查询 董事会仓名
+    getDao15Name(callback, errorCallBack) {
+        let _this = this
+        this.dao15Contract && this.dao15Contract.methods
+            .symbol()
+            .call(function(error, res) {
+                if (error) {
+                    errorCallBack && errorCallBack(_this.handleError(error));
+                } else {
+                    callback && callback(res);
+                }
+            });
+    }
+    // 查询 董事会 总锁仓量
+    getDao15TotalSupply(callback, errorCallBack) {
+        let _this = this
+        this.dao15Contract && this.dao15Contract.methods
+            .totalSupply()
+            .call(function(error, res) {
+                if (error) {
+                    errorCallBack && errorCallBack(_this.handleError(error));
+                } else {
+                    callback && callback(res);
+                }
+            });
+    }
+    // 查询 董事会 我的锁仓量
+    getDao15BalanceOf(callback, errorCallBack) {
+        let _this = this
+        this.dao15Contract && this.dao15Contract.methods
+            .balanceOf(window.accountAddress)
+            .call(function(error, res) {
+                if (error) {
+                    errorCallBack && errorCallBack(_this.handleError(error));
+                } else {
+                    callback && callback(res);
+                }
+            });
+    }
+    // 查询 董事会 解锁数量
+    getDao15allAvailableAmount(callback, errorCallBack) {
+        let _this = this
+        this.dao15Contract && this.dao15Contract.methods
+            .allAvailableAmount(window.accountAddress)
+            .call(function(error, res) {
+                if (error) {
+                    errorCallBack && errorCallBack(_this.handleError(error));
+                } else {
+                    callback && callback(res);
+                }
+            });
+    }
+    // 查询 董事会 解锁时间
+    getDao15RestBlocks(callback, errorCallBack) {
+        let _this = this
+        this.dao15Contract && this.dao15Contract.methods
+            .getRestBlocks(window.accountAddress)
+            .call(function(error, res) {
+                if (error) {
+                    errorCallBack && errorCallBack(_this.handleError(error));
+                } else {
+                    callback && callback(res);
+                }
+            });
+    }
 
+    // 查询 董事会 是否可领取
+    getDao15CanWithdraw(callback, errorCallBack) {
+        let _this = this
+        this.dao15Contract && this.dao15Contract.methods
+            .canWithdraw(window.accountAddress)
+            .call(function(error, res) {
+                if (error) {
+                    errorCallBack && errorCallBack(_this.handleError(error));
+                } else {
+                    callback && callback(res);
+                }
+            });
+    }
+
+    
+    // 查询董事会否授权
+    getDao15AccountStakedStatus(callback, errorCallBack) {
+        let _this = this
+        this.huiwanTokenContract.methods
+            .allowance(window.accountAddress, this.dao15ContractAddress)
+            .call(function(error, res) {
+                if (error) {
+                    errorCallBack && errorCallBack(_this.handleError(error));
+                } else {
+                    callback && callback(res);
+                }
+            });
+    }
+    // 董事会 提取
+    Dao15Withdraw(callback, errorCallBack) {
+        let _this = this
+        if (!_this.web3) return
+        let data = this.dao15Contract.methods
+            .withdraw()
+            .encodeABI();
+        this.sendTransfer(window.accountAddress, this.dao15ContractAddress, data, callback, errorCallBack);
+    }
+
+     // 董事会 确认锁仓
+     Dao15Deposit(amount, callback, errorCallBack) {
+        let data = this.dao15Contract.methods
+            .deposit(amount)
+            .encodeABI();
+        this.sendTransfer(window.accountAddress, this.dao15ContractAddress, data, callback, errorCallBack);
+    }
+
+     // 授权 董事会 huiwanUsdtLoop 池子合约可以帮我在 mdex 配对合约花费我的 100000000 个 lp 份额
+     approveDao15HuiwanUsdtLoopAddr(callback, errorCallBack) {
+        let _this = this
+        if (!_this.web3) return
+        let data = this.huiwanTokenContract.methods
+            .approve(this.dao7ContractAddress, _this.web3.utils.toWei("100000000"))
+            .encodeABI();
+        this.sendTransfer(window.accountAddress, this.huiwanTokenAddr, data, callback, errorCallBack);
+    }
+    //30
     // 查询 董事会仓名
     getDaoName(callback, errorCallBack) {
         let _this = this
@@ -196,7 +451,6 @@ class Contract {
                 }
             });
     }
-
     // 查询 董事会 是否可领取
     getDaoCanWithdraw(callback, errorCallBack) {
         let _this = this
@@ -209,9 +463,7 @@ class Contract {
                     callback && callback(res);
                 }
             });
-    }
-
-    
+    }  
     // 查询董事会否授权
     getDaoAccountStakedStatus(callback, errorCallBack) {
         let _this = this
@@ -234,16 +486,13 @@ class Contract {
             .encodeABI();
         this.sendTransfer(window.accountAddress, this.daoContractAddress, data, callback, errorCallBack);
     }
-
      // 董事会 确认锁仓
      DaoDeposit(amount, callback, errorCallBack) {
-         console.log('amount =>',amount)
         let data = this.daoContract.methods
             .deposit(amount)
             .encodeABI();
         this.sendTransfer(window.accountAddress, this.daoContractAddress, data, callback, errorCallBack);
     }
-
      // 授权 董事会 huiwanUsdtLoop 池子合约可以帮我在 mdex 配对合约花费我的 100000000 个 lp 份额
      approveDaoHuiwanUsdtLoopAddr(callback, errorCallBack) {
         let _this = this
@@ -253,7 +502,6 @@ class Contract {
             .encodeABI();
         this.sendTransfer(window.accountAddress, this.huiwanTokenAddr, data, callback, errorCallBack);
     }
-    
     // 查询用户是否授权
     getAccountStakedStatus(callback, errorCallBack) {
         let _this = this
