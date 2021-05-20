@@ -105,9 +105,17 @@ export default function Director() {
     const [DaoCanWithdraw,setDaoCanWithdraw] = useState(false) //是否可以提取
     const [pengingApprove, setPengingApprove] = useState(false)//是否授权成功
 
-
+    //60
+    const [dao60name, setDao60Name] = useState('TRS DAO-60')
+    const [dao60TotalSupply, setDao60TotalSupply] = useState('0.00')
+    const [dao60BalanceOf, setDao60BalanceOf] = useState('0.00')
+    const [allAvailableAmount60, setallAvailableAmount60] = useState('0.00')
+    const [Dao60RestBlocks,setDao60RestBlocks] = useState('')
+    const [isApprove60, setApprove60] = useState(false) // 授权/非授权
+    const [Dao60CanWithdraw,setDao60CanWithdraw] = useState(false) //是否可以提取
+    const [pengingApprove60, setPengingApprove60] = useState(false)//是否授权成功
+    // 
     const [addFlag, setAddFlag] = useState(false)   //显示隐藏 抵押解押弹框
-    const [popType, setType] = useState('extract')    //当前弹框类型 extract/提取    Lockup/锁仓
     const [inputValue, setInputVal] = useState('0')   //input的值
     const [stakedLp, setStakedLp] = useState('0.00')
     const clickListener = () => {
@@ -116,28 +124,26 @@ export default function Director() {
         setPengingApprove7(true)
         setPengingApprove(true)
         setPengingApprove15(true)
+        setPengingApprove60(true)
         if(type == '7'){
             API.approveDao7().then(res => {
             }).catch(error => {
                 setPengingApprove7(false)
-                console.log('失败')
-
             })
         }else if(type == '30'){
-
             API.approveDao().then(res => {
             }).catch(error => {
                 setPengingApprove(false)
-                console.log('失败')
-
             })
         }else if(type == '15'){
-
             API.approveDao15().then(res => {
             }).catch(error => {
                 setPengingApprove15(false)
-                console.log('失败')
-
+            })
+        }else if(type == '60'){
+            API.approveDao60().then(res => {
+            }).catch(error => {
+                setPengingApprove60(false)
             })
         }
         
@@ -158,10 +164,10 @@ export default function Director() {
                 // console.log("是否授权" + res)
                 setApprove15(res)
             })
-            // API.isApproveDao60().then(res => {
-            //     // console.log("是否授权" + res)
-            //     setApprove(res)
-            // })
+            API.isApproveDao60().then(res => {
+                // console.log("是否授权" + res)
+                setApprove60(res)
+            })
         }
         const timer = function () {
             setTimeoutTimer && clearTimeout(setTimeoutTimer)
@@ -282,6 +288,39 @@ export default function Director() {
         // console.log("是否可以领取 =>",res)
         setDaoCanWithdraw(res)
     })
+    // 
+    //60
+    API.getDao60Name().then(res => {
+        // console.log("Name =>",res)
+        setDao60Name(res)
+    })
+    API.getDao60TotalSupply().then(res => {
+        // console.log("总量 =>",res)
+        setDao60TotalSupply(res)
+    })
+    API.getDao60BalanceOf().then(res => {
+        // console.log("锁仓 =>",res)
+        setDao60BalanceOf(res)
+    })
+    API.getDao60allAvailableAmount().then(res => {
+        // console.log("解锁 =>",res)
+        setallAvailableAmount60(res)
+    })
+    API.getDao60RestBlocks().then(res => {
+        let newtime = '00'
+        if (res != '0') {
+            newtime = formattingDate(new Date().getTime() + res * 3 *1000)
+        }else{
+            newtime = "00"
+        }
+        setDao60RestBlocks(newtime)
+    })
+    API.getDao60CanWithdraw().then(res => {
+        // console.log("是否可以领取 =>",res)
+        setDao60CanWithdraw(res)
+    })
+
+
 
     //trs价格
     Data.getTrsRate().then(res => {
@@ -306,15 +345,15 @@ export default function Director() {
     function extract(type) {
         if(type == '30' && DaoCanWithdraw){
             API.DaoWithdraw().then(res => {
-                // console.log("提取成功 =》",res)
             })
         }else if(type == '7' && Dao7CanWithdraw){
             API.Dao7Withdraw().then(res => {
-                // console.log("提取成功 =》",res)
             })
         }else if(type == '15' && Dao15CanWithdraw){
             API.Dao15Withdraw().then(res => {
-                // console.log("提取成功 =》",res)
+            })
+        }else if(type == '60' && Dao60CanWithdraw){
+            API.Dao60Withdraw().then(res => {
             })
         }else{
              toast('extract')
@@ -514,29 +553,29 @@ export default function Director() {
             {/* 60天 */}
             <div className="driectorBox">
                 <img width="64px" height="64px" src={ require('../../assets/images/trs-icon-defalt-png.png') } alt="" />
-                <p className="driectorBoxP1">{daoname}</p>
+                <p className="driectorBoxP1">{dao60name}</p>
                 <p className="driectorBoxP2">APY 474.5%</p>
                 {/* <p className="driectorBoxP2"></p> */}
                 <div className="driectorBoxList">
                     <div className="driectorBoxItem">
                         <img src={ require('../../assets/images/lock-icon-defalt-png.png') } alt="" />
                         <span className="driectorBoxItemSpan">{t("director.text05")}：</span>
-                        <span>{formatNum(daoTotalSupply)}</span>
+                        <span>{formatNum(dao60TotalSupply)}</span>
                     </div>
                     <div className="driectorBoxItem">
                         <img src={ require('../../assets/images/mine-icon-defalt-png.png') } alt="" />
                         <span className="driectorBoxItemSpan">{t("director.text06")}：</span>
-                        <span>{formatNum(daoBalanceOf)}</span>
+                        <span>{formatNum(dao60BalanceOf)}</span>
                     </div>
                     <div className="driectorBoxItem">
                         <img src={ require('../../assets/images/untie-icon-defalt-png.png') } alt="" />
                         <span className="driectorBoxItemSpan">{t("director.text07")}：</span>
-                        <span>{formatNum(allAvailableAmount)}</span>
+                        <span>{formatNum(allAvailableAmount60)}</span>
                     </div>
                     <div className="driectorBoxItem">
                         <img src={ require('../../assets/images/untie-icon-defalt-png.png') } alt="" />
                         <span className="driectorBoxItemSpan">{t("director.text15")}：</span>
-                        <span>{DaoRestBlocks}</span>
+                        <span>{Dao60RestBlocks}</span>
                     </div>
                     <div className="driectorBoxItem">
                         <img src={ require('../../assets/images/wallet-icon-defalt-png.png') } alt="" />
@@ -549,8 +588,10 @@ export default function Director() {
                     <button className="drictorLocking" onClick={
                             () => {
                                 setAddFlagtype('60')
-                                if (!isApprove) {
-                                    if (pengingApprove) {
+                                console.log("isApprove60 =>",isApprove60)
+                                console.log("pengingApprove60 =>",pengingApprove60)
+                                if (!isApprove60) {
+                                    if (pengingApprove60) {
                                         toast('locked')
                                     }
                                     else  approveFn('60')
@@ -615,6 +656,10 @@ export default function Director() {
                                                     })
                                                 }else if(addFlagtype == '15'){
                                                     API.Dao15Deposit(inputValue).then(res => {
+                                                        setAddFlag(false)
+                                                    })
+                                                }else if(addFlagtype == '60'){
+                                                    API.Dao60Deposit(inputValue).then(res => {
                                                         setAddFlag(false)
                                                     })
                                                 }
