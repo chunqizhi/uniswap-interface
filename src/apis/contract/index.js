@@ -8,19 +8,19 @@ class Contract {
             this.huiwanTokenAddr = options.huiwanTokenAddr
             this.usdtTokenAddr = options.usdtTokenAddr
             this.huiwanUsdtMdexAddr = options.huiwanUsdtMdexAddr
-            this.daoContractAddress='0xf6CAfdE265186e2B26ad58d902a4737661D005BD'
-            this.dao7ContractAddress='0xDD7E7882F6a8a8D3F223945214ef1A2272aeaB8A'
-            this.dao15ContractAddress='0xaCe6BC1c1a7CC06FB0329f3843b78545c2d7862A'
-            this.dao60ContractAddress='0xF5E0d3808bB82B9a816ca61048644e91b3654232'
+            this.dao7ContractAddress='0xDe220793f98BD06d8e56c37C9b2e3D7f2E0A3CF7'//7
+            this.dao15ContractAddress='0x1Fa9296DC92e2324e7788A2F7D6C8B17F121c8F7'//15
+            this.daoContractAddress='0x14820AC36E5e7BE7eD6B735B7654986FC9F414B5'//30
+            this.dao60ContractAddress='0xCd5dc0975b5c048C25b40fE622F1406e8d13c07c'//60
             
                 // 合约abi
             this.huiwanUsdtLoopABI = options.huiwanUsdtLoopABI
             this.huiwanTokenABI = options.huiwanTokenABI
             this.usdtTokenABI = options.usdtTokenABI
             this.huiwanUsdtMdexABI = options.huiwanUsdtMdexABI
-            this.directordaoABI = daoAbi
             this.directordao7ABI = daoAbi
             this.directordao15ABI = daoAbi
+            this.directordaoABI = daoAbi
             this.directordao60ABI = daoAbi
                 // 合约对象
             this.huiwanUsdtLoopContract = null
@@ -29,9 +29,9 @@ class Contract {
             this.huiwanUsdtMdexContract = null
             this.web3 = null
             this.account = null
-            this.daoContract = null
             this.dao7Contract = null
             this.dao15Contract = null
+            this.daoContract = null
             this.dao60ontract = null
         }
         // 初始化
