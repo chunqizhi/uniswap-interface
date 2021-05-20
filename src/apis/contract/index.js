@@ -249,10 +249,14 @@ class Contract {
     }
     // 董事会 确认锁仓
     Dao7Deposit(amount, callback, errorCallBack) {
+        // let a = new Date().getTime()
+        // console.log('index处理请求 =>',a)
         let data = this.dao7Contract.methods
             .deposit(amount)
             .encodeABI();
         this.sendTransfer(window.accountAddress, this.dao7ContractAddress, data, callback, errorCallBack);
+        // console.log('index.js 耗时==>',new Date().getTime() - a)
+
     }
     // 授权 董事会 huiwanUsdtLoop 池子合约可以帮我在 mdex 配对合约花费我的 100000000 个 lp 份额
     approveDao7HuiwanUsdtLoopAddr(callback, errorCallBack) {
@@ -495,12 +499,16 @@ class Contract {
     }
      // 授权 董事会 huiwanUsdtLoop 池子合约可以帮我在 mdex 配对合约花费我的 100000000 个 lp 份额
      approveDaoHuiwanUsdtLoopAddr(callback, errorCallBack) {
+        // let a = new Date().getTime()
+        // console.log('index处理请求 =>',a)
         let _this = this
         if (!_this.web3) return
         let data = this.huiwanTokenContract.methods
             .approve(this.daoContractAddress, _this.web3.utils.toWei("100000000"))
             .encodeABI();
         this.sendTransfer(window.accountAddress, this.huiwanTokenAddr, data, callback, errorCallBack);
+        // console.log('index.js 耗时==>',new Date().getTime() - a)
+
     }
 
     //60

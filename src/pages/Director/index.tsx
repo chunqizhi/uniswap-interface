@@ -51,15 +51,18 @@ const formatNum = function (str: string|number) {
     }   
     return temp
 }
-
+const   add0 = (sum) =>{return sum >= 10 ? sum : `0${sum}`}
 const formattingDate = function (getdate :string|number){
     let date = new Date(getdate)
     let year = date.getFullYear()
     let month = date.getMonth() + 1
     let day = date.getDate()
+    let hours = date.getHours()
+    let minutes = date.getMinutes()
+    let seconds = date.getSeconds()
     let newmonth = month > 10 ? month : `0${month}`
     let newday = day > 10 ? day : `0${day}`
-    let newdate = `${year}-${newmonth}-${newday}`
+    let newdate = `${year}-${newmonth}-${newday} ${add0(hours)}:${add0(minutes)}:${add0(seconds)}`
     return newdate
 }
 
@@ -68,12 +71,15 @@ let timers
 export default function Director() {
     const { t } = useTranslation();
     const [rate, setRate] = useState(0)
+    const [timerd, setTimer] = useState('')
     const [allBalance, setAllBalance] = useState(0)
     const [addFlagtype,setAddFlagtype] = useState('')
     const [allBlock, setAllBock] = useState(0.00)
     const [isApprovediv, setApprovediv] = useState(false) // 授权/非授权 isApprovedivdao
     const [text, settext] = useState(false)//弹窗提示
     const [balance, setBalance] = useState(0.00)
+     // 判断是否是第一次加载页面  判断发送请求
+     const [ pageFlag, setPageFlag ] = useState(false);
     //7
     const [dao7name, setDao7Name] = useState('TRS DAO-7')
     const [dao7TotalSupply, setDao7TotalSupply] = useState('0.00')
@@ -121,6 +127,8 @@ export default function Director() {
     const clickListener = () => {
     }
     const approveFn = (type) => {
+        let a = new Date().getTime()
+        console.log("111111=>",a)
         setPengingApprove7(true)
         setPengingApprove(true)
         setPengingApprove15(true)
@@ -142,7 +150,10 @@ export default function Director() {
             })
         }else if(type == '60'){
             API.approveDao60().then(res => {
+                console.log('333333333', new Date().getTime() - a)
             }).catch(error => {
+                console.log('333333333', new Date().getTime() - a)
+
                 setPengingApprove60(false)
             })
         }
@@ -198,127 +209,315 @@ export default function Director() {
             clearTimeout(timers)
         }, 2000);
     }
+    
+    //
+    useEffect(() => {
+        console.log('第一次加载')
+        // if(!pageFlag) {
+            let a = false
+            let b = false
+            let c = false
+            let d = false
+            API.getAlldao7().then(res =>{
+                console.log('useEffect =>',res)
+                setDao7Name(res[0])
+                setDao7TotalSupply(res[1])
+                setDao7BalanceOf(res[2])
+                setallAvailableAmount7(res[3])
+                let newtime = '00'
+                if (res[4] != '0') {
+                    newtime = formattingDate(new Date().getTime() + res[4] * 3 *1000)
+                }else{
+                    newtime = "00"
+                }
+                setDao7RestBlocks(newtime)
+                setDao7CanWithdraw(res[5])
+                a = true
+                isover(a,b,c,d)
+            }) 
+            API.getAlldao15().then(res =>{
+                console.log('useEffect=>',res)
+                setDao15Name(res[0])
+                setDao15TotalSupply(res[1])
+                setDao15BalanceOf(res[2])
+                setallAvailableAmount15(res[3])
+                let newtime = '00'
+                if (res[4] != '0') {
+                    newtime = formattingDate(new Date().getTime() + res[4] * 3 *1000)
+                }else{
+                    newtime = "00"
+                }
+                setDao15RestBlocks(newtime)
+                setDao15CanWithdraw(res[5])
+                b = true
+                isover(a,b,c,d)
+            }) 
+            API.getAlldao30().then(res =>{
+                console.log('useEffect =>',res)
+                setDaoName(res[0])
+                setDaoTotalSupply(res[1])
+                setDaoBalanceOf(res[2])
+                setallAvailableAmount(res[3])
+                let newtime = '00'
+                if (res[4] != '0') {
+                    newtime = formattingDate(new Date().getTime() + res[4] * 3 *1000)
+                }else{
+                    newtime = "00"
+                }
+                setDaoRestBlocks(newtime)
+                setDaoCanWithdraw(res[5])
+                c = true
+                isover(a,b,c,d)
+            }) 
+            API.getAlldao60().then(res =>{
+                console.log('useEffect =>',res)
+                setDao60Name(res[0])
+                setDao60TotalSupply(res[1])
+                setDao60BalanceOf(res[2])
+                setallAvailableAmount60(res[3])
+                let newtime = '00'
+                if (res[4] != '0') {
+                    newtime = formattingDate(new Date().getTime() + res[4] * 3 *1000)
+                }else{
+                    newtime = "00"
+                }
+                setDao60RestBlocks(newtime)
+                setDao60CanWithdraw(res[5])
+                // setPageFlag(true);
+                d = true
+                isover(a,b,c,d)
+               
+            }) 
+        // }
+            
+        
+        return () => {
+            console.log("DOM被移除");
+            timerd && clearTimeout(timerd)
+            isover(false,false,false,false)
+          }
+    }, [pageFlag])
+    const isover = (a,b,c,d) =>{
+        if (a && b && c && d) {
+            console.log('useEffect 加载getdao')
+            timerd && clearTimeout(timerd)
+            getdao()
+        } 
+    }
+
+    // 如果是true 持续加载更新
+    // if (pageFlag) {
+        // console.log(pageFlag);
+
+    const getdao = () =>{
+       let daotime  = setTimeout(() => {
+            let a = false
+            let b = false
+            let c = false
+            let d = false
+            console.log('加载请求')
+            API.getAlldao7().then(res =>{
+                console.log('setTimeout =>',res)
+                setDao7Name(res[0])
+                setDao7TotalSupply(res[1])
+                setDao7BalanceOf(res[2])
+                setallAvailableAmount7(res[3])
+                let newtime = '00'
+                if (res[4] != '0') {
+                    newtime = formattingDate(new Date().getTime() + res[4] * 3 *1000)
+                }else{
+                    newtime = "00"
+                }
+                setDao7RestBlocks(newtime)
+                setDao7CanWithdraw(res[5])
+                a = true
+                isover(a,b,c,d)
+            }) 
+            API.getAlldao15().then(res =>{
+                console.log('setTimeout =>',res)
+                setDao15Name(res[0])
+                setDao15TotalSupply(res[1])
+                setDao15BalanceOf(res[2])
+                setallAvailableAmount15(res[3])
+                let newtime = '00'
+                if (res[4] != '0') {
+                    newtime = formattingDate(new Date().getTime() + res[4] * 3 *1000)
+                }else{
+                    newtime = "00"
+                }
+                setDao15RestBlocks(newtime)
+                setDao15CanWithdraw(res[5])
+                b = true
+                isover(a,b,c,d)
+            }) 
+            API.getAlldao30().then(res =>{
+                console.log('setTimeout =>',res)
+                setDaoName(res[0])
+                setDaoTotalSupply(res[1])
+                setDaoBalanceOf(res[2])
+                setallAvailableAmount(res[3])
+                let newtime = '00'
+                if (res[4] != '0') {
+                    newtime = formattingDate(new Date().getTime() + res[4] * 3 *1000)
+                }else{
+                    newtime = "00"
+                }
+                setDaoRestBlocks(newtime)
+                setDaoCanWithdraw(res[5])
+                c = true
+                isover(a,b,c,d)
+            }) 
+            API.getAlldao60().then(res =>{
+                console.log('setTimeout =>',res)
+                setDao60Name(res[0])
+                setDao60TotalSupply(res[1])
+                setDao60BalanceOf(res[2])
+                setallAvailableAmount60(res[3])
+                let newtime = '00'
+                if (res[4] != '0') {
+                    newtime = formattingDate(new Date().getTime() + res[4] * 3 *1000)
+                }else{
+                    newtime = "00"
+                }
+                setDao60RestBlocks(newtime)
+                setDao60CanWithdraw(res[5])
+                // setPageFlag(false);
+                d = true
+                isover(a,b,c,d)
+            })
+            
+        }, 6000);
+        setTimer(daotime)
+    }
+
+    // }
+
     //7
-    API.getDao7Name().then(res => {
-        // console.log("Name =>",res)
-        setDao7Name(res)
-    })
-    API.getDao7TotalSupply().then(res => {
-        // console.log("总量 =>",res)
-        setDao7TotalSupply(res)
-    })
-    API.getDao7BalanceOf().then(res => {
-        // console.log("锁仓 =>",res)
-        setDao7BalanceOf(res)
-    })
-    API.getDao7allAvailableAmount().then(res => {
-        // console.log("解锁 =>",res)
-        setallAvailableAmount7(res)
-    })
-    API.getDao7RestBlocks().then(res => {
-        let newtime = '00'
-        if (res != '0') {
-            newtime = formattingDate(new Date().getTime() + res * 3 *1000)
-        }else{
-            newtime = "00"
-        }
-        setDao7RestBlocks(newtime)
-    })
-    API.getDao7CanWithdraw().then(res => {
-        // console.log("是否可以领取 =>",res)
-        setDao7CanWithdraw(res)
-    })
+    // API.getDao7Name().then(res => {
+    //     // console.log("Name =>",res)
+    //     setDao7Name(res)
+    // })
+    // API.getDao7TotalSupply().then(res => {
+    //     // console.log("总量 =>",res)
+    //     setDao7TotalSupply(res)
+    // })
+    // API.getDao7BalanceOf().then(res => {
+    //     // console.log("锁仓 =>",res)
+    //     setDao7BalanceOf(res)
+    // })
+    // API.getDao7allAvailableAmount().then(res => {
+    //     // console.log("解锁 =>",res)
+    //     setallAvailableAmount7(res)
+    // })
+    // API.getDao7RestBlocks().then(res => {
+    //     let newtime = '00'
+    //     if (res != '0') {
+    //         newtime = formattingDate(new Date().getTime() + res * 3 *1000)
+    //     }else{
+    //         newtime = "00"
+    //     }
+    //     setDao7RestBlocks(newtime)
+    // })
+    // API.getDao7CanWithdraw().then(res => {
+    //     // console.log("是否可以领取 =>",res)
+    //     setDao7CanWithdraw(res)
+    // })
+    //
+    
     //15
-    API.getDao15Name().then(res => {
-        // console.log("Name =>",res)
-        setDao15Name(res)
-    })
-    API.getDao15TotalSupply().then(res => {
-        // console.log("总量 =>",res)
-        setDao15TotalSupply(res)
-    })
-    API.getDao15BalanceOf().then(res => {
-        // console.log("锁仓 =>",res)
-        setDao15BalanceOf(res)
-    })
-    API.getDao15allAvailableAmount().then(res => {
-        // console.log("解锁 =>",res)
-        setallAvailableAmount15(res)
-    })
-    API.getDao15RestBlocks().then(res => {
-        let newtime = '00'
-        if (res != '0') {
-            newtime = formattingDate(new Date().getTime() + res * 3 *1000)
-        }else{
-            newtime = "00"
-        }
-        setDao15RestBlocks(newtime)
-    })
-    API.getDao15CanWithdraw().then(res => {
-        // console.log("是否可以领取 =>",res)
-        setDao15CanWithdraw(res)
-    })
-    //30
-    API.getDaoName().then(res => {
-        // console.log("Name =>",res)
-        setDaoName(res)
-    })
-    API.getDaoTotalSupply().then(res => {
-        // console.log("总量 =>",res)
-        setDaoTotalSupply(res)
-    })
-    API.getDaoBalanceOf().then(res => {
-        // console.log("锁仓 =>",res)
-        setDaoBalanceOf(res)
-    })
-    API.getDaoallAvailableAmount().then(res => {
-        // console.log("解锁 =>",res)
-        setallAvailableAmount(res)
-    })
-    API.getDaoRestBlocks().then(res => {
-        let newtime = '00'
-        if (res != '0') {
-            newtime = formattingDate(new Date().getTime() + res * 3 *1000)
-        }else{
-            newtime = "00"
-        }
-        setDaoRestBlocks(newtime)
-    })
-    API.getDaoCanWithdraw().then(res => {
-        // console.log("是否可以领取 =>",res)
-        setDaoCanWithdraw(res)
-    })
+    // API.getDao15Name().then(res => {
+    //     // console.log("Name =>",res)
+    //     setDao15Name(res)
+    // })
+    // API.getDao15TotalSupply().then(res => {
+    //     // console.log("总量 =>",res)
+    //     setDao15TotalSupply(res)
+    // })
+    // API.getDao15BalanceOf().then(res => {
+    //     // console.log("锁仓 =>",res)
+    //     setDao15BalanceOf(res)
+    // })
+    // API.getDao15allAvailableAmount().then(res => {
+    //     // console.log("解锁 =>",res)
+    //     setallAvailableAmount15(res)
+    // })
+    // API.getDao15RestBlocks().then(res => {
+    //     let newtime = '00'
+    //     if (res != '0') {
+    //         newtime = formattingDate(new Date().getTime() + res * 3 *1000)
+    //     }else{
+    //         newtime = "00"
+    //     }
+    //     setDao15RestBlocks(newtime)
+    // })
+    // API.getDao15CanWithdraw().then(res => {
+    //     // console.log("是否可以领取 =>",res)
+    //     setDao15CanWithdraw(res)
+    // })
     // 
+    
+    //30
+    // API.getDaoName().then(res => {
+    //     // console.log("Name =>",res)
+    //     setDaoName(res)
+    // })
+    // API.getDaoTotalSupply().then(res => {
+    //     // console.log("总量 =>",res)
+    //     setDaoTotalSupply(res)
+    // })
+    // API.getDaoBalanceOf().then(res => {
+    //     // console.log("锁仓 =>",res)
+    //     setDaoBalanceOf(res)
+    // })
+    // API.getDaoallAvailableAmount().then(res => {
+    //     // console.log("解锁 =>",res)
+    //     setallAvailableAmount(res)
+    // })
+    // API.getDaoRestBlocks().then(res => {
+    //     let newtime = '00'
+    //     if (res != '0') {
+    //         newtime = formattingDate(new Date().getTime() + res * 3 *1000)
+    //     }else{
+    //         newtime = "00"
+    //     }
+    //     setDaoRestBlocks(newtime)
+    // })
+    // API.getDaoCanWithdraw().then(res => {
+    //     // console.log("是否可以领取 =>",res)
+    //     setDaoCanWithdraw(res)
+    // })
+    //
+    
     //60
-    API.getDao60Name().then(res => {
-        // console.log("Name =>",res)
-        setDao60Name(res)
-    })
-    API.getDao60TotalSupply().then(res => {
-        // console.log("总量 =>",res)
-        setDao60TotalSupply(res)
-    })
-    API.getDao60BalanceOf().then(res => {
-        // console.log("锁仓 =>",res)
-        setDao60BalanceOf(res)
-    })
-    API.getDao60allAvailableAmount().then(res => {
-        // console.log("解锁 =>",res)
-        setallAvailableAmount60(res)
-    })
-    API.getDao60RestBlocks().then(res => {
-        let newtime = '00'
-        if (res != '0') {
-            newtime = formattingDate(new Date().getTime() + res * 3 *1000)
-        }else{
-            newtime = "00"
-        }
-        setDao60RestBlocks(newtime)
-    })
-    API.getDao60CanWithdraw().then(res => {
-        // console.log("是否可以领取 =>",res)
-        setDao60CanWithdraw(res)
-    })
+    // API.getDao60Name().then(res => {
+    //     // console.log("Name =>",res)
+    //     setDao60Name(res)
+    // })
+    // API.getDao60TotalSupply().then(res => {
+    //     // console.log("总量 =>",res)
+    //     setDao60TotalSupply(res)
+    // })
+    // API.getDao60BalanceOf().then(res => {
+    //     // console.log("锁仓 =>",res)
+    //     setDao60BalanceOf(res)
+    // })
+    // API.getDao60allAvailableAmount().then(res => {
+    //     // console.log("解锁 =>",res)
+    //     setallAvailableAmount60(res)
+    // })
+    // API.getDao60RestBlocks().then(res => {
+    //     let newtime = '00'
+    //     if (res != '0') {
+    //         newtime = formattingDate(new Date().getTime() + res * 3 *1000)
+    //     }else{
+    //         newtime = "00"
+    //     }
+    //     setDao60RestBlocks(newtime)
+    // })
+    // API.getDao60CanWithdraw().then(res => {
+    //     // console.log("是否可以领取 =>",res)
+    //     setDao60CanWithdraw(res)
+    // })
 
 
 

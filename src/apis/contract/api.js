@@ -19,6 +19,25 @@ class API {
             })
         })
     }
+    // 
+    getAlldao7(){
+        return this.contract.initFnPromise().then(res => {
+            return new Promise((resolve, reject) => {
+                Promise.all([
+                    this.getDao7Name(),//仓名
+                    this.getDao7TotalSupply(),//总锁仓量
+                    this.getDao7BalanceOf(),//我的锁仓
+                    this.getDao7allAvailableAmount(),//解锁数量
+                    this.getDao7RestBlocks(),//解锁时间
+                    this.getDao7CanWithdraw(),//是否可领取
+                ]).then(res => {
+                    resolve(res)
+                }).catch(err => {
+                    reject(err)
+                })
+            })
+        })
+    }
     //7
     //董事会 授权
     isApproveDao7() {
@@ -139,32 +158,59 @@ class API {
     }
     // 董事会 锁仓
     Dao7Deposit(amount) {
-        return this.contract.initFnPromise().then(res => {
+        // let a = new Date().getTime()
+        // console.log('开始授权请求 =>',a)
+        // return this.contract.initFnPromise().then(res => {
             return new Promise((resolve, reject) => {
                 this.contract.Dao7Deposit(
                     Web3.utils.toWei(amount, 'ether'),
                     (result) => {
+                        // console.log('api.js 锁仓耗时==>',new Date().getTime() - a)
                         resolve(result)
                     }, (error) => {
+                        // console.log('api.js 锁仓耗时==>',new Date().getTime() - a)
                         reject(error)
                     }
                 )
             })
-        })
+        // })
     }
     // 董事会 未授权进行授权 approveHuiwanUsdtLoopAddr
     approveDao7() {
-        return this.contract.initFnPromise().then(res => {
+        // let a = new Date().getTime()
+        // console.log('开始授权请求 =>',a)
+        // return this.contract.initFnPromise().then(res => {
             return new Promise((resolve, reject) => {
                 this.contract.approveDao7HuiwanUsdtLoopAddr(
                     (result) => {
+                        // console.log('api.js 锁仓耗时==>',new Date().getTime() - a)
                         resolve(result.result)
                     }, (error) => {
+                        // console.log('api.js 锁仓耗时==>',new Date().getTime() - a)
                         reject(error)
                     }
                 )
             })
-        })
+        // })
+    }
+    // 
+    getAlldao15(){
+        // return this.contract.initFnPromise().then(res => {
+            return new Promise((resolve, reject) => {
+                Promise.all([
+                    this.getDao15Name(),//仓名
+                    this.getDao15TotalSupply(),//总锁仓量
+                    this.getDao15BalanceOf(),//我的锁仓
+                    this.getDao15allAvailableAmount(),//解锁数量
+                    this.getDao15RestBlocks(),//解锁时间
+                    this.getDao15CanWithdraw(),//是否可领取
+                ]).then(res => {
+                    resolve(res)
+                }).catch(err => {
+                    reject(err)
+                })
+            })
+        // })
     }
     // 15
     //董事会 授权
@@ -284,35 +330,61 @@ class API {
             })
         })
     }
-
     // 董事会 锁仓
     Dao15Deposit(amount) {
-        return this.contract.initFnPromise().then(res => {
+        // let a = new Date().getTime()
+        // console.log('开始授权请求 =>',a)
+        // return this.contract.initFnPromise().then(res => {
             return new Promise((resolve, reject) => {
                 this.contract.Dao15Deposit(
                     Web3.utils.toWei(amount, 'ether'),
                     (result) => {
+                        // console.log('api.js 锁仓耗时==>',new Date().getTime() - a)
                         resolve(result)
                     }, (error) => {
+                        // console.log('api.js 锁仓耗时==>',new Date().getTime() - a)
                         reject(error)
                     }
                 )
             })
-        })
+        // })
     }
     // 董事会 未授权进行授权 approveHuiwanUsdtLoopAddr
     approveDao15() {
-        return this.contract.initFnPromise().then(res => {
+        // let a = new Date().getTime()
+        // console.log('开始授权请求 =>',a)
+        // return this.contract.initFnPromise().then(res => {
             return new Promise((resolve, reject) => {
                 this.contract.approveDao15HuiwanUsdtLoopAddr(
                     (result) => {
+                        // console.log('api.js 耗时==>',new Date().getTime() - a)
                         resolve(result.result)
                     }, (error) => {
+                        // console.log('api.js 耗时==>',new Date().getTime() - a)
                         reject(error)
                     }
                 )
             })
-        })
+        // })
+    }
+    // 
+    getAlldao30(){
+        // return this.contract.initFnPromise().then(res => {
+            return new Promise((resolve, reject) => {
+                Promise.all([
+                    this.getDaoName(),//仓名
+                    this.getDaoTotalSupply(),//总锁仓量
+                    this.getDaoBalanceOf(),//我的锁仓
+                    this.getDaoallAvailableAmount(),//解锁数量
+                    this.getDaoRestBlocks(),//解锁时间
+                    this.getDaoCanWithdraw(),//是否可领取
+                ]).then(res => {
+                    resolve(res)
+                }).catch(err => {
+                    reject(err)
+                })
+            })
+        // })
     }
     //30
     //董事会 授权
@@ -434,7 +506,7 @@ class API {
     }
     // 董事会 锁仓
     DaoDeposit(amount) {
-        return this.contract.initFnPromise().then(res => {
+        // return this.contract.initFnPromise().then(res => {
             return new Promise((resolve, reject) => {
                 this.contract.DaoDeposit(
                     Web3.utils.toWei(amount, 'ether'),
@@ -445,23 +517,47 @@ class API {
                     }
                 )
             })
-        })
+        // })
     }
     // 董事会 未授权进行授权 approveHuiwanUsdtLoopAddr
     approveDao() {
-        return this.contract.initFnPromise().then(res => {
+        // let a = new Date().getTime()
+        // console.log('开始授权请求 =>',a)
+        // return this.contract.initFnPromise().then(res => {
             return new Promise((resolve, reject) => {
                 this.contract.approveDaoHuiwanUsdtLoopAddr(
                     (result) => {
+                        // console.log('api.js 耗时==>',new Date().getTime() - a)
+
                         resolve(result.result)
                     }, (error) => {
+                        // console.log('api.js 耗时==>',new Date().getTime() - a)
+
                         reject(error)
                     }
                 )
             })
-        })
+        // })
     }
     // 
+    getAlldao60(){
+        return this.contract.initFnPromise().then(res => {
+            return new Promise((resolve, reject) => {
+                Promise.all([
+                    this.getDao60Name(),//仓名
+                    this.getDao60TotalSupply(),//总锁仓量
+                    this.getDao60BalanceOf(),//我的锁仓
+                    this.getDao60allAvailableAmount(),//解锁数量
+                    this.getDao60RestBlocks(),//解锁时间
+                    this.getDao60CanWithdraw(),//是否可领取
+                ]).then(res => {
+                    resolve(res)
+                }).catch(err => {
+                    reject(err)
+                })
+            })
+        })
+    }
     // 60
     //董事会 授权
     isApproveDao60() {
@@ -583,7 +679,7 @@ class API {
 
     // 董事会 锁仓
     Dao60Deposit(amount) {
-        return this.contract.initFnPromise().then(res => {
+        // return this.contract.initFnPromise().then(res => {
             return new Promise((resolve, reject) => {
                 this.contract.Dao60Deposit(
                     Web3.utils.toWei(amount, 'ether'),
@@ -594,21 +690,25 @@ class API {
                     }
                 )
             })
-        })
+        // })
     }
     // 董事会 未授权进行授权 approveHuiwanUsdtLoopAddr
     approveDao60() {
-        return this.contract.initFnPromise().then(res => {
+        // let a = new Date().getTime()
+        // console.log('开始授权请求 =>',a)
+        // return this.contract.initFnPromise().then(res => {
             return new Promise((resolve, reject) => {
                 this.contract.approveDao60HuiwanUsdtLoopAddr(
                     (result) => {
+                        // console.log('api.js 耗时==>',new Date().getTime() - a)
                         resolve(result.result)
                     }, (error) => {
+                        // console.log('api.js 耗时==>',new Date().getTime() - a)
                         reject(error)
                     }
                 )
             })
-        })
+        // })
     }
     // 获取矿池月/年收益
     getInitreward() {
