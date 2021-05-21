@@ -71,17 +71,17 @@ let timers
 export default function Director() {
   const { t } = useTranslation();
   const [rate, setRate] = useState(0)
-  const [rateFalse, setRateFalse] = useState(false)
-  const [timerd, setTimer] = useState('')
+//   const [rateFalse, setRateFalse] = useState(false)
+  const [timerd, setTimer] = useState(0)
   const [allBalance, setAllBalance] = useState(0)
-  const [allBalanceFalse, setAllBalanceFalse] = useState(false)
+//   const [allBalanceFalse, setAllBalanceFalse] = useState(false)
   const [addFlagtype, setAddFlagtype] = useState('')
   const [allBlock, setAllBock] = useState(0.00)
-  const [allBlockFalse, setAllBlockFalse] = useState(false)
+//   const [allBlockFalse, setAllBlockFalse] = useState(false)
   const [isApprovediv, setApprovediv] = useState(false) // 授权/非授权 isApprovedivdao
   const [text, settext] = useState(false)//弹窗提示
   const [balance, setBalance] = useState(0.00)
-  const [balanceFalse, setBalanceFalse] = useState(false)
+//   const [balanceFalse, setBalanceFalse] = useState(false)
   // 判断是否是第一次加载页面  判断发送请求
   const [pageFlag, setPageFlag] = useState(false);
   //7
@@ -146,7 +146,6 @@ export default function Director() {
       })
     } else if (type == '15') {
       API.approveDao15().then(res => {
-
       setPengingApprove15(true)
     }).catch(error => {
         setPengingApprove15(false)
@@ -165,7 +164,6 @@ export default function Director() {
   useEffect(() => {
     let setTimeoutTimer;
     const timerFn = function () {
-        console.log('是否授权 =>')
         API.isApproveDao().then(res => {
         // console.log("是否授权" + res)
         setApprove(res)
@@ -183,25 +181,25 @@ export default function Director() {
         setApprove60(res)
       })
       Data.getTrsRate().then(async res => {
-        console.log('trs价格')
+        // console.log('trs价格')
         setRate(await res.rate)
         // setRateFalse(true)
       })
       //当前流动性质押
       Data.getPoolListData('all').then(async res => {
-        console.log('质押')
+        // console.log('质押')
         setAllBalance(await res)
         // setAllBalanceFalse(true)
       })
       //当前挖矿产出
       Data.getAllBlock().then(async res => {
-        console.log('产出')
+        // console.log('产出')
         setAllBock(await res)
         // setAllBlockFalse(true)
       })
       API.getWalletAllTrs().then(async res => {
         // console.log(`setBalance`,res)
-        console.log('所有')
+        // console.log('所有')
         setBalance(await res)
         setStakedLp(res)
         // setBalanceFalse(true)
@@ -242,94 +240,17 @@ export default function Director() {
 //   })
   //
   useEffect(() => {
-    console.log('第一次加载')
-    // if(!pageFlag) {
-    let a = false
-    let b = false
-    let c = false
-    let d = false
-    API.getAlldao7().then(res => {
-      console.log('useEffect =>', res)
-      setDao7Name(res[0])
-      setDao7TotalSupply(res[1])
-      setDao7BalanceOf(res[2])
-      setallAvailableAmount7(res[3])
-      let newtime = '00'
-      if (res[4] != '0') {
-        newtime = formattingDate(new Date().getTime() + res[4] * 3 * 1000)
-      } else {
-        newtime = "00"
-      }
-      setDao7RestBlocks(newtime)
-      setDao7CanWithdraw(res[5])
-      a = true
-      isover(a, b, c, d)
-    })
-    API.getAlldao15().then(res => {
-      console.log('useEffect=>', res)
-      setDao15Name(res[0])
-      setDao15TotalSupply(res[1])
-      setDao15BalanceOf(res[2])
-      setallAvailableAmount15(res[3])
-      let newtime = '00'
-      if (res[4] != '0') {
-        newtime = formattingDate(new Date().getTime() + res[4] * 3 * 1000)
-      } else {
-        newtime = "00"
-      }
-      setDao15RestBlocks(newtime)
-      setDao15CanWithdraw(res[5])
-      b = true
-      isover(a, b, c, d)
-    })
-    API.getAlldao30().then(res => {
-      console.log('useEffect =>', res)
-      setDaoName(res[0])
-      setDaoTotalSupply(res[1])
-      setDaoBalanceOf(res[2])
-      setallAvailableAmount(res[3])
-      let newtime = '00'
-      if (res[4] != '0') {
-        newtime = formattingDate(new Date().getTime() + res[4] * 3 * 1000)
-      } else {
-        newtime = "00"
-      }
-      setDaoRestBlocks(newtime)
-      setDaoCanWithdraw(res[5])
-      c = true
-      isover(a, b, c, d)
-    })
-    API.getAlldao60().then(res => {
-      console.log('useEffect =>', res)
-      setDao60Name(res[0])
-      setDao60TotalSupply(res[1])
-      setDao60BalanceOf(res[2])
-      setallAvailableAmount60(res[3])
-      let newtime = '00'
-      if (res[4] != '0') {
-        newtime = formattingDate(new Date().getTime() + res[4] * 3 * 1000)
-      } else {
-        newtime = "00"
-      }
-      setDao60RestBlocks(newtime)
-      setDao60CanWithdraw(res[5])
-      // setPageFlag(true);
-      d = true
-      isover(a, b, c, d)
-
-    })
-    // }
-
-
+    // console.log('第一次加载')
+    getAllDao()
     return () => {
-      console.log("DOM被移除");
+    //   console.log("DOM被移除");
       timerd && clearTimeout(timerd)
       isover(false, false, false, false)
     }
   }, [pageFlag])
   const isover = (a, b, c, d) => {
     if (a && b && c && d) {
-      console.log('useEffect 加载getdao')
+    //   console.log('useEffect 加载getdao')
       timerd && clearTimeout(timerd)
       getdao()
     }
@@ -338,16 +259,13 @@ export default function Director() {
   // 如果是true 持续加载更新
   // if (pageFlag) {
   // console.log(pageFlag);
-
-  const getdao = () => {
-    let daotime = setTimeout(() => {
+  const getAllDao = () => {
       let a = false
       let b = false
       let c = false
       let d = false
-      console.log('加载请求')
-      API.getAlldao7().then(res => {
-        console.log('setTimeout =>', res)
+    API.getAlldao7().then(res => {
+        // console.log('setTimeout =>', res)
         setDao7Name(res[0])
         setDao7TotalSupply(res[1])
         setDao7BalanceOf(res[2])
@@ -364,7 +282,7 @@ export default function Director() {
         isover(a, b, c, d)
       })
       API.getAlldao15().then(res => {
-        console.log('setTimeout =>', res)
+        // console.log('setTimeout =>', res)
         setDao15Name(res[0])
         setDao15TotalSupply(res[1])
         setDao15BalanceOf(res[2])
@@ -381,7 +299,7 @@ export default function Director() {
         isover(a, b, c, d)
       })
       API.getAlldao30().then(res => {
-        console.log('setTimeout =>', res)
+        // console.log('setTimeout =>', res)
         setDaoName(res[0])
         setDaoTotalSupply(res[1])
         setDaoBalanceOf(res[2])
@@ -398,7 +316,7 @@ export default function Director() {
         isover(a, b, c, d)
       })
       API.getAlldao60().then(res => {
-        console.log('setTimeout =>', res)
+        // console.log('setTimeout =>', res)
         setDao60Name(res[0])
         setDao60TotalSupply(res[1])
         setDao60BalanceOf(res[2])
@@ -415,7 +333,12 @@ export default function Director() {
         d = true
         isover(a, b, c, d)
       })
+  }
 
+  const getdao = () => {
+    let daotime = setTimeout(() => {
+    //   console.log('加载请求')
+      getAllDao()
     }, 6000);
     setTimer(daotime)
   }
@@ -571,6 +494,7 @@ export default function Director() {
                 return
               } else {
                 setAddFlag(true)
+                setPengingApprove7(false)
               }
             }}>{pengingApprove7 ? '授权中...' : t("director.text12")}</button>
         </div>
@@ -613,8 +537,8 @@ export default function Director() {
           <button className="drictorLocking" onClick={
             () => {
               setAddFlagtype('15')
-              console.log("isApprove15 =>", isApprove15)
-              console.log("pengingApprove15 =>", pengingApprove15)
+            //   console.log("isApprove15 =>", isApprove15)
+            //   console.log("pengingApprove15 =>", pengingApprove15)
               if (!isApprove15) {
                 if (pengingApprove15) {
                   toast('locked')
@@ -623,6 +547,7 @@ export default function Director() {
                 return
               } else {
                 setAddFlag(true)
+                setPengingApprove15(false)
               }
             }}>{pengingApprove15 ? '授权中...' : t("director.text12")}</button>
         </div>
@@ -664,8 +589,8 @@ export default function Director() {
           <button className="drictorExtract" onClick={() => extract('30')} >{t("director.text11")}</button>
           <button className="drictorLocking" onClick={
             () => {
-              console.log("isApprove =>", isApprove)
-              console.log("pengingApprove =>", pengingApprove)
+            //   console.log("isApprove =>", isApprove)
+            //   console.log("pengingApprove =>", pengingApprove)
               setAddFlagtype('30')
               if (!isApprove) {
                 if (pengingApprove) {
@@ -675,6 +600,7 @@ export default function Director() {
                 return
               } else {
                 setAddFlag(true)
+                setPengingApprove(false)
               }
             }}>{pengingApprove ? '授权中...' : t("director.text12")}</button>
         </div>
@@ -717,8 +643,8 @@ export default function Director() {
           <button className="drictorLocking" onClick={
             () => {
               setAddFlagtype('60')
-              console.log("isApprove60 =>", isApprove60)
-              console.log("pengingApprove60 =>", pengingApprove60)
+            //   console.log("isApprove60 =>", isApprove60)
+            //   console.log("pengingApprove60 =>", pengingApprove60)
               if (!isApprove60) {
                 if (pengingApprove60) {
                   toast('locked')
@@ -727,6 +653,7 @@ export default function Director() {
                 return
               } else {
                 setAddFlag(true)
+                setPengingApprove60(false)
               }
             }}>{pengingApprove60 ? '授权中...' : t("director.text12")}</button>
         </div>

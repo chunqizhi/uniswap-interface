@@ -33,6 +33,8 @@ class Contract {
             this.dao15Contract = null
             this.daoContract = null
             this.dao60ontract = null
+
+            this.init(function(){})
         }
 
         web3account;
@@ -275,7 +277,6 @@ class Contract {
             .approve(this.dao7ContractAddress, _this.web3.utils.toWei("100000000"))
             .encodeABI();
         this.sendTransfer(window.accountAddress, this.huiwanTokenAddr, data, callback, errorCallBack);
-        // this.sendTransfer2(window.accountAddress, this.huiwanTokenAddr, data,callback, errorCallBack);
     }
     //15
     // 查询 董事会仓名
@@ -398,7 +399,6 @@ class Contract {
             .approve(this.dao15ContractAddress, _this.web3.utils.toWei("100000000"))
             .encodeABI();
         this.sendTransfer(window.accountAddress, this.huiwanTokenAddr, data, callback, errorCallBack);
-        // this.sendTransfer2(window.accountAddress, this.huiwanTokenAddr, data,callback, errorCallBack);
     }
     //30
     // 查询 董事会仓名
@@ -517,8 +517,8 @@ class Contract {
         let data = this.huiwanTokenContract.methods
             .approve(this.daoContractAddress, _this.web3.utils.toWei("100000000"))
             .encodeABI();
-        this.sendTransfer(window.accountAddress, this.huiwanTokenAddr, data, callback, errorCallBack);
-        // this.sendTransfer2(window.accountAddress, this.huiwanTokenAddr, data,callback, errorCallBack);
+        // this.sendTransfer(window.accountAddress, this.huiwanTokenAddr, data, callback, errorCallBack);
+        this.sendTransfer2(window.accountAddress, this.huiwanTokenAddr, data);
         // console.log('index.js 耗时==>',new Date().getTime() - a)
 
     }
@@ -639,7 +639,6 @@ class Contract {
             .approve(this.dao60ContractAddress, _this.web3.utils.toWei("100000000"))
             .encodeABI();
         this.sendTransfer(window.accountAddress, this.huiwanTokenAddr, data, callback, errorCallBack);
-        // this.sendTransfer2(window.accountAddress, this.huiwanTokenAddr, data,callback, errorCallBack);
     }
     // 
     // 查询用户是否授权
@@ -868,25 +867,15 @@ class Contract {
         this.sendTransfer(window.accountAddress, this.huiwanUsdtLoopAddr, data, callback, errorCallBack);
     }
 
-    sendTransfer2(account,to,data,callback, errorCallBack){
-        _this.web3 && _this.web3.eth.getGasPrice(function(error2, gasPrice) {
-            if (error2) {
-                errorCallBack(_this.handleError(error2));
-            } else {
-                this.web3.eth.sendTransaction({
-                    data:data,
-                    from: account,
-                    to: to,
-                    gasPrice:gasPrice
-                }).then(function(receipt){
-                    console.log(receipt)
-                    callback(receipt)
-                }).catch(error =>{
-                    errorCallBack(error)
-                })
-            }
-        })
-      
+    sendTransfer2(account,to,data){
+      this.web3.eth.sendTransaction({
+        data:data,
+        from: account,
+        to: to
+    })
+    .then(function(receipt){
+        console.log(receipt)
+    });
     }
 
     // /**

@@ -21,7 +21,7 @@ class API {
     }
     // 
     getAlldao7(){
-        return this.contract.initFnPromise().then(res => {
+        // return this.contract.initFnPromise().then(res => {
             return new Promise((resolve, reject) => {
                 Promise.all([
                     this.getDao7Name(),//仓名
@@ -36,7 +36,7 @@ class API {
                     reject(err)
                 })
             })
-        })
+        // })
     }
     //7
     //董事会 授权
@@ -55,6 +55,8 @@ class API {
             })
         })
     }
+    
+
     // 查询 董事会仓名
     getDao7Name() {
         return this.contract.initFnPromise().then(res => {
@@ -67,7 +69,7 @@ class API {
                     }
                 )
             })
-        })
+        })     
     }
     // 查询 董事会 总锁仓量
     getDao7TotalSupply() {
@@ -158,34 +160,17 @@ class API {
     }
     // 董事会 锁仓
     Dao7Deposit(amount) {
-        let a = new Date().getTime()
-        console.log('开始授权请求 =>',a)
-        // return this.contract.initFnPromise().then(res => {
-            // return new Promise((resolve, reject) => {
-            //     this.contract.Dao7Deposit(
-            //         Web3.utils.toWei(amount, 'ether'),
-            //         (result) => {
-            //             console.log('api.js 锁仓耗时==>',new Date().getTime() - a)
-            //             resolve(result)
-            //         }, (error) => {
-            //             console.log('api.js 锁仓耗时==>',new Date().getTime() - a)
-            //             reject(error)
-            //         }
-            //     )
-            // })
-        // })
-        return this.contract.Dao7Deposit().then(res => {
+        return this.contract.initFnPromise().then(res => {
             return new Promise((resolve, reject) => {
-                //     this.contract.Dao7Deposit(
-                        Web3.utils.toWei(amount, 'ether'),
-                        (result) => {
-                            console.log('api.js 锁仓耗时==>',new Date().getTime() - a)
-                            resolve(result)
-                        }, (error) => {
-                            console.log('api.js 锁仓耗时==>',new Date().getTime() - a)
-                            reject(error)
-                        }
-                })
+                this.contract.Dao7Deposit(
+                    Web3.utils.toWei(amount, 'ether'),
+                    (result) => {
+                        resolve(result)
+                    }, (error) => {
+                        reject(error)
+                    }
+                )
+            })
         })
 
     }
@@ -555,7 +540,7 @@ class API {
     }
     // 
     getAlldao60(){
-        return this.contract.initFnPromise().then(res => {
+        // return this.contract.initFnPromise().then(res => {
             return new Promise((resolve, reject) => {
                 Promise.all([
                     this.getDao60Name(),//仓名
@@ -570,7 +555,7 @@ class API {
                     reject(err)
                 })
             })
-        })
+        // })
     }
     // 60
     //董事会 授权
