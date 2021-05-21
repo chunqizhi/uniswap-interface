@@ -304,7 +304,7 @@ export default function Director() {
           newtime = formattingDate(new Date().getTime() + res[4] * 3 * 1000)
         } else {
             if(res[6] > 0 && res[2] != 0){
-                newtime = "可提取"
+                newtime = `${t("director.text20")}`
                 setLockBlocks7(true)
             }else{
                 newtime = "00"
@@ -328,7 +328,7 @@ export default function Director() {
           newtime = formattingDate(new Date().getTime() + res[4] * 3 * 1000)
         } else {
             if(res[6] > 0 && res[2] != 0){
-                newtime = "可提取"
+                newtime = `${t("director.text20")}`
                 setLockBlocks15(true)
             }else{
                 newtime = "00"
@@ -351,7 +351,7 @@ export default function Director() {
           newtime = formattingDate(new Date().getTime() + res[4] * 3 * 1000)
         } else {
             if(res[6] > 0 && res[2] != 0){
-                newtime = "可提取"
+                newtime = `${t("director.text20")}`
                 setLockBlocks(true)
             }else{
                 newtime = "00"
@@ -374,7 +374,7 @@ export default function Director() {
           newtime = formattingDate(new Date().getTime() + res[4] * 3 * 1000)
         } else {
             if(res[6] > 0 && res[2] != 0){
-                newtime = "可提取"
+                newtime = `${t("director.text20")}`
                 setLockBlocks60(true)
             }else{
                 newtime = "00"

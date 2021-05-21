@@ -18,4 +18,5 @@ export default {
     text17: 'The unlocking time has not arrived yet',
     text18: 'The authorization...',
     text19: 'The lockup balance is zero',
+    text20: 'Can receive',
 }
