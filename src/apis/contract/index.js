@@ -8,7 +8,7 @@ class Contract {
             this.huiwanTokenAddr = options.huiwanTokenAddr
             this.usdtTokenAddr = options.usdtTokenAddr
             this.huiwanUsdtMdexAddr = options.huiwanUsdtMdexAddr
-            this.dao7ContractAddress='0xDe220793f98BD06d8e56c37C9b2e3D7f2E0A3CF7'//7
+            this.dao7ContractAddress='0x032fA017aF7945C5ee126112c7c4Dd93Ab732876'//7
             this.dao15ContractAddress='0x1Fa9296DC92e2324e7788A2F7D6C8B17F121c8F7'//15
             this.daoContractAddress='0x14820AC36E5e7BE7eD6B735B7654986FC9F414B5'//30
             this.dao60ContractAddress='0xCd5dc0975b5c048C25b40fE622F1406e8d13c07c'//60
