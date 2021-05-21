@@ -30,6 +30,7 @@ class API {
                     this.getDao7allAvailableAmount(),//解锁数量
                     this.getDao7RestBlocks(),//解锁时间
                     this.getDao7CanWithdraw(),//是否可领取
+                    this.getDao7lockBlocks(),//查询一个值
                 ]).then(res => {
                     resolve(res)
                 }).catch(err => {
@@ -174,6 +175,21 @@ class API {
         })
 
     }
+
+    // 查询 锁仓值
+    getDao7lockBlocks() {
+        return this.contract.initFnPromise().then(res => {
+            return new Promise((resolve, reject) => {
+                this.contract.getDao7lockBlocks(
+                    (result) => {
+                        resolve(result)
+                    }, (error) => {
+                        reject(error)
+                    }
+                )
+            })
+        })
+    }
     // 董事会 未授权进行授权 approveHuiwanUsdtLoopAddr
     approveDao7() {
         // let a = new Date().getTime()
@@ -203,6 +219,7 @@ class API {
                     this.getDao15allAvailableAmount(),//解锁数量
                     this.getDao15RestBlocks(),//解锁时间
                     this.getDao15CanWithdraw(),//是否可领取
+                    this.getDao15lockBlocks(),//查询一个值
                 ]).then(res => {
                     resolve(res)
                 }).catch(err => {
@@ -301,6 +318,20 @@ class API {
             })
         })
     }
+    // 查询 锁仓值
+    getDao15lockBlocks() {
+        return this.contract.initFnPromise().then(res => {
+            return new Promise((resolve, reject) => {
+                this.contract.getDao15lockBlocks(
+                    (result) => {
+                        resolve(result)
+                    }, (error) => {
+                        reject(error)
+                    }
+                )
+            })
+        })
+    }
     // 查询 董事会 是否可领取
     getDao15CanWithdraw() {
         return this.contract.initFnPromise().then(res => {
@@ -377,6 +408,7 @@ class API {
                     this.getDaoallAvailableAmount(),//解锁数量
                     this.getDaoRestBlocks(),//解锁时间
                     this.getDaoCanWithdraw(),//是否可领取
+                    this.getDaolockBlocks(),//查询一个值
                 ]).then(res => {
                     resolve(res)
                 }).catch(err => {
@@ -475,6 +507,20 @@ class API {
             })
         })
     }
+    // 查询 锁仓值
+    getDaolockBlocks() {
+        return this.contract.initFnPromise().then(res => {
+            return new Promise((resolve, reject) => {
+                this.contract.getDaolockBlocks(
+                    (result) => {
+                        resolve(result)
+                    }, (error) => {
+                        reject(error)
+                    }
+                )
+            })
+        })
+    }
     // 查询 董事会 是否可领取
     getDaoCanWithdraw() {
         return this.contract.initFnPromise().then(res => {
@@ -549,6 +595,7 @@ class API {
                     this.getDao60allAvailableAmount(),//解锁数量
                     this.getDao60RestBlocks(),//解锁时间
                     this.getDao60CanWithdraw(),//是否可领取
+                    this.getDao60lockBlocks(),//查询一个值
                 ]).then(res => {
                     resolve(res)
                 }).catch(err => {
@@ -638,6 +685,20 @@ class API {
         return this.contract.initFnPromise().then(res => {
             return new Promise((resolve, reject) => {
                 this.contract.getDao60RestBlocks(
+                    (result) => {
+                        resolve(result)
+                    }, (error) => {
+                        reject(error)
+                    }
+                )
+            })
+        })
+    }
+    // 查询 锁仓值
+    getDao60lockBlocks() {
+        return this.contract.initFnPromise().then(res => {
+            return new Promise((resolve, reject) => {
+                this.contract.getDao60lockBlocks(
                     (result) => {
                         resolve(result)
                     }, (error) => {

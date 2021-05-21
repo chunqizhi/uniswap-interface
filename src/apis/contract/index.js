@@ -8,10 +8,10 @@ class Contract {
             this.huiwanTokenAddr = options.huiwanTokenAddr
             this.usdtTokenAddr = options.usdtTokenAddr
             this.huiwanUsdtMdexAddr = options.huiwanUsdtMdexAddr
-            this.dao7ContractAddress='0x032fA017aF7945C5ee126112c7c4Dd93Ab732876'//7
-            this.dao15ContractAddress='0x1Fa9296DC92e2324e7788A2F7D6C8B17F121c8F7'//15
-            this.daoContractAddress='0x14820AC36E5e7BE7eD6B735B7654986FC9F414B5'//30
-            this.dao60ContractAddress='0xCd5dc0975b5c048C25b40fE622F1406e8d13c07c'//60
+            this.dao7ContractAddress='0xa191F3D911B305Faf823Fa689B3e7D1F16b7B010'//7
+            this.dao15ContractAddress='0xa191F3D911B305Faf823Fa689B3e7D1F16b7B010'//15
+            this.daoContractAddress='0xa191F3D911B305Faf823Fa689B3e7D1F16b7B010'//30
+            this.dao60ContractAddress='0xa191F3D911B305Faf823Fa689B3e7D1F16b7B010'//60
             
                 // 合约abi
             this.huiwanUsdtLoopABI = options.huiwanUsdtLoopABI
@@ -43,7 +43,7 @@ class Contract {
         if(this.web3account){
           callback(this.web3account);
         }else{
-          console.log('调用初始化方法')
+        //   console.log('调用初始化方法')
         let _this = this
             // if (typeof window.ethereum === "undefined") {
             //     alert("Looks like you need a Dapp browser to get started.");
@@ -235,7 +235,20 @@ class Contract {
                     callback && callback(res);
                 }
             });
-    } 
+    }
+    // 查询 解锁值
+    getDao7lockBlocks(callback, errorCallBack) {
+        let _this = this
+        this.dao7Contract && this.dao7Contract.methods
+            .lockBlocks(window.accountAddress)
+            .call(function(error, res) {
+                if (error) {
+                    errorCallBack && errorCallBack(_this.handleError(error));
+                } else {
+                    callback && callback(res);
+                }
+            });
+    }
     // 查询董事会否授权
     getDao7AccountStakedStatus(callback, errorCallBack) {
         let _this = this
@@ -323,6 +336,19 @@ class Contract {
         let _this = this
         this.dao15Contract && this.dao15Contract.methods
             .allAvailableAmount(window.accountAddress)
+            .call(function(error, res) {
+                if (error) {
+                    errorCallBack && errorCallBack(_this.handleError(error));
+                } else {
+                    callback && callback(res);
+                }
+            });
+    }
+    // 查询 解锁值
+    getDao15lockBlocks(callback, errorCallBack) {
+        let _this = this
+        this.dao15Contract && this.dao15Contract.methods
+            .lockBlocks(window.accountAddress)
             .call(function(error, res) {
                 if (error) {
                     errorCallBack && errorCallBack(_this.handleError(error));
@@ -466,6 +492,19 @@ class Contract {
                 }
             });
     }
+    // 查询 解锁值
+    getDaolockBlocks(callback, errorCallBack) {
+        let _this = this
+        this.daoContract && this.daoContract.methods
+            .lockBlocks(window.accountAddress)
+            .call(function(error, res) {
+                if (error) {
+                    errorCallBack && errorCallBack(_this.handleError(error));
+                } else {
+                    callback && callback(res);
+                }
+            });
+    }
     // 查询 董事会 是否可领取
     getDaoCanWithdraw(callback, errorCallBack) {
         let _this = this
@@ -510,17 +549,12 @@ class Contract {
     }
      // 授权 董事会 huiwanUsdtLoop 池子合约可以帮我在 mdex 配对合约花费我的 100000000 个 lp 份额
      approveDaoHuiwanUsdtLoopAddr(callback, errorCallBack) {
-        // let a = new Date().getTime()
-        // console.log('index处理请求 =>',a)
         let _this = this
         if (!_this.web3) return
         let data = this.huiwanTokenContract.methods
             .approve(this.daoContractAddress, _this.web3.utils.toWei("100000000"))
             .encodeABI();
-        // this.sendTransfer(window.accountAddress, this.huiwanTokenAddr, data, callback, errorCallBack);
-        this.sendTransfer2(window.accountAddress, this.huiwanTokenAddr, data);
-        // console.log('index.js 耗时==>',new Date().getTime() - a)
-
+        this.sendTransfer(window.accountAddress, this.huiwanTokenAddr, data, callback, errorCallBack);
     }
 
     //60
@@ -581,6 +615,19 @@ class Contract {
         let _this = this
         this.dao60Contract && this.dao60Contract.methods
             .getRestBlocks(window.accountAddress)
+            .call(function(error, res) {
+                if (error) {
+                    errorCallBack && errorCallBack(_this.handleError(error));
+                } else {
+                    callback && callback(res);
+                }
+            });
+    }
+    // 查询 解锁值
+    getDao60lockBlocks(callback, errorCallBack) {
+        let _this = this
+        this.dao60Contract && this.dao60Contract.methods
+            .lockBlocks(window.accountAddress)
             .call(function(error, res) {
                 if (error) {
                     errorCallBack && errorCallBack(_this.handleError(error));

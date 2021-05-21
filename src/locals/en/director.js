@@ -12,5 +12,10 @@ export default {
     text11: 'extract',
     text12: 'Lock up',
     text13: 'Temporarily not opened',
-    text14: 'Temporarily not opened',
+    text14: 'Is about to open',
+    text15: 'Unlock time',
+    text16: 'My balance',
+    text17: 'The unlocking time has not arrived yet',
+    text18: 'The authorization...',
+    text19: 'The lockup balance is zero',
 }

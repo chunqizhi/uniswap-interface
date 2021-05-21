@@ -79,51 +79,58 @@ export default function Director() {
   const [allBlock, setAllBock] = useState(0.00)
 //   const [allBlockFalse, setAllBlockFalse] = useState(false)
   const [isApprovediv, setApprovediv] = useState(false) // 授权/非授权 isApprovedivdao
-  const [text, settext] = useState(false)//弹窗提示
+  const [text, settext] = useState(0)//弹窗提示
   const [balance, setBalance] = useState(0.00)
 //   const [balanceFalse, setBalanceFalse] = useState(false)
   // 判断是否是第一次加载页面  判断发送请求
   const [pageFlag, setPageFlag] = useState(false);
   //7
-  const [dao7name, setDao7Name] = useState('TRS DAO-7')
-  const [dao7TotalSupply, setDao7TotalSupply] = useState('0.00')
-  const [dao7BalanceOf, setDao7BalanceOf] = useState('0.00')
-  const [allAvailableAmount7, setallAvailableAmount7] = useState('0.00')
-  const [Dao7RestBlocks, setDao7RestBlocks] = useState('')
+  const [dao7name, setDao7Name] = useState('TRS DAO-7')//仓名
+  const [dao7TotalSupply, setDao7TotalSupply] = useState(0.00)//总锁仓量
+  const [dao7BalanceOf, setDao7BalanceOf] = useState(0.00)//我的锁仓
+  const [allAvailableAmount7, setallAvailableAmount7] = useState(0.00)//解锁数量
+  const [Dao7RestBlocks, setDao7RestBlocks] = useState('')//解锁时间
   const [isApprove7, setApprove7] = useState(false) // 授权/非授权
   const [Dao7CanWithdraw, setDao7CanWithdraw] = useState(false) //是否可以提取
   const [pengingApprove7, setPengingApprove7] = useState(false)//是否授权成功
+  const [isimpower7, setIsImpower7] = useState(false)//授权按钮变化
+  const [lockBlocks7, setLockBlocks7] = useState(false)//授权按钮变化
 
   //15
   const [dao15name, setDao15Name] = useState('TRS DAO-15')
-  const [dao15TotalSupply, setDao15TotalSupply] = useState('0.00')
-  const [dao15BalanceOf, setDao15BalanceOf] = useState('0.00')
-  const [allAvailableAmount15, setallAvailableAmount15] = useState('0.00')
+  const [dao15TotalSupply, setDao15TotalSupply] = useState(0.00)
+  const [dao15BalanceOf, setDao15BalanceOf] = useState(0.00)
+  const [allAvailableAmount15, setallAvailableAmount15] = useState(0.00)
   const [Dao15RestBlocks, setDao15RestBlocks] = useState('')
   const [Dao15CanWithdraw, setDao15CanWithdraw] = useState(false) //是否可以提取
   const [pengingApprove15, setPengingApprove15] = useState(false)//是否授权成功
   const [isApprove15, setApprove15] = useState(false) // 授权/非授权
-
+  const [isimpower15, setIsImpower15] = useState(false)//授权按钮变化
+  const [lockBlocks15, setLockBlocks15] = useState(false)//授权按钮变化
 
   //30 
   const [daoname, setDaoName] = useState('TRS DAO-30')
-  const [daoTotalSupply, setDaoTotalSupply] = useState('0.00')
-  const [daoBalanceOf, setDaoBalanceOf] = useState('0.00')
-  const [allAvailableAmount, setallAvailableAmount] = useState('0.00')
+  const [daoTotalSupply, setDaoTotalSupply] = useState(0.00)
+  const [daoBalanceOf, setDaoBalanceOf] = useState(0.00)
+  const [allAvailableAmount, setallAvailableAmount] = useState(0.00)
   const [isApprove, setApprove] = useState(false) // 授权/非授权
   const [DaoRestBlocks, setDaoRestBlocks] = useState('')
   const [DaoCanWithdraw, setDaoCanWithdraw] = useState(false) //是否可以提取
   const [pengingApprove, setPengingApprove] = useState(false)//是否授权成功
+  const [isimpower, setIsImpower] = useState(false)//授权按钮变化
+  const [lockBlocks, setLockBlocks] = useState(false)//授权按钮变化
 
   //60
   const [dao60name, setDao60Name] = useState('TRS DAO-60')
-  const [dao60TotalSupply, setDao60TotalSupply] = useState('0.00')
-  const [dao60BalanceOf, setDao60BalanceOf] = useState('0.00')
-  const [allAvailableAmount60, setallAvailableAmount60] = useState('0.00')
+  const [dao60TotalSupply, setDao60TotalSupply] = useState(0.00)
+  const [dao60BalanceOf, setDao60BalanceOf] = useState(0.00)
+  const [allAvailableAmount60, setallAvailableAmount60] = useState(0.00)
   const [Dao60RestBlocks, setDao60RestBlocks] = useState('')
   const [isApprove60, setApprove60] = useState(false) // 授权/非授权
   const [Dao60CanWithdraw, setDao60CanWithdraw] = useState(false) //是否可以提取
   const [pengingApprove60, setPengingApprove60] = useState(false)//是否授权成功
+  const [isimpower60, setIsImpower60] = useState(false)//授权按钮变化
+  const [lockBlocks60, setLockBlocks60] = useState(false)//授权按钮变化
   // 
   const [addFlag, setAddFlag] = useState(false)   //显示隐藏 抵押解押弹框
   const [inputValue, setInputVal] = useState('0')   //input的值
@@ -132,29 +139,37 @@ export default function Director() {
   }
   const approveFn = (type) => {
     if (type == '7') {
-      API.approveDao7().then(res => {
+        setIsImpower7(true)
         setPengingApprove7(true)
+      API.approveDao7().then(res => {
       }).catch(error => {
+        setIsImpower7(false)
         setPengingApprove7(false)
       })
     } else if (type == '30') {
-      
-      API.approveDao().then(res => {
+        setIsImpower(true)
         setPengingApprove(true)
+      API.approveDao().then(res => {
       }).catch(error => {
+        //   console.log('授权失败',isimpower)
+        setIsImpower(false)
         setPengingApprove(false)
       })
     } else if (type == '15') {
-      API.approveDao15().then(res => {
-      setPengingApprove15(true)
+        setIsImpower15(true)
+        setPengingApprove15(true)
+        API.approveDao15().then(res => {
     }).catch(error => {
+        setIsImpower15(false)
         setPengingApprove15(false)
       })
     } else if (type == '60') {
-      API.approveDao60().then(res => {
-      setPengingApprove60(true)
-
+        setIsImpower60(true)
+        setPengingApprove60(true)
+        API.approveDao60().then(res => {
       }).catch(error => {
+        // console.log('授权失败',isimpower)
+        setIsImpower60(false)
         setPengingApprove60(false)
       })
     }
@@ -165,19 +180,31 @@ export default function Director() {
     let setTimeoutTimer;
     const timerFn = function () {
         API.isApproveDao().then(res => {
-        // console.log("是否授权" + res)
+        // console.log("是否授权30" + res)
+        if (res) {
+            setIsImpower(false)
+        }
         setApprove(res)
       })
       API.isApproveDao7().then(res => {
-        // console.log("是否授权" + res)
+        // console.log("是否授权7" + res)
+        if (res) {
+            setIsImpower7(false)
+        }
         setApprove7(res)
       })
       API.isApproveDao15().then(res => {
-        // console.log("是否授权" + res)
+        // console.log("是否授权15" + res)
+        if (res) {
+            setIsImpower15(false)
+        }
         setApprove15(res)
       })
       API.isApproveDao60().then(res => {
-        // console.log("是否授权" + res)
+        // console.log("是否授权60" + res)
+        if (res) {
+            setIsImpower60(false)
+        }
         setApprove60(res)
       })
       Data.getTrsRate().then(async res => {
@@ -223,9 +250,11 @@ export default function Director() {
 
   const toast = (type) => {
     if (type == 'extract') {
-      settext(true)
-    } else {
-      settext(false)
+        settext(1)
+    }else if(type == 'balanceof'){
+        settext(2)
+    }else {
+        settext(0)
     }
     setApprovediv(true)
     timers && clearTimeout(timers)
@@ -274,10 +303,17 @@ export default function Director() {
         if (res[4] != '0') {
           newtime = formattingDate(new Date().getTime() + res[4] * 3 * 1000)
         } else {
-          newtime = "00"
+            if(res[6] > 0 && res[2] != 0){
+                newtime = "可提取"
+                setLockBlocks7(true)
+            }else{
+                newtime = "00"
+                setLockBlocks7(false)
+            }
         }
         setDao7RestBlocks(newtime)
         setDao7CanWithdraw(res[5])
+        // console.log('lockBlocks ==>',res[6])
         a = true
         isover(a, b, c, d)
       })
@@ -291,7 +327,13 @@ export default function Director() {
         if (res[4] != '0') {
           newtime = formattingDate(new Date().getTime() + res[4] * 3 * 1000)
         } else {
-          newtime = "00"
+            if(res[6] > 0 && res[2] != 0){
+                newtime = "可提取"
+                setLockBlocks15(true)
+            }else{
+                newtime = "00"
+                setLockBlocks15(false)
+            }
         }
         setDao15RestBlocks(newtime)
         setDao15CanWithdraw(res[5])
@@ -308,7 +350,13 @@ export default function Director() {
         if (res[4] != '0') {
           newtime = formattingDate(new Date().getTime() + res[4] * 3 * 1000)
         } else {
-          newtime = "00"
+            if(res[6] > 0 && res[2] != 0){
+                newtime = "可提取"
+                setLockBlocks(true)
+            }else{
+                newtime = "00"
+                setLockBlocks(false)
+            }
         }
         setDaoRestBlocks(newtime)
         setDaoCanWithdraw(res[5])
@@ -325,7 +373,13 @@ export default function Director() {
         if (res[4] != '0') {
           newtime = formattingDate(new Date().getTime() + res[4] * 3 * 1000)
         } else {
-          newtime = "00"
+            if(res[6] > 0 && res[2] != 0){
+                newtime = "可提取"
+                setLockBlocks60(true)
+            }else{
+                newtime = "00"
+                setLockBlocks60(false)
+            }
         }
         setDao60RestBlocks(newtime)
         setDao60CanWithdraw(res[5])
@@ -395,27 +449,58 @@ export default function Director() {
 
   // 提取
   function extract(type) {
-    if (type == '30' && DaoCanWithdraw) {
-      API.DaoWithdraw().then(res => {
-      })
-    } else if (type == '7' && Dao7CanWithdraw) {
-      API.Dao7Withdraw().then(res => {
-      })
-    } else if (type == '15' && Dao15CanWithdraw) {
-      API.Dao15Withdraw().then(res => {
-      })
-    } else if (type == '60' && Dao60CanWithdraw) {
-      API.Dao60Withdraw().then(res => {
-      })
-    } else {
-      toast('extract')
-    }
+      if (dao7BalanceOf > 0 && type == '7') {
+        if (Dao7CanWithdraw) {
+            API.Dao7Withdraw().then(res => {
+            })
+        }else{
+            toast('extract')
+        }
+      }else if(dao15BalanceOf > 0 && type == '15'){
+        if (Dao15CanWithdraw) {
+            API.Dao15Withdraw().then(res => {
+            })
+        }else{
+            toast('extract')
+        }
+      }else if(daoBalanceOf > 0 && type == '30'){
+        if (DaoCanWithdraw) {
+            API.DaoWithdraw().then(res => {
+            })
+        }else{
+            toast('extract')
+        }
+      }else if(dao60BalanceOf > 0 && type == '60'){
+        if (Dao60CanWithdraw) {
+            API.Dao60Withdraw().then(res => {
+            })
+        }else{
+            toast('extract')
+        }
+      }else{
+        toast('balanceof')
+      }
+    // if (type == '30' && DaoCanWithdraw) {
+    //   API.DaoWithdraw().then(res => {
+    //   })
+    // } else if (type == '7' && Dao7CanWithdraw) {
+    //   API.Dao7Withdraw().then(res => {
+    //   })
+    // } else if (type == '15' && Dao15CanWithdraw) {
+    //   API.Dao15Withdraw().then(res => {
+    //   })
+    // } else if (type == '60' && Dao60CanWithdraw) {
+    //   API.Dao60Withdraw().then(res => {
+    //   })
+    // } else {
+    //   toast('extract')
+    // }
   }
   return (
     <>
       <div className="driectorList">
         {isApprovediv && (
-          text ? <Approvediv>{t("director.text17")}</Approvediv> : <Approvediv>{t("director.text18")}</Approvediv>
+          text == 1 ? <Approvediv>{t("director.text17")}</Approvediv> : text == 0 ? <Approvediv>{t("director.text18")}</Approvediv> : <Approvediv>{t("director.text19")}</Approvediv> 
         )}
         <div className="driectorItem">
           <div className="driectorTitle">
@@ -471,7 +556,7 @@ export default function Director() {
           <div className="driectorBoxItem">
             <img src={require('../../assets/images/untie-icon-defalt-png.png')} alt="" />
             <span className="driectorBoxItemSpan">{t("director.text15")}：</span>
-            <span>{Dao7RestBlocks}</span>
+            <span style={{color: lockBlocks7 ? "#19e192" : "#fff"}}>{Dao7RestBlocks}</span>
           </div>
           <div className="driectorBoxItem">
             <img src={require('../../assets/images/wallet-icon-defalt-png.png')} alt="" />
@@ -496,7 +581,7 @@ export default function Director() {
                 setAddFlag(true)
                 setPengingApprove7(false)
               }
-            }}>{pengingApprove7 ? '授权中...' : t("director.text12")}</button>
+            }}>{isimpower7 ? '授权中...' : t("director.text12")}</button>
         </div>
       </div>
       {/* 15天 */}
@@ -524,7 +609,7 @@ export default function Director() {
           <div className="driectorBoxItem">
             <img src={require('../../assets/images/untie-icon-defalt-png.png')} alt="" />
             <span className="driectorBoxItemSpan">{t("director.text15")}：</span>
-            <span>{Dao15RestBlocks}</span>
+            <span style={{color: lockBlocks15 ? "#19e192" : "#fff"}}>{Dao15RestBlocks}</span>
           </div>
           <div className="driectorBoxItem">
             <img src={require('../../assets/images/wallet-icon-defalt-png.png')} alt="" />
@@ -549,7 +634,7 @@ export default function Director() {
                 setAddFlag(true)
                 setPengingApprove15(false)
               }
-            }}>{pengingApprove15 ? '授权中...' : t("director.text12")}</button>
+            }}>{isimpower15 ? '授权中...' : t("director.text12")}</button>
         </div>
       </div>
       {/* 30天 */}
@@ -577,7 +662,7 @@ export default function Director() {
           <div className="driectorBoxItem">
             <img src={require('../../assets/images/untie-icon-defalt-png.png')} alt="" />
             <span className="driectorBoxItemSpan">{t("director.text15")}：</span>
-            <span>{DaoRestBlocks}</span>
+            <span style={{color: lockBlocks ? "#19e192" : "#fff"}}>{DaoRestBlocks}</span>
           </div>
           <div className="driectorBoxItem">
             <img src={require('../../assets/images/wallet-icon-defalt-png.png')} alt="" />
@@ -602,7 +687,7 @@ export default function Director() {
                 setAddFlag(true)
                 setPengingApprove(false)
               }
-            }}>{pengingApprove ? '授权中...' : t("director.text12")}</button>
+            }}>{isimpower ? '授权中...' : t("director.text12")}</button>
         </div>
       </div>
       {/* 60天 */}
@@ -630,7 +715,7 @@ export default function Director() {
           <div className="driectorBoxItem">
             <img src={require('../../assets/images/untie-icon-defalt-png.png')} alt="" />
             <span className="driectorBoxItemSpan">{t("director.text15")}：</span>
-            <span>{Dao60RestBlocks}</span>
+            <span style={{color: lockBlocks60 ? "#19e192" : "#fff"}}>{Dao60RestBlocks}</span>
           </div>
           <div className="driectorBoxItem">
             <img src={require('../../assets/images/wallet-icon-defalt-png.png')} alt="" />
@@ -655,7 +740,7 @@ export default function Director() {
                 setAddFlag(true)
                 setPengingApprove60(false)
               }
-            }}>{pengingApprove60 ? '授权中...' : t("director.text12")}</button>
+            }}>{isimpower60 ? '授权中...' : t("director.text12")}</button>
         </div>
       </div>
       {//质押弹窗
@@ -705,7 +790,9 @@ export default function Director() {
                       if (addFlagtype == '7') {
                         API.Dao7Deposit(inputValue).then(res => {
                           setAddFlag(false)
-                        })
+                        }).catch(error => {
+                            console.log('锁仓错误',error)
+                          })
                       } else if (addFlagtype == '30') {
                         API.DaoDeposit(inputValue).then(res => {
                           setAddFlag(false)
