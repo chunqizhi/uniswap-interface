@@ -142,7 +142,7 @@ const HomeBanner = styled.div`
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 `
 
 const HomePrice = styled.div`
@@ -158,10 +158,12 @@ const HomeItem = styled.div`
     align-items: center;
     position: relative;
     //margin:2vw 0;
+    margin-bottom:5px;
+    border-radius: 6px;
+    overflow: hidden;
     > img {
-        max-width: 102%;
+        max-width: 100%;
         height: auto;
-        transform: scale(1.03);
     }
 `
 
@@ -226,7 +228,7 @@ export default function Home() {
         url: require('../../assets/images/banner2.png')
     },{
         title: 'banner2',
-        url: require('../../assets/images/banner3.png')
+        url: require('../../assets/images/banner1.jpg')
     }]);
 
     // 如果是true 持续加载更新

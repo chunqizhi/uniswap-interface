@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     color: #666;
-    margin-top: 20px;
+    margin-top: 5px;
 }
 
 .home-line .pre {
@@ -23,7 +23,7 @@
 
 .desc-ul-1 {
     display: flex;
-    margin-top: 20px;
+    margin-top: 5px;
     width: 100%;
     padding-left: 0;
     justify-content: space-around;
@@ -56,5 +56,5 @@
 
 .image-logo {
     height: 50px;
-    margin-top: 20px;
+    margin-top: 5px;
 }
