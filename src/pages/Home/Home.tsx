@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-// import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import HomeBottom from './HomeBottom'
 import { useTranslation } from "react-i18next"
 import Data from '../../apis/api/data.js'
@@ -166,6 +166,9 @@ const HomeItem = styled.div`
         height: auto;
     }
 `
+const Hometolink = styled(NavLink)`
+
+`
 
 // const HomeItem2 = styled(HomeItem)`
 //     background-image: url(${home_price2});
@@ -225,10 +228,12 @@ export default function Home() {
     // const [flag] = useState(true);
     const [slideList] = useState([{
         title: 'banner1',
-        url: require('../../assets/images/banner2.png')
+        url: require('../../assets/images/banner2.png'),
+        path:'/home'
     },{
         title: 'banner2',
-        url: require('../../assets/images/banner1.jpg')
+        url: require('../../assets/images/banner1.jpg'),
+        path:'/director'
     }]);
 
     // 如果是true 持续加载更新
@@ -269,14 +274,14 @@ export default function Home() {
                     dotActiveStyle={{ backgroundColor: '#06DD7A' }}
                     autoplayInterval={2000}>
                     {slideList.map((item, value) => (
-                        <div style={{ display: 'inline-block', width: '100%' }}>
+                        <Hometolink to={item.path} style={{ display: 'inline-block', width: '100%' }}>
                             <img
                                 src={ item.url }
                                 alt={ item.title }
                                 key={ value }
                                 style={{ width: '100%', verticalAlign: 'top' }}
                             />
-                        </div>
+                        </Hometolink>
                     ))}
                 </Carousel>
             </HomeBanner>
