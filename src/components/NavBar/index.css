@@ -35,7 +35,7 @@
     bottom: 0;
     z-index: 999;
     background-color: #0a0f33;
-    padding: 10px 0 18px;
+    padding: 3px 0 18px;
 }
 .navItem {
     display: flex;
