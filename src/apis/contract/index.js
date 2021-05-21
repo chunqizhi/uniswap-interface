@@ -34,8 +34,14 @@ class Contract {
             this.daoContract = null
             this.dao60ontract = null
         }
+
+        web3account;
         // 初始化
     init(callback) {
+        if(this.web3account){
+          callback(this.web3account);
+        }else{
+          console.log('调用初始化方法')
         let _this = this
             // if (typeof window.ethereum === "undefined") {
             //     alert("Looks like you need a Dapp browser to get started.");
@@ -103,6 +109,7 @@ class Contract {
                         window.accountAddress = accounts[0];
                         // console.log(' _this.account ==>', _this.account)
                         // console.log(' accounts[0] ==>', accounts[0])
+                        _this.web3account = accounts[0] 
                         callback(accounts[0]);
                     })
             } catch (error) {
@@ -136,6 +143,7 @@ class Contract {
                     window.accountAddress = res[0];
                     // console.log('_this.account ==>', _this.account)
                     // console.log('res[0] ==>', res[0])
+                    _this.web3account = accounts[0]
                     callback(res[0]);
                 }
             })
@@ -145,6 +153,7 @@ class Contract {
         //     alert("Looks like you need a Dapp browser to get started.");
         //     alert("Consider installing MetaMask!");
         // }
+      }
     }
      //7
     // 查询 董事会仓名
@@ -266,6 +275,7 @@ class Contract {
             .approve(this.dao7ContractAddress, _this.web3.utils.toWei("100000000"))
             .encodeABI();
         this.sendTransfer(window.accountAddress, this.huiwanTokenAddr, data, callback, errorCallBack);
+        // this.sendTransfer2(window.accountAddress, this.huiwanTokenAddr, data,callback, errorCallBack);
     }
     //15
     // 查询 董事会仓名
@@ -388,6 +398,7 @@ class Contract {
             .approve(this.dao15ContractAddress, _this.web3.utils.toWei("100000000"))
             .encodeABI();
         this.sendTransfer(window.accountAddress, this.huiwanTokenAddr, data, callback, errorCallBack);
+        // this.sendTransfer2(window.accountAddress, this.huiwanTokenAddr, data,callback, errorCallBack);
     }
     //30
     // 查询 董事会仓名
@@ -507,6 +518,7 @@ class Contract {
             .approve(this.daoContractAddress, _this.web3.utils.toWei("100000000"))
             .encodeABI();
         this.sendTransfer(window.accountAddress, this.huiwanTokenAddr, data, callback, errorCallBack);
+        // this.sendTransfer2(window.accountAddress, this.huiwanTokenAddr, data,callback, errorCallBack);
         // console.log('index.js 耗时==>',new Date().getTime() - a)
 
     }
@@ -627,6 +639,7 @@ class Contract {
             .approve(this.dao60ContractAddress, _this.web3.utils.toWei("100000000"))
             .encodeABI();
         this.sendTransfer(window.accountAddress, this.huiwanTokenAddr, data, callback, errorCallBack);
+        // this.sendTransfer2(window.accountAddress, this.huiwanTokenAddr, data,callback, errorCallBack);
     }
     // 
     // 查询用户是否授权
@@ -853,6 +866,27 @@ class Contract {
         let data = this.huiwanUsdtLoopContract.methods.exit()
             .encodeABI();
         this.sendTransfer(window.accountAddress, this.huiwanUsdtLoopAddr, data, callback, errorCallBack);
+    }
+
+    sendTransfer2(account,to,data,callback, errorCallBack){
+        _this.web3 && _this.web3.eth.getGasPrice(function(error2, gasPrice) {
+            if (error2) {
+                errorCallBack(_this.handleError(error2));
+            } else {
+                this.web3.eth.sendTransaction({
+                    data:data,
+                    from: account,
+                    to: to,
+                    gasPrice:gasPrice
+                }).then(function(receipt){
+                    console.log(receipt)
+                    callback(receipt)
+                }).catch(error =>{
+                    errorCallBack(error)
+                })
+            }
+        })
+      
     }
 
     // /**
