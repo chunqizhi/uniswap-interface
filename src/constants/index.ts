@@ -42,7 +42,7 @@ export const UNI: { [chainId in ChainId]: Token } = {
   [ChainId.HECO_TESTNET]: new Token(ChainId.HECO_TESTNET, "0x23503ff57649ba692e7da7cf2bc758e0d4485987", 18, 'UNI', 'Uniswap'),
   [ChainId.HECO_MAINNET]: new Token(ChainId.HECO_MAINNET, "0x22C54cE8321A4015740eE1109D9cBc25815C46E6", 18, 'UNI', 'Uniswap'),
   [ChainId.BSC_TESTNET]: new Token(ChainId.BSC_TESTNET, "0x23503ff57649ba692e7da7cf2bc758e0d4485987", 18, 'UNI', 'Uniswap'),
-  [ChainId.BSC_MAINNET]: new Token(ChainId.BSC_TESTNET, "0x23503ff57649ba692e7da7cf2bc758e0d4485987", 18, 'UNI', 'Uniswap')
+  [ChainId.BSC_MAINNET]: new Token(ChainId.BSC_TESTNET, "0x23503ff57649ba692e7da7cf2bc758e0d4485987", 18, 'UNI', 'Uniswap'),
   [ChainId.OKEXCHAIN_TESTNET]: new Token(ChainId.OKEXCHAIN_TESTNET, "0x23503ff57649ba692e7da7cf2bc758e0d4485987", 18, 'UNI', 'Uniswap'),
   [ChainId.OKEXCHAIN_MAINNET]: new Token(ChainId.OKEXCHAIN_MAINNET, "0x23503ff57649ba692e7da7cf2bc758e0d4485987", 18, 'UNI', 'Uniswap'),
 }
