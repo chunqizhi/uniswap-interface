@@ -44,6 +44,7 @@ export const UNI: { [chainId in ChainId]: Token } = {
   [ChainId.BSC_TESTNET]: new Token(ChainId.BSC_TESTNET, "0x23503ff57649ba692e7da7cf2bc758e0d4485987", 18, 'UNI', 'Uniswap'),
   [ChainId.BSC_MAINNET]: new Token(ChainId.BSC_TESTNET, "0x23503ff57649ba692e7da7cf2bc758e0d4485987", 18, 'UNI', 'Uniswap')
   [ChainId.OKEXCHAIN_TESTNET]: new Token(ChainId.OKEXCHAIN_TESTNET, "0x23503ff57649ba692e7da7cf2bc758e0d4485987", 18, 'UNI', 'Uniswap'),
+  [ChainId.OKEXCHAIN_MAINNET]: new Token(ChainId.OKEXCHAIN_MAINNET, "0x23503ff57649ba692e7da7cf2bc758e0d4485987", 18, 'UNI', 'Uniswap'),
 }
 
 export const COMMON_CONTRACT_NAMES: { [address: string]: string } = {
@@ -68,6 +69,7 @@ const WETH_ONLY: ChainTokenList = {
   [ChainId.BSC_TESTNET]: [WETH[ChainId.BSC_TESTNET]],
   [ChainId.BSC_MAINNET]: [WETH[ChainId.BSC_MAINNET]],
   [ChainId.OKEXCHAIN_TESTNET]: [WETH[ChainId.OKEXCHAIN_TESTNET]],
+  [ChainId.OKEXCHAIN_MAINNET]: [WETH[ChainId.OKEXCHAIN_MAINNET]]
 }
 
 // used to construct intermediary pairs for trading
