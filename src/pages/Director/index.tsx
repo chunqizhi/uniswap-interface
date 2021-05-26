@@ -6,6 +6,7 @@ import styled from 'styled-components'
 
 import Data from '../../apis/api/data.js'
 import API from '../../apis/api/six.js'
+import Daoimg from '../../assets/images/trs-icon-defalt-png.png'
 
 import './index.css'
 
@@ -39,7 +40,7 @@ const formatNum = function (str: string | number) {
     else {
       let pre = str.split('.')[0]
       let next = str.split('.')[1]
-      temp = pre + '.' + next.substring(0, 4)
+      temp = pre + '.' + next.substring(0,6)
     }
   } else {
     if (str.length > 4) {
@@ -135,6 +136,7 @@ export default function Director() {
   const [addFlag, setAddFlag] = useState(false)   //显示隐藏 抵押解押弹框
   const [inputValue, setInputVal] = useState('0')   //input的值
   const [stakedLp, setStakedLp] = useState('0.00')
+  const [allTotalSupply, setAllTotalSupply] = useState(0.00) //当前总锁仓量
   const clickListener = () => {
   }
   const approveFn = (type) => {
@@ -174,7 +176,6 @@ export default function Director() {
       })
     }
 
-
   }
   useEffect(() => {
     let setTimeoutTimer;
@@ -208,7 +209,7 @@ export default function Director() {
         setApprove60(res)
       })
       Data.getTrsRate().then(async res => {
-        // console.log('trs价格')
+        // console.log('trs价格 ==>',res.rate)
         setRate(await res.rate)
         // setRateFalse(true)
       })
@@ -231,6 +232,7 @@ export default function Director() {
         setStakedLp(res)
         // setBalanceFalse(true)
       })
+      
     }
     const timer = function () {
       setTimeoutTimer && clearTimeout(setTimeoutTimer)
@@ -387,6 +389,8 @@ export default function Director() {
         d = true
         isover(a, b, c, d)
       })
+      // setAllTotalSupply((dao7TotalSupply + dao15TotalSupply + daoTotalSupply + dao60TotalSupply))
+   
   }
 
   const getdao = () => {
@@ -521,19 +525,20 @@ export default function Director() {
             <img src={require('../../assets/images/mining-icon-defalt-png.png')} alt="" />
             <span>{t("director.text03")}</span>
           </div>
-          <p className="driectorContent"> ${formatNum(allBlock)}</p>
+          <p className="driectorContent"> ${formatNum((Number(dao7TotalSupply) + Number(dao15TotalSupply) + Number(daoTotalSupply) + Number(dao60TotalSupply)))}</p>
         </div>
         <div className="driectorItem">
           <div className="driectorTitle">
             <img src={require('../../assets/images/value-icon-defalt-png.png')} alt="" />
             <span>{t("director.text04")}</span>
           </div>
-          <p className="driectorContent">${formatNum(allBlock * rate)}</p>
+          <p className="driectorContent">${formatNum((Number(dao7TotalSupply) + Number(dao15TotalSupply) + Number(daoTotalSupply) + Number(dao60TotalSupply)) * rate)}</p>
         </div>
       </div>
       {/* 7天 */}
       <div className="driectorBox">
-        <img width="64px" height="64px" src={require('../../assets/images/trs-icon-defalt-png.png')} alt="" />
+        {/* <img width="64px" height="64px" src={require('../../assets/images/trs-icon-defalt-png.png')} alt="" Daoimg /> */}
+        <div className='driector-img' style={{ background: `url('${Daoimg}') center center /cover` }}></div>
         <p className="driectorBoxP1">{dao7name}</p>
         <p className="driectorBoxP2">APY 365%</p>
         {/* <p className="driectorBoxP2"></p> */}
@@ -586,7 +591,8 @@ export default function Director() {
       </div>
       {/* 15天 */}
       <div className="driectorBox">
-        <img width="64px" height="64px" src={require('../../assets/images/trs-icon-defalt-png.png')} alt="" />
+        {/* <img width="64px" height="64px" src={require('../../assets/images/trs-icon-defalt-png.png')} alt="" /> */}
+        <div className='driector-img' style={{ background: `url('${Daoimg}') center center /cover` }}></div>
         <p className="driectorBoxP1">{dao15name}</p>
         <p className="driectorBoxP2">APY 401.5%</p>
         {/* <p className="driectorBoxP2"></p> */}
@@ -639,7 +645,8 @@ export default function Director() {
       </div>
       {/* 30天 */}
       <div className="driectorBox">
-        <img width="64px" height="64px" src={require('../../assets/images/trs-icon-defalt-png.png')} alt="" />
+        {/* <img width="64px" height="64px" src={require('../../assets/images/trs-icon-defalt-png.png')} alt="" /> */}
+        <div className='driector-img' style={{ background: `url('${Daoimg}') center center /cover` }}></div>
         <p className="driectorBoxP1">{daoname}</p>
         <p className="driectorBoxP2">APY 438%</p>
         {/* <p className="driectorBoxP2"></p> */}
@@ -692,7 +699,8 @@ export default function Director() {
       </div>
       {/* 60天 */}
       <div className="driectorBox">
-        <img width="64px" height="64px" src={require('../../assets/images/trs-icon-defalt-png.png')} alt="" />
+        {/* <img width="64px" height="64px" src={require('../../assets/images/trs-icon-defalt-png.png')} alt="" /> */}
+        <div className='driector-img' style={{ background: `url('${Daoimg}') center center /cover` }}></div>
         <p className="driectorBoxP1">{dao60name}</p>
         <p className="driectorBoxP2">APY 474.5%</p>
         {/* <p className="driectorBoxP2"></p> */}

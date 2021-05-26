@@ -6,8 +6,8 @@ import { useTranslation } from "react-i18next"
 import Data from '../../apis/api/data.js'
 import { Carousel } from 'antd-mobile';
 import 'antd-mobile/lib/carousel/style/index.less'
-// import home_price1 from "../../assets/images/home_price1.png"
-// import home_price2 from "../../assets/images/home_price2.png"
+import home_price1 from "../../assets/images/home_price1.png"
+import home_price2 from "../../assets/images/home_price2.png"
 // const HomeTop = styled.div`
 
 // height: 35px;
@@ -161,21 +161,22 @@ const HomeItem = styled.div`
     margin-bottom:5px;
     border-radius: 6px;
     overflow: hidden;
-    > img {
-        max-width: 100%;
-        height: auto;
-    }
+    background-image: url(${home_price1});
+    height: 94px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    // > img {
+    //     max-width: 100%;
+    //     height: auto;
+    // }
 `
 const Hometolink = styled(NavLink)`
 
 `
 
-// const HomeItem2 = styled(HomeItem)`
-//     background-image: url(${home_price2});
-//      background-image: url(${home_price1});
-//     background-repeat: no-repeat;
-//     background-size: cover;
-// `
+const HomeItem2 = styled(HomeItem)`
+    background-image: url(${home_price2});
+`
 const HomeContent = styled.div`
     display: flex;
     flex-direction: column;
@@ -211,7 +212,7 @@ const formatNum = function (str: string|number) {
         else {
             let pre = str.split('.')[0]
             let next =  str.split('.')[1]
-            temp =pre+'.'+next.substring(0,4)
+            temp =pre+'.'+next.substring(0,6)
         }
     } else   temp =str
 
@@ -260,9 +261,9 @@ export default function Home() {
               })
           }
       },[pageFlag])
-      Data.getTrsRate1().then(res => {
-        console.log("9999 =>",res.rate)
-    })
+    //   Data.getTrsRate1().then(res => {
+    //     console.log("9999 =>",res.rate)
+    // })
     return (
         <>
             {/* 轮播图 */}
@@ -287,19 +288,19 @@ export default function Home() {
             </HomeBanner>
             <HomePrice>
                 <HomeItem>
-                    <img src={ require('../../assets/images/home_price1.png') } alt="" />
+                    {/* <img src={ require('../../assets/images/home_price1.png') } alt="" /> */}
                     <HomeContent>
                         <p>{t("home.text01")}</p>
                         <span>${allBalance}</span>
                     </HomeContent>
                 </HomeItem>
-                <HomeItem>
-                    <img src={ require('../../assets/images/home_price2.png') } alt="" />
+                <HomeItem2>
+                    {/* <img src={ require('../../assets/images/home_price2.png') } alt="" /> */}
                     <HomeContent>
                         <p>{t("home.text14")}</p>
                         <span>${ formatNum(rate) }</span>
                     </HomeContent>
-                </HomeItem>
+                </HomeItem2>
             </HomePrice>
             {/* <HomeTop>
                 <LeftDiv>

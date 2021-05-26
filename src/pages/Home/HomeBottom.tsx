@@ -29,7 +29,8 @@ export default function HomeBottom() {
             {Line(t("home.text04"))}
             {Desc()}
             {Line(t("home.text11"))}
-            <img src={Icon04} className="image-logo" alt="" />
+            {/* <img src={Icon04} className="image-logo" alt="" /> */}
+            <div className="image-imgdiv" style={{ background: `url('${Icon04}') center center /cover` }}></div>
         </>
     )
 }
@@ -55,7 +56,8 @@ function Desc() {
                 DescList.map((item) => {
                     return (
                         <li className="desc-li">
-                            <img src={item.icon} alt="" />
+                            {/* <img src={item.icon} alt="" /> */}
+                            <div className="desc-img"  style={{ background: `url('${item.icon}') center center /cover` }}></div>
                             <span className="desc-title">{t(item.title)}</span>
                             <span className="desc-desc">{t(item.desc)}</span>
                         </li>

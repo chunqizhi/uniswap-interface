@@ -461,9 +461,9 @@ function getAllTrsRate(){
 function getTrsRate() {
     return Six.getTrsRate()
 }
-function getTrsRate1() {
-    return Two.getTrsRate('USDTPRE')
-}
+// function getTrsRate1() {
+//     return Two.getTrsRate('USDTPRE')
+// }
 
 //获取汇率
 function getCoinRate() {
@@ -487,6 +487,5 @@ export default {
     getPoolListData,
     getTrsRate,
     getAllBlock,
-    getTrsRate1,
     getAllTrsRate
 }

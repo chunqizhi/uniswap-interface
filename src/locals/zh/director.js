@@ -1,8 +1,8 @@
 export default {
     text01: 'TRS 价格',
     text02: '当前流动性质押',
-    text03: '当前挖矿产出',
-    text04: '当前挖矿产出价值',
+    text03: 'Dao总锁仓量',
+    text04: 'Dao锁仓总价值',
     text05: '总锁仓量',
     text06: '我的锁仓',
     text07: '解锁数量',

@@ -217,7 +217,8 @@ export default function Market() {
                                     </Marketlisttop>
                                     <Marketlistmiddle>
                                         <div className="comparison">
-                                            <img width='26px' height='26px' src={ item.coin_name.indexOf('USDT') == 0 ?  item.next_coin : item.pre_coin } alt="" />
+                                            {/* <img width='26px' height='26px' src={ item.coin_name.indexOf('USDT') == 0 ?  item.next_coin : item.pre_coin } alt="" /> */}
+                                            <div className='market-img' style={{ background: `url('${item.coin_name.indexOf('USDT') == 0 ?  item.next_coin : item.pre_coin}') center center /cover` }}></div>
                                             <p className="comparisonname">{item.coin_name.indexOf('USDT') == 0 ? `${item.coin_name.split("/")[1]}/${item.coin_name.split("/")[0]}` : `${item.coin_name.split("/")[0]}/${item.coin_name.split("/")[1]}` }</p>
                                         </div>
                                         <div>{formatNum(rate[index].rate)}</div>

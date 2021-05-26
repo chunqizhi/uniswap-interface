@@ -1,8 +1,8 @@
 export default {
     text01: 'TRS price',
     text02: 'Current liquidity pledge',
-    text03: 'Current mining output',
-    text04: 'Current mining output value',
+    text03: 'Dao total',
+    text04: 'Dao Total value',
     text05: 'Total locked position',
     text06: 'My lock',
     text07: 'Unlocked quantity',
