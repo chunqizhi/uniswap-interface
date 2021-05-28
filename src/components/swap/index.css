@@ -1,10 +1,12 @@
 .exchangeLink {
-    font-size: 14px;
-    color: #E3F4FD;
+    font-size: 18px;
+    color: #D19C7D;
     line-height: 30px;
     border-bottom: 1px solid transparent;
     text-decoration: none;
 }
 .exchangeActive {
-    border-bottom-color: #06DD7A;
+    font-weight: bold;
+    color: #722F0D;
+    border-bottom-color: #722F0D;
 }

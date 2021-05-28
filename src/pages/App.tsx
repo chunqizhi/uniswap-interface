@@ -40,6 +40,8 @@ import NavBar from "../components/NavBar/index";
 import Director from "./Director/index";
 //行情
 import Market from "./Market/index";
+//背景图片
+import home_bg from '../assets/images/home/home-bgimg.png'
 
 
 const AppWrapper = styled.div`
@@ -47,6 +49,7 @@ const AppWrapper = styled.div`
   flex-flow: column;
   align-items: flex-start;
   background-color:#050822;
+  height:100vh;
 `
 
 const HeaderWrapper = styled.div`
@@ -70,13 +73,15 @@ const BodyWrapper = styled.div`
   overflow-x: hidden;
   z-index: 10;
   margin-bottom: 61px;
-
+  
   ${({ theme }) => theme.mediaWidth.upToSmall`
     padding: 8px 16px 0;
     // padding-top: 2rem;
     background-color: #050822;
   `};
-
+  background-image: url(${home_bg});
+  background-repeat: no-repeat;
+  background-size: cover;
   z-index: 1;
 `
 

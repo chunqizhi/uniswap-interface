@@ -56,6 +56,8 @@ const Web3StatusError = styled(Web3StatusGeneric)`
   :focus {
     background-color: ${({ theme }) => darken(0.1, theme.red1)};
   }
+  background-color:#f7f8fa;
+
 `
 
 const Web3StatusConnect = styled(Web3StatusGeneric)<{ faded?: boolean }>`
@@ -83,6 +85,7 @@ const Web3StatusConnect = styled(Web3StatusGeneric)<{ faded?: boolean }>`
         color: ${({ theme }) => darken(0.05, theme.primaryText1)};
       }
     `}
+    background-color:#f7f8fa;
 `
 
 const Web3StatusConnected = styled(Web3StatusGeneric)<{ pending?: boolean }>`
@@ -99,6 +102,7 @@ const Web3StatusConnected = styled(Web3StatusGeneric)<{ pending?: boolean }>`
       border: 1px solid ${({ pending, theme }) => (pending ? darken(0.1, theme.primary1) : darken(0.1, theme.bg3))};
     }
   }
+  background-color:#f7f8fa important;
 `
 
 const Text = styled.p`

@@ -8,6 +8,7 @@ import { Carousel } from 'antd-mobile';
 import 'antd-mobile/lib/carousel/style/index.less'
 import home_price1 from "../../assets/images/home_price1.png"
 import home_price2 from "../../assets/images/home_price2.png"
+import home_cart1 from "../../assets/images/home/home-card1.png"
 // const HomeTop = styled.div`
 
 // height: 35px;
@@ -137,7 +138,11 @@ import home_price2 from "../../assets/images/home_price2.png"
 //     }
 
 // `
-
+const Homesize = styled.div`
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    color: #D19C7D;
+`
 const HomeBanner = styled.div`
     display: flex;
     flex-wrap: wrap;
@@ -197,7 +202,91 @@ const HomeContent = styled.div`
         color: #fff;
     }
 `
+const Homelist = styled.div`
+    padding:20px;
+    width:100%;
+    background-image: url(${home_cart1});
+    background-repeat: no-repeat;
+    background-size: cover;
+`
+const HomelistRow = styled.div`
+    display:flex;
+    margin:5px 0px;
 
+`
+const Homelistc = styled.div`
+    margin:5px 0px;
+    flex:1;
+`
+const Homelisttitle = styled.div`
+    font-size:16px;
+    color:#C98D6A;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    margin-bottom:5px;
+`
+const Homelistval = styled.div`
+    font-size: 14px;
+    font-family: Nirmala UI;
+    font-weight: bold;
+    color: #722F0D;
+    display: flex;
+    align-items: center;
+`
+const Homecart2 = styled.div`
+    padding:20px 0;
+    background-color:#fff9f0;
+    border-radius:15px;
+`
+const Homecarttop = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
+const Homecart2canter = styled.div`
+    padding:10px;
+    padding-bottom:0px;
+    display: flex;
+    flex-wrap: wrap;
+`
+const Homecart2list = styled.div`
+    padding:10px;
+    margin:4px;
+    border-radius: 14px;
+    flex: 1;
+    border: 2px solid rgba(248, 215, 196, 0.5019607843137255);
+`
+const Homecart2listt = styled.div`
+    display: flex;
+    aling-item:center;
+    font-size:14px;
+    color: #722F0D;
+    font-family: MicrosoftYaHei;
+`
+const Homecart2listb = styled.div`
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-family: Tahoma;
+    color: #D19C7D;
+    padding:10px 0;
+`
+const Homecart2tl = styled.div`
+    width: 108px;
+    background: linear-gradient(256deg, #FFF9F0 0%, #D19C7D 100%);
+    font-size: 16px;
+    font-family: MicrosoftYaHei;
+    color: #722F0D;
+    padding: 7px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 7px 10px;
+`
+const Homecart2name = styled.div`
+    font-size: 14px;
+    font-family: MicrosoftYaHei;
+    color: #722F0D;
+`
 const formatNum = function (str: string|number) {
     if(str*1<0) return 0
     str=""+str
@@ -229,11 +318,11 @@ export default function Home() {
     // const [flag] = useState(true);
     const [slideList] = useState([{
         title: 'banner1',
-        url: require('../../assets/images/banner2.png'),
+        url: require('../../assets/images/home/home-banner1.png'),
         path:'/home'
     },{
         title: 'banner2',
-        url: require('../../assets/images/banner1.jpg'),
+        url: require('../../assets/images/home/home-banner1.png'),
         path:'/director'
     }]);
 
@@ -268,7 +357,7 @@ export default function Home() {
         <>
             {/* 轮播图 */}
             <HomeBanner>
-                <Carousel
+                {/* <Carousel
                     autoplay = {true}
                     infinite
                     dotStyle={{ backgroundColor: '#fff' }}
@@ -284,24 +373,133 @@ export default function Home() {
                             />
                         </Hometolink>
                     ))}
-                </Carousel>
+                </Carousel> */}
+                <img width="100%" style={{borderRadius:'10px'}} src={ require('../../assets/images/home/home-banner1.png') } alt="" />
             </HomeBanner>
-            <HomePrice>
+            <Homelist>
+                <HomelistRow>
+                    <Homelistc>
+                        <Homelisttitle>我的余额</Homelisttitle>
+                        <Homelistval>
+                            <img width="21" height="21" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
+                            <span>0.00</span>
+                        </Homelistval>
+                    </Homelistc>
+                    <Homelistc>
+                        <Homelisttitle>TVL</Homelisttitle>
+                        <Homelistval>$123123123</Homelistval>
+                    </Homelistc>
+                </HomelistRow>
+                <HomelistRow>
+                    <Homelistc>
+                        <Homelisttitle>TTQ价格</Homelisttitle>
+                        <Homelistval>0.00</Homelistval>
+                    </Homelistc>
+                    <Homelistc>
+                        <Homelisttitle>TTQ市值</Homelisttitle>
+                        <Homelistval>$123123123</Homelistval>
+                    </Homelistc>
+                </HomelistRow>
+                <HomelistRow>
+                    <Homelistc>
+                        <Homelisttitle>当前挖出数量</Homelisttitle>
+                        <Homelistval>
+                            <img width="21" height="21" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
+                            <span>0.00</span>
+                        </Homelistval>
+                    </Homelistc>
+                    <Homelistc>
+                        <Homelisttitle>当前挖出价值</Homelisttitle>
+                        <Homelistval>$123123123</Homelistval>
+                    </Homelistc>
+                </HomelistRow>
+                <HomelistRow>
+                    <Homelistc>
+                        <Homelisttitle>已回购TTQ数量</Homelisttitle>
+                        <Homelistval>
+                            <img width="21" height="21" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
+                            <span>0.00</span>
+                        </Homelistval>
+                    </Homelistc>
+                    <Homelistc>
+                        <Homelisttitle>DAO锁仓总量</Homelisttitle>
+                        <Homelistval>
+                            <img width="21" height="21" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
+                            <span>0.00</span>
+                        </Homelistval>
+                    </Homelistc>
+                </HomelistRow>
+            </Homelist>
+            <Homecart2>
+                <Homecarttop>
+                    <Homecart2tl>
+                        <img width='16px' height="16px" src={require('../../assets/images/home/hot.png')} alt="" />
+                        热门矿池
+                    </Homecart2tl>
+                    <Homesize>更多 ></Homesize>
+                </Homecarttop>
+                <Homecart2canter>
+                    <Homecart2list>
+                        <Homecart2listt>
+                            <img style={{position: 'relative',zIndex:'2'}} width="22" height="22" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
+                            <img style={{position: 'relative',left: '-7px',zIndex:'2'}} width="22" height="22" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
+                            <Homecart2name>TTQ/USDT</Homecart2name>
+                        </Homecart2listt>
+                        <Homecart2listb>
+                            <div>66.00%</div>
+                            <div>APY</div>
+                        </Homecart2listb>
+                    </Homecart2list>
+                    <Homecart2list>
+                        <Homecart2listt>
+                            <img style={{position: 'relative',zIndex:'2'}} width="22" height="22" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
+                            <img style={{position: 'relative',left: '-7px',zIndex:'2'}} width="22" height="22" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
+                            <Homecart2name>TTQ/USDT</Homecart2name>
+                        </Homecart2listt>
+                        <Homecart2listb>
+                            <div>66.00%</div>
+                            <div>APY</div>
+                        </Homecart2listb>
+                    </Homecart2list>
+                    <Homecart2list>
+                        <Homecart2listt>
+                            <img style={{position: 'relative',zIndex:'2'}} width="22" height="22" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
+                            <img style={{position: 'relative',left: '-7px',zIndex:'2'}} width="22" height="22" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
+                            <Homecart2name>TTQ/USDT</Homecart2name>
+                        </Homecart2listt>
+                        <Homecart2listb>
+                            <div>66.00%</div>
+                            <div>APY</div>
+                        </Homecart2listb>
+                    </Homecart2list>
+                    <Homecart2list>
+                        <Homecart2listt>
+                            <img style={{position: 'relative',zIndex:'2'}} width="22" height="22" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
+                            <img style={{position: 'relative',left: '-7px',zIndex:'2'}} width="22" height="22" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
+                            <Homecart2name>TTQ/USDT</Homecart2name>
+                        </Homecart2listt>
+                        <Homecart2listb>
+                            <div>66.00%</div>
+                            <div>APY</div>
+                        </Homecart2listb>
+                    </Homecart2list>
+                </Homecart2canter>
+            </Homecart2>
+            {/* <HomePrice>
                 <HomeItem>
-                    {/* <img src={ require('../../assets/images/home_price1.png') } alt="" /> */}
                     <HomeContent>
                         <p>{t("home.text01")}</p>
                         <span>${allBalance}</span>
                     </HomeContent>
                 </HomeItem>
                 <HomeItem2>
-                    {/* <img src={ require('../../assets/images/home_price2.png') } alt="" /> */}
                     <HomeContent>
                         <p>{t("home.text14")}</p>
                         <span>${ formatNum(rate) }</span>
                     </HomeContent>
                 </HomeItem2>
-            </HomePrice>
+            </HomePrice> */}
+
             {/* <HomeTop>
                 <LeftDiv>
                     <LeftSpan>TRS</LeftSpan>
@@ -326,7 +524,7 @@ export default function Home() {
                 <img src={require("../../assets/images/home/button02.png")} height='16' width='16' alt=""/>
                 {t("home.text13")}
             </HomeBtn02> */}
-            <HomeBottom key={'home-bottom'} />
+            {/* <HomeBottom key={'home-bottom'} /> */}
         </>
     )
 }

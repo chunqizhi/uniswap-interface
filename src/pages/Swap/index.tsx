@@ -58,6 +58,20 @@ const ButtonErrorbtn = styled(ButtonError)`
   color:#fff;
   height:40px;
 `
+const Headerbox = styled.div`
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  padding:20px 0;
+`
+const Headername = styled.div`
+  font-size: 28px;
+  font-family: Microsoft YaHei;
+  font-weight: bold;
+  color: #722F0D;
+  margin-top:10px;
+
+`
 
 let timer
 export default function Swap({ history }: RouteComponentProps) {
@@ -333,7 +347,11 @@ export default function Swap({ history }: RouteComponentProps) {
  
   return (
     <>
-      <PageTitle />
+      {/* <PageTitle /> */}
+      <Headerbox>
+        <img width="40" height="40" src={require('../../assets/images/home/nav-logo.png')} alt="" />
+        <Headername>TTQSwap</Headername>
+      </Headerbox>
       <TokenWarningModal
         isOpen={importTokensNotInDefault.length > 0 && !dismissTokenWarning}
         tokens={importTokensNotInDefault}
@@ -373,7 +391,7 @@ export default function Swap({ history }: RouteComponentProps) {
             <AutoColumn justify="space-between" style={{ margin: 0}}>
               <AutoRow justify={isExpertMode ? 'space-between' : 'center'} style={{ padding: '0 1rem' }}>
                 <ArrowWrapper clickable>
-                  <img src={ require('../../assets/images/reverse.png') } alt="" onClick={() => {
+                  <img width="24" src={ require('../../assets/images/home/icon-Conversion.png') } alt="" onClick={() => {
                       setApprovalSubmitted(false) // reset 2 step UI for approvals
                       onSwitchTokens()
                     }} />

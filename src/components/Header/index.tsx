@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Text } from 'rebass'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
-import LogoDark from '../../assets/svg/header-left.png'
+import LogoDark from '../../assets/svg/nav-logo.png'
 import { useActiveWeb3React } from '../../hooks'
 import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances } from '../../state/wallet/hooks'
@@ -26,6 +26,7 @@ const HeaderFrame = styled.div`
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding: 1rem;
   z-index: 2;
+  background-color:#fff9f0;
  
   ${({ theme }) => theme.mediaWidth.upToMedium`
     grid-template-columns: 1fr;
@@ -110,9 +111,13 @@ display:flex;
 align-items: center;
 `
 const Titlename = styled.div`
-  font-size:4.3vw;
+  // font-size:4.3vw;
   width:32vw;
-  color:#ccc;
+  color:#722F0D;
+  margin-left:5px;
+  font-size: 14px;
+  font-family: MicrosoftYaHei;
+  color: #722F0D;
 `
 // const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
 //   [ChainId.RINKEBY]: 'Rinkeby',
@@ -138,9 +143,9 @@ export default function Header() {
         <UniBalanceContent setShowUniBalanceModal={setShowUniBalanceModal} />
       </Modal>
       <HeaderRow>
-        <HomeBtn01 id={`home-nav-link`} to={'/home'}> <img width={'36px'} src={darkMode ? LogoDark : LogoDark} alt="logo" />
+        <HomeBtn01 id={`home-nav-link`} to={'/home'}> <img width={'29px'} src={darkMode ? LogoDark : LogoDark} alt="logo" />
           <Titlename>
-            tree-swap.org
+            TTQ.swap
           </Titlename>
         </HomeBtn01>
         <HeaderLinks>

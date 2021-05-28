@@ -114,15 +114,21 @@ li {
 .mid-text {
     display: block;
     margin-bottom: 5px;
+    font-size: 18px;
+    font-family: MicrosoftYaHei-Bold;
+    font-weight: bold;
+    color: #722F0D;
 }
 
 .mid-sub {
     margin: 0;
-    color: #abb7ca;
     display: block;
     font-size: 16px;
     font-weight: 400;
     text-align: center;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    color: #CF9574;
 }
 
 .nav-ul {
@@ -138,13 +144,14 @@ li {
     flex: 1;
     text-align: center;
     position: relative;
-    color: #ABB7CA;
     font-size: 16px;
     transition: all 0.3s;
+    font-family: MicrosoftYaHei;
+    color: #CF9574;
 }
 
 .nav-ul .active {
-    color: #06C66E;
+    color: #722F0D;
 }
 
 .nav-ul .nav-li.active::after {
@@ -152,7 +159,7 @@ li {
     position: absolute;
     width: 23px;
     height: 2px;
-    background-color: #06C66E;
+    background-color: #722F0D;
     left: 50%;
     bottom: -3px;
     transform: translateX(-50%);
@@ -247,7 +254,7 @@ li {
 .minList {
     display: flex;
     flex-direction: column;
-    background-color: #14223d;
+    background-color: #fff9f0;
     width: 100%;
     border-radius: 10px;
     padding: 10px;
@@ -259,7 +266,7 @@ li {
     flex-wrap: wrap;
     height: 50px;
     font-size: 16px;
-    color: #E3F4FD;
+    color: #CF9574;
     justify-content: space-between;
     /* justify-content: space-around; */
     align-items: center;

@@ -80,7 +80,7 @@ export default [{
         coin: "TRS",
         poolIndex: 'six',
         coin_price: 'USDTNEXT',
-        key_word: 'flat'
+        key_word: 'main'
     },
     {
         pre_coin: TRSICON,
@@ -89,7 +89,7 @@ export default [{
         coin: "TRS",
         poolIndex: 'seven',
         coin_price: 'HTNEXT',
-        key_word: 'flat'
+        key_word: 'main'
     },
     {
         pre_coin: MDXICON,
@@ -98,7 +98,7 @@ export default [{
         coin: "TRS",
         poolIndex: 'eight',
         coin_price: 'USDTNEXT',
-        key_word: "ideas"
+        key_word: "main"
     },
     {
         pre_coin: BXHICON,
@@ -107,7 +107,7 @@ export default [{
         coin: "TRS",
         poolIndex: 'nine',
         coin_price: 'USDTNEXT',
-        key_word: "ideas"
+        key_word: "main"
     },
 
     // {
@@ -135,7 +135,7 @@ export default [{
         coin: "TRS",
         poolIndex: 'twelve',
         coin_price: 'USDTNEXT',
-        key_word: "ideas"
+        key_word: "main"
     },
     {
         pre_coin: TRSICON,
@@ -144,7 +144,7 @@ export default [{
         coin: "TRS",
         poolIndex: 'thirteen',
         coin_price: 'TRSPRE',
-        key_word: "flat"
+        key_word: "main"
     },
     {
         pre_coin: HBTCICON,
@@ -189,7 +189,7 @@ export default [{
         coin: "TRS",
         poolIndex: 'trsshib',
         coin_price: 'TRSPRE',
-        key_word: "flat"
+        key_word: "main"
     },
     {
         pre_coin: TRSICON,
@@ -198,7 +198,7 @@ export default [{
         coin: "TRS",
         poolIndex: 'trseth',
         coin_price: 'TRSPRE',
-        key_word: "flat"
+        key_word: "main"
     },
     {
         pre_coin: DOGEICON,
@@ -216,7 +216,7 @@ export default [{
         coin: "TRS",
         poolIndex: 'shibusdt',
         coin_price: 'USDTNEXT',
-        key_word: "ideas"
+        key_word: "main"
     },
     {
         pre_coin: HLTCICON,
@@ -288,7 +288,7 @@ export default [{
         coin: "TRS",
         poolIndex: 'linkusdt',
         coin_price: 'USDTNEXT',
-        key_word: "ideas"
+        key_word: "main"
     },
     {
         pre_coin: AAVEICON,
@@ -297,7 +297,7 @@ export default [{
         coin: "TRS",
         poolIndex: 'aaveusdt',
         coin_price: 'USDTNEXT',
-        key_word: "ideas"
+        key_word: "main"
     },
     {
         pre_coin: TRSICON,
@@ -306,6 +306,6 @@ export default [{
         coin: "TRS",
         poolIndex: 'trshusd',
         coin_price: 'TRSPRE',
-        key_word: "flat"
+        key_word: "main"
     },
 ]

@@ -19,7 +19,7 @@ const InputRow = styled.div<{ selected: boolean }>`
   ${({ theme }) => theme.flexRowNoWrap}
   align-items: center;
   margin: ${({ selected }) => (selected ? '0.75rem 0.5rem 0.75rem 0.5rem' : '0.75rem 0.75rem 0.75rem 0.5rem')};
-  border:2px solid #06dd7a;
+  // border:2px solid #06dd7a;
   border-radius: 5px;
   // background-color:#f2f2f2;
   padding:5px 10px;
@@ -41,7 +41,7 @@ const CurrencySelect = styled.button<{ selected: boolean }>`
   border: none;
   padding: 0 0.5rem;
   // background-color:#f2f2f2;
-  background-color: #14223d;
+  background-color: #f7f6f4;
   :focus,
   :hover {
     // background-color: ${({ selected, theme }) => (selected ? theme.bg2 : darken(0.05, theme.primary1))};
@@ -74,7 +74,7 @@ const StyledDropDown = styled(DropDown)<{ selected: boolean }>`
   height: 35%;
   path {
     // stroke: ${({ theme }) => (theme.text1)};
-    stroke: #14de8d;
+    stroke: #d19c7d;
     stroke-width: 1.5px;
   }
 `
@@ -85,6 +85,8 @@ const InputPanel = styled.div<{ hideInput?: boolean }>`
   // border-radius: ${({ hideInput }) => (hideInput ? '8px' : '20px')};
   // background-color: ${({ theme }) => theme.bg2};
   z-index: 1;
+  background-color:#f9e7d3;
+  border-radius: 15px;
 `
 
 const Container = styled.div<{ hideInput: boolean }>`
@@ -99,22 +101,22 @@ const StyledTokenName = styled.span<{ active?: boolean }>`
   font-size: 15px;
   background-color:transparent;
   // color:#666666;
-  color: #F2F2F2;
+  color: #722F0D;
 `
 
 const StyledBalanceMax = styled.button`
   height: 28px;
   // background-color: ${({ theme }) => theme.primary5};
   // border: 1px solid ${({ theme }) => theme.primary5};
-  border-radius: 2px;
+  border-radius: 5px;
   font-size: 0.875rem;
   line-height:28px;
   font-weight: 500;
   cursor: pointer;
   margin-right: 0.5rem;
   // color: ${({ theme }) => theme.primaryText1};
-  background-color: rgba(24,180,108,.5);
-  color: #14c05d;
+  // background-color: rgba(24,180,108,.5);
+  // color: #14c05d;
   border:none;
   width: 50px;
   text-align: center;
@@ -129,8 +131,8 @@ const StyledBalanceMax = styled.button`
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
     margin-right: 0.5rem;
   `};
-  // background-color: #fff;
-  // color:#666666;
+  background-color:#ab5729;
+  color:#fff;
 `
 
 interface CurrencyInputPanelProps {
@@ -185,13 +187,13 @@ export default function CurrencyInputPanel({
         {!hideInput && (
           <LabelRow>
             <RowBetween>
-              <TYPE.body color={'#ABB7CA'} fontSize={14}>
+              <TYPE.body color={'#666666'} fontSize={14}>
                 {t("add.text28")}
               </TYPE.body>
               {account && (
                 <TYPE.body
                   onClick={onMax}
-                  color={'#3AF288'}
+                  color={'#666666'}
                   fontSize={14}
                   style={{ display: 'inline', cursor: 'pointer',fontFamily: 'CenturyGothic-Bold',fontWeight: 'bold' }}
                 >

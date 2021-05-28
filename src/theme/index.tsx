@@ -228,5 +228,6 @@ body {
   background-position: 0 -30vh;
   background-repeat: no-repeat;
   background-color: #050822;
+  height:100vh;
 }
 `

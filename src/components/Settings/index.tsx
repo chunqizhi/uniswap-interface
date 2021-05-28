@@ -189,7 +189,8 @@ const { t } = useTranslation()
         </ModalContentWrapper>
       </Modal>
       <StyledMenuButton onClick={toggle} id="open-settings-dialog-button">
-        <StyledMenuIcon />
+        {/* <StyledMenuIcon /> */}
+        <img width="20" src={require('../../assets/images/home/content-icon.png')} alt="" />
         {expertMode ? (
           <EmojiWrapper>
             <span role="img" aria-label="wizard-icon">

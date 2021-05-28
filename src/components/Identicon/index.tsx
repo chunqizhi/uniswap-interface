@@ -2,7 +2,8 @@
 import React from 'react'
 
 import styled from 'styled-components'
-import headImg from "../../assets/images/wallet-icon-click-png.png"
+// import headImg from "../../assets/images/wallet-icon-click-png.png"
+import headImg from "../../assets/images/home/nav-icon-wallet.png"
 // import { useActiveWeb3React } from '../../hooks'
 // import Jazzicon from 'jazzicon'
 

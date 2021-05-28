@@ -54,7 +54,20 @@ const ButtonRow = styled(RowFixed)`
     justify-content: space-between;
   `};
 `
+const Headerbox = styled.div`
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  padding:20px 0;
+`
+const Headername = styled.div`
+  font-size: 28px;
+  font-family: Microsoft YaHei;
+  font-weight: bold;
+  color: #722F0D;
+  margin-top:10px;
 
+`
 // const ResponsiveButtonPrimary = styled(ButtonPrimary)`
 //   width: fit-content;
 //   ${({ theme }) => theme.mediaWidth.upToSmall`
@@ -91,18 +104,18 @@ const CreateButton = styled(Link)`
   width: 48%;
   height: 45px;
   border-radius: 5px;
-  border: 2px solid #667182;
+  border: 2px solid #773615;
   font-size: 16px;
-  color: #19d88d;
+  color: #722F0D;
   box-sizing: border-box;
   text-decoration: none;
 `
 const AddButton = styled(Link)`
   width: 48%;
   height: 45px;
-  border-radius: 4px;
+  border-radius: 6px;
   border: none;
-  background-color: #19ce8a;
+  background-color: #722f0d;
   text-align: center;
   font-size: 16px;
   color: #fff;
@@ -177,7 +190,11 @@ export default function Pool() {
 
   return (
     <>
-      <PageTitle />
+      {/* <PageTitle /> */}
+      <Headerbox>
+        <img width="40" height="40" src={require('../../assets/images/home/nav-logo.png')} alt="" />
+        <Headername>TTQSwap</Headername>
+      </Headerbox>
       <PageWrapper>
         <SwapPoolTabs active={'pool'} />
         <VoteCard>
@@ -281,7 +298,7 @@ export default function Pool() {
               </>
             ) : (
               <PoolNot>
-                <img src={ require('../../assets/images/poolImg.jpg') } alt="" />
+                <img width="112" src={ require('../../assets/images/home/icon-no-fluidity.png') } alt="" />
                 <span>{t("pool.text10")}</span>
               </PoolNot>
               // <EmptyProposals>
@@ -294,7 +311,7 @@ export default function Pool() {
             <AutoColumn justify={'center'} gap="md">
               <Text textAlign="center" fontSize={12} style={{ padding: '.5rem 0 .5rem 0', color: '#ABB7CA' }}>
                 {hasV1Liquidity ? `${t("pool.text11")}` :  `${t("pool.text12")}`}{' '}
-                <StyledInternalLink style={{ color: '#19E192' }} id="import-pool-link" to={hasV1Liquidity ? '/migrate/v1' : '/find'}>
+                <StyledInternalLink style={{ color: '#722F0D' }} id="import-pool-link" to={hasV1Liquidity ? '/migrate/v1' : '/find'}>
                   {hasV1Liquidity ? `${t("pool.text13")}` : `${t("pool.text14")}`}
                 </StyledInternalLink>
               </Text>

@@ -34,7 +34,7 @@
     right: 0;
     bottom: 0;
     z-index: 999;
-    background-color: #0a0f33;
+    background-color: #fff9f0;
     padding: 3px 0 18px;
 }
 .navItem {
@@ -46,7 +46,17 @@
     color: #bcc8dc;
     position: relative;
     text-decoration: none;
+    opacity: 0.5;
+
+}
+.icon1{
+  width: 26px;
+  height: 26px;
+  background-repeat: no-repeat;
+  background-size: cover;
+
 }
 .navItemActive {
-    color: #06dd7a;
+    color: #722F0D;
+    opacity: 1;
 }

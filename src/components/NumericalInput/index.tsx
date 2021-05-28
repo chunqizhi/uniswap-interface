@@ -20,7 +20,8 @@ const StyledInput = styled.input<{ error?: boolean; fontSize?: string; align?: s
   padding: 0px;
   -webkit-appearance: textfield;
   // background-color:#f2f2f2;
-  background-color: #14223d;
+  // background-color: #14223d;
+  background-color: #f9e7d3;
   padding-right:10px;
   ::-webkit-search-decoration {
     -webkit-appearance: none;
@@ -37,7 +38,8 @@ const StyledInput = styled.input<{ error?: boolean; fontSize?: string; align?: s
 
   ::placeholder {
     // color: ${({ theme }) => theme.text4};
-    color: #14C05D;
+    // color: #14C05D;
+    color:#999;
   }
 `
 

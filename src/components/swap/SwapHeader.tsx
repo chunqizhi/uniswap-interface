@@ -15,6 +15,7 @@ const StyledSwapHeader = styled.div`
   width: 100%;
   max-width: 420px;
   color: ${({ theme }) => theme.text2};
+
 `
 // const StyledArrowLeft = styled(ArrowLeft)`
 //   color: ${({ theme }) => theme.text1};

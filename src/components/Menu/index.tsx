@@ -25,7 +25,7 @@ const StyledMenuButton = styled.button`
   width: 100%;
   height: 100%;
   border: none;
-  background-color: #080d38;
+  background-color: #fff9f0;
   margin: 0;
   padding: 0;
   height: 35px;
@@ -37,11 +37,12 @@ const StyledMenuButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left:8px;
   :hover,
   :focus {
     cursor: pointer;
     outline: none;
-    background-color: #080d38;
+    background-color: #fff9f0;
     // background-color: ${({ theme }) => theme.bg4};
   }
 
@@ -61,25 +62,26 @@ const StyledMenu = styled.div`
 `
 
 const MenuFlyout = styled.span`
-position: absolute;
-top:0;
-right: 0;
-left:0;
-z-index: 100;
-  background-color: #050822;
+  position: absolute;
+  top:0;
+  right: 0;
+  left:0;
+  z-index: 100;
+  background-color: #fff9f2;
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
     0px 24px 32px rgba(0, 0, 0, 0.01);
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
   font-size: 1rem;
+  color:#D19C7D;
  
 `
 
 const MenuItem = styled(ExternalLink)`
   flex: 1;
   padding: 0.5rem 0.5rem;
-  color: #BCC8DC;
+  color: #D19C7D;
   // color: ${({ theme }) => theme.text2};
   :hover {
     color: ${({ theme }) => theme.text1};
@@ -107,13 +109,13 @@ const Language = styled.p`
 margin:0;
 padding: 0.5rem ;
 text-decoration:none;
-color: #BCC8DC;
+color: #D19C7D;
 // color: ${({ theme }) => theme.text2};
 `
 const NavLinkItem = styled(NavLink)`
 padding: 0.5rem 0.5rem;
 text-decoration:none;
-color: #BCC8DC;
+color: #722F0D;
 // color: ${({ theme }) => theme.text2};
 `
 const Approvediv = styled.div`
@@ -141,10 +143,10 @@ export default function Menu() {
   const open = useModalOpen(ApplicationModal.MENU)
   const toggle = useToggleModal(ApplicationModal.MENU)
   const [isApprovediv, setApprovediv] = useState(false) // 授权/非授权
-  const [menu, setMenu] = useState(require('../../assets/images/menu.png'));
+  const [menu, setMenu] = useState(require('../../assets/images/home/menu.png'));
   // 根据open监听是否打开弹窗
   useEffect(() => {
-    open === false? setMenu(require('../../assets/images/menu.png')) : setMenu(require('../../assets/images/menu1.png'))
+    open === false? setMenu(require('../../assets/images/home/menu.png')) : setMenu(require('../../assets/images/home/menu1.png'))
   }, [open]);
 
   useOnClickOutside(node, open ? toggle : undefined)

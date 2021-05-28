@@ -21,7 +21,7 @@ const Base = styled(RebassButton)<{
   // border-radius:0px;
   outline: none;
   border: 1px solid transparent!important;
-  color: white!important;
+  color: #722f0d !important;
   text-decoration: none;
   display: flex;
   justify-content: center;
@@ -32,7 +32,7 @@ const Base = styled(RebassButton)<{
   z-index: 1;
   margin-left:7%;
   font-size:15px;
-  background-color: #080d38!important;
+  background-color: #f7f8fa !important;
   &:disabled {
     cursor: auto;
   }
@@ -44,10 +44,11 @@ const Base = styled(RebassButton)<{
 // 默认
 export const ButtonPrimary = styled(Base)`
   // background-color: ${({ theme }) => theme.primary1};
-  background: -webkit-linear-gradient(left, #45b7da, #57dfaa);
-  background: -o-linear-gradient(left,#45b7da, #57dfaa);
-  background: -moz-linear-gradient(left,#45b7da, #57dfaa);
-  background: -ms-linear-gradient(left,#45b7da, #57dfaa);
+  // background: -webkit-linear-gradient(left, #45b7da, #57dfaa);
+  // background: -o-linear-gradient(left,#45b7da, #57dfaa);
+  // background: -moz-linear-gradient(left,#45b7da, #57dfaa);
+  // background: -ms-linear-gradient(left,#45b7da, #57dfaa);
+  background-color:#ac562a !important;
   color: white;
   &:focus {
     box-shadow: 0 0 0 1pt ${({ theme }) => darken(0.05, theme.primary1)};
@@ -71,7 +72,7 @@ export const ButtonPrimary = styled(Base)`
     height:40px;
     color:white;
   }
-  color:#fff;
+  color:#fff !important;
   border-radius:8px;
 `
 //  

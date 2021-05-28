@@ -95,16 +95,12 @@ const { t } = useTranslation()
 
     const nav_type = [
         {
-            text: t("mining.text11"),
+            text:'综合区',
             type: "main",
         },
         {
-            text: t("mining.text12"),
+            text: 'TTQ',
             type: "flat",
-        },
-        {
-            text: t("mining.text13"),
-            type: "ideas",
         },
     ]
 
@@ -155,8 +151,8 @@ const { t } = useTranslation()
     }, [pageFlag])
     return (
         <>
-            <Title />
-            <TopContent rate={formatNum(rate)} nav_list={nav_list} />
+            {/* <Title /> */}
+            {/* <TopContent rate={formatNum(rate)} nav_list={nav_list} /> */}
             <MidTitle />
             <ul className="nav-ul">
                 {
