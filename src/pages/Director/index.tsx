@@ -6,7 +6,8 @@ import styled from 'styled-components'
 
 import Data from '../../apis/api/data.js'
 import API from '../../apis/api/six.js'
-import Daoimg from '../../assets/images/trs-icon-defalt-png.png'
+import cart1 from '../../assets/images/mining/driector-card2.png'
+import home_cart1 from "../../assets/images/home/nav-logo.png"
 
 import './index.css'
 
@@ -25,7 +26,103 @@ const Approvediv = styled.div`
     z-index:2999;
     transform: translateX(-50%);
 `
+const Directortitle = styled.div`
+  font-size: 40px;
+  font-family: HYChaoCuYuanJ;
+  font-weight: 400;
+  color: #722F0D;
+`
+const Directorh2 = styled.div`
+  font-size: 18px;
+  font-family: MicrosoftYaHei;
+  color: #722F0D;
+`
+const Directortopbox = styled.div`
+  height:148px;
+  background-image: url(${cart1});
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  width: 100%;
+  >img{
+    position: absolute;
+  }
+`
 
+const Directorbox = styled.div`
+  width:100%;
+  background-color:#fff9f0;
+  border-radius:15px;
+  margin:10px 0 15px;
+`
+const Directortop = styled.div`
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 0;
+  margin: 0 16px;
+  border-bottom:1px solid #D19C7D;
+`
+const Directorcolor = styled.div`
+  color:#722F0D;
+`
+const Directornum = styled(Directorcolor)`
+  font-size: 16px;
+  font-family: Microsoft YaHei;
+  font-weight: bold;
+`
+const Directorapr = styled(Directorcolor)`
+  font-size: 20px;
+  font-family: Microsoft YaHei;
+  font-weight: bold;
+  display:flex;
+  align-items: center;
+`
+const Directortopname = styled(Directorcolor)`
+  font-size:18px
+`
+const Directortopimg = styled.div`
+  width:50px;
+  height:50px;
+  background-image: url(${home_cart1});
+  background-repeat: no-repeat;
+  background-size: cover;
+`
+
+const Directorrow = styled.div`
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:5px 16px;
+`
+const Directorname = styled.div`
+  font-size: 14px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #D19C7D;
+`
+const Miningbottombtn = styled.div`
+    display:flex;
+    align-item:center;
+    justify-content: center;
+    width:100%
+    justify-content: space-around;
+    margin:30px 0 20px;
+`
+
+const Miningbtn1 =styled.div`
+    background-color:#722f0d;
+    border-radius:20px;
+    color:#fff;
+    width:35%;
+    text-align:center;
+    padding:8px 0;
+`
+const Miningbtn2 =styled(Miningbtn1)`
+    background-color:#fff9f0;
+    color:#722f0d;
+    border:2px solid #722f0d;
+`
 const formatNum = function (str: string | number) {
   if (str * 1 < 0) return 0
   str = "" + str
@@ -502,79 +599,48 @@ export default function Director() {
   }
   return (
     <>
-      <div className="driectorList">
-        {isApprovediv && (
+      {isApprovediv && (
           text == 1 ? <Approvediv>{t("director.text17")}</Approvediv> : text == 0 ? <Approvediv>{t("director.text18")}</Approvediv> : <Approvediv>{t("director.text19")}</Approvediv> 
         )}
-        <div className="driectorItem">
-          <div className="driectorTitle">
-            <img src={require('../../assets/images/price-icon-defalt-png.png')} alt="" />
-            <span>{t("director.text01")}</span>
-          </div>
-          <p className="driectorContent">${formatNum(rate)}</p>
-        </div>
-        <div className="driectorItem">
-          <div className="driectorTitle">
-            <img src={require('../../assets/images/Pledge-icon-defalt-png.png')} alt="" />
-            <span>{t("director.text02")}</span>
-          </div>
-          <p className="driectorContent">${allBalance}</p>
-        </div>
-        <div className="driectorItem">
-          <div className="driectorTitle">
-            <img src={require('../../assets/images/mining-icon-defalt-png.png')} alt="" />
-            <span>{t("director.text03")}</span>
-          </div>
-          <p className="driectorContent"> ${formatNum((Number(dao7TotalSupply) + Number(dao15TotalSupply) + Number(daoTotalSupply) + Number(dao60TotalSupply)))}</p>
-        </div>
-        <div className="driectorItem">
-          <div className="driectorTitle">
-            <img src={require('../../assets/images/value-icon-defalt-png.png')} alt="" />
-            <span>{t("director.text04")}</span>
-          </div>
-          <p className="driectorContent">${formatNum((Number(dao7TotalSupply) + Number(dao15TotalSupply) + Number(daoTotalSupply) + Number(dao60TotalSupply)) * rate)}</p>
-        </div>
-      </div>
-      {/* 7天 */}
-      <div className="driectorBox">
-        {/* <img width="64px" height="64px" src={require('../../assets/images/trs-icon-defalt-png.png')} alt="" Daoimg /> */}
-        <div className='driector-img' style={{ background: `url('${Daoimg}') center center /cover` }}></div>
-        <p className="driectorBoxP1">{dao7name}</p>
-        <p className="driectorBoxP2">APY 365%</p>
-        {/* <p className="driectorBoxP2"></p> */}
-        <div className="driectorBoxList">
-          <div className="driectorBoxItem">
-            <img src={require('../../assets/images/lock-icon-defalt-png.png')} alt="" />
-            <span className="driectorBoxItemSpan">{t("director.text05")}：</span>
-            <span>{formatNum(dao7TotalSupply)}</span>
-          </div>
-          <div className="driectorBoxItem">
-            <img src={require('../../assets/images/mine-icon-defalt-png.png')} alt="" />
-            <span className="driectorBoxItemSpan">{t("director.text06")}：</span>
-            <span>{formatNum(dao7BalanceOf)}</span>
-          </div>
-          <div className="driectorBoxItem">
-            <img src={require('../../assets/images/untie-icon-defalt-png.png')} alt="" />
-            <span className="driectorBoxItemSpan">{t("director.text07")}：</span>
-            <span>{formatNum(allAvailableAmount7)}</span>
-          </div>
-          <div className="driectorBoxItem">
-            <img src={require('../../assets/images/untie-icon-defalt-png.png')} alt="" />
-            <span className="driectorBoxItemSpan">{t("director.text15")}：</span>
-            <span style={{color: lockBlocks7 ? "#19e192" : "#fff"}}>{Dao7RestBlocks}</span>
-          </div>
-          <div className="driectorBoxItem">
-            <img src={require('../../assets/images/wallet-icon-defalt-png.png')} alt="" />
-            <span className="driectorBoxItemSpan">{t("director.text08")}：</span>
-            <span>{formatNum(balance)}</span>
-          </div>
-        </div>
-        <div className="drictorBut">
-          <button className="drictorExtract" onClick={() => extract('7')} >{t("director.text11")}</button>
-          <button className="drictorLocking" onClick={
+      <Directortitle>TTQSWAP.COM</Directortitle>
+      <Directorh2>DAO{t("director.text21")}</Directorh2>
+      <Directortopbox> </Directortopbox>
+       <Directorbox>{/*dao7 */}
+        <Directortop>
+          <Directortopname>TTQ-DAO7</Directortopname>
+          <Directortopimg></Directortopimg>
+        </Directortop>
+        <Directorrow>
+          <Directorname>{t("director.text22")}</Directorname>
+          <Directorapr>
+            365%
+            <img width="30" height="30" src={home_cart1} alt="" />
+          </Directorapr>
+        </Directorrow>
+        <Directorrow>
+          <Directorname>{t("director.text23")}</Directorname>
+          <Directornum>{formatNum(dao7TotalSupply)}</Directornum>
+        </Directorrow>
+        <Directorrow>
+          <Directorname>{t("director.text24")}</Directorname>
+          <Directornum>{formatNum(balance)}</Directornum>
+        </Directorrow>
+        <Directorrow>
+          <Directorname>{t("director.text25")}</Directorname>
+          <Directornum>{formatNum(dao7BalanceOf)}</Directornum>
+        </Directorrow>
+        <Directorrow>
+          <Directorname>{t("director.text26")}</Directorname>
+          <Directornum>{formatNum(allAvailableAmount7)}</Directornum>
+        </Directorrow>
+        <Directorrow>
+          <Directorname>{t("director.text27")}</Directorname>
+          <Directornum>{Dao7RestBlocks}</Directornum>
+        </Directorrow>
+        <Miningbottombtn>
+          <Miningbtn1 onClick={() => extract('7')}>{t("director.text28")}</Miningbtn1>
+          <Miningbtn2 onClick={
             () => {
-              // console.log("isApprove =>",isApprove)
-              // console.log("pengingApprove =>",pengingApprove)
               setAddFlagtype('7')
               if (!isApprove7) {
                 if (pengingApprove7) {
@@ -586,50 +652,46 @@ export default function Director() {
                 setAddFlag(true)
                 setPengingApprove7(false)
               }
-            }}>{isimpower7 ? '授权中...' : t("director.text12")}</button>
-        </div>
-      </div>
-      {/* 15天 */}
-      <div className="driectorBox">
-        {/* <img width="64px" height="64px" src={require('../../assets/images/trs-icon-defalt-png.png')} alt="" /> */}
-        <div className='driector-img' style={{ background: `url('${Daoimg}') center center /cover` }}></div>
-        <p className="driectorBoxP1">{dao15name}</p>
-        <p className="driectorBoxP2">APY 401.5%</p>
-        {/* <p className="driectorBoxP2"></p> */}
-        <div className="driectorBoxList">
-          <div className="driectorBoxItem">
-            <img src={require('../../assets/images/lock-icon-defalt-png.png')} alt="" />
-            <span className="driectorBoxItemSpan">{t("director.text05")}：</span>
-            <span>{formatNum(dao15TotalSupply)}</span>
-          </div>
-          <div className="driectorBoxItem">
-            <img src={require('../../assets/images/mine-icon-defalt-png.png')} alt="" />
-            <span className="driectorBoxItemSpan">{t("director.text06")}：</span>
-            <span>{formatNum(dao15BalanceOf)}</span>
-          </div>
-          <div className="driectorBoxItem">
-            <img src={require('../../assets/images/untie-icon-defalt-png.png')} alt="" />
-            <span className="driectorBoxItemSpan">{t("director.text07")}：</span>
-            <span>{formatNum(allAvailableAmount15)}</span>
-          </div>
-          <div className="driectorBoxItem">
-            <img src={require('../../assets/images/untie-icon-defalt-png.png')} alt="" />
-            <span className="driectorBoxItemSpan">{t("director.text15")}：</span>
-            <span style={{color: lockBlocks15 ? "#19e192" : "#fff"}}>{Dao15RestBlocks}</span>
-          </div>
-          <div className="driectorBoxItem">
-            <img src={require('../../assets/images/wallet-icon-defalt-png.png')} alt="" />
-            <span className="driectorBoxItemSpan">{t("director.text08")}：</span>
-            <span>{formatNum(balance)}</span>
-          </div>
-        </div>
-        <div className="drictorBut">
-          <button className="drictorExtract" onClick={() => extract('15')} >{t("director.text11")}</button>
-          <button className="drictorLocking" onClick={
+            }}>{isimpower7 ? '授权中...' : t("director.text29")}</Miningbtn2>
+        </Miningbottombtn>
+      </Directorbox>
+      <Directorbox>{/*dao15 */}
+        <Directortop>
+          <Directortopname>TTQ-DAO15</Directortopname>
+          <Directortopimg></Directortopimg>
+        </Directortop>
+        <Directorrow>
+          <Directorname>{t("director.text22")}</Directorname>
+          <Directorapr>
+            401.5%
+            <img width="30" height="30" src={home_cart1} alt="" />
+          </Directorapr>
+        </Directorrow>
+        <Directorrow>
+          <Directorname>{t("director.text23")}</Directorname>
+          <Directornum>{formatNum(dao15TotalSupply)}</Directornum>
+        </Directorrow>
+        <Directorrow>
+          <Directorname>{t("director.text24")}</Directorname>
+          <Directornum>{formatNum(balance)}</Directornum>
+        </Directorrow>
+        <Directorrow>
+          <Directorname>{t("director.text25")}</Directorname>
+          <Directornum>{formatNum(dao15BalanceOf)}</Directornum>
+        </Directorrow>
+        <Directorrow>
+          <Directorname>{t("director.text26")}</Directorname>
+          <Directornum>{formatNum(allAvailableAmount15)}</Directornum>
+        </Directorrow>
+        <Directorrow>
+          <Directorname>{t("director.text27")}</Directorname>
+          <Directornum>{Dao15RestBlocks}</Directornum>
+        </Directorrow>
+        <Miningbottombtn>
+          <Miningbtn1 onClick={() => extract('15')}>{t("director.text28")}</Miningbtn1>
+          <Miningbtn2 onClick={
             () => {
               setAddFlagtype('15')
-            //   console.log("isApprove15 =>", isApprove15)
-            //   console.log("pengingApprove15 =>", pengingApprove15)
               if (!isApprove15) {
                 if (pengingApprove15) {
                   toast('locked')
@@ -640,49 +702,45 @@ export default function Director() {
                 setAddFlag(true)
                 setPengingApprove15(false)
               }
-            }}>{isimpower15 ? '授权中...' : t("director.text12")}</button>
-        </div>
-      </div>
-      {/* 30天 */}
-      <div className="driectorBox">
-        {/* <img width="64px" height="64px" src={require('../../assets/images/trs-icon-defalt-png.png')} alt="" /> */}
-        <div className='driector-img' style={{ background: `url('${Daoimg}') center center /cover` }}></div>
-        <p className="driectorBoxP1">{daoname}</p>
-        <p className="driectorBoxP2">APY 438%</p>
-        {/* <p className="driectorBoxP2"></p> */}
-        <div className="driectorBoxList">
-          <div className="driectorBoxItem">
-            <img src={require('../../assets/images/lock-icon-defalt-png.png')} alt="" />
-            <span className="driectorBoxItemSpan">{t("director.text05")}：</span>
-            <span>{formatNum(daoTotalSupply)}</span>
-          </div>
-          <div className="driectorBoxItem">
-            <img src={require('../../assets/images/mine-icon-defalt-png.png')} alt="" />
-            <span className="driectorBoxItemSpan">{t("director.text06")}：</span>
-            <span>{formatNum(daoBalanceOf)}</span>
-          </div>
-          <div className="driectorBoxItem">
-            <img src={require('../../assets/images/untie-icon-defalt-png.png')} alt="" />
-            <span className="driectorBoxItemSpan">{t("director.text07")}：</span>
-            <span>{formatNum(allAvailableAmount)}</span>
-          </div>
-          <div className="driectorBoxItem">
-            <img src={require('../../assets/images/untie-icon-defalt-png.png')} alt="" />
-            <span className="driectorBoxItemSpan">{t("director.text15")}：</span>
-            <span style={{color: lockBlocks ? "#19e192" : "#fff"}}>{DaoRestBlocks}</span>
-          </div>
-          <div className="driectorBoxItem">
-            <img src={require('../../assets/images/wallet-icon-defalt-png.png')} alt="" />
-            <span className="driectorBoxItemSpan">{t("director.text08")}：</span>
-            <span>{formatNum(balance)}</span>
-          </div>
-        </div>
-        <div className="drictorBut">
-          <button className="drictorExtract" onClick={() => extract('30')} >{t("director.text11")}</button>
-          <button className="drictorLocking" onClick={
+            }}>{isimpower15 ? '授权中...' : t("director.text29")}</Miningbtn2>
+        </Miningbottombtn>
+      </Directorbox>
+      <Directorbox>{/*dao30 */}
+        <Directortop>
+          <Directortopname>TTQ-DAO30</Directortopname>
+          <Directortopimg></Directortopimg>
+        </Directortop>
+        <Directorrow>
+          <Directorname>{t("director.text22")}</Directorname>
+          <Directorapr>
+            438%
+            <img width="30" height="30" src={home_cart1} alt="" />
+          </Directorapr>
+        </Directorrow>
+        <Directorrow>
+          <Directorname>{t("director.text23")}</Directorname>
+          <Directornum>{formatNum(daoTotalSupply)}</Directornum>
+        </Directorrow>
+        <Directorrow>
+          <Directorname>{t("director.text24")}</Directorname>
+          <Directornum>{formatNum(balance)}</Directornum>
+        </Directorrow>
+        <Directorrow>
+          <Directorname>{t("director.text25")}</Directorname>
+          <Directornum>{formatNum(daoBalanceOf)}</Directornum>
+        </Directorrow>
+        <Directorrow>
+          <Directorname>{t("director.text26")}</Directorname>
+          <Directornum>{formatNum(allAvailableAmount)}</Directornum>
+        </Directorrow>
+        <Directorrow>
+          <Directorname>{t("director.text27")}</Directorname>
+          <Directornum>{DaoRestBlocks}</Directornum>
+        </Directorrow>
+        <Miningbottombtn>
+          <Miningbtn1 onClick={() => extract('30')}>{t("director.text28")}</Miningbtn1>
+          <Miningbtn2 onClick={
             () => {
-            //   console.log("isApprove =>", isApprove)
-            //   console.log("pengingApprove =>", pengingApprove)
               setAddFlagtype('30')
               if (!isApprove) {
                 if (pengingApprove) {
@@ -694,50 +752,46 @@ export default function Director() {
                 setAddFlag(true)
                 setPengingApprove(false)
               }
-            }}>{isimpower ? '授权中...' : t("director.text12")}</button>
-        </div>
-      </div>
-      {/* 60天 */}
-      <div className="driectorBox">
-        {/* <img width="64px" height="64px" src={require('../../assets/images/trs-icon-defalt-png.png')} alt="" /> */}
-        <div className='driector-img' style={{ background: `url('${Daoimg}') center center /cover` }}></div>
-        <p className="driectorBoxP1">{dao60name}</p>
-        <p className="driectorBoxP2">APY 474.5%</p>
-        {/* <p className="driectorBoxP2"></p> */}
-        <div className="driectorBoxList">
-          <div className="driectorBoxItem">
-            <img src={require('../../assets/images/lock-icon-defalt-png.png')} alt="" />
-            <span className="driectorBoxItemSpan">{t("director.text05")}：</span>
-            <span>{formatNum(dao60TotalSupply)}</span>
-          </div>
-          <div className="driectorBoxItem">
-            <img src={require('../../assets/images/mine-icon-defalt-png.png')} alt="" />
-            <span className="driectorBoxItemSpan">{t("director.text06")}：</span>
-            <span>{formatNum(dao60BalanceOf)}</span>
-          </div>
-          <div className="driectorBoxItem">
-            <img src={require('../../assets/images/untie-icon-defalt-png.png')} alt="" />
-            <span className="driectorBoxItemSpan">{t("director.text07")}：</span>
-            <span>{formatNum(allAvailableAmount60)}</span>
-          </div>
-          <div className="driectorBoxItem">
-            <img src={require('../../assets/images/untie-icon-defalt-png.png')} alt="" />
-            <span className="driectorBoxItemSpan">{t("director.text15")}：</span>
-            <span style={{color: lockBlocks60 ? "#19e192" : "#fff"}}>{Dao60RestBlocks}</span>
-          </div>
-          <div className="driectorBoxItem">
-            <img src={require('../../assets/images/wallet-icon-defalt-png.png')} alt="" />
-            <span className="driectorBoxItemSpan">{t("director.text08")}：</span>
-            <span>{formatNum(balance)}</span>
-          </div>
-        </div>
-        <div className="drictorBut">
-          <button className="drictorExtract" onClick={() => extract('60')} >{t("director.text11")}</button>
-          <button className="drictorLocking" onClick={
+            }}>{isimpower ? '授权中...' : t("director.text29")}</Miningbtn2>
+        </Miningbottombtn>
+      </Directorbox>
+      <Directorbox>{/*dao60 */}
+        <Directortop>
+          <Directortopname>TTQ-DAO60</Directortopname>
+          <Directortopimg></Directortopimg>
+        </Directortop>
+        <Directorrow>
+          <Directorname>{t("director.text22")}</Directorname>
+          <Directorapr>
+            474.5%
+            <img width="30" height="30" src={home_cart1} alt="" />
+          </Directorapr>
+        </Directorrow>
+        <Directorrow>
+          <Directorname>{t("director.text23")}</Directorname>
+          <Directornum>{formatNum(dao60TotalSupply)}</Directornum>
+        </Directorrow>
+        <Directorrow>
+          <Directorname>{t("director.text24")}</Directorname>
+          <Directornum>{formatNum(balance)}</Directornum>
+        </Directorrow>
+        <Directorrow>
+          <Directorname>{t("director.text25")}</Directorname>
+          <Directornum>{formatNum(dao60BalanceOf)}</Directornum>
+        </Directorrow>
+        <Directorrow>
+          <Directorname>{t("director.text26")}</Directorname>
+          <Directornum>{formatNum(allAvailableAmount60)}</Directornum>
+        </Directorrow>
+        <Directorrow>
+          <Directorname>{t("director.text27")}</Directorname>
+          <Directornum>{Dao60RestBlocks}</Directornum>
+        </Directorrow>
+        <Miningbottombtn>
+          <Miningbtn1 onClick={() => extract('60')}>{t("director.text28")}</Miningbtn1>
+          <Miningbtn2 onClick={
             () => {
               setAddFlagtype('60')
-            //   console.log("isApprove60 =>", isApprove60)
-            //   console.log("pengingApprove60 =>", pengingApprove60)
               if (!isApprove60) {
                 if (pengingApprove60) {
                   toast('locked')
@@ -748,10 +802,10 @@ export default function Director() {
                 setAddFlag(true)
                 setPengingApprove60(false)
               }
-            }}>{isimpower60 ? '授权中...' : t("director.text12")}</button>
-        </div>
-      </div>
-      {//质押弹窗
+            }}>{isimpower60 ? '授权中...' : t("director.text29")}</Miningbtn2>
+        </Miningbottombtn>
+      </Directorbox>
+       {//质押弹窗
         addFlag && (
           <div className="add-mask" onClick={
             () => {

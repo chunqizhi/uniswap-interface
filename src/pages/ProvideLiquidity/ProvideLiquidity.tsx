@@ -5,6 +5,9 @@ import Data from '../../apis/api/data.js'
 import styled from 'styled-components'
 import { NavLink, RouteComponentProps } from 'react-router-dom'
 import { useTranslation } from "react-i18next"
+import home_cart1 from "../../assets/images/home/nav-logo.png"
+import mining_cart1 from "../../assets/images/mining/mining-card1.png"
+import mining_cart2 from "../../assets/images/mining/mining-card2.png"
 
 
 const ProvideBtn = styled(NavLink)`
@@ -26,6 +29,71 @@ const Approvediv = styled.div`
     transform: translateX(-50%);
 `
 
+const Miningpledget = styled.div`
+    display:flex;
+    background-image: url(${mining_cart1});
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    color:#AB5729;
+`
+const Miningtopbgimg = styled.div`
+    width:50px;
+    height:50px;
+    background-image: url(${home_cart1});
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin:33px 0px 20px;
+`
+const Miningtopbtn = styled.div`
+    width:80%;
+    padding:10px 0;
+    color:#fff;
+    background-color:#ab5729;
+    text-align:center;
+    border-radius:20px;
+    margin:30px 0 20px;
+`
+const Miningcart2box = styled(Miningpledget)`
+    background-image: url(${mining_cart2});
+`
+
+const Miningtopimg = styled.div`
+    display:flex;
+    align-item:center;
+    margin:33px 0 20px;
+    > img{
+        width:50px;
+        height:50px;
+        position: relative;
+    }
+`
+
+const Miningbottombtn = styled.div`
+    display:flex;
+    align-item:center;
+    justify-content: center;
+    width:100%
+    justify-content: space-around;
+    margin:30px 0 20px;
+`
+
+const Miningbtn1 =styled.div`
+    background-color:#722f0d;
+    border-radius:20px;
+    color:#fff;
+    width:35%;
+    text-align:center;
+    padding:8px 0;
+`
+const Miningbtn2 =styled(Miningbtn1)`
+    background-color:#fff9f0;
+    color:#722f0d;
+    border:2px solid #722f0d;
+`
 let API, coinInfo ,timers
 
 
@@ -105,10 +173,9 @@ const { t } = useTranslation()
     return (
         <>
             <div className="add" key={poolIndex}>
-                {/* <p className="title">{t("provideLiquidity.text01")}</p> */}
-                <p className="desc">{t("provideLiquidity.text02")} {coinInfo.coin_name}{t("provideLiquidity.text13")}</p>
+                {/* <p className="desc">{t("provideLiquidity.text02")} {coinInfo.coin_name}{t("provideLiquidity.text13")}</p> */}
 
-                <div className="add-content">
+                {/* <div className="add-content">
                     <p className="content-title">
                         <span>{t("provideLiquidity.text03")}</span>
                         <span className="num">{earned.substring(0, 18)}</span>
@@ -124,10 +191,6 @@ const { t } = useTranslation()
                             unStakedLp.substring(0, 18)
                         }</span>
                     </p>
-                    {/* <p className="add-info">
-                        <span>份额占比</span>
-                        <span className="num">{`<0.01%`}</span>
-                    </p> */}
                     <span className="line"></span>
                     <p className="add-info">
                         <span>{t("provideLiquidity.text02")}</span>
@@ -142,14 +205,12 @@ const { t } = useTranslation()
                             () => {
                                 if (!isApprove) {
                                     if (pengingApprove) {
-                                        // alert(`授权中`)
                                         setApprovediv(true)
                                         toast()
                                     }
                                     else approveFn()
                                     return
                                 }
-                                // console.log(isApprove)
                                 API.getReward().then(res => {
                                 })
                             }
@@ -164,7 +225,6 @@ const { t } = useTranslation()
                             () => {
                                 if (!isApprove) {
                                     if (pengingApprove) {
-                                        // alert(`授权中`)
                                         setApprovediv(true)
                                         toast()
                                     }
@@ -179,7 +239,6 @@ const { t } = useTranslation()
                         onClick={() => {
                             if (!isApprove) {
                                 if (pengingApprove) {
-                                    // alert(`授权中`)
                                     setApprovediv(true)
                                     toast()
                                 }
@@ -198,12 +257,10 @@ const { t } = useTranslation()
                             }}>{t("provideLiquidity.text10")}</div>
                         )
                     }
-
-                    {/*   返回 */}
                     <ProvideBtn id={`mining-nav-link`} to={`/mining`}>
                         <div className="add-div-btn other-back">{t("provideLiquidity.text14")}</div>
                     </ProvideBtn>
-                </div>
+                </div> */}
 
                 {//质押弹窗
                     addFlag && (
@@ -283,13 +340,71 @@ const { t } = useTranslation()
                         </div>
                     )
                 }
-                {/* {
+                {
                     pengingApprove && (
                         <isApprovediv>授权中...</isApprovediv>
                     )
-                } */}
+                }
 
             </div>
+        
+            <Miningpledget>
+                <Miningtopbgimg></Miningtopbgimg>
+                <div className='earnings'>{earned.substring(0, 18)}</div>
+                <div className='upearnings'>{t("provideLiquidity.text20")}TTQ{t("provideLiquidity.text21")}</div>
+                <Miningtopbtn>{t("provideLiquidity.text09")}</Miningtopbtn>
+            </Miningpledget>
+            <Miningcart2box>
+                <Miningtopimg>
+                    <img style={{left:'7px',zIndex:'2'}} src={ home_cart1 } alt="" />
+                    <img style={{right:'7px'}} src={ home_cart1 } alt="" />
+                </Miningtopimg>
+                <div className='earnings'>ETH/USDT</div>
+                <div className='upearnings'>{t("provideLiquidity.text08")}:{stakedLp.substring(0, 18)}</div>
+                <div className='upearnings'>{t("provideLiquidity.text24")}:{unStakedLp.substring(0, 18)}</div>
+                <Miningbottombtn>
+                    <Miningbtn1 onClick={
+                            () => {
+                                if (!isApprove) {
+                                    if (pengingApprove) {
+                                        setApprovediv(true)
+                                        toast()
+                                    }
+                                    else approveFn()
+                                    return
+                                }
+                                API.getReward().then(res => {
+                                })
+                            }
+                        }>{t("provideLiquidity.text22")}</Miningbtn1>
+                    
+                    {
+                        !isApprove ? (
+                            // <div className="add-div-btn other-btn" onClick={() => {
+                            //     approveFn()
+                            // }}>{t("provideLiquidity.text10")}</div>
+                            <Miningbtn2  onClick={
+                                () => {
+                                    approveFn()
+                                }}>{t("provideLiquidity.text23")}</Miningbtn2>
+                        ) : (
+                            <Miningbtn2  onClick={
+                            () => {
+                                if (!isApprove) {
+                                    if (pengingApprove) {
+                                        setApprovediv(true)
+                                        toast()
+                                    }
+                                    else  approveFn()
+                                    return
+                                }
+                                setAddFlag(true)
+                                setType('stake')
+                            }}>{t("provideLiquidity.text23")}</Miningbtn2>
+                        )
+                    }
+                </Miningbottombtn>
+            </Miningcart2box>
         </>
     )
 }

@@ -40,6 +40,8 @@ import NavBar from "../components/NavBar/index";
 import Director from "./Director/index";
 //行情
 import Market from "./Market/index";
+//跨链桥
+import ChainBridge from "./ChainBridge/index";
 //背景图片
 import home_bg from '../assets/images/home/home-bgimg.png'
 
@@ -145,6 +147,7 @@ export default function App() {
               <Route exact strict path="/vote/:id" component={VotePage} />
               <Route exact strict path="/director" component={Director} />
               <Route exact strict path="/market" component={Market} />
+              <Route exact strict path="/chainbridge" component={ChainBridge} />
               <Route component={RedirectPathToSwapOnly} />
             </Switch>
           </Web3ReactManager>

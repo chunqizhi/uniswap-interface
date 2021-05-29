@@ -18,4 +18,9 @@ export default {
     text17: '最大',
     text18: '取消',
     text19: '确认',
+    text20: '未领取',
+    text21: '收益',
+    text22: '取出',
+    text23: '存入',
+    text24: '未质押',
 }

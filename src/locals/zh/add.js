@@ -33,4 +33,6 @@ export default {
     text31: '汇率',
     text32: '创建池子和供应',
     text33: '确认供应',
+    text34: '温馨提示',
+
 }

@@ -95,7 +95,7 @@ const { t } = useTranslation()
 
     const nav_type = [
         {
-            text:'综合区',
+            text:t("mining.text22"),
             type: "main",
         },
         {

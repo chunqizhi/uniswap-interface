@@ -256,7 +256,7 @@ li {
     flex-direction: column;
     background-color: #fff9f0;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 10px;
     box-sizing: border-box;
     margin-top: 30px;
@@ -288,8 +288,8 @@ li {
     flex-wrap: wrap;
     width: 100%;
     height: 73px;
-    border-top: 1px solid #114749;
-    color: #E3F4FD;
+    border-bottom: 1px solid #D19C7D;;
+    color: #CC8C68;
     font-family: 'CenturyGothic';
     font-size: 12px;
     text-decoration: none;
@@ -300,6 +300,7 @@ li {
     width: 45%;
     height: 100%;
     justify-content: center;
+    color:#722F0D;
 }
 .minItemColH {
     display: flex;
@@ -307,6 +308,7 @@ li {
     align-items: center;
     margin-bottom: 5px;
     font-size: 16px;
+    color:#722F0D;
 }
 .minItemImg {
     display: inline-block;

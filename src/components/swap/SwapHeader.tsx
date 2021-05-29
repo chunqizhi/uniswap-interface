@@ -85,12 +85,12 @@ export default function SwapHeader() {
           <NavLink exact to="/exchange/pool" className="exchangeLink" activeClassName="exchangeActive">
           {t("swap.text22")}
           </NavLink>
-          {/* <NavLink exact to="/" className="exchangeLink" activeClassName="exchangeActive">
+          <NavLink exact to="/chainbridge" className="exchangeLink" activeClassName="exchangeActive">
           {t("swap.text23")}
-          </NavLink> */}
-          <Narberdiv onClick={ ()=> opentoast() } className="exchangeLink" activeClassName="exchangeActive">
+          </NavLink>
+          {/* <Narberdiv onClick={ ()=> opentoast() } className="exchangeLink" activeClassName="exchangeActive">
           {t("swap.text23")}
-          </Narberdiv>
+          </Narberdiv> */}
           {/* <TYPE.black>
           {t("swap.text21")}
           </TYPE.black> */}

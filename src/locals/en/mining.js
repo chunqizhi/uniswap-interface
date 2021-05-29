@@ -19,5 +19,7 @@ export default {
     text18: 'Trading pair',
     text19: 'Production',
     text20: 'day',
-    text21: 'mon'
+    text21: 'mon',
+    text22: 'Comprehensive',
+
 }

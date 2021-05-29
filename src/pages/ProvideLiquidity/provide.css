@@ -249,3 +249,16 @@ input {
     background: #06DD7A;
     color: #fff;
 }
+.upearnings{
+    font-size: 14px;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    color: #AB5729;
+}
+.earnings{
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-family: Microsoft YaHei;
+    font-weight: bold;
+    color: #AB5729;
+}

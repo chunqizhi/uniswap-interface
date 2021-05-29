@@ -19,4 +19,13 @@ export default {
     text18: 'The authorization...',
     text19: 'The lockup balance is zero',
     text20: 'Can receive',
+    text21: 'Co governance',
+    text22: 'Annualized rate',
+    text23: 'Total lock in',
+    text24: 'My balance',
+    text25: 'Your deposit',
+    text26: 'Your take out',
+    text27: 'Removal time',
+    text28: 'take out',
+    text29: 'Deposit',
 }

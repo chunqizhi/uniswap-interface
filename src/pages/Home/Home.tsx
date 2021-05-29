@@ -9,6 +9,8 @@ import 'antd-mobile/lib/carousel/style/index.less'
 import home_price1 from "../../assets/images/home_price1.png"
 import home_price2 from "../../assets/images/home_price2.png"
 import home_cart1 from "../../assets/images/home/home-card1.png"
+import API from '../../apis/api/six.js'
+
 // const HomeTop = styled.div`
 
 // height: 35px;
@@ -241,6 +243,8 @@ const Homecart2 = styled.div`
 const Homecarttop = styled.div`
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding-right:10px;
 `
 const Homecart2canter = styled.div`
     padding:10px;
@@ -271,7 +275,7 @@ const Homecart2listb = styled.div`
     padding:10px 0;
 `
 const Homecart2tl = styled.div`
-    width: 108px;
+    // width: 108px;
     background: linear-gradient(256deg, #FFF9F0 0%, #D19C7D 100%);
     font-size: 16px;
     font-family: MicrosoftYaHei;
@@ -280,7 +284,7 @@ const Homecart2tl = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding: 7px 10px;
+    padding: 7px 10px 7px 15px;
 `
 const Homecart2name = styled.div`
     font-size: 14px;
@@ -312,6 +316,10 @@ export default function Home() {
     const { t } = useTranslation();
     const [rate, setRate] = useState(0)
     const [allBalance, setAllBalance] = useState(0)
+    const [balance, setBalance] = useState(0.00)//我的余额
+    const [allBlock, setAllBock] = useState(0.00)
+
+
     // 判断是否是第一次加载页面  判断发送请求
     const [ pageFlag, setPageFlag ] = useState(false);
     // 轮播图
@@ -337,6 +345,14 @@ export default function Home() {
                   setAllBalance(res)
                   setPageFlag(false)
               })
+              Data.getAllBlock().then(res=>{
+                // console.log(`setAllBock`,res)
+                setAllBock(res)
+            })
+              API.getWalletAllTrs().then(res => {
+                // console.log(`setBalance`,res)
+                setBalance(res)
+            })
           }, 1500);
       }
       useEffect(()=>{
@@ -348,6 +364,14 @@ export default function Home() {
                   setAllBalance(res)
                   setPageFlag(true)
               })
+              Data.getAllBlock().then(res=>{
+                // console.log(`setAllBock`,res)
+                setAllBock(res)
+            })
+              API.getWalletAllTrs().then(res => {
+                // console.log(`setBalance`,res)
+                setBalance(res)
+            })
           }
       },[pageFlag])
     //   Data.getTrsRate1().then(res => {
@@ -379,10 +403,10 @@ export default function Home() {
             <Homelist>
                 <HomelistRow>
                     <Homelistc>
-                        <Homelisttitle>我的余额</Homelisttitle>
+                        <Homelisttitle>{t("home.text15")}</Homelisttitle>
                         <Homelistval>
                             <img width="21" height="21" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
-                            <span>0.00</span>
+                            <span>{balance}</span>
                         </Homelistval>
                     </Homelistc>
                     <Homelistc>
@@ -392,37 +416,37 @@ export default function Home() {
                 </HomelistRow>
                 <HomelistRow>
                     <Homelistc>
-                        <Homelisttitle>TTQ价格</Homelisttitle>
-                        <Homelistval>0.00</Homelistval>
+                        <Homelisttitle>TTQ{t("home.text16")}</Homelisttitle>
+                        <Homelistval>{formatNum(rate)}</Homelistval>
                     </Homelistc>
                     <Homelistc>
-                        <Homelisttitle>TTQ市值</Homelisttitle>
+                        <Homelisttitle>TTQ{t("home.text17")}</Homelisttitle>
                         <Homelistval>$123123123</Homelistval>
                     </Homelistc>
                 </HomelistRow>
                 <HomelistRow>
                     <Homelistc>
-                        <Homelisttitle>当前挖出数量</Homelisttitle>
+                        <Homelisttitle>{t("home.text18")}</Homelisttitle>
+                        <Homelistval>
+                            <img width="21" height="21" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
+                            <span>{formatNum(allBlock)}</span>
+                        </Homelistval>
+                    </Homelistc>
+                    <Homelistc>
+                        <Homelisttitle>{t("home.text19")}</Homelisttitle>
+                        <Homelistval>{ formatNum(allBlock * rate)}</Homelistval>
+                    </Homelistc>
+                </HomelistRow>
+                <HomelistRow>
+                    <Homelistc>
+                        <Homelisttitle>{t("home.text20")}TTQ{t("home.text21")}</Homelisttitle>
                         <Homelistval>
                             <img width="21" height="21" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
                             <span>0.00</span>
                         </Homelistval>
                     </Homelistc>
                     <Homelistc>
-                        <Homelisttitle>当前挖出价值</Homelisttitle>
-                        <Homelistval>$123123123</Homelistval>
-                    </Homelistc>
-                </HomelistRow>
-                <HomelistRow>
-                    <Homelistc>
-                        <Homelisttitle>已回购TTQ数量</Homelisttitle>
-                        <Homelistval>
-                            <img width="21" height="21" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
-                            <span>0.00</span>
-                        </Homelistval>
-                    </Homelistc>
-                    <Homelistc>
-                        <Homelisttitle>DAO锁仓总量</Homelisttitle>
+                        <Homelisttitle>DAO{t("home.text22")}</Homelisttitle>
                         <Homelistval>
                             <img width="21" height="21" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
                             <span>0.00</span>
@@ -434,9 +458,9 @@ export default function Home() {
                 <Homecarttop>
                     <Homecart2tl>
                         <img width='16px' height="16px" src={require('../../assets/images/home/hot.png')} alt="" />
-                        热门矿池
+                        {t("home.text23")}
                     </Homecart2tl>
-                    <Homesize>更多 ></Homesize>
+                    <Homesize>{t("home.text24")} ></Homesize>
                 </Homecarttop>
                 <Homecart2canter>
                     <Homecart2list>

@@ -1,0 +1,16 @@
+export default {
+    text01: 'Chain bridge',
+    text02: 'Please select a cross chain asset',
+    text03: 'from',
+    text04: 'to',
+    text05: 'Collection address',
+    text06: 'Destination link collection address',
+    text07: 'Please enter the correct erc20 collection address, the wrong address will result in the failure to arrive at the account',
+    text08: 'Contract address or exchange recharge address cannot be filled in',
+    text09: 'Cross chain quantity',
+    text10: 'Max',
+    text11: 'balance：',
+    text12: 'Not yet open',
+    text13: 'View records',
+    text14: 'Single minimum limit 1 TTQ',
+}

@@ -145,7 +145,7 @@ export default function Header() {
       <HeaderRow>
         <HomeBtn01 id={`home-nav-link`} to={'/home'}> <img width={'29px'} src={darkMode ? LogoDark : LogoDark} alt="logo" />
           <Titlename>
-            TTQ.swap
+            TTQSWAP.COM
           </Titlename>
         </HomeBtn01>
         <HeaderLinks>

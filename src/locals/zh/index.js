@@ -15,7 +15,8 @@ import director from './director'
 import navbar from "./navbar";
 // 行情
 import market from "./market";
-
+//跨链桥
+import chainbridge from './chainbridge'
 
 export default {
     home: {...Home },
@@ -31,5 +32,6 @@ export default {
     debris: {...debris },
     director: {...director },
     navbar: {...navbar },
-    market: {...market }
+    market: {...market },
+    chainbridge: {...chainbridge}
 }

@@ -19,5 +19,7 @@ export default {
     text18: '交易对',
     text19: '产量',
     text20: '每天',
-    text21: '每月'
+    text21: '每月',
+    text22: '综合区',
+
 }

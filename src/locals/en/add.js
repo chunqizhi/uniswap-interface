@@ -32,4 +32,5 @@ export default {
     text31: 'Rates',
     text32: 'Create Pool & Supply',
     text33: 'Confirm Supply',
+    text34: 'reminder',
 }
