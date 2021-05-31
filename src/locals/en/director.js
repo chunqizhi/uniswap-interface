@@ -1,5 +1,5 @@
 export default {
-    text01: 'TRS price',
+    text01: 'TTQ price',
     text02: 'Current liquidity pledge',
     text03: 'Dao total',
     text04: 'Dao Total value',

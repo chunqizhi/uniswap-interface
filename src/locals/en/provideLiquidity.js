@@ -11,7 +11,7 @@ export default {
     text10: 'Approve',
     text11: 'recaption liquidity',
     text12: '- working fund',
-    text13: ' earn TRS',
+    text13: ' earn TTQ',
     text14: 'get back',
     text15: 'Balance',
     text16: 'unstake',
