@@ -66,7 +66,7 @@ const { t } = useTranslation()
 
     const [flag, setFlag] = useState(0)
     const [type, setType] = useState('main')
-    const [mainList, setMainList] = useState({ 'main': [], 'flat': [], 'ideas': [] })
+    const [mainList, setMainList] = useState({ 'main': [], 'ttq': []})
     const [rate, setRate] = useState(0.00)
     const [allBlock, setAllBock] = useState(0.00)
     const [balance, setBalance] = useState(0.00)
@@ -78,7 +78,7 @@ const { t } = useTranslation()
         // console.log(pageFlag);
         setTimeout(() => {
             Data.getPoolListData().then(res => {
-                // console.log(`setMainList`, res);
+                // console.log(`getPoolListData =>`, res);
                 setMainList(res)
                 setPageFlag(false);
             })
@@ -218,7 +218,7 @@ const { t } = useTranslation()
                     <div className="minList">
                         <div className="minHead">
                             <span className="headspant">{ t("mining.text18") }/TVL</span>
-                            <span className="headspanm">{ t("mining.text19") }(TRS)</span>
+                            <span className="headspanm">{ t("mining.text19") }(TTQ)</span>
                             <span className="headspanb">APY</span>
                         </div>
                         {
@@ -228,16 +228,29 @@ const { t } = useTranslation()
                                         <div className="minItemCol1">
                                             <div className="minItemColH">
                                                 <div className="minItemImg">
-                                                    <img src={ item.pre_coin } alt="" />
-                                                    <img src={ item.next_coin } alt="" />
+                                                    {
+                                                        item.coin_name.indexOf('USDT') == 0 ? (
+                                                            <div>
+                                                                <img src={ item.next_coin } alt="" />
+                                                                <img src={ item.pre_coin } alt="" />
+                                                            </div>
+                                                        ):(
+                                                            <div>
+                                                              <img src={ item.pre_coin } alt="" />
+                                                                <img src={ item.next_coin } alt="" />   
+                                                            </div>
+                                                              
+                                                        )
+                                                    }
+                                                    
                                                 </div>
-                                                <span>{ item.coin_name }</span>
+                                                <span>{  item.coin_name.indexOf('USDT') == 0 ? (item.coin_name.split('/')[1]+'/'+item.coin_name.split('/')[0]) : (item.coin_name) }</span>
                                             </div>
                                             <p>${ item.tvl }</p>
                                         </div>
                                         <div className="minItemCol2">
                                             <p>{ item.per_day }({ t("mining.text20") })</p>
-                                            <p>{ item.per_month }({ t("mining.text21") })</p>
+                                            <p>{ (item.per_day * 360) }({ t("mining.text21") })</p>
                                         </div>
                                         <div className="minItemCol3">
                                             <span>{ item.apy }</span>

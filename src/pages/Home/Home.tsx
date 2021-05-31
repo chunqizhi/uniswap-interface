@@ -8,7 +8,10 @@ import { Carousel } from 'antd-mobile';
 import 'antd-mobile/lib/carousel/style/index.less'
 import home_price1 from "../../assets/images/home_price1.png"
 import home_price2 from "../../assets/images/home_price2.png"
-import home_cart1 from "../../assets/images/home/home-card1.png"
+import home_cart1 from "../../assets/images/home/home-card01.png"
+import icon_ht from "../../assets/images/coin/HT.png"
+import icon_husd from "../../assets/images/coin/HUSD.png"
+import icon_usdt from "../../assets/images/coin/USDT.png"
 import API from '../../apis/api/six.js'
 
 // const HomeTop = styled.div`
@@ -140,10 +143,11 @@ import API from '../../apis/api/six.js'
 //     }
 
 // `
-const Homesize = styled.div`
+const Homesize = styled(NavLink)`
     font-size: 14px;
     font-family: MicrosoftYaHei;
     color: #D19C7D;
+    text-decoration:none;
 `
 const HomeBanner = styled.div`
     display: flex;
@@ -210,6 +214,9 @@ const Homelist = styled.div`
     background-image: url(${home_cart1});
     background-repeat: no-repeat;
     background-size: cover;
+    border-radius: 20px;
+    margin:15px 0;
+    box-shadow: 3px 7px 9px -3px #ddd;
 `
 const HomelistRow = styled.div`
     display:flex;
@@ -219,6 +226,7 @@ const HomelistRow = styled.div`
 const Homelistc = styled.div`
     margin:5px 0px;
     flex:1;
+    
 `
 const Homelisttitle = styled.div`
     font-size:16px;
@@ -234,11 +242,15 @@ const Homelistval = styled.div`
     color: #722F0D;
     display: flex;
     align-items: center;
+    >img{
+        margin-right:5px;
+    }
 `
 const Homecart2 = styled.div`
     padding:20px 0;
     background-color:#fff9f0;
     border-radius:15px;
+    box-shadow: 3px 7px 9px -3px #ddd;
 `
 const Homecarttop = styled.div`
     display: flex;
@@ -252,12 +264,13 @@ const Homecart2canter = styled.div`
     display: flex;
     flex-wrap: wrap;
 `
-const Homecart2list = styled.div`
+const Homecart2list = styled(NavLink)`
     padding:10px;
     margin:4px;
     border-radius: 14px;
     flex: 1;
     border: 2px solid rgba(248, 215, 196, 0.5019607843137255);
+    text-decoration: none;
 `
 const Homecart2listt = styled.div`
     display: flex;
@@ -317,8 +330,10 @@ export default function Home() {
     const [rate, setRate] = useState(0)
     const [allBalance, setAllBalance] = useState(0)
     const [balance, setBalance] = useState(0.00)//我的余额
-    const [allBlock, setAllBock] = useState(0.00)
-
+    const [allBlock, setAllBock] = useState(0.00)//当前挖出数量
+    const [allTotalSupply, setAllTotalSupply] = useState(0.00)//当前锁仓总量
+    const clickListener = () => {
+    }
 
     // 判断是否是第一次加载页面  判断发送请求
     const [ pageFlag, setPageFlag ] = useState(false);
@@ -333,47 +348,88 @@ export default function Home() {
         url: require('../../assets/images/home/home-banner1.png'),
         path:'/director'
     }]);
+    useEffect(() => {
+        let setTimeoutTimer;
+        const timerFn = function () {
+            API.getAllTotalSupply().then(res => {
+                // console.log('总锁仓量',res[0],res[1],res[2],res[3])
+                // console.log('总仓量',Number(res[0])+Number(res[1])+Number(res[2])+Number(res[3]))
+                setAllTotalSupply(Number(res[0])+Number(res[1])+Number(res[2])+Number(res[3]))
+            })
+            Data.getTrsRate().then(res => {
+                setRate(res.rate)
+            })
 
+            Data.getPoolListData('all').then(res => {
+                setAllBalance(res)
+                setPageFlag(false)
+            })
+            Data.getAllBlock().then(res=>{
+            //   console.log(`setAllBock`,res)
+              setAllBock(res)
+          })
+            API.getWalletAllTrs().then(res => {
+            //   console.log(`setBalance`,res)
+              setBalance(res)
+          })
+          
+        }
+        const timer = function () {
+          setTimeoutTimer && clearTimeout(setTimeoutTimer)
+          timerFn()
+          setTimeoutTimer = setTimeout(() => {
+            timer()
+          }, 4000);
+        }
+        window.addEventListener("click", clickListener, false)
+        timerFn()
+        timer()
+        return function () {
+          window.removeEventListener("click", clickListener, false)
+          setTimeoutTimer && clearTimeout(setTimeoutTimer)
+        }
+      }, [])
     // 如果是true 持续加载更新
-    if (pageFlag) {
-          setTimeout(() => {
-              Data.getTrsRate().then(res => {
-                  setRate(res.rate)
-              })
+    // if (pageFlag) {
+    //       setTimeout(() => {
+    //           Data.getTrsRate().then(res => {
+    //               setRate(res.rate)
+    //           })
 
-              Data.getPoolListData('all').then(res => {
-                  setAllBalance(res)
-                  setPageFlag(false)
-              })
-              Data.getAllBlock().then(res=>{
-                // console.log(`setAllBock`,res)
-                setAllBock(res)
-            })
-              API.getWalletAllTrs().then(res => {
-                // console.log(`setBalance`,res)
-                setBalance(res)
-            })
-          }, 1500);
-      }
-      useEffect(()=>{
-          if (!pageFlag) {
-              Data.getTrsRate().then(res => {
-                  setRate(res.rate)
-              })
-              Data.getPoolListData('all').then(res => {
-                  setAllBalance(res)
-                  setPageFlag(true)
-              })
-              Data.getAllBlock().then(res=>{
-                // console.log(`setAllBock`,res)
-                setAllBock(res)
-            })
-              API.getWalletAllTrs().then(res => {
-                // console.log(`setBalance`,res)
-                setBalance(res)
-            })
-          }
-      },[pageFlag])
+    //           Data.getPoolListData('all').then(res => {
+    //               setAllBalance(res)
+    //               setPageFlag(false)
+    //           })
+    //           Data.getAllBlock().then(res=>{
+    //             // console.log(`setAllBock`,res)
+    //             setAllBock(res)
+    //         })
+    //           API.getWalletAllTrs().then(res => {
+    //             console.log(`setBalance`,res)
+    //             setBalance(res)
+    //         })
+            
+    //       }, 1500);
+    //   }
+    //   useEffect(()=>{
+    //       if (!pageFlag) {
+    //           Data.getTrsRate().then(res => {
+    //               setRate(res.rate)
+    //           })
+    //           Data.getPoolListData('all').then(res => {
+    //               setAllBalance(res)
+    //               setPageFlag(true)
+    //           })
+    //           Data.getAllBlock().then(res=>{
+    //             // console.log(`setAllBock`,res)
+    //             setAllBock(res)
+    //         })
+    //           API.getWalletAllTrs().then(res => {
+    //             // console.log(`setBalance`,res)
+    //             setBalance(res)
+    //         })
+    //       }
+    //   },[pageFlag])
     //   Data.getTrsRate1().then(res => {
     //     console.log("9999 =>",res.rate)
     // })
@@ -411,7 +467,7 @@ export default function Home() {
                     </Homelistc>
                     <Homelistc>
                         <Homelisttitle>TVL</Homelisttitle>
-                        <Homelistval>$123123123</Homelistval>
+                        <Homelistval>${formatNum(allBalance)}</Homelistval>
                     </Homelistc>
                 </HomelistRow>
                 <HomelistRow>
@@ -421,7 +477,7 @@ export default function Home() {
                     </Homelistc>
                     <Homelistc>
                         <Homelisttitle>TTQ{t("home.text17")}</Homelisttitle>
-                        <Homelistval>$123123123</Homelistval>
+                        <Homelistval>${formatNum(rate*1000000000)}</Homelistval>
                     </Homelistc>
                 </HomelistRow>
                 <HomelistRow>
@@ -449,7 +505,7 @@ export default function Home() {
                         <Homelisttitle>DAO{t("home.text22")}</Homelisttitle>
                         <Homelistval>
                             <img width="21" height="21" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
-                            <span>0.00</span>
+                            <span>{formatNum(allTotalSupply)}</span>
                         </Homelistval>
                     </Homelistc>
                 </HomelistRow>
@@ -460,13 +516,13 @@ export default function Home() {
                         <img width='16px' height="16px" src={require('../../assets/images/home/hot.png')} alt="" />
                         {t("home.text23")}
                     </Homecart2tl>
-                    <Homesize>{t("home.text24")} ></Homesize>
+                    <Homesize to={"/mining"}>{t("home.text24")} ></Homesize>
                 </Homecarttop>
                 <Homecart2canter>
-                    <Homecart2list>
+                    <Homecart2list to={"/provideLiquidity/one"}>
                         <Homecart2listt>
                             <img style={{position: 'relative',zIndex:'2'}} width="22" height="22" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
-                            <img style={{position: 'relative',left: '-7px',zIndex:'2'}} width="22" height="22" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
+                            <img style={{position: 'relative',left: '-7px'}} width="22" height="22" src={ icon_usdt } alt="" />
                             <Homecart2name>TTQ/USDT</Homecart2name>
                         </Homecart2listt>
                         <Homecart2listb>
@@ -474,33 +530,33 @@ export default function Home() {
                             <div>APY</div>
                         </Homecart2listb>
                     </Homecart2list>
-                    <Homecart2list>
+                    <Homecart2list to={"/provideLiquidity/one"}>
                         <Homecart2listt>
                             <img style={{position: 'relative',zIndex:'2'}} width="22" height="22" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
-                            <img style={{position: 'relative',left: '-7px',zIndex:'2'}} width="22" height="22" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
-                            <Homecart2name>TTQ/USDT</Homecart2name>
+                            <img style={{position: 'relative',left: '-7px'}} width="22" height="22" src={ icon_husd } alt="" />
+                            <Homecart2name>TTQ/HUSD</Homecart2name>
                         </Homecart2listt>
                         <Homecart2listb>
                             <div>66.00%</div>
                             <div>APY</div>
                         </Homecart2listb>
                     </Homecart2list>
-                    <Homecart2list>
+                    <Homecart2list to={"/provideLiquidity/one"}>
                         <Homecart2listt>
                             <img style={{position: 'relative',zIndex:'2'}} width="22" height="22" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
-                            <img style={{position: 'relative',left: '-7px',zIndex:'2'}} width="22" height="22" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
-                            <Homecart2name>TTQ/USDT</Homecart2name>
+                            <img style={{position: 'relative',left: '-7px'}} width="22" height="22" src={ icon_ht } alt="" />
+                            <Homecart2name>TTQ/HT</Homecart2name>
                         </Homecart2listt>
                         <Homecart2listb>
                             <div>66.00%</div>
                             <div>APY</div>
                         </Homecart2listb>
                     </Homecart2list>
-                    <Homecart2list>
+                    <Homecart2list to={"/provideLiquidity/one"}>
                         <Homecart2listt>
                             <img style={{position: 'relative',zIndex:'2'}} width="22" height="22" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
-                            <img style={{position: 'relative',left: '-7px',zIndex:'2'}} width="22" height="22" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
-                            <Homecart2name>TTQ/USDT</Homecart2name>
+                            {/* <img style={{position: 'relative',left: '-7px',zIndex:'2'}} width="22" height="22" src={ require('../../assets/images/home/nav-logo.png') } alt="" /> */}
+                            <Homecart2name>TTQ</Homecart2name>
                         </Homecart2listt>
                         <Homecart2listb>
                             <div>66.00%</div>

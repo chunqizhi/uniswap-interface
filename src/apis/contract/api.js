@@ -19,6 +19,21 @@ class API {
             })
         })
     }
+    //
+    getAllTotalSupply(){
+        return new Promise((resolve, reject) => {
+            Promise.all([
+                this.getDao7TotalSupply(),//总锁仓量
+                this.getDao15TotalSupply(),//总锁仓量
+                this.getDaoTotalSupply(),//总锁仓量
+                this.getDao60TotalSupply(),//总锁仓量
+            ]).then(res => {
+                resolve(res)
+            }).catch(err => {
+                reject(err)
+            })
+        })
+    }
     // 
     getAlldao7(){
         // return this.contract.initFnPromise().then(res => {

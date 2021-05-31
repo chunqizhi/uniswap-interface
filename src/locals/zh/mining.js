@@ -6,9 +6,9 @@ export default {
     text05: ' 当前挖矿产出',
     text06: ' 当前挖矿产出价值',
     text07: '每月产出',
-    text08: '已回购TRS数量',
+    text08: '已回购TTQ数量',
     text09: '流动性挖矿',
-    text10: '提供流动性，赚取TRS代币',
+    text10: '提供流动性，赚取TTQ代币',
     text11: '主区',
     text12: 'FLAT',
     text13: '创新区',
@@ -19,7 +19,7 @@ export default {
     text18: '交易对',
     text19: '产量',
     text20: '每天',
-    text21: '每月',
+    text21: '每年',
     text22: '综合区',
 
 }

@@ -77,7 +77,7 @@ const BodyWrapper = styled.div`
   margin-bottom: 61px;
   
   ${({ theme }) => theme.mediaWidth.upToSmall`
-    padding: 8px 16px 0;
+    padding: 8px 16px 10px;
     // padding-top: 2rem;
     background-color: #050822;
   `};

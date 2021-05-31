@@ -11,7 +11,7 @@ export default {
     text10: '授权',
     text11: '取回流动性',
     text12: '- 流动资金',
-    text13: ' 赚取TRS',
+    text13: ' 赚取TTQ',
     text14: '返回',
     text15: '可用余额',
     text16: '解押',

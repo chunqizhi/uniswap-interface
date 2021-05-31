@@ -1,5 +1,5 @@
 export default {
-    text01: 'TRS 价格',
+    text01: 'TTQ 价格',
     text02: '当前流动性质押',
     text03: 'Dao总锁仓量',
     text04: 'Dao锁仓总价值',

@@ -109,9 +109,9 @@ const { t } = useTranslation()
     const [isApprovediv, setApprovediv] = useState(false) // 授权/非授权
     const [pengingApprove, setPengingApprove] = useState(false)
     const [inputValue, setInputVal] = useState('0')   //input的值
-    const [stakedLp, setStakedLp] = useState('0.00')
-    const [unStakedLp, setUnStakedLp] = useState('0.00')
-    const [earned, setEarned] = useState('0.00')
+    const [stakedLp, setStakedLp] = useState('0.00')//已质押
+    const [unStakedLp, setUnStakedLp] = useState('0.00')//未质押
+    const [earned, setEarned] = useState('0.00')//当前收益
     const clickListener = () => {
     }
     const approveFn = () => {
@@ -342,7 +342,7 @@ const { t } = useTranslation()
                 }
                 {
                     pengingApprove && (
-                        <isApprovediv>授权中...</isApprovediv>
+                        <Approvediv>授权中...</Approvediv>
                     )
                 }
 
@@ -352,14 +352,27 @@ const { t } = useTranslation()
                 <Miningtopbgimg></Miningtopbgimg>
                 <div className='earnings'>{earned.substring(0, 18)}</div>
                 <div className='upearnings'>{t("provideLiquidity.text20")}TTQ{t("provideLiquidity.text21")}</div>
-                <Miningtopbtn>{t("provideLiquidity.text09")}</Miningtopbtn>
+                <Miningtopbtn onClick={
+                            () => {
+                                if (!isApprove) {
+                                    if (pengingApprove) {
+                                        setApprovediv(true)
+                                        toast()
+                                    }
+                                    else approveFn()
+                                    return
+                                }
+                                API.getReward().then(res => {
+                                })
+                            }
+                        }>{t("provideLiquidity.text09")}</Miningtopbtn>
             </Miningpledget>
             <Miningcart2box>
                 <Miningtopimg>
-                    <img style={{left:'7px',zIndex:'2'}} src={ home_cart1 } alt="" />
-                    <img style={{right:'7px'}} src={ home_cart1 } alt="" />
+                    <img style={{left:'7px',zIndex:'2'}} src={ coinInfo.pre_coin } alt="" />
+                    <img style={{right:'7px'}} src={ coinInfo.next_coin } alt="" />
                 </Miningtopimg>
-                <div className='earnings'>ETH/USDT</div>
+                <div className='earnings'>{coinInfo.coin_name}</div>
                 <div className='upearnings'>{t("provideLiquidity.text08")}:{stakedLp.substring(0, 18)}</div>
                 <div className='upearnings'>{t("provideLiquidity.text24")}:{unStakedLp.substring(0, 18)}</div>
                 <Miningbottombtn>

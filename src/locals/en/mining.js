@@ -14,7 +14,7 @@ export default {
     text13: 'Innovation',
     text14: '(Per Day)',
     text15: "Stake",
-    text16: '(Per Month)',
+    text16: '(Per Year)',
     text17: 'Earn',
     text18: 'Trading pair',
     text19: 'Production',

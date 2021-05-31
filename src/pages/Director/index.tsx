@@ -6,7 +6,7 @@ import styled from 'styled-components'
 
 import Data from '../../apis/api/data.js'
 import API from '../../apis/api/six.js'
-import cart1 from '../../assets/images/mining/driector-card2.png'
+import cart1 from '../../assets/images/mining/driector-card-top.png'
 import home_cart1 from "../../assets/images/home/nav-logo.png"
 
 import './index.css'
@@ -29,21 +29,42 @@ const Approvediv = styled.div`
 const Directortitle = styled.div`
   font-size: 40px;
   font-family: HYChaoCuYuanJ;
-  font-weight: 400;
+  font-weight: 700;
   color: #722F0D;
+`
+const Directoricon = styled.div`
+  width:5px;
+  height:100%;
+  background-color:red;
+  background: linear-gradient(to bottom,#e96811,#f9e4c1);
+  border-radius: 5px;
+  margin-right:2px;
 `
 const Directorh2 = styled.div`
   font-size: 18px;
   font-family: MicrosoftYaHei;
   color: #722F0D;
 `
+const Directorh3 = styled(Directorh2)`
+  font-size: 16px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #722F0D;
+`
 const Directortopbox = styled.div`
   height:148px;
+  display: flex;
+  padding: 50px 0 30px;
+  margin-top:25px;
+  flex-direction: column;
+  align-items: center;
   background-image: url(${cart1});
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
   width: 100%;
+  box-shadow: 4px 11px 11px -12px #ccc;
+    border-radius: 12px;
   >img{
     position: absolute;
   }
@@ -54,6 +75,7 @@ const Directorbox = styled.div`
   background-color:#fff9f0;
   border-radius:15px;
   margin:10px 0 15px;
+  box-shadow: 3px 7px 9px -3px #ddd;
 `
 const Directortop = styled.div`
   display:flex;
@@ -71,12 +93,23 @@ const Directornum = styled(Directorcolor)`
   font-family: Microsoft YaHei;
   font-weight: bold;
 `
+const DirectorAllTotalSupply = styled(Directornum)`
+  margin-bottom:14px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #722F0D;
+  display:flex;
+  align-items:center;
+`
 const Directorapr = styled(Directorcolor)`
   font-size: 20px;
   font-family: Microsoft YaHei;
   font-weight: bold;
   display:flex;
   align-items: center;
+  >img{
+    margin-left:5px;
+  }
 `
 const Directortopname = styled(Directorcolor)`
   font-size:18px
@@ -183,7 +216,7 @@ export default function Director() {
   // 判断是否是第一次加载页面  判断发送请求
   const [pageFlag, setPageFlag] = useState(false);
   //7
-  const [dao7name, setDao7Name] = useState('TRS DAO-7')//仓名
+  const [dao7name, setDao7Name] = useState('TTQ DAO-7')//仓名
   const [dao7TotalSupply, setDao7TotalSupply] = useState(0.00)//总锁仓量
   const [dao7BalanceOf, setDao7BalanceOf] = useState(0.00)//我的锁仓
   const [allAvailableAmount7, setallAvailableAmount7] = useState(0.00)//解锁数量
@@ -195,7 +228,7 @@ export default function Director() {
   const [lockBlocks7, setLockBlocks7] = useState(false)//授权按钮变化
 
   //15
-  const [dao15name, setDao15Name] = useState('TRS DAO-15')
+  const [dao15name, setDao15Name] = useState('TTQ DAO-15')
   const [dao15TotalSupply, setDao15TotalSupply] = useState(0.00)
   const [dao15BalanceOf, setDao15BalanceOf] = useState(0.00)
   const [allAvailableAmount15, setallAvailableAmount15] = useState(0.00)
@@ -207,7 +240,7 @@ export default function Director() {
   const [lockBlocks15, setLockBlocks15] = useState(false)//授权按钮变化
 
   //30 
-  const [daoname, setDaoName] = useState('TRS DAO-30')
+  const [daoname, setDaoName] = useState('TTQ DAO-30')
   const [daoTotalSupply, setDaoTotalSupply] = useState(0.00)
   const [daoBalanceOf, setDaoBalanceOf] = useState(0.00)
   const [allAvailableAmount, setallAvailableAmount] = useState(0.00)
@@ -219,7 +252,7 @@ export default function Director() {
   const [lockBlocks, setLockBlocks] = useState(false)//授权按钮变化
 
   //60
-  const [dao60name, setDao60Name] = useState('TRS DAO-60')
+  const [dao60name, setDao60Name] = useState('TTQ DAO-60')
   const [dao60TotalSupply, setDao60TotalSupply] = useState(0.00)
   const [dao60BalanceOf, setDao60BalanceOf] = useState(0.00)
   const [allAvailableAmount60, setallAvailableAmount60] = useState(0.00)
@@ -329,6 +362,11 @@ export default function Director() {
         setStakedLp(res)
         // setBalanceFalse(true)
       })
+      API.getAllTotalSupply().then(res => {
+        // console.log('总锁仓量',res[0],res[1],res[2],res[3])
+        // console.log('总仓量',Number(res[0])+Number(res[1])+Number(res[2])+Number(res[3]))
+        setAllTotalSupply(Number(res[0])+Number(res[1])+Number(res[2])+Number(res[3]))
+    })
       
     }
     const timer = function () {
@@ -603,11 +641,17 @@ export default function Director() {
           text == 1 ? <Approvediv>{t("director.text17")}</Approvediv> : text == 0 ? <Approvediv>{t("director.text18")}</Approvediv> : <Approvediv>{t("director.text19")}</Approvediv> 
         )}
       <Directortitle>TTQSWAP.COM</Directortitle>
-      <Directorh2>DAO{t("director.text21")}</Directorh2>
-      <Directortopbox> </Directortopbox>
+      <Directorh2>DAO {t("director.text21")}</Directorh2>
+      <Directortopbox> 
+        <DirectorAllTotalSupply>
+          <Directoricon></Directoricon>
+          {formatNum(allTotalSupply)}
+        </DirectorAllTotalSupply>
+        <Directorh3>总锁仓量(TTQ)</Directorh3>
+      </Directortopbox>
        <Directorbox>{/*dao7 */}
         <Directortop>
-          <Directortopname>TTQ-DAO7</Directortopname>
+          <Directortopname>{dao7name}</Directortopname>
           <Directortopimg></Directortopimg>
         </Directortop>
         <Directorrow>
@@ -657,7 +701,7 @@ export default function Director() {
       </Directorbox>
       <Directorbox>{/*dao15 */}
         <Directortop>
-          <Directortopname>TTQ-DAO15</Directortopname>
+          <Directortopname>{dao15name}</Directortopname>
           <Directortopimg></Directortopimg>
         </Directortop>
         <Directorrow>
@@ -707,7 +751,7 @@ export default function Director() {
       </Directorbox>
       <Directorbox>{/*dao30 */}
         <Directortop>
-          <Directortopname>TTQ-DAO30</Directortopname>
+          <Directortopname>{daoname}</Directortopname>
           <Directortopimg></Directortopimg>
         </Directortop>
         <Directorrow>
@@ -757,7 +801,7 @@ export default function Director() {
       </Directorbox>
       <Directorbox>{/*dao60 */}
         <Directortop>
-          <Directortopname>TTQ-DAO60</Directortopname>
+          <Directortopname>{dao60name}</Directortopname>
           <Directortopimg></Directortopimg>
         </Directortop>
         <Directorrow>
