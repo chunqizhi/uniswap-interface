@@ -260,6 +260,11 @@ li {
     padding: 10px;
     box-sizing: border-box;
     border:2px solid #af542c;
+    background-image: url("../../assets/images/mining/card-mind-bg.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top right;
+    padding-top: 26px;
 }
 .minHead {
     display: flex;

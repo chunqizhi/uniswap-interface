@@ -49,8 +49,6 @@ export default function CurrencyLogo({
     }
     return []
   }, [currency, uriLocations])
-  console.log('currency ==>',currency)
-  console.log('ETHER ==>',ETHER)
   if (currency === ETHER) {
     return <StyledEthereumLogo src={EthereumLogo} size={size} style={style} />
   }
