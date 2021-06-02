@@ -227,7 +227,7 @@ export default function Menu() {
               <img src={icon3} width='14' height='14' alt='' />
               {t("navlist.text02")}
             </NavLinkItem>
-            <MenuItem id="link" href="#">
+            <MenuItem id="link">
               <img src={icon4} width='14' height='14' alt='' />
               {t("navlist.text11")}
             </MenuItem>
