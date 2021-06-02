@@ -78,7 +78,7 @@ const { t } = useTranslation()
         // console.log(pageFlag);
         setTimeout(() => {
             Data.getPoolListData().then(res => {
-                console.log(`getPoolListData =>`, res);
+                // console.log(`getPoolListData =>`, res);
                 setMainList(res)
                 setPageFlag(false);
             })

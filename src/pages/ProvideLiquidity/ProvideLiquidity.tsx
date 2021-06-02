@@ -115,8 +115,9 @@ const { t } = useTranslation()
     const clickListener = () => {
     }
     const approveFn = () => {
-        API.approve().then(res => {
         setPengingApprove(true)
+        API.approve().then(res => {
+            setPengingApprove(false)
         }).catch(error => {
             setPengingApprove(false)
         })

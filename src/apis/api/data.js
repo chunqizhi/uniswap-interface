@@ -297,6 +297,7 @@ function getPoolListData(type) {
 
 }
 
+
 function getAllBlock() {
     return new Promise((resolve, reject) => {
         Promise.all([
@@ -496,5 +497,5 @@ export default {
     getPoolListData,
     getTrsRate,
     getAllBlock,
-    getAllTrsRate
+    getAllTrsRate,
 }

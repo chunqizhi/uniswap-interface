@@ -163,6 +163,7 @@ input {
     justify-content: center;
     align-items: center;
     padding: 0 20px;
+    z-index: 99;
 }
 
 .add-mask .add-mask-content {

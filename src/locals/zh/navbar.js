@@ -3,5 +3,5 @@ export default {
     text02: '兑换',
     text03: '矿池',
     text04: 'NFT',
-    text05: '董事会',
+    text05: 'DAO',
 }

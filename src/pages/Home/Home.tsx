@@ -203,6 +203,8 @@ export default function Home() {
     const [balance, setBalance] = useState(0.00)//我的余额
     const [allBlock, setAllBock] = useState(0.00)//当前挖出数量
     const [allTotalSupply, setAllTotalSupply] = useState(0.00)//当前锁仓总量
+    const [mainList, setMainList] = useState({ 'main': [], 'ttq': []})
+
     const clickListener = () => {
     }
 
@@ -314,7 +316,7 @@ export default function Home() {
                     </Homelistc>
                     <Homelistc>
                         <Homelisttitle>{t("home.text19")}</Homelisttitle>
-                        <Homelistval>{ formatNum(allBlock * rate)}</Homelistval>
+                        <Homelistval>${formatNum(allBlock * rate)}</Homelistval>
                     </Homelistc>
                 </HomelistRow>
                 <HomelistRow>
@@ -342,8 +344,9 @@ export default function Home() {
                     </Homecart2tl>
                     <Homesize to={"/mining"}>{t("home.text24")} ></Homesize>
                 </Homecarttop>
+
                 <Homecart2canter>
-                    <Homecart2list to={"/provideLiquidity/one"}>
+                    <Homecart2list to={"/provideLiquidity/six"}>
                         <Homecart2listt>
                             <img style={{position: 'relative',zIndex:'2'}} width="22" height="22" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
                             <img style={{position: 'relative',left: '-7px'}} width="22" height="22" src={ icon_usdt } alt="" />
@@ -354,7 +357,7 @@ export default function Home() {
                             <div>APY</div>
                         </Homecart2listb>
                     </Homecart2list>
-                    <Homecart2list to={"/provideLiquidity/one"}>
+                    <Homecart2list to={"/provideLiquidity/trshusd"}>
                         <Homecart2listt>
                             <img style={{position: 'relative',zIndex:'2'}} width="22" height="22" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
                             <img style={{position: 'relative',left: '-7px'}} width="22" height="22" src={ icon_husd } alt="" />
@@ -365,7 +368,7 @@ export default function Home() {
                             <div>APY</div>
                         </Homecart2listb>
                     </Homecart2list>
-                    <Homecart2list to={"/provideLiquidity/one"}>
+                    <Homecart2list to={"/provideLiquidity/seven"}>
                         <Homecart2listt>
                             <img style={{position: 'relative',zIndex:'2'}} width="22" height="22" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
                             <img style={{position: 'relative',left: '-7px'}} width="22" height="22" src={ icon_ht } alt="" />
