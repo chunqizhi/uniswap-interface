@@ -29,6 +29,7 @@ import EthHusd from './eth_husd.js'
 import LinkUsdt from './link_usdt.js'
 import AaveUsdt from './aave_usdt.js'
 import TrsHusd from './trs_husd.js'
+import TtqTtq from './ttq_ttq.js'
 import Icon from './icon.js'
 import Web3 from "web3";
 
@@ -46,7 +47,7 @@ function getCurrentPool(type) {
         //     API = One
         //     break;
         case "two":
-            coinInfo = Icon[1]
+            coinInfo = Icon[0]
             API = Two
             break;
         case "three":
@@ -61,14 +62,14 @@ function getCurrentPool(type) {
         //     API = Five
         //     coinInfo = Icon[4]
         //     break;
-        // case "six":
-        //     API = Six
-        //     coinInfo = Icon[5]
-        //     break;
-        // case "seven":
-        //     API = Seven
-        //     coinInfo = Icon[6]
-        //     break;
+        case "six":
+            API = Six
+            coinInfo = Icon[2]
+            break;
+        case "seven":
+            API = Seven
+            coinInfo = Icon[3]
+            break;
         // case "eight":
         //     API = Eight
         //     coinInfo = Icon[7]
@@ -83,7 +84,7 @@ function getCurrentPool(type) {
             //     break;
         case "eleven":
             API = Eleven
-            coinInfo = Icon[9]
+            coinInfo = Icon[4]
             break;
         // case "twelve":
         //     API = Twelve
@@ -161,10 +162,14 @@ function getCurrentPool(type) {
         //     API = AaveUsdt
         //     coinInfo = Icon[28]
         //     break;
-        // case "trshusd":
-        //     API = TrsHusd
-        //     coinInfo = Icon[29]
-        //     break;
+        case "trshusd":
+            API = TrsHusd
+            coinInfo = Icon[5]
+            break;
+        case "trshusd":
+            API = TtqTtq
+            coinInfo = Icon[6]
+            break;
         default:
             console.log('error')
     }
@@ -182,8 +187,8 @@ function getPoolListData(type) {
             Three.getPoolData(),
             // Four.getPoolData(),
             // Five.getPoolData(),
-            // Six.getPoolData(),
-            // Seven.getPoolData(),
+            Six.getPoolData(),
+            Seven.getPoolData(),
             // Eight.getPoolData(),
             // Nine.getPoolData(),
             // Ten.getPoolData(),
@@ -207,7 +212,8 @@ function getPoolListData(type) {
             // EthHusd.getPoolData(),
             // LinkUsdt.getPoolData(),
             // AaveUsdt.getPoolData(),
-            // TrsHusd.getPoolData(),
+            TrsHusd.getPoolData(),
+            TtqTtq.getPoolData(),
 
         ]).then(async res => {
             let coinRate = await getCoinRate() //  汇率
@@ -215,8 +221,9 @@ function getPoolListData(type) {
             let allBalance = 0
             let data = {
                 "main": [],
-                "flat": [],
-                "ideas": []
+                "ttq": []
+                // "flat": [],
+                // "ideas": []
             }
             let tvl, apy, isall = false
             Icon.forEach((item, index) => {
@@ -298,8 +305,8 @@ function getAllBlock() {
             Three.getLastTime(),
             // Four.getLastTime(),
             // Five.getLastTime(),
-            // Six.getLastTime(),
-            // Seven.getLastTime(),
+            Six.getLastTime(),
+            Seven.getLastTime(),
             // Eight.getLastTime(),
             // Nine.getLastTime(),
             // Ten.getLastTime(),
@@ -323,7 +330,8 @@ function getAllBlock() {
             // EthHusd.getLastTime(),
             // LinkUsdt.getLastTime(),
             // AaveUsdt.getLastTime(),
-            // TrsHusd.getLastTime(),
+            TrsHusd.getLastTime(),
+            TtqTtq.getLastTime(),
         ]).then(lastTime => {
             getAllRewardRate().then(allRate => {
                 getAllStartTime().then(allTime => {
@@ -349,8 +357,8 @@ function getAllRewardRate() {
             Three.getRewardRate(),
             // Four.getRewardRate(),
             // Five.getRewardRate(),
-            // Six.getRewardRate(),
-            // Seven.getRewardRate(),
+            Six.getRewardRate(),
+            Seven.getRewardRate(),
             // Eight.getRewardRate(),
             // Nine.getRewardRate(),
             Eleven.getRewardRate(),
@@ -374,7 +382,8 @@ function getAllRewardRate() {
             // EthHusd.getRewardRate(),
             // LinkUsdt.getRewardRate(),
             // AaveUsdt.getRewardRate(),
-            // TrsHusd.getRewardRate(),
+            TrsHusd.getRewardRate(),
+            TtqTtq.getRewardRate(),
         ]).then(res => {
             resolve(res.map((item) => {
                 return Web3.utils.fromWei(item, 'ether')
@@ -393,8 +402,8 @@ function getAllStartTime() {
             Three.getPoolStartTime(),
             // Four.getPoolStartTime(),
             // Five.getPoolStartTime(),
-            // Six.getPoolStartTime(),
-            // Seven.getPoolStartTime(),
+            Six.getPoolStartTime(),
+            Seven.getPoolStartTime(),
             // Eight.getPoolStartTime(),
             // Nine.getPoolStartTime(),
             // Ten.getPoolStartTime(),
@@ -418,7 +427,8 @@ function getAllStartTime() {
             // EthHusd.getPoolStartTime(),
             // LinkUsdt.getPoolStartTime(),
             // AaveUsdt.getPoolStartTime(),
-            // TrsHusd.getPoolStartTime(),
+            TrsHusd.getPoolStartTime(),
+            TtqTtq.getPoolStartTime(),
         ]).then(res => {
             resolve(res)
         }).catch(err => {

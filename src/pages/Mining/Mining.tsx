@@ -100,7 +100,7 @@ const { t } = useTranslation()
         },
         {
             text: 'TTQ',
-            type: "flat",
+            type: "ttq",
         },
     ]
 
@@ -249,8 +249,9 @@ const { t } = useTranslation()
                                             <p>${ item.tvl }</p>
                                         </div>
                                         <div className="minItemCol2">
-                                            <p>{ item.per_day }({ t("mining.text20") })</p>
-                                            <p>{ (item.per_day * 360) }({ t("mining.text21") })</p>
+                                        {/* per_day 每月产量 */}
+                                            <p>{ (item.per_day/30) }({ t("mining.text20") })</p>
+                                            <p>{ (item.per_day*12) }({ t("mining.text21") })</p>
                                         </div>
                                         <div className="minItemCol3">
                                             <span>{ item.apy }</span>

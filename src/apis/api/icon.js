@@ -20,6 +20,7 @@ import ADAICON from '../../assets/images/coin/ADA.png'
 import EOSICON from '../../assets/images/coin/EOS.png'
 import LINKICON from '../../assets/images/coin/LINK.png'
 import AAVEICON from '../../assets/images/coin/AAVE.png'
+import TTQICON from '../../assets/images/coin/TTQ.png'
 
 
 
@@ -71,24 +72,24 @@ export default [
     //     coin_price: 'USDTPRE',
     //     key_word: 'main'
     // },
-    // {
-    //     pre_coin: TRSICON,
-    //     next_coin: USDTICON,
-    //     coin_name: "TRS/USDT",
-    //     coin: "TRS",
-    //     poolIndex: 'six',
-    //     coin_price: 'USDTNEXT',
-    //     key_word: 'main'
-    // },
-    // {
-    //     pre_coin: TRSICON,
-    //     next_coin: HTICON,
-    //     coin_name: "TRS/HT",
-    //     coin: "TRS",
-    //     poolIndex: 'seven',
-    //     coin_price: 'HTNEXT',
-    //     key_word: 'main'
-    // },
+    {
+        pre_coin: TTQICON,
+        next_coin: USDTICON,
+        coin_name: "TTQ/USDT",
+        coin: "TRS",
+        poolIndex: 'six',
+        coin_price: 'USDTNEXT',
+        key_word: 'ttq'
+    },
+    {
+        pre_coin: TTQICON,
+        next_coin: HTICON,
+        coin_name: "TTQ/HT",
+        coin: "TRS",
+        poolIndex: 'seven',
+        coin_price: 'HTNEXT',
+        key_word: 'ttq'
+    },
     // {
     //     pre_coin: MDXICON,
     //     next_coin: USDTICON,
@@ -297,13 +298,22 @@ export default [
     //     coin_price: 'USDTNEXT',
     //     key_word: "main"
     // },
-    // {
-    //     pre_coin: TRSICON,
-    //     next_coin: HUSDICON,
-    //     coin_name: "TRS/HUSD",
-    //     coin: "TRS",
-    //     poolIndex: 'trshusd',
-    //     coin_price: 'TRSPRE',
-    //     key_word: "main"
-    // },
+    {
+        pre_coin: TTQICON,
+        next_coin: HUSDICON,
+        coin_name: "TTQ/HUSD",
+        coin: "TRS",
+        poolIndex: 'trshusd',
+        coin_price: 'TRSPRE',
+        key_word: "ttq"
+    },
+    {
+        pre_coin: TTQICON,
+        next_coin: '',
+        coin_name: "TTQ",
+        coin: "TRS",
+        poolIndex: 'ttqttq',
+        coin_price: 'TRSPRE',
+        key_word: "ttq"
+    },
 ]

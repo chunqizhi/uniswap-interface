@@ -103,13 +103,13 @@ export function AddRemoveTabs({ adding, creating }: { adding: boolean; creating:
             adding && dispatch(resetMintState())
           }}
         > */}
-          <StyledArrowLeft style={{ color: '#fff' }} onClick={()=>{
+          <StyledArrowLeft style={{ color: '#d19d7e' }} onClick={()=>{
             // console.log(12313213)
             history.goBack();
              adding && dispatch(resetMintState())
           }}/>
         {/* </HistoryLink> */}
-        <ActiveText style={{ color: '#fff' }} >{creating ? `${t('add.text15')}` : adding ? `${t('add.text16')}` : `${t('add.text17')}`}</ActiveText>
+        <ActiveText style={{ color: '#d19d7e' }} >{creating ? `${t('add.text15')}` : adding ? `${t('add.text16')}` : `${t('add.text17')}`}</ActiveText>
         <Settings />
       </RowBetween>
     </Tabs>

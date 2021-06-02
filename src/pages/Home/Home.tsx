@@ -286,7 +286,7 @@ export default function Home() {
                         <Homelisttitle>{t("home.text15")}</Homelisttitle>
                         <Homelistval>
                             <img width="21" height="21" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
-                            <span>{balance}</span>
+                            <span>{formatNum(balance)}</span>
                         </Homelistval>
                     </Homelistc>
                     <Homelistc>
