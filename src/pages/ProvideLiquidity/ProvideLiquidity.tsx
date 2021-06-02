@@ -370,27 +370,27 @@ const { t } = useTranslation()
             </Miningpledget>
             <Miningcart2box>
                 <Miningtopimg>
-                    <img style={{left:'7px',zIndex:'2'}} src={ coinInfo.pre_coin } alt="" />
+                    {
+                        coinInfo.coin_name.indexOf('/') == '-1' ? '' : (<img style={{left:'7px',zIndex:'2'}} src={ coinInfo.pre_coin } alt="" />)
+                    }
                     <img style={{right:'7px'}} src={ coinInfo.next_coin } alt="" />
                 </Miningtopimg>
                 <div className='earnings'>{coinInfo.coin_name}</div>
                 <div className='upearnings'>{t("provideLiquidity.text08")}:{stakedLp.substring(0, 18)}</div>
                 <div className='upearnings'>{t("provideLiquidity.text24")}:{unStakedLp.substring(0, 18)}</div>
                 <Miningbottombtn>
-                    <Miningbtn1 onClick={
-                            () => {
-                                if (!isApprove) {
-                                    if (pengingApprove) {
-                                        setApprovediv(true)
-                                        toast()
-                                    }
-                                    else approveFn()
-                                    return
+                    <Miningbtn1 onClick={() => {
+                            if (!isApprove) {
+                                if (pengingApprove) {
+                                    setApprovediv(true)
+                                    toast()
                                 }
-                                API.getReward().then(res => {
-                                })
+                                else  approveFn()
+                                return
                             }
-                        }>{t("provideLiquidity.text22")}</Miningbtn1>
+                            setAddFlag(true)
+                            setType('withdraw')
+                        }}>{t("provideLiquidity.text22")}</Miningbtn1>
                     
                     {
                         !isApprove ? (

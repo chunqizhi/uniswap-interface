@@ -38,6 +38,7 @@ import {
     addNum
 } from '../api/calc.js'
 
+let gettrsrate=0,gettotalsupply=0
 
 function getCurrentPool(type) {
     let API, coinInfo
@@ -166,7 +167,7 @@ function getCurrentPool(type) {
             API = TrsHusd
             coinInfo = Icon[5]
             break;
-        case "trshusd":
+        case "ttqttq":
             API = TtqTtq
             coinInfo = Icon[6]
             break;
@@ -178,6 +179,8 @@ function getCurrentPool(type) {
         coinInfo
     }
 }
+gettotalSupply()
+gettrsRate()
 
 function getPoolListData(type) {
     return new Promise((resolve, reject) => {
@@ -228,6 +231,7 @@ function getPoolListData(type) {
             let tvl, apy, isall = false
             Icon.forEach((item, index) => {
                 // if (index == 14) { debugger }
+                // console.log('item =>',item)
                 // precoin nextcoin 数量 2倍的usdt 取前/后币类的汇率 coinRate[0].rate
                 switch (item.coin_price) {
                     case 'ETHPRE':
@@ -248,6 +252,9 @@ function getPoolListData(type) {
                     case 'TRSPRE':
                         tvl = (((multiNum(res[index].precoin, 2)) * 1) * coinRate[1].rate).toFixed(2)
                         break;
+                    case 'TTQONE':
+                        tvl = (gettrsrate * gettotalsupply).toFixed(2)
+                        break;
                     default:
                         console.log(`error`);
                 }
@@ -256,7 +263,8 @@ function getPoolListData(type) {
                         apy = `0.00%`
                         tvl = `0.00`
                     } else {
-                        apy = (((res[index].per_day * trsRate.rate) / tvl) * 360 * 100).toFixed(2) + "%"
+                        // per_day 按月份
+                        apy = (((res[index].per_day * trsRate.rate) / tvl) * 12 * 100).toFixed(2) + "%"
                     }
                     data[item.key_word].push({
                         ...item,
@@ -394,6 +402,12 @@ function getAllRewardRate() {
         })
     })
 }
+//获取 单币数量
+function gettotalSupply() {
+    TtqTtq.getTotalSupply().then( res =>{
+        gettotalsupply = Number(Web3.utils.fromWei(res, 'ether'))
+    })
+}
 // 所有时间
 function getAllStartTime() {
     return new Promise((resolve, reject) => {
@@ -437,6 +451,8 @@ function getAllStartTime() {
         })
     })
 }
+
+
 //获取行情的每一个价格 判断usdt前/后
 function getAllTrsRate(){
     return new Promise((resolve, reject) => {
@@ -471,10 +487,15 @@ function getAllTrsRate(){
 function getTrsRate() {
     return Six.getTrsRate()
 }
-// function getTrsRate1() {
-//     return Two.getTrsRate('USDTPRE')
-// }
-
+// 获取单币ttq 价格
+function gettrsRate() {
+    Six.getTrsRate().then(
+        res =>{
+            console.log('res.rate =>',res.rate)
+            gettrsrate = res.rate
+        }
+    )
+}
 //获取汇率
 function getCoinRate() {
     return new Promise((resolve, reject) => {

@@ -309,11 +309,11 @@ export default [
     },
     {
         pre_coin: TTQICON,
-        next_coin: '',
+        next_coin: TTQICON,
         coin_name: "TTQ",
         coin: "TRS",
         poolIndex: 'ttqttq',
-        coin_price: 'TRSPRE',
+        coin_price: 'TTQONE',
         key_word: "ttq"
     },
 ]

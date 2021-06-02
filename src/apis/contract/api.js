@@ -935,7 +935,18 @@ class API {
             })
         })
     }
-
+    // 每个池子每秒挖矿产出
+    getTotalSupply() {
+        return this.contract.initFnPromise().then(res => {
+            return new Promise((resolve, reject) => {
+                this.contract.getTotalSupply((res) => {
+                    resolve(res)
+                }, (err) => {
+                    reject(err)
+                })
+            })
+        })
+    }
     // pooldata
     getPoolData() {
         return new Promise((resolve, reject) => {

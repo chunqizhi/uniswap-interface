@@ -229,17 +229,25 @@ const { t } = useTranslation()
                                             <div className="minItemColH">
                                                 <div className="minItemImg">
                                                     {
-                                                        item.coin_name.indexOf('USDT') == 0 ? (
+                                                        item.coin_name.indexOf('USDT') == 0 && item.coin_name.indexOf('/') != -1 ?  (
                                                             <div>
                                                                 <img src={ item.next_coin } alt="" />
                                                                 <img src={ item.pre_coin } alt="" />
                                                             </div>
-                                                        ):(
+                                                        ): item.coin_name.indexOf('USDT') != 0 && item.coin_name.indexOf('/') != -1 ? (
                                                             <div>
                                                               <img src={ item.pre_coin } alt="" />
                                                                 <img src={ item.next_coin } alt="" />   
                                                             </div>
                                                               
+                                                        ) : item.coin_name.indexOf('USDT') == 0 && item.coin_name.indexOf('/') == -1 ? (
+                                                            <div>
+                                                                <img src={ item.pre_coin } alt="" />
+                                                            </div>
+                                                        ) : (
+                                                            <div>
+                                                                <img src={ item.pre_coin } alt="" />
+                                                            </div>
                                                         )
                                                     }
                                                     
