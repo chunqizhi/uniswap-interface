@@ -9,6 +9,7 @@ import 'antd-mobile/lib/carousel/style/index.less'
 import home_price1 from "../../assets/images/home_price1.png"
 import home_price2 from "../../assets/images/home_price2.png"
 import home_cart1 from "../../assets/images/home/home-card01.png"
+import home_cart2bg from "../../assets/images/home/home-card2-bg.png"
 import icon_ht from "../../assets/images/coin/HT.png"
 import icon_husd from "../../assets/images/coin/HUSD.png"
 import icon_usdt from "../../assets/images/coin/USDT.png"
@@ -52,9 +53,9 @@ const HomeItem = styled.div`
     //     height: auto;
     // }
 `
-// const Hometolink = styled(NavLink)`
+const Hometolink = styled(NavLink)`
 
-// `
+`
 
 // const HomeItem2 = styled(HomeItem)`
 //     background-image: url(${home_price2});
@@ -118,6 +119,10 @@ const Homelistval = styled.div`
     }
 `
 const Homecart2 = styled.div`
+    background-image: url(${home_cart2bg});
+    background-repeat: no-repeat;
+    background-size: cover;
+    width:100%;
     padding:20px 0;
     background-color:#fff9f0;
     border-radius:15px;
@@ -221,7 +226,7 @@ export default function Home() {
         path:'/home'
     },{
         title: 'banner2',
-        url: require('../../assets/images/home/home-banner1.png'),
+        url: require('../../assets/images/home/home-banner2.png'),
         path:'/director'
     }]);
     useEffect(() => {
@@ -230,11 +235,11 @@ export default function Home() {
             API.getAllTotalSupply().then(res => {
                 setAllTotalSupply(Number(res[0])+Number(res[1])+Number(res[2])+Number(res[3]))
             })
-            Data.getPoolListData().then(res => {
+            Data.getPoolListData().then(async res => {
                 // console.log(`getPoolListData =>`, res.ttq);
-                setMainList(res.ttq)
+                await setMainList(res.ttq)
             })
-            Data.getTrsRate().then(res => {
+            Data.getTrsRate().then( res => {
                 setRate(res.rate)
             })
 
@@ -270,7 +275,7 @@ export default function Home() {
         <>
             {/* 轮播图 */}
             <HomeBanner>
-                {/* <Carousel
+                <Carousel
                     autoplay = {true}
                     infinite
                     dotStyle={{ backgroundColor: '#fff' }}
@@ -282,12 +287,12 @@ export default function Home() {
                                 src={ item.url }
                                 alt={ item.title }
                                 key={ value }
-                                style={{ width: '100%', verticalAlign: 'top' }}
+                                style={{ width: '100%', verticalAlign: 'top',borderRadius:'15px' }}
                             />
                         </Hometolink>
                     ))}
-                </Carousel> */}
-                <img width="100%" style={{borderRadius:'10px'}} src={ require('../../assets/images/home/home-banner1.png') } alt="" />
+                </Carousel>
+                {/* <img width="100%" style={{borderRadius:'10px'}} src={ require('../../assets/images/home/home-banner1.png') } alt="" /> */}
             </HomeBanner>
             <Homelist>
                 <HomelistRow>

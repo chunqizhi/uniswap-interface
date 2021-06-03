@@ -42,6 +42,8 @@ import Director from "./Director/index";
 import Market from "./Market/index";
 //跨链桥
 import ChainBridge from "./ChainBridge/index";
+//NFT
+import NFT from "./NFT/index";
 //背景图片
 import home_bg from '../assets/images/home/home-bgimg.png'
 
@@ -148,6 +150,7 @@ export default function App() {
               <Route exact strict path="/director" component={Director} />
               <Route exact strict path="/market" component={Market} />
               <Route exact strict path="/chainbridge" component={ChainBridge} />
+              <Route exact strict path="/nft" component={NFT} />
               <Route component={RedirectPathToSwapOnly} />
             </Switch>
           </Web3ReactManager>

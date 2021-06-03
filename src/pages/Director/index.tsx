@@ -650,7 +650,7 @@ export default function Director() {
           {/* {formatNum(allTotalSupply)} */}
           {formatNum(0.00)}
         </DirectorAllTotalSupply>
-        <Directorh3>总锁仓量(TTQ)</Directorh3>
+        <Directorh3>{t("director.text29")}(TTQ)</Directorh3>
       </Directortopbox>
       {/*dao7 */}
       {/* <Directorbox>

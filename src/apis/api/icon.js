@@ -83,6 +83,15 @@ export default [
     },
     {
         pre_coin: TTQICON,
+        next_coin: HUSDICON,
+        coin_name: "TTQ/HUSD",
+        coin: "TRS",
+        poolIndex: 'trshusd',
+        coin_price: 'TRSPRE',
+        key_word: "ttq"
+    },
+    {
+        pre_coin: TTQICON,
         next_coin: HTICON,
         coin_name: "TTQ/HT",
         coin: "TRS",
@@ -298,15 +307,7 @@ export default [
     //     coin_price: 'USDTNEXT',
     //     key_word: "main"
     // },
-    {
-        pre_coin: TTQICON,
-        next_coin: HUSDICON,
-        coin_name: "TTQ/HUSD",
-        coin: "TRS",
-        poolIndex: 'trshusd',
-        coin_price: 'TRSPRE',
-        key_word: "ttq"
-    },
+    
     {
         pre_coin: TTQICON,
         next_coin: TTQICON,

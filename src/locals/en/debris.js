@@ -75,4 +75,11 @@ export default {
     text68: 'Connect to a wallet',
     text69: 'Swap Anyway',
     text70: 'Confirm Swap',
+//NFT
+    text71: ' Trading Market',
+    text72: ' The amount of trade',
+    text73: 'unsold',
+    text74: 'vote for',
+    text75: 'price',
+    text76: 'Not Opened',
 }

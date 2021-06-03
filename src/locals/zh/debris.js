@@ -76,4 +76,11 @@ export default {
     text68: '连接钱包',
     text69: '仍然兑换',
     text70: '确认交换',
+//NFT
+    text71: '交易市场',
+    text72: '交易总额',
+    text73: '暂时未售',
+    text74: '投票支持',
+    text75: '价格',
+    text76: '暂未开放',
 }

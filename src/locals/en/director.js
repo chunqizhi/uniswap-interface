@@ -28,4 +28,5 @@ export default {
     text27: 'Removal time',
     text28: 'take out',
     text29: 'Deposit',
+    text29: 'Total lock',
 }

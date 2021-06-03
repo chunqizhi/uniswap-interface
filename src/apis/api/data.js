@@ -55,16 +55,16 @@ function getCurrentPool(type) {
             API = Six
             coinInfo = Icon[2]
             break;
+        case "trshusd":
+            API = TrsHusd
+            coinInfo = Icon[3]
+            break;
         case "seven":
             API = Seven
-            coinInfo = Icon[3]
+            coinInfo = Icon[4]
             break;
         case "eleven":
             API = Eleven
-            coinInfo = Icon[4]
-            break;
-        case "trshusd":
-            API = TrsHusd
             coinInfo = Icon[5]
             break;
         case "ttqttq":
@@ -88,9 +88,10 @@ function getPoolListData(type) {
             Two.getPoolData(),
             Three.getPoolData(),
             Six.getPoolData(),
+            TrsHusd.getPoolData(),
             Seven.getPoolData(),
             Eleven.getPoolData(),
-            TrsHusd.getPoolData(),
+            
             TtqTtq.getPoolData(),
 
         ]).then(async res => {
@@ -168,9 +169,9 @@ function getAllBlock() {
             Two.getLastTime(),
             Three.getLastTime(),
             Six.getLastTime(),
+            TrsHusd.getLastTime(),
             Seven.getLastTime(),
             Eleven.getLastTime(),
-            TrsHusd.getLastTime(),
             TtqTtq.getLastTime(),
         ]).then(lastTime => {
             getAllRewardRate().then(allRate => {
@@ -195,9 +196,9 @@ function getAllRewardRate() {
             Two.getRewardRate(),
             Three.getRewardRate(),
             Six.getRewardRate(),
+            TrsHusd.getRewardRate(),
             Seven.getRewardRate(),
             Eleven.getRewardRate(),
-            TrsHusd.getRewardRate(),
             TtqTtq.getRewardRate(),
         ]).then(res => {
             resolve(res.map((item) => {
@@ -221,9 +222,9 @@ function getAllStartTime() {
             Two.getPoolStartTime(),
             Three.getPoolStartTime(),
             Six.getPoolStartTime(),
+            TrsHusd.getPoolStartTime(),
             Seven.getPoolStartTime(),
             Eleven.getPoolStartTime(),
-            TrsHusd.getPoolStartTime(),
             TtqTtq.getPoolStartTime(),
         ]).then(res => {
             resolve(res)

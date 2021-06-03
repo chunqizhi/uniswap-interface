@@ -28,4 +28,5 @@ export default {
     text27: '取出时间',
     text28: '取出',
     text29: '存入',
+    text29: '总锁仓量',
 }
