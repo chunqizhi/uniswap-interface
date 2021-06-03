@@ -10,7 +10,7 @@ import API from '../contract/api.js'
 const trsAddr = `0x5545153CCFcA01fbd7Dd11C0b23ba694D9509A6F` // pre-coin
 const usdtAddr = `0xa71EdC38d189767582C38A3145b5873052c3e47a` // next-coin
 const trsUsdtPairAddr = `0x9b5a473f83ab1807188bd60236d50550d39a16aa` // pre-next-pair
-const trsUsdtPoolAddr = `0x96258Cd403b9bd8Ac01ab31113C173Dd526f9c88` // pre-next-pool
+const trsUsdtPoolAddr = `0x2bEdb5505831ce3Ba53AAe53069139ed6E6DdF79` // pre-next-pool
 
 
 const huiwanTokenAddr = trsAddr

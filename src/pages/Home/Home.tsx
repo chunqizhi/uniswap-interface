@@ -149,6 +149,9 @@ const Homecart2listt = styled.div`
     font-size:14px;
     color: #722F0D;
     font-family: MicrosoftYaHei;
+    >img{
+        display: flex;
+    }
 `
 const Homecart2listb = styled.div`
     display: flex;
@@ -171,7 +174,7 @@ const Homecart2tl = styled.div`
     padding: 7px 10px 7px 15px;
 `
 const Homecart2name = styled.div`
-    font-size: 14px;
+    font-size: 12px;
     font-family: MicrosoftYaHei;
     color: #722F0D;
 `
@@ -360,7 +363,7 @@ export default function Home() {
                                             item.coin_name.indexOf('/') == '-1' ? (
                                                 <img style={{position: 'relative',zIndex:'2',marginRight:'7px'}} width="22" height="22" src={ item.pre_coin } alt="" />
                                             ) : (
-                                                <div>
+                                                <div style={{display: 'flex'}}>
                                                      <img style={{position: 'relative',zIndex:'2'}} width="22" height="22" src={ item.pre_coin } alt="" />
                                                     <img style={{position: 'relative',left: '-7px'}} width="22" height="22" src={ item.next_coin } alt="" />
                                                 </div>
