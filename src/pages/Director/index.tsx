@@ -647,7 +647,8 @@ export default function Director() {
       <Directortopbox> 
         <DirectorAllTotalSupply>
           <Directoricon></Directoricon>
-          {formatNum(allTotalSupply)}
+          {/* {formatNum(allTotalSupply)} */}
+          {formatNum(0.00)}
         </DirectorAllTotalSupply>
         <Directorh3>总锁仓量(TTQ)</Directorh3>
       </Directortopbox>
