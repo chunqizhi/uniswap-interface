@@ -115,7 +115,7 @@ const Titlename = styled.div`
   width:32vw;
   color:#722F0D;
   margin-left:5px;
-  font-size: 14px;
+  font-size: 4.2vw;
   font-family: MicrosoftYaHei;
   color: #722F0D;
 `
