@@ -389,8 +389,10 @@ export default function Director() {
     if (type == 'extract') {
         settext(1)
     }else if(type == 'balanceof'){
-        settext(2)
-    }else {
+        settext(3)
+    }else if(type == 'Dontopen'){
+      settext(2)
+    }else{
         settext(0)
     }
     setApprovediv(true)
@@ -638,7 +640,7 @@ export default function Director() {
   return (
     <>
       {isApprovediv && (
-          text == 1 ? <Approvediv>{t("director.text17")}</Approvediv> : text == 0 ? <Approvediv>{t("director.text18")}</Approvediv> : <Approvediv>{t("director.text19")}</Approvediv> 
+          text == 1 ? <Approvediv>{t("director.text17")}</Approvediv> : text == 0 ? <Approvediv>{t("director.text18")}</Approvediv> : text == 2 ? <Approvediv>{t("director.text14")}</Approvediv> :<Approvediv>{t("director.text19")}</Approvediv> 
         )}
       <Directortitle>TTQSWAP.COM</Directortitle>
       <Directorh2>DAO {t("director.text21")}</Directorh2>
@@ -766,26 +768,33 @@ export default function Director() {
         </Directorrow>
         <Directorrow>
           <Directorname>{t("director.text23")}</Directorname>
-          <Directornum>{formatNum(daoTotalSupply)}</Directornum>
+          {/* <Directornum>{formatNum(daoTotalSupply)}</Directornum> */}
+          <Directornum>{formatNum(0.00)}</Directornum>
         </Directorrow>
         <Directorrow>
           <Directorname>{t("director.text24")}</Directorname>
-          <Directornum>{formatNum(balance)}</Directornum>
+          {/* <Directornum>{formatNum(balance)}</Directornum> */}
+          <Directornum>{formatNum(0.00)}</Directornum>
         </Directorrow>
         <Directorrow>
           <Directorname>{t("director.text25")}</Directorname>
-          <Directornum>{formatNum(daoBalanceOf)}</Directornum>
+          {/* <Directornum>{formatNum(daoBalanceOf)}</Directornum> */}
+          <Directornum>{formatNum(0.00)}</Directornum>
         </Directorrow>
         <Directorrow>
           <Directorname>{t("director.text26")}</Directorname>
-          <Directornum>{formatNum(allAvailableAmount)}</Directornum>
+          {/* <Directornum>{formatNum(allAvailableAmount)}</Directornum> */}
+          <Directornum>{formatNum(0.00)}</Directornum>
         </Directorrow>
         <Directorrow>
           <Directorname>{t("director.text27")}</Directorname>
-          <Directornum>{DaoRestBlocks}</Directornum>
+          {/* <Directornum>{DaoRestBlocks}</Directornum> */}
+          <Directornum>{0.00}</Directornum>
         </Directorrow>
         <Miningbottombtn>
-          <Miningbtn1 onClick={() => extract('30')}>{t("director.text28")}</Miningbtn1>
+        <Miningbtn1 onClick={() => toast('Dontopen')}>{t("director.text28")}</Miningbtn1>
+        <Miningbtn2 onClick={() => toast('Dontopen')}>{t("director.text29")}</Miningbtn2>
+          {/* <Miningbtn1 onClick={() => extract('30')}>{t("director.text28")}</Miningbtn1>
           <Miningbtn2 onClick={
             () => {
               setAddFlagtype('30')
@@ -799,7 +808,7 @@ export default function Director() {
                 setAddFlag(true)
                 setPengingApprove(false)
               }
-            }}>{isimpower ? '授权中...' : t("director.text29")}</Miningbtn2>
+            }}>{isimpower ? '授权中...' : t("director.text29")}</Miningbtn2> */}
         </Miningbottombtn>
       </Directorbox>
       {/*dao60 */}
