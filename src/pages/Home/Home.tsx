@@ -203,7 +203,7 @@ export default function Home() {
     const [balance, setBalance] = useState(0.00)//我的余额
     const [allBlock, setAllBock] = useState(0.00)//当前挖出数量
     const [allTotalSupply, setAllTotalSupply] = useState(0.00)//当前锁仓总量
-    const [mainList, setMainList] = useState({ 'main': [], 'ttq': []})
+    const [mainList, setMainList] = useState([])
 
     const clickListener = () => {
     }
@@ -226,6 +226,10 @@ export default function Home() {
         const timerFn = function () {
             API.getAllTotalSupply().then(res => {
                 setAllTotalSupply(Number(res[0])+Number(res[1])+Number(res[2])+Number(res[3]))
+            })
+            Data.getPoolListData().then(res => {
+                console.log(`getPoolListData =>`, res.ttq);
+                setMainList(res.ttq)
             })
             Data.getTrsRate().then(res => {
                 setRate(res.rate)
@@ -346,18 +350,34 @@ export default function Home() {
                 </Homecarttop>
 
                 <Homecart2canter>
-                    <Homecart2list to={"/provideLiquidity/six"}>
-                        <Homecart2listt>
-                            <img style={{position: 'relative',zIndex:'2'}} width="22" height="22" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
-                            <img style={{position: 'relative',left: '-7px'}} width="22" height="22" src={ icon_usdt } alt="" />
-                            <Homecart2name>TTQ/USDT</Homecart2name>
-                        </Homecart2listt>
-                        <Homecart2listb>
-                            <div>66.00%</div>
-                            <div>APY</div>
-                        </Homecart2listb>
-                    </Homecart2list>
-                    <Homecart2list to={"/provideLiquidity/trshusd"}>
+                    {
+                        mainList.map((item,index) => {
+                            return(
+                                <Homecart2list to={`/provideLiquidity/${item.poolIndex}`} key={index}>
+                                    <Homecart2listt>
+                                        {
+                                            item.coin_name.indexOf('/') == '-1' ? (
+                                                <img style={{position: 'relative',zIndex:'2',marginRight:'7px'}} width="22" height="22" src={ item.pre_coin } alt="" />
+                                            ) : (
+                                                <div>
+                                                     <img style={{position: 'relative',zIndex:'2'}} width="22" height="22" src={ item.pre_coin } alt="" />
+                                                    <img style={{position: 'relative',left: '-7px'}} width="22" height="22" src={ item.next_coin } alt="" />
+                                                </div>
+                                            )
+                                        }
+                                        
+                                        <Homecart2name>{item.coin_name}</Homecart2name>
+                                    </Homecart2listt>
+                                    <Homecart2listb>
+                                        <div>{item.apy}</div>
+                                        <div>APY</div>
+                                    </Homecart2listb>
+                                </Homecart2list>
+                            )
+                        })
+                    }
+                    
+                    {/* <Homecart2list to={"/provideLiquidity/trshusd"}>
                         <Homecart2listt>
                             <img style={{position: 'relative',zIndex:'2'}} width="22" height="22" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
                             <img style={{position: 'relative',left: '-7px'}} width="22" height="22" src={ icon_husd } alt="" />
@@ -382,14 +402,14 @@ export default function Home() {
                     <Homecart2list to={"/provideLiquidity/one"}>
                         <Homecart2listt>
                             <img style={{position: 'relative',zIndex:'2'}} width="22" height="22" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
-                            {/* <img style={{position: 'relative',left: '-7px',zIndex:'2'}} width="22" height="22" src={ require('../../assets/images/home/nav-logo.png') } alt="" /> */}
-                            <Homecart2name>TTQ</Homecart2name>
+                             <Homecart2name style={{marginLeft:'7px'}}>TTQ</Homecart2name>
                         </Homecart2listt>
                         <Homecart2listb>
                             <div>66.00%</div>
                             <div>APY</div>
                         </Homecart2listb>
                     </Homecart2list>
+                 */}
                 </Homecart2canter>
             </Homecart2>
             {/* <HomePrice>

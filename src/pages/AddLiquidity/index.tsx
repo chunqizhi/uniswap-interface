@@ -374,7 +374,7 @@ export default function AddLiquidity({
                 <ColumnCenter>
                   <BlueCard>
                     <AutoColumn gap="10px">
-                      <TYPE.link fontWeight={600} color={'#2172E5'}>
+                      <TYPE.link fontSize={16} fontWeight={600} color={'#2172E5'}>
                       {t("add.text03")}
                       </TYPE.link>
                       <TYPE.link fontWeight={400} color={'#2172E5'}>

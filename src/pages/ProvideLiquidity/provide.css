@@ -221,8 +221,8 @@ input {
     top: 50%;
     transform: translateY(-50%);
     color: #fff;
-    background-color: #06DD7A;
-    border: 1px solid #06DD7A;
+    background-color: #ab5729;
+    border: 1px solid #ab5729;
     font-size: 14px;
 }
 
@@ -242,12 +242,12 @@ input {
 }
 
 .add-mask .mask-bottom .left-btn {
-    border: 1px solid #06DD7A;
-    color: #06DD7A;
+    border: 1px solid #ab5729;
+    color: #ab5729;
 }
 
 .add-mask .mask-bottom .right-btn {
-    background: #06DD7A;
+    background: #ab5729;
     color: #fff;
 }
 .upearnings{

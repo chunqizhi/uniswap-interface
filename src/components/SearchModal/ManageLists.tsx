@@ -174,7 +174,7 @@ const { t } = useTranslation()
       )}
       <Column style={{ flex: '1' }}>
         <Row>
-          <StyledTitleText active={isActive}>{list.name}1</StyledTitleText>
+          <StyledTitleText active={isActive}>{list.name}</StyledTitleText>
         </Row>
         <RowFixed mt="4px">
           <StyledListUrlText active={isActive} mr="6px">

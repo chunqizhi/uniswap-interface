@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './provide.css'
+import { ArrowLeft } from 'react-feather'
+import creatHistory from 'history/createHashHistory'
 
 import Data from '../../apis/api/data.js'
 import styled from 'styled-components'
@@ -39,6 +41,7 @@ const Miningpledget = styled.div`
     justify-content: center;
     align-items: center;
     color:#AB5729;
+    position: relative;
 `
 const Miningtopbgimg = styled.div`
     width:50px;
@@ -94,11 +97,19 @@ const Miningbtn2 =styled(Miningbtn1)`
     color:#722f0d;
     border:2px solid #722f0d;
 `
+const StyledArrowLeft = styled(ArrowLeft)`
+  // color: ${({ theme }) => theme.text1};
+  position: absolute;
+    left: 8%;
+    top: 10%;
+`
 let API, coinInfo ,timers
 
 
 export default function ProvideLiquidity(props: RouteComponentProps<{ poolIndex: string }>) {
 const { t } = useTranslation()
+const history = creatHistory();
+
 
     const poolIndex = props.match.params.poolIndex
     API = Data.getCurrentPool(poolIndex).API
@@ -348,8 +359,14 @@ const { t } = useTranslation()
                 }
 
             </div>
-        
+            <div>
+            
+            </div>
             <Miningpledget>
+                <StyledArrowLeft style={{ color: '#d19d7e' }} onClick={()=>{
+                    history.goBack();
+                    // adding && dispatch(resetMintState())
+                }}/>
                 <Miningtopbgimg></Miningtopbgimg>
                 <div className='earnings'>{earned.substring(0, 18)}</div>
                 <div className='upearnings'>{t("provideLiquidity.text20")}TTQ{t("provideLiquidity.text21")}</div>

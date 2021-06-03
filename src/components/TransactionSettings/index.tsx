@@ -45,7 +45,7 @@ const Option = styled(FancyButton)<{ active: boolean }>`
     cursor: pointer;
   }
   // background-color: ${({ active, theme }) => active && theme.primary1};
-  background-color: ${({ active, theme }) => active && '#06DD7A'};
+  background-color: ${({ active, theme }) => active && '#ac562a'};
   color: ${({ active, theme }) => (active ? theme.white : theme.text1)};
 `
 

@@ -365,7 +365,7 @@ export default function Director() {
       API.getAllTotalSupply().then(res => {
         // console.log('总锁仓量',res[0],res[1],res[2],res[3])
         // console.log('总仓量',Number(res[0])+Number(res[1])+Number(res[2])+Number(res[3]))
-        setAllTotalSupply(Number(res[0])+Number(res[1])+Number(res[2])+Number(res[3]))
+        setAllTotalSupply(Number(res[2]))
     })
       
     }
@@ -649,7 +649,8 @@ export default function Director() {
         </DirectorAllTotalSupply>
         <Directorh3>总锁仓量(TTQ)</Directorh3>
       </Directortopbox>
-       <Directorbox>{/*dao7 */}
+      {/*dao7 */}
+      {/* <Directorbox>
         <Directortop>
           <Directortopname>{dao7name}</Directortopname>
           <Directortopimg></Directortopimg>
@@ -698,8 +699,9 @@ export default function Director() {
               }
             }}>{isimpower7 ? '授权中...' : t("director.text29")}</Miningbtn2>
         </Miningbottombtn>
-      </Directorbox>
-      <Directorbox>{/*dao15 */}
+      </Directorbox> */}
+      {/*dao15 */}
+      {/* <Directorbox>
         <Directortop>
           <Directortopname>{dao15name}</Directortopname>
           <Directortopimg></Directortopimg>
@@ -748,8 +750,9 @@ export default function Director() {
               }
             }}>{isimpower15 ? '授权中...' : t("director.text29")}</Miningbtn2>
         </Miningbottombtn>
-      </Directorbox>
-      <Directorbox>{/*dao30 */}
+      </Directorbox> */}
+      {/*dao30 */}
+      <Directorbox>
         <Directortop>
           <Directortopname>{daoname}</Directortopname>
           <Directortopimg></Directortopimg>
@@ -799,7 +802,8 @@ export default function Director() {
             }}>{isimpower ? '授权中...' : t("director.text29")}</Miningbtn2>
         </Miningbottombtn>
       </Directorbox>
-      <Directorbox>{/*dao60 */}
+      {/*dao60 */}
+      {/* <Directorbox>
         <Directortop>
           <Directortopname>{dao60name}</Directortopname>
           <Directortopimg></Directortopimg>
@@ -848,7 +852,7 @@ export default function Director() {
               }
             }}>{isimpower60 ? '授权中...' : t("director.text29")}</Miningbtn2>
         </Miningbottombtn>
-      </Directorbox>
+      </Directorbox> */}
        {//质押弹窗
         addFlag && (
           <div className="add-mask" onClick={

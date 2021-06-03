@@ -21,6 +21,7 @@ export const AutoColumn = styled.div<{
   grid-row-gap: ${({ gap }) => (gap === 'sm' && '8px') || (gap === 'md' && '12px') || (gap === 'lg' && '24px') || gap};
   justify-items: ${({ justify }) => justify && justify};
   padding-bottom:0px !important;
+  font-size:12px;
 `
 
 export default Column

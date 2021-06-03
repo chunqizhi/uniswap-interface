@@ -264,12 +264,12 @@ li {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top right;
-    padding-top: 26px;
+    padding-top: 38px;
 }
 .minHead {
     display: flex;
     flex-wrap: wrap;
-    height: 50px;
+    height: 24px;
     font-size: 16px;
     color: #CF9574;
     justify-content: space-between;

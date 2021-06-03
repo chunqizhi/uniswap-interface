@@ -51,7 +51,7 @@ const StyledNavLink = styled(NavLink).attrs({
 const ActiveText = styled.div`
   font-weight: 500;
   font-size: 20px;
-  color: #E3F4FD;
+  color: rgb(209, 157, 126);
 `
 
 const StyledArrowLeft = styled(ArrowLeft)`
@@ -79,7 +79,7 @@ export function FindPoolTabs() {
     <Tabs>
       <RowBetween style={{ padding: '1rem 1rem 0 1rem' }}>
         <HistoryLink to="/pool">
-          <ArrowLeft style={{ color: '#E3F4FD' }} />
+          <ArrowLeft style={{ color: 'rgb(209, 157, 126)' }} />
         </HistoryLink>
         <ActiveText>{t('add.text14')}</ActiveText>
         <Settings />

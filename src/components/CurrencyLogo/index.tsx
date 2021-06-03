@@ -10,7 +10,8 @@ import Logo from '../Logo'
 
 export const getTokenLogoURL = (address: string) =>
   // `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`
-  `http://tree-swap.org/data/tokenlist/${address}.png`
+  // `http://tree-swap.org/data/tokenlist/${address}.png`
+  `https://www.ttqswap.com/data/tokenlist/${address}.png`
 
 const StyledEthereumLogo = styled.img<{ size: string }>`
   width: ${({ size }) => size};

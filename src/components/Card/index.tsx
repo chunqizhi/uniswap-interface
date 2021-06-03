@@ -15,7 +15,7 @@ export default Card
 
 export const LightCard = styled(Card)`
   border: 1px solid ${({ theme }) => theme.bg2};
-  border:1px solid #06dd7a;
+  border:1px solid #ab5729;
   color:#ABB7CA;
 `
 //  background-color: ${({ theme }) => theme.bg1};
@@ -48,7 +48,6 @@ const BlueCardStyled = styled(Card)`
   color: ${({ theme }) => theme.primary1};
   background-color: #f9e7d3;
   border-radius: 12px;
-  width: fit-content;
 `
 
 export const BlueCard = ({ children, ...rest }: CardProps) => {

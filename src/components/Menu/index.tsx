@@ -241,12 +241,9 @@ export default function Menu() {
               {t("navlist.text09")}
             </MenuItem>
             
-            <MenuItem onClick={copyUrl}>
-              {/* <BookOpen size={14} />  id="link" href="https://uniswap.org/docs/v2" */}
-              {/* <img src={require('../../assets/images/wx.png')} width='14' height='14' alt='' /> */}
-              <img src={icon7} width='14' height='14' alt='' />
+            {/* <MenuItem onClick={copyUrl}><img src={icon7} width='14' height='14' alt='' />
               {t("navlist.text05")}
-            </MenuItem>
+            </MenuItem> */}
             <MenuItem id="link" href={CODE_LINK}>
               {/* <GitHub size={14} /> */}
               <img src={icon8} width='14' height='14' alt='' />
