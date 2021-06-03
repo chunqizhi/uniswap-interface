@@ -757,13 +757,14 @@ export default function Director() {
       {/*dao30 */}
       <Directorbox>
         <Directortop>
-          <Directortopname>{daoname}</Directortopname>
+          {/* <Directortopname>{daoname}</Directortopname> */}
+          <Directortopname>TTQ DAO</Directortopname>
           <Directortopimg></Directortopimg>
         </Directortop>
         <Directorrow>
           <Directorname>{t("director.text22")}</Directorname>
           <Directorapr>
-            438%
+            0.00%
             <img width="30" height="30" src={home_cart1} alt="" />
           </Directorapr>
         </Directorrow>
