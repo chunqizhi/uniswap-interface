@@ -218,7 +218,7 @@ const { t } = useTranslation()
                     <div className="minList">
                         <div className="minHead">
                             <span className="headspant">{ t("mining.text18") }/TVL</span>
-                            <span className="headspanm">{ t("mining.text19") }(TTQ)</span>
+                            <span className="headspanm">TTQ</span>
                             <span className="headspanb">APY</span>
                         </div>
                         {

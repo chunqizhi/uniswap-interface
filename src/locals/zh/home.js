@@ -18,7 +18,7 @@ export default {
     text17: '市值',
     text18: '当前挖出数量',
     text19: '当前挖出价值',
-    text20: '已回购',
+    text20: '已销毁',
     text21: '数量',
     text22: '锁仓总量',
     text23: '热门矿池',
