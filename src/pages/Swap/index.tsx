@@ -57,6 +57,7 @@ const ButtonErrorbtn = styled(ButtonError)`
   padding:0px;
   color:#fff;
   height:40px;
+  border-radius:12px;
 `
 const Headerbox = styled.div`
   display:flex;
