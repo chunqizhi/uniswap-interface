@@ -228,7 +228,7 @@ export default function Home() {
                 setAllTotalSupply(Number(res[0])+Number(res[1])+Number(res[2])+Number(res[3]))
             })
             Data.getPoolListData().then(res => {
-                console.log(`getPoolListData =>`, res.ttq);
+                // console.log(`getPoolListData =>`, res.ttq);
                 setMainList(res.ttq)
             })
             Data.getTrsRate().then(res => {
@@ -335,7 +335,8 @@ export default function Home() {
                         <Homelisttitle>DAO{t("home.text22")}</Homelisttitle>
                         <Homelistval>
                             <img width="21" height="21" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
-                            <span>{formatNum(allTotalSupply)}</span>
+                            {/* <span>{formatNum(allTotalSupply)}</span> */}
+                            <span>{formatNum(0)}</span>
                         </Homelistval>
                     </Homelistc>
                 </HomelistRow>

@@ -144,7 +144,7 @@ export default function PoolFinder() {
             <Text textAlign="center" fontWeight={500}>
             {t("pool.text16")}
             </Text>
-            <StyledInternalLink to={`/pool`}>
+            <StyledInternalLink to={`/exchange/pool`}>
               <Text textAlign="center">{t("pool.text17")}</Text>
             </StyledInternalLink>
           </ColumnCenter>

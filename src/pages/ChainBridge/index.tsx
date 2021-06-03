@@ -7,6 +7,8 @@ import Data from '../../apis/api/data.js'
 import { Carousel } from 'antd-mobile';
 import './index.css'
 import nav_logo from "../../assets/images/home/nav-logo.png"
+import icon_BSC from "../../assets/images/chainbridge/icon-BSC.png"
+import icon_heco from "../../assets/images/chainbridge/icon-heco.png"
 import { request } from 'http'
 
 const Bridgebg = styled.div`
@@ -80,6 +82,10 @@ const Bridgeitem1 = styled.div`
     padding:10px;
     border-radius:10px;
     box-shadow: 3px 4px 11px 0px #ccc;
+    >img{
+        position: relative;
+        top: 4px;
+    }
 `
 const Bridgeh2 = styled.div`
     font-size: 13px;
@@ -183,12 +189,12 @@ export default function Home() {
                 </Bridgerow>
                 <Bridgerow1>
                     <Bridgeitem1>
-                        <img width="32" height="32" src={nav_logo} alt="" />
+                        <img width="34" height="34" src={icon_heco} alt="" />
                         HECO
                     </Bridgeitem1>
                     <img width="20" height="20" src={require("../../assets/images/chainbridge/icon-exchange.png")} alt="" />
                     <Bridgeitem1>
-                        <img width="32" height="32" src={nav_logo} alt="" />
+                        <img width="34" height="34" src={icon_BSC} alt="" />
                         BSC
                     </Bridgeitem1>
                 </Bridgerow1>
