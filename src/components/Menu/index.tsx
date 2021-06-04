@@ -161,7 +161,7 @@ const Approvediv = styled.div`
     z-index:2999;
     transform: translateX(-50%);
 `
-const CODE_LINK = 'https://github.com/Tree-Swap/Tree-Swap'
+const CODE_LINK = 'https://github.com/TTQSWAP/TTQSWAPContract'
 
 let timers, domUrl
 export default function Menu() {
@@ -232,11 +232,11 @@ export default function Menu() {
               {t("navlist.text11")}
             </MenuItem>
             {/* <NavLinkItem id={`pool-nav-link`} to={'/exchange/pool'}>{t("navlist.text03")}</NavLinkItem> */}
-            <MenuItem id="link" href="https://www.tree-swap.org/data/WhitePapers.pdf">
+            <MenuItem id="link" href="https://www.ttqswap.com/data/TTQSWAPWhitePaper.pdf">
               <img src={icon5} width='14' height='14' alt='' />
               {t("navlist.text04")}
             </MenuItem>
-            <MenuItem id="link" href="https://www.tree-swap.org/data/SwapAudit.pdf">
+            <MenuItem id="link" >
               <img src={icon6} width='14' height='14' alt='' />
               {t("navlist.text09")}
             </MenuItem>
@@ -249,12 +249,12 @@ export default function Menu() {
               <img src={icon8} width='14' height='14' alt='' />
               {t("navlist.text06")}
             </MenuItem>
-            <MenuItem id="link" href="https://twitter.com/TreeswapBest">
+            <MenuItem id="link" href="https://twitter.com/ttqswap">
               {/* <Twitter size={14} /> */}
               <img src={icon9} width='14' height='14' alt='' />
               {t("navlist.text07")}
             </MenuItem>
-            <MenuItem id="link" href="https://t.me/treeswaporg">
+            <MenuItem id="link" href="https://t.me/TTQSWAPCOM">
               {/* <img src={require('../../assets/images/telegram.png')} width='14' height='14' alt='' /> */}
               <img src={icon10} width='14' height='14' alt='' />
               {t("navlist.text08")}
