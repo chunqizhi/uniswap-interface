@@ -58,24 +58,24 @@ export default function NarBar() {
             <div className="navBar">
                 <NavLink exact to="/home" className="navItem" activeClassName="navItemActive">
                     {/* <span className="iconfont icon-index-copy"></span> */}
+                    <img width="26" height="26" src={require('../../assets/images/home/nav-logo.png')} alt="" />
                     {/* <div className='icon1'> */}
-                        <img width="26" height="26" src={require('../../assets/images/home/nav-logo.png')} alt="" />
                     {/* </div> */}
                     <span>{t("navbar.text01")}</span>
                 </NavLink>
                 <NavLink to="/exchange" className="navItem" activeClassName="navItemActive">
                     {/* <span className="iconfont icon-duihuan"></span> */}
-                    <img width="26" height="26" src={require('../../assets/images/home/tab-icon2.png')} alt="" />
+                    <img width="26" height="26" src={require('../../assets/images/home/tab-icon-exchange.png')} alt="" />
                     <span>{t("navbar.text02")}</span>
                 </NavLink>
                 <NavLink exact to="/mining" className="navItem" activeClassName="navItemActive">
                     {/* <span className="iconfont icon-yejinkuangchan"></span> */}
-                    <img width="26" height="26" src={require('../../assets/images/home/tab-icon3.png')} alt="" />
+                    <img width="26" height="26" src={require('../../assets/images/home/tab-icon-mining.png')} alt="" />
                     <span>{t("navbar.text03")}</span>
                 </NavLink>
                 {/* to="/" */}
                 <NavLink exact to="/nft" className="navItem" activeClassName="navItemActive">
-                    <img width="26" height="26" src={require('../../assets/images/home/tab-icon4.png')} alt="" />
+                    <img width="26" height="26" src={require('../../assets/images/home/tab-icon-news.png')} alt="" />
                     <span>{t("navbar.text04")}</span>
                 </NavLink>
                 {/* <Narberdiv  className="navItem" activeClassName="navItemActive">
@@ -85,7 +85,7 @@ export default function NarBar() {
 
                 <NavLink exact to="/director" className="navItem" activeClassName="navItemActive">
                     {/* <span className="iconfont icon-ren"></span> */}
-                    <img width="26" height="26" src={require('../../assets/images/home/tab-icon5.png')} alt="" />
+                    <img width="26" height="26" src={require('../../assets/images/home/tab-icon-directors.png')} alt="" />
                     <span>{t("navbar.text05")}</span>
                 </NavLink>
             </div>
