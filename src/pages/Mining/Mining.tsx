@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 import Data from '../../apis/api/data.js'
 import API from '../../apis/api/six.js'
 import { useTranslation } from "react-i18next"
+import title_name from "../../assets/images/nft/title-name.png"
 
 const TitleDiv = styled.div`
     display: flex;
@@ -16,7 +17,33 @@ const TitleSup = styled.span`
     font-size: 24px;
     color: #06DD7A;
 `
+const Directortitle = styled.div`
+  font-size: 40px;
+  font-family: HYChaoCuYuanJ;
+  font-weight: 700;
+  color: #722F0D;
+  width:100%;
+  height:40px;
+  padding:0 10px;
+  margin:10px 0;
+  >img{
+    width:100%;
+  }
+`
+const Headerbox = styled.div`
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+//   padding:20px 0;
+`
+const Headername = styled.div`
+  font-size: 28px;
+  font-family: Microsoft YaHei;
+  font-weight: bold;
+  color: #722F0D;
+  margin-top:10px;
 
+`
 // const ItemBtn = styled(NavLink)`
 // text-decoration:none;
 // color:#FFF;
@@ -153,6 +180,13 @@ const { t } = useTranslation()
         <>
             {/* <Title /> */}
             {/* <TopContent rate={formatNum(rate)} nav_list={nav_list} /> */}
+            {/* <Directortitle>
+                <img src={title_name} alt="" />
+            </Directortitle> */}
+            <Headerbox>
+                <img width="40" height="40" src={require('../../assets/images/home/nav-logo.png')} alt="" />
+                <Headername>TTQSwap</Headername>
+            </Headerbox>
             <MidTitle />
             <ul className="nav-ul">
                 {

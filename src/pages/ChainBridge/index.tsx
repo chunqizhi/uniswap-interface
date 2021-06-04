@@ -74,6 +74,7 @@ const Bridgeto = styled(Bridgeform)`
     width:10%
 `
 const Bridgeitem1 = styled.div`
+    color:#000;
     width:35%;
     display:flex;
     justify-content: space-around;
