@@ -235,16 +235,12 @@ export default function Home() {
             API.getAllTotalSupply().then(res => {
                 setAllTotalSupply(Number(res[0])+Number(res[1])+Number(res[2])+Number(res[3]))
             })
-            Data.getPoolListData().then(async res => {
-                // console.log(`getPoolListData =>`, res.ttq);
-                await setMainList(res.ttq)
-            })
             Data.getTrsRate().then( res => {
                 setRate(res.rate)
             })
-
             Data.getPoolListData('all').then(res => {
-                setAllBalance(res)
+                setAllBalance(res[0])
+                setMainList(res[1])
             })
             Data.getAllBlock().then(res=>{
             //   console.log(`setAllBock`,res)
@@ -264,7 +260,7 @@ export default function Home() {
           }, 4000);
         }
         window.addEventListener("click", clickListener, false)
-        timerFn()
+        // timerFn()
         timer()
         return function () {
           window.removeEventListener("click", clickListener, false)

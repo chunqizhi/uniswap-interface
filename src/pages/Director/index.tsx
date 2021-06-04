@@ -8,6 +8,7 @@ import Data from '../../apis/api/data.js'
 import API from '../../apis/api/six.js'
 import cart1 from '../../assets/images/mining/driector-card-top.png'
 import home_cart1 from "../../assets/images/home/nav-logo.png"
+import title_name from "../../assets/images/nft/title-name.png"
 
 import './index.css'
 
@@ -31,6 +32,13 @@ const Directortitle = styled.div`
   font-family: HYChaoCuYuanJ;
   font-weight: 700;
   color: #722F0D;
+  width:100%;
+  height:40px;
+  padding:0 10px;
+  margin:10px 0;
+  >img{
+    width:100%;
+  }
 `
 const Directoricon = styled.div`
   width:5px;
@@ -317,56 +325,56 @@ export default function Director() {
         }
         setApprove(res)
       })
-      API.isApproveDao7().then(res => {
-        // console.log("是否授权7" + res)
-        if (res) {
-            setIsImpower7(false)
-        }
-        setApprove7(res)
-      })
-      API.isApproveDao15().then(res => {
-        // console.log("是否授权15" + res)
-        if (res) {
-            setIsImpower15(false)
-        }
-        setApprove15(res)
-      })
-      API.isApproveDao60().then(res => {
-        // console.log("是否授权60" + res)
-        if (res) {
-            setIsImpower60(false)
-        }
-        setApprove60(res)
-      })
-      Data.getTrsRate().then(async res => {
-        // console.log('trs价格 ==>',res.rate)
-        setRate(await res.rate)
-        // setRateFalse(true)
-      })
+      // API.isApproveDao7().then(res => {
+      //   // console.log("是否授权7" + res)
+      //   if (res) {
+      //       setIsImpower7(false)
+      //   }
+      //   setApprove7(res)
+      // })
+      // API.isApproveDao15().then(res => {
+      //   // console.log("是否授权15" + res)
+      //   if (res) {
+      //       setIsImpower15(false)
+      //   }
+      //   setApprove15(res)
+      // })
+      // API.isApproveDao60().then(res => {
+      //   // console.log("是否授权60" + res)
+      //   if (res) {
+      //       setIsImpower60(false)
+      //   }
+      //   setApprove60(res)
+      // })
+      // Data.getTrsRate().then(async res => {
+      //   // console.log('trs价格 ==>',res.rate)
+      //   setRate(await res.rate)
+      //   // setRateFalse(true)
+      // })
       //当前流动性质押
-      Data.getPoolListData('all').then(async res => {
-        // console.log('质押')
-        setAllBalance(await res)
-        // setAllBalanceFalse(true)
-      })
+      // Data.getPoolListData('all').then(async res => {
+      //   // console.log('质押')
+      //   setAllBalance(await res)
+      //   // setAllBalanceFalse(true)
+      // })
       //当前挖矿产出
-      Data.getAllBlock().then(async res => {
-        // console.log('产出')
-        setAllBock(await res)
-        // setAllBlockFalse(true)
-      })
-      API.getWalletAllTrs().then(async res => {
-        // console.log(`setBalance`,res)
-        // console.log('所有')
-        setBalance(await res)
-        setStakedLp(res)
-        // setBalanceFalse(true)
-      })
-      API.getAllTotalSupply().then(res => {
-        // console.log('总锁仓量',res[0],res[1],res[2],res[3])
-        // console.log('总仓量',Number(res[0])+Number(res[1])+Number(res[2])+Number(res[3]))
-        setAllTotalSupply(Number(res[2]))
-    })
+      // Data.getAllBlock().then(async res => {
+      //   // console.log('产出')
+      //   setAllBock(await res)
+      //   // setAllBlockFalse(true)
+      // })
+      // API.getWalletAllTrs().then(async res => {
+      //   // console.log(`setBalance`,res)
+      //   // console.log('所有')
+      //   setBalance(await res)
+      //   setStakedLp(res)
+      //   // setBalanceFalse(true)
+      // })
+    //   API.getAllTotalSupply().then(res => {
+    //     // console.log('总锁仓量',res[0],res[1],res[2],res[3])
+    //     // console.log('总仓量',Number(res[0])+Number(res[1])+Number(res[2])+Number(res[3]))
+    //     setAllTotalSupply(Number(res[2]))
+    // })
       
     }
     const timer = function () {
@@ -642,7 +650,9 @@ export default function Director() {
       {isApprovediv && (
           text == 1 ? <Approvediv>{t("director.text17")}</Approvediv> : text == 0 ? <Approvediv>{t("director.text18")}</Approvediv> : text == 2 ? <Approvediv>{t("director.text14")}</Approvediv> :<Approvediv>{t("director.text19")}</Approvediv> 
         )}
-      <Directortitle>TTQSWAP.COM</Directortitle>
+      <Directortitle>
+        <img src={title_name} alt="" />
+      </Directortitle>
       <Directorh2>DAO {t("director.text21")}</Directorh2>
       <Directortopbox> 
         <DirectorAllTotalSupply>
@@ -650,7 +660,7 @@ export default function Director() {
           {/* {formatNum(allTotalSupply)} */}
           {formatNum(0.00)}
         </DirectorAllTotalSupply>
-        <Directorh3>{t("director.text29")}(TTQ)</Directorh3>
+        <Directorh3>{t("director.text30")}(TTQ)</Directorh3>
       </Directortopbox>
       {/*dao7 */}
       {/* <Directorbox>

@@ -131,7 +131,8 @@ function getPoolListData(type) {
                     default:
                         console.log(`error`);
                 }
-                if (type !== 'all') {
+                // if (type !== 'all') {
+                    // 是否有人质押
                     if (res[index].supply === '0') {
                         apy = `0.00%`
                         tvl = `0.00`
@@ -145,7 +146,7 @@ function getPoolListData(type) {
                         tvl,
                         apy
                     })
-                }
+                // }
                 allBalance = addNum(tvl, allBalance)
                 if (res[index].supply !== '0') {
                     isall = true;
@@ -153,13 +154,14 @@ function getPoolListData(type) {
             })
             if (type === 'all') {
                 if (isall) {
-                    resolve(allBalance)
+                    resolve([allBalance,data.ttq])
                 } else {
                     resolve(0)
                 }
             } else {
                 resolve(data)
             }
+
         })
     })
 }

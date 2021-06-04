@@ -10,6 +10,7 @@ import cart1 from '../../assets/images/mining/driector-card-top.png'
 import home_cart1 from "../../assets/images/home/nav-logo.png"
 import nft_cart1 from "../../assets/images/nft/label-not-sale.png"
 import nft_cart2 from "../../assets/images/nft/piture-ttq.png"
+import title_name from "../../assets/images/nft/title-name.png"
 
 const Approvediv = styled.div`
     padding:10px 20px;
@@ -27,10 +28,17 @@ const Approvediv = styled.div`
     transform: translateX(-50%);
 `
 const Directortitle = styled.div`
-  font-size: 40px;
-  font-family: HYChaoCuYuanJ;
-  font-weight: 700;
-  color: #722F0D;
+    font-size: 40px;
+    font-family: HYChaoCuYuanJ;
+    font-weight: 700;
+    color: #722F0D;
+    width:100%;
+    height:40px;
+    padding:0 10px;
+    margin:10px 0;
+    >img{
+      width:100%;
+    }
 `
 const Directoricon = styled.div`
   width:5px;
@@ -249,7 +257,9 @@ export default function Director() {
       {isApprovediv && (
           text == 1 ? <Approvediv>{t("director.text17")}</Approvediv> : text == 0 ? <Approvediv>{t("director.text18")}</Approvediv> : text == 2 ? <Approvediv>{t("director.text14")}</Approvediv> :<Approvediv>{t("director.text19")}</Approvediv> 
         )}
-      <Directortitle>TTQSWAP.COM</Directortitle>
+      <Directortitle>
+        <img src={title_name} alt="" />
+      </Directortitle>
       <Directorh2>NFT{t("debris.text71")}</Directorh2>
       <Directortopbox>
         <DirectorAllTotalSupply>
