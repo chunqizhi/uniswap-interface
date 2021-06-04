@@ -122,7 +122,7 @@ const { t } = useTranslation()
         },
         {
             text: t("mining.text08"),
-            end_val: "0",
+            end_val: "200461",
             start_val: 0,
         },
         {

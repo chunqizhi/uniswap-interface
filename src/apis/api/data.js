@@ -332,7 +332,7 @@ function getAllBlock() {
                     allTime.forEach((item, index) => {
                         allBalance = allBalance + (lastTime[index] * 1 - item * 1) * allRate[index]
                     })
-                    let a = allBalance + 1932500
+                    let a = allBalance + 1932500 - 2592245
                     resolve(a)
                 })
             })
