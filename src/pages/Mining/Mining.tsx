@@ -94,31 +94,31 @@ const { t } = useTranslation()
     const [flag, setFlag] = useState(0)
     const [type, setType] = useState('main')
     const [mainList, setMainList] = useState({ 'main': [], 'ttq': []})
-    const [rate, setRate] = useState(0.00)
-    const [allBlock, setAllBock] = useState(0.00)
-    const [balance, setBalance] = useState(0.00)
+    // const [rate, setRate] = useState(0.00)
+    // const [allBlock, setAllBock] = useState(0.00)
+    // const [balance, setBalance] = useState(0.00)
     // 判断是否是第一次加载页面  判断发送请求
-    const [ pageFlag, setPageFlag ] = useState(false);
-
+    // const [ pageFlag, setPageFlag ] = useState(false);
+    const clickListener = () => {}
     // 如果是true 持续加载更新
-    if (pageFlag) {
-        // console.log(pageFlag);
-        setTimeout(() => {
-            Data.getPoolListData().then(res => {
-                // console.log(`getPoolListData =>`, res);
-                setMainList(res)
-                setPageFlag(false);
-            })
-            Data.getAllBlock().then(res=>{
-                // console.log(`setAllBock`,res)
-                setAllBock(res)
-            })
-            API.getWalletAllTrs().then(res => {
-                // console.log(`setBalance`,res)
-                setBalance(res)
-            })
-        }, 3000);
-    }
+    // if (pageFlag) {
+    //     // console.log(pageFlag);
+    //     setTimeout(() => {
+    //         Data.getPoolListData().then(res => {
+    //             // console.log(`getPoolListData =>`, res);
+    //             setMainList(res)
+    //             setPageFlag(false);
+    //         })
+    //         Data.getAllBlock().then(res=>{
+    //             // console.log(`setAllBock`,res)
+    //             setAllBock(res)
+    //         })
+    //         API.getWalletAllTrs().then(res => {
+    //             // console.log(`setBalance`,res)
+    //             setBalance(res)
+    //         })
+    //     }, 3000);
+    // }
 
     const nav_type = [
         {
@@ -132,50 +132,85 @@ const { t } = useTranslation()
     ]
 
     // {t("navlist.text01")}
-    const nav_list = [
-        {
-            text: t("mining.text05"),
-            end_val: allBlock + " ",
-            start_val: 0,
-        },
-        {
-            text: t("mining.text06"),
-            end_val: allBlock * rate + " ",
-            start_val: 0,
-        },
-        {
-            text: t("mining.text08"),
-            end_val: "0",
-            start_val: 0,
-        },
-        {
-            text: t("mining.text04"),
-            end_val: balance + " ",
-            start_val: 0,
-        },
-    ];
+    // const nav_list = [
+    //     {
+    //         text: t("mining.text05"),
+    //         end_val: allBlock + " ",
+    //         start_val: 0,
+    //     },
+    //     {
+    //         text: t("mining.text06"),
+    //         end_val: allBlock * rate + " ",
+    //         start_val: 0,
+    //     },
+    //     {
+    //         text: t("mining.text08"),
+    //         end_val: "0",
+    //         start_val: 0,
+    //     },
+    //     {
+    //         text: t("mining.text04"),
+    //         end_val: balance + " ",
+    //         start_val: 0,
+    //     },
+    // ];
 
     useEffect(() => {
-        Data.getTrsRate().then(res => {
-            setRate(res.rate)
-        })
-        // 判断 如果是false 每个方法请求一次 加载出页面
-        if(!pageFlag) {
+        let setTimeoutTimer;
+        const timerFn = function () {
+            console.log(777)
             Data.getPoolListData().then(res => {
-                // console.log(`setMainList`, res);
-                setMainList(res);
-                setPageFlag(true);
+                // console.log(`getPoolListData =>`, res);
+                setMainList(res)
+                // setPageFlag(false);
             })
-            Data.getAllBlock().then(res=>{
-                // console.log(`setAllBock`, res)
-                setAllBock(res)
-            })
-            API.getWalletAllTrs().then(res => {
-                // console.log(`setBalance`, res)
-                setBalance(res)
-            })
+            // Data.getAllBlock().then(res=>{
+            //     // console.log(`setAllBock`,res)
+            //     setAllBock(res)
+            // })
+            // API.getWalletAllTrs().then(res => {
+            //     // console.log(`setBalance`,res)
+            //     setBalance(res)
+            // })
+
         }
-    }, [pageFlag])
+        const timer = function () {
+          setTimeoutTimer && clearTimeout(setTimeoutTimer)
+          timerFn()
+          setTimeoutTimer = setTimeout(() => {
+            timer()
+          }, 4000);
+        }
+        window.addEventListener("click", clickListener, false)
+        timerFn()
+        timer()
+        return function () {
+          window.removeEventListener("click", clickListener, false)
+          setTimeoutTimer && clearTimeout(setTimeoutTimer)
+        }
+      }, [])
+
+    // useEffect(() => {
+    //     Data.getTrsRate().then(res => {
+    //         setRate(res.rate)
+    //     })
+    //     // 判断 如果是false 每个方法请求一次 加载出页面
+    //     if(!pageFlag) {
+    //         Data.getPoolListData().then(res => {
+    //             // console.log(`setMainList`, res);
+    //             setMainList(res);
+    //             setPageFlag(true);
+    //         })
+    //         Data.getAllBlock().then(res=>{
+    //             // console.log(`setAllBock`, res)
+    //             setAllBock(res)
+    //         })
+    //         API.getWalletAllTrs().then(res => {
+    //             // console.log(`setBalance`, res)
+    //             setBalance(res)
+    //         })
+    //     }
+    // }, [pageFlag])
     return (
         <>
             {/* <Title /> */}
