@@ -8983,10 +8983,10 @@ https-browserify@^1.0.0:
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
   integrity sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM=
 
-huiwan-v2-sdk@^0.0.2-TTQ:
-  version "0.0.2-TTQ"
-  resolved "https://r.cnpmjs.org/huiwan-v2-sdk/download/huiwan-v2-sdk-0.0.2-TTQ.tgz#fd09ac4dd1eef73cf85ae84ecadd8c1b4c20eb32"
-  integrity sha1-/QmsTdHu9zz4WuhOyt2MG0wg6zI=
+huiwan-v2-sdk@^0.0.3-TTQ:
+  version "0.0.3-TTQ"
+  resolved "https://r.cnpmjs.org/huiwan-v2-sdk/download/huiwan-v2-sdk-0.0.3-TTQ.tgz#9836e30d153e094c5979345c75d931b30664fd8c"
+  integrity sha1-mDbjDRU+CUxZeTRcddkxswZk/Yw=
   dependencies:
     "@uniswap/v2-core" "^1.0.0"
     big.js "^5.2.2"
