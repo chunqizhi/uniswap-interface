@@ -60,21 +60,44 @@ const Directorh3 = styled(Directorh2)`
   color: #722F0D;
 `
 const Directortopbox = styled.div`
-  height:148px;
+  height:auot;
   display: flex;
-  padding: 50px 0 30px;
+  padding: 9vh 0 30px;
   margin-top:25px;
   flex-direction: column;
   align-items: center;
   background-image: url(${cart1});
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   position: relative;
   width: 100%;
   box-shadow: 4px 11px 11px -12px #ccc;
     border-radius: 12px;
   >img{
     position: absolute;
+    left: 15%;
+    top: 8%;
+    transform-origin: 32vw 60vw;
+    transform:rotate(8deg);
+    animation: imganimation 1.5s cubic-bezier(0, 0.5, 0.34, 0.99) 0.5s forwards;
+    @keyframes imganimation {
+      0% {
+        transform:rotate(8deg);
+    　}
+      60%{
+        　transform:rotate(46deg);
+      }
+      80%{
+        　transform:rotate(36deg);
+      }
+      90%{
+        　transform:rotate(42deg);
+      }
+    　100% {
+      　transform:rotate(40deg);
+    　}
+    }
   }
 `
 
@@ -440,53 +463,53 @@ export default function Director() {
       let b = false
       let c = false
       let d = false
-    API.getAlldao7().then(res => {
-        // console.log('setTimeout =>', res)
-        setDao7Name(res[0])
-        setDao7TotalSupply(res[1])
-        setDao7BalanceOf(res[2])
-        setallAvailableAmount7(res[3])
-        let newtime = '00'
-        if (res[4] != '0') {
-          newtime = formattingDate(new Date().getTime() + res[4] * 3 * 1000)
-        } else {
-            if(res[6] > 0 && res[2] != 0){
-                newtime = `${t("director.text20")}`
-                setLockBlocks7(true)
-            }else{
-                newtime = "00"
-                setLockBlocks7(false)
-            }
-        }
-        setDao7RestBlocks(newtime)
-        setDao7CanWithdraw(res[5])
-        // console.log('lockBlocks ==>',res[6])
-        a = true
-        isover(a, b, c, d)
-      })
-      API.getAlldao15().then(res => {
-        // console.log('setTimeout =>', res)
-        setDao15Name(res[0])
-        setDao15TotalSupply(res[1])
-        setDao15BalanceOf(res[2])
-        setallAvailableAmount15(res[3])
-        let newtime = '00'
-        if (res[4] != '0') {
-          newtime = formattingDate(new Date().getTime() + res[4] * 3 * 1000)
-        } else {
-            if(res[6] > 0 && res[2] != 0){
-                newtime = `${t("director.text20")}`
-                setLockBlocks15(true)
-            }else{
-                newtime = "00"
-                setLockBlocks15(false)
-            }
-        }
-        setDao15RestBlocks(newtime)
-        setDao15CanWithdraw(res[5])
-        b = true
-        isover(a, b, c, d)
-      })
+    // API.getAlldao7().then(res => {
+    //     // console.log('setTimeout =>', res)
+    //     setDao7Name(res[0])
+    //     setDao7TotalSupply(res[1])
+    //     setDao7BalanceOf(res[2])
+    //     setallAvailableAmount7(res[3])
+    //     let newtime = '00'
+    //     if (res[4] != '0') {
+    //       newtime = formattingDate(new Date().getTime() + res[4] * 3 * 1000)
+    //     } else {
+    //         if(res[6] > 0 && res[2] != 0){
+    //             newtime = `${t("director.text20")}`
+    //             setLockBlocks7(true)
+    //         }else{
+    //             newtime = "00"
+    //             setLockBlocks7(false)
+    //         }
+    //     }
+    //     setDao7RestBlocks(newtime)
+    //     setDao7CanWithdraw(res[5])
+    //     // console.log('lockBlocks ==>',res[6])
+    //     a = true
+    //     isover(a, b, c, d)
+    //   })
+      // API.getAlldao15().then(res => {
+      //   // console.log('setTimeout =>', res)
+      //   setDao15Name(res[0])
+      //   setDao15TotalSupply(res[1])
+      //   setDao15BalanceOf(res[2])
+      //   setallAvailableAmount15(res[3])
+      //   let newtime = '00'
+      //   if (res[4] != '0') {
+      //     newtime = formattingDate(new Date().getTime() + res[4] * 3 * 1000)
+      //   } else {
+      //       if(res[6] > 0 && res[2] != 0){
+      //           newtime = `${t("director.text20")}`
+      //           setLockBlocks15(true)
+      //       }else{
+      //           newtime = "00"
+      //           setLockBlocks15(false)
+      //       }
+      //   }
+      //   setDao15RestBlocks(newtime)
+      //   setDao15CanWithdraw(res[5])
+      //   b = true
+      //   isover(a, b, c, d)
+      // })
       API.getAlldao30().then(res => {
         // console.log('setTimeout =>', res)
         setDaoName(res[0])
@@ -508,32 +531,32 @@ export default function Director() {
         setDaoRestBlocks(newtime)
         setDaoCanWithdraw(res[5])
         c = true
-        isover(a, b, c, d)
+        isover(true, true, c,true)
       })
-      API.getAlldao60().then(res => {
-        // console.log('setTimeout =>', res)
-        setDao60Name(res[0])
-        setDao60TotalSupply(res[1])
-        setDao60BalanceOf(res[2])
-        setallAvailableAmount60(res[3])
-        let newtime = '00'
-        if (res[4] != '0') {
-          newtime = formattingDate(new Date().getTime() + res[4] * 3 * 1000)
-        } else {
-            if(res[6] > 0 && res[2] != 0){
-                newtime = `${t("director.text20")}`
-                setLockBlocks60(true)
-            }else{
-                newtime = "00"
-                setLockBlocks60(false)
-            }
-        }
-        setDao60RestBlocks(newtime)
-        setDao60CanWithdraw(res[5])
-        // setPageFlag(false);
-        d = true
-        isover(a, b, c, d)
-      })
+      // API.getAlldao60().then(res => {
+      //   // console.log('setTimeout =>', res)
+      //   setDao60Name(res[0])
+      //   setDao60TotalSupply(res[1])
+      //   setDao60BalanceOf(res[2])
+      //   setallAvailableAmount60(res[3])
+      //   let newtime = '00'
+      //   if (res[4] != '0') {
+      //     newtime = formattingDate(new Date().getTime() + res[4] * 3 * 1000)
+      //   } else {
+      //       if(res[6] > 0 && res[2] != 0){
+      //           newtime = `${t("director.text20")}`
+      //           setLockBlocks60(true)
+      //       }else{
+      //           newtime = "00"
+      //           setLockBlocks60(false)
+      //       }
+      //   }
+      //   setDao60RestBlocks(newtime)
+      //   setDao60CanWithdraw(res[5])
+      //   // setPageFlag(false);
+      //   d = true
+      //   isover(a, b, c, d)
+      // })
       // setAllTotalSupply((dao7TotalSupply + dao15TotalSupply + daoTotalSupply + dao60TotalSupply))
    
   }
@@ -654,7 +677,8 @@ export default function Director() {
         <img src={title_name} alt="" />
       </Directortitle>
       <Directorh2>DAO {t("director.text21")}</Directorh2>
-      <Directortopbox> 
+      <Directortopbox className='directortopbox'>
+        <img width='30px' height='30px' src={ require("../../assets/images/mining/driector-card3.png")} alt="" />
         <DirectorAllTotalSupply>
           <Directoricon></Directoricon>
           {/* {formatNum(allTotalSupply)} */}

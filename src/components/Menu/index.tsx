@@ -236,7 +236,7 @@ export default function Menu() {
               <img src={icon5} width='14' height='14' alt='' />
               {t("navlist.text04")}
             </MenuItem>
-            <MenuItem id="link" >
+            <MenuItem id="link" href="https://www.ttqswap.com/data/TTQAudit.pdf">
               <img src={icon6} width='14' height='14' alt='' />
               {t("navlist.text09")}
             </MenuItem>

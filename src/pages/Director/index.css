@@ -47,6 +47,7 @@
     box-sizing: border-box;
 }
 
+
 .driectorTitle img {
     margin-right: 5px;
     width: 18px;
@@ -145,4 +146,22 @@
 .driector-img{
     width: 64px;
     height: 64px;
+}
+/* // 小于414px */
+@media only screen and (max-width: 414px) {
+    .directortopbox img{
+        top: 11% !important;
+    }
+}
+/* // 小于414px */
+@media only screen and (max-width: 375px) {
+    .directortopbox img{
+        top: 8% !important;
+    }
+}
+/* // 小于320px */
+@media only screen and (max-width: 320px) {
+    .directortopbox img{
+        top: 5% !important;
+    }
 }
