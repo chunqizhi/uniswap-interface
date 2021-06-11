@@ -1,9 +1,11 @@
-import React, { Suspense } from 'react'
+import React, {useState, Suspense ,useEffect} from 'react'
 import { Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 import GoogleAnalyticsReporter from '../components/analytics/GoogleAnalyticsReporter'
 import AddressClaimModal from '../components/claim/AddressClaimModal'
 import Header from '../components/Header'
+import PcHeader from '../components/PcHeader/index'
+import PcMenu from '../components/Pcmenu/index'
 import Polling from '../components/Header/Polling'
 // import Tips from '../components/Tips/tips'
 // import URLWarning from '../components/Header/URLWarning'
@@ -53,7 +55,12 @@ const AppWrapper = styled.div`
   flex-flow: column;
   align-items: flex-start;
   background-color:#050822;
-  height:100vh;
+  // height:100vh;
+  background-image: url(${home_bg});
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 1;
+  height:100%;
 `
 
 const HeaderWrapper = styled.div`
@@ -67,39 +74,59 @@ const HeaderWrapper = styled.div`
 `
 
 const BodyWrapper = styled.div`
+  max-width:800px;
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-top: 100px;
+  // padding-top: 100px;
+  padding-top: 20px;
   align-items: center;
   flex: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
+  // overflow-y: auto;
+  // overflow-x: hidden;
   z-index: 10;
-  margin-bottom: 61px;
   
+  margin: 0 auto 61px;
   ${({ theme }) => theme.mediaWidth.upToSmall`
     padding: 8px 16px 10px;
     // padding-top: 2rem;
-    background-color: #050822;
+    // background-color: #050822;
   `};
-  background-image: url(${home_bg});
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: 1;
+  // background-image: url(${home_bg});
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // z-index: 1;
+  position: relative;
+  padding-bottom: 10px
 `
+
 
 // const Marginer = styled.div`
 //   margin-top: 5rem;
 // `
-
 function TopLevelModals() {
   const open = useModalOpen(ApplicationModal.ADDRESS_CLAIM)
   const toggle = useToggleModal(ApplicationModal.ADDRESS_CLAIM)
   return <AddressClaimModal isOpen={open} onDismiss={toggle} />
 }
-
+// offsetWidth = document.querySelector('body').offsetWidth;
 export default function App() {
+const [offsetWidth, setOffsetWidth] = useState(document.querySelector('body').offsetWidth)   //显示隐藏 抵押解押弹框
+  
+  // window.addEventListener('resize', e => {
+  //   console.log('78979878979res',e.target.innerWidth)
+  //   setOffsetWidth(e.target.innerWidth)
+  // })
+  useEffect(() => {
+    window.addEventListener('resize', e => {
+      console.log('78979878979res',e.target.innerWidth)
+      setOffsetWidth(e.target.innerWidth)
+    })
+    // timer()
+    return function () {
+        window.addEventListener('resize', e => {},false)
+    }
+}, [])
   return (
     <Suspense fallback={null}>
       <Route component={GoogleAnalyticsReporter} />
@@ -108,12 +135,19 @@ export default function App() {
         {/* <URLWarning /> */}
         <HeaderWrapper>
           {/* <Tips/> */}
-          <Header />
+          {
+            offsetWidth > 1024 ?  (<PcHeader />) :( <Header />)
+          }
+          {/* <Header /> */}
+         
         </HeaderWrapper>
         <BodyWrapper>
-          <Popups />
+          {
+            offsetWidth > 1200 ? (<PcMenu />) : ''
+          }
+          {/* <Popups />
           <Polling />
-          <TopLevelModals />
+          <TopLevelModals /> */}
           <Web3ReactManager>
             <Switch>
               {/* Home页面 */}
@@ -157,7 +191,9 @@ export default function App() {
           {/* <Marginer /> */}
         </BodyWrapper>
         {/* 公共底部 */}
-        <NavBar />
+        {
+          offsetWidth <= 1200 ? (<NavBar />) : ''
+        }
       </AppWrapper>
     </Suspense>
   )

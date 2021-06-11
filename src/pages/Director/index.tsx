@@ -39,6 +39,7 @@ const Directortitle = styled.div`
   >img{
     width:100%;
   }
+  max-width:450px;
 `
 const Directoricon = styled.div`
   width:5px;
@@ -99,6 +100,7 @@ const Directortopbox = styled.div`
     　}
     }
   }
+  max-width:450px;
 `
 
 const Directorbox = styled.div`
@@ -107,6 +109,7 @@ const Directorbox = styled.div`
   border-radius:15px;
   margin:10px 0 15px;
   box-shadow: 3px 7px 9px -3px #ddd;
+  max-width:450px;
 `
 const Directortop = styled.div`
   display:flex;

@@ -39,6 +39,7 @@ const Directortitle = styled.div`
     >img{
       width:100%;
     }
+    max-width:450px;
 `
 const Directoricon = styled.div`
   width:5px;
@@ -92,6 +93,7 @@ const Directortopbox = styled.div`
   >img{
     position: absolute;
   }
+  max-width:450px;
 `
 const Nftcenter = styled.div`
   width:214px;

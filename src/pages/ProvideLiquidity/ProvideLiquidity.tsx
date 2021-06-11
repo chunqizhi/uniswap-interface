@@ -42,6 +42,9 @@ const Miningpledget = styled.div`
     align-items: center;
     color:#AB5729;
     position: relative;
+    max-width:450px;
+    border-radius: 30px;
+    margin-bottom: 10px;
 `
 const Miningtopbgimg = styled.div`
     width:50px;

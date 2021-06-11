@@ -265,6 +265,7 @@ li {
     background-size: contain;
     background-position: top right;
     padding-top: 38px;
+    max-width: 450px;
 }
 .minHead {
     display: flex;

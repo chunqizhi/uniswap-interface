@@ -11,7 +11,7 @@ const AnimatedDialogOverlay = animated(DialogOverlay)
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const StyledDialogOverlay = styled(AnimatedDialogOverlay)`
   &[data-reach-dialog-overlay] {
-    z-index: 2;
+    z-index: 9998;
     background-color: transparent;
     overflow: hidden;
     display: flex;
@@ -19,7 +19,7 @@ const StyledDialogOverlay = styled(AnimatedDialogOverlay)`
     justify-content: center;
     background-color: ${({ theme }) => theme.modalBG};
 
-    bottom: 61px;
+    // bottom: 61px;
   }
 `
 

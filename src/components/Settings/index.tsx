@@ -111,6 +111,7 @@ const MenuFlyout = styled.span`
   ${({ theme }) => theme.mediaWidth.upToMedium`
     min-width: 90%;
   `};
+  max-width:450px
 `
 
 const Break = styled.div`

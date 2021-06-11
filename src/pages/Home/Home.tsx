@@ -28,7 +28,6 @@ const HomeBanner = styled.div`
     width: 100%;
     margin-bottom: 5px;
     border-raduis:15px;
-    
 `
 const Hometolink = styled(NavLink)`
 

@@ -8,10 +8,14 @@ import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances } from '../../state/wallet/hooks'
 import Menu from '../Menu'
 import Row, { RowFixed } from '../Row'
-import Web3Status from '../Web3Status'
 import ClaimModal from '../claim/ClaimModal'
 import Modal from '../Modal'
 import UniBalanceContent from './UniBalanceContent'
+import english_icon from '../../assets/images/home/nav-language-click.png'
+
+import i18n from "../../i18n"
+import { useTranslation } from "react-i18next"
+
 
 const HeaderFrame = styled.div`
   display: grid;
@@ -24,7 +28,7 @@ const HeaderFrame = styled.div`
   top: 0;
   position: relative;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 1rem;
+  padding: 10px 1rem;
   z-index: 2;
   background-color:#fff9f0;
  
@@ -38,13 +42,16 @@ const HeaderFrame = styled.div`
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
         padding: 0.5rem 1rem;
   `}
-  display:flex;
-  justify-content: center;
+  display: flex;
+    align-items: center;
+    justify-content: center;
 `
 const HeaderElementWrap = styled.div`
   display: flex;
   align-items: center;
-  
+  >img{
+      margin-right:5px;
+  }
 `
 
 const HeaderRow = styled(RowFixed)`
@@ -53,7 +60,8 @@ const HeaderRow = styled(RowFixed)`
   `};
   display: flex;
   align-items: center;
-  margin:0 auot;
+  justify-content: space-between;
+    width: 1200px;
 `
 
 const HeaderLinks = styled(Row)`
@@ -64,29 +72,6 @@ const HeaderLinks = styled(Row)`
     justify-content: flex-end;
 `};
 `
-
-const AccountElement = styled.div<{ active: boolean }>`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  // background-color: ${({ theme, active }) => (!active ? theme.bg1 : theme.bg3)};
-  // border-radius: 12px;
-  white-space: nowrap;
-  width: 100%;
-  cursor: pointer;
-  color: #2EBC84;
-  // border: 1px solid #2EBC84;
-  :focus {
-    // border: 1px solid blue;
-  }
-`
-
-const BalanceText = styled(Text)`
-  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-    display: none;
-  `};
-`
-
 
 export const StyledMenuButton = styled.button`
   position: relative;
@@ -116,12 +101,23 @@ align-items: center;
 `
 const Titlename = styled.div`
   // font-size:4.3vw;
-  width:32vw;
+//   width:32vw;
   color:#722F0D;
   margin-left:5px;
-  font-size: 4.2vw;
+  font-size: 15px;
   font-family: MicrosoftYaHei;
   color: #722F0D;
+  >div{
+      text-align:center;
+  }
+`
+const TitleDiv = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    >span{
+        margin-left:5px;
+    }
 `
 // const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
 //   [ChainId.RINKEBY]: 'Rinkeby',
@@ -131,8 +127,9 @@ const Titlename = styled.div`
 //   [ChainId.HECO_TESTNET]: 'HECO_TESTNET'
 // }
 
-export default function Header() {
+export default function PcHeader() {
   const { account } = useActiveWeb3React()
+  const { t } = useTranslation();
 
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
   const [darkMode] = useDarkModeManager()
@@ -143,54 +140,52 @@ export default function Header() {
   return (
     <HeaderFrame>
       <ClaimModal />
-      <Modal isOpen={showUniBalanceModal} onDismiss={() => setShowUniBalanceModal(false)}>
+      {/* <Modal isOpen={showUniBalanceModal} onDismiss={() => setShowUniBalanceModal(false)}>
         <UniBalanceContent setShowUniBalanceModal={setShowUniBalanceModal} />
-      </Modal>
+      </Modal> */}
       <HeaderRow>
-        <HomeBtn01 id={`home-nav-link`} to={'/home'}> <img width={'29px'} src={darkMode ? LogoDark : LogoDark} alt="logo" />
+        <HomeBtn01 id={`home-nav-link`} to={'/home'}> <img width={'34px'} src={darkMode ? LogoDark : LogoDark} alt="logo" />
           <Titlename>
-            TTQSWAP.COM
+              <div>TTQ</div>
+              <div style={{'font-size':'12px'}}>TTQSWAP</div>
           </Titlename>
         </HomeBtn01>
-        <HeaderLinks>
-          {/* <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
-            {t('swap')}
-          </StyledNavLink> */}
-          {/* <StyledNavLink
-            id={`pool-nav-link`}
-            to={'/pool'}
-            isActive={(match, { pathname }) =>
-              Boolean(match) ||
-              pathname.startsWith('/add') ||
-              pathname.startsWith('/remove') ||
-              pathname.startsWith('/create') ||
-              pathname.startsWith('/find')
-            }
-          >
-            {t('pool')}
-          </StyledNavLink> */}
-          {/* <StyledNavLink id={`stake-nav-link`} to={'/uni'}>
-            UNI
-          </StyledNavLink> */}
-          {/* <StyledNavLink id={`stake-nav-link`} to={'/vote'}>
-            Vote
-          </StyledNavLink> */}
-          {/* <StyledExternalLink id={`stake-nav-link`} href={'https://uniswap.info'}>
-            Charts <span style={{ fontSize: '11px' }}>↗</span>
-          </StyledExternalLink> */}
-        </HeaderLinks>
-        <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
-          {account && userEthBalance ? (
-            <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
-              {userEthBalance?.toSignificant(4)} HT
-            </BalanceText>
-          ) : null}
-          <Web3Status />
-        </AccountElement>
-        <HeaderElementWrap>
-          <Menu />
+        {/* <HeaderLinks>
+        </HeaderLinks> */}
+        {/* <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}> */}
+          {/* <Web3Status /> */}
+        {/* </AccountElement> */}
+        <HeaderElementWrap onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'zh' : 'en')}>
+          {/* <Menu /> */}
+          {/* <img src={icon11} width='14' height='14' alt='' />
+              {i18n.language === 'en' ? '中文' : 'English'} */}
+              {
+                  i18n.language === 'en' ? (<HeaderChina></HeaderChina>) : (<HeaderEnglish></HeaderEnglish>)
+              }
+            
+            
         </HeaderElementWrap>
       </HeaderRow>
     </HeaderFrame>
   )
 }
+function HeaderEnglish() {
+    const { t } = useTranslation()
+    return (
+      <>
+        <TitleDiv>
+            <img width='28px' src={english_icon} alt="" /><span>English</span>
+        </TitleDiv>
+      </>
+    )
+  }
+  function HeaderChina() {
+    const { t } = useTranslation()
+    return (
+      <>
+        <TitleDiv>
+            <img width='28px' src={english_icon} alt="" /><span>简体中文</span>
+        </TitleDiv>
+      </>
+    )
+  }

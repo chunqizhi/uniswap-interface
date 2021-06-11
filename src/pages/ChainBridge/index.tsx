@@ -13,11 +13,12 @@ import { request } from 'http'
 
 const Bridgebg = styled.div`
     width: 100%;
-    height: 200px;
+    height: 274px;
     background-color: #722f0d;
-    position: absolute;
+    position: fixed;
     top: 0;
     z-index: -1;
+    max-width: 1200px;
 `
 
 const Bridgeh1 = styled.div`
@@ -34,6 +35,7 @@ const Bridgebox = styled.div`
     background-color:#fff9f0;
     width:100%;
     margin-bottom:20px;
+    max-width:450px;
 `
 
 const Bridgetitle = styled.div`
@@ -149,7 +151,11 @@ const Bridgefoot = styled.div`
     font-weight: 400;
     color: #722F0D;
 `
-
+const Bridgetop = styled.div`
+    padding: 0 0 30px;
+    color: #fff;
+    text-align: center;
+`
 const formatNum = function (str: string|number) {
     if(str*1<0) return 0
     str=""+str
@@ -177,7 +183,11 @@ export default function Home() {
         <>
             {/* 轮播图 */}
             <Bridgebg></Bridgebg>
-            <Bridgeh1>{t('chainbridge.text01')}</Bridgeh1>
+            <Bridgetop>
+                <div className='Bridgetop1'>Ethereum生态币种交易 多快好省就选TTQSWAP.COM</div>
+                <div className='Bridgetop2'>打造DeFi生态最大的集DEX、IMO。DAO为一体的平台</div>
+            </Bridgetop>
+            {/* <Bridgeh1>{t('chainbridge.text01')}</Bridgeh1> */}
             <Bridgebox>
                 <Bridgetitle>{t('chainbridge.text02')}</Bridgetitle>
                 <Bridgebgcolor>

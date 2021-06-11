@@ -28,7 +28,7 @@ import AppBody from '../AppBody'
 import SwapHeader from "../../components/swap/SwapHeader";
 
  const PageWrapper = styled(AutoColumn)`
-  max-width: 640px;
+  max-width: 450px;
   width: 100%;
 `
 
@@ -53,6 +53,7 @@ const ButtonRow = styled(RowFixed)`
     flex-direction: row-reverse;
     justify-content: space-between;
   `};
+  width: 100%;
 `
 const Headerbox = styled.div`
   display:flex;
@@ -232,9 +233,9 @@ export default function Pool() {
           <AutoColumn gap="lg" style={{ width: '100%', padding: '1rem', boxSizing: 'border-box' }}>
             <TitleRow style={{ marginTop: '1rem' }} padding={'0'}>
               <HideSmall>
-                <TYPE.mediumHeader style={{ marginTop: '0.5rem', justifySelf: 'flex-start' }}>
+                {/* <TYPE.mediumHeader style={{ marginTop: '0.5rem', justifySelf: 'flex-start' }}>
                 {t("pool.text04")}
-                </TYPE.mediumHeader>
+                </TYPE.mediumHeader> */}
               </HideSmall>
               <ButtonRow>
                 <CreateButton to={'/create/HT'}>

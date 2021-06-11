@@ -148,6 +148,17 @@
     height: 64px;
 }
 /* // 小于414px */
+@media only screen and (min-width: 414px) {
+    .directortopbox{
+        padding: 12vh 0 30px;
+    }
+    .directortopbox img{
+        left: 20%;
+        top: 8%;
+        transform-origin: 134px 270px;
+    }
+}
+/* // 小于414px */
 @media only screen and (max-width: 414px) {
     .directortopbox img{
         top: 11% !important;

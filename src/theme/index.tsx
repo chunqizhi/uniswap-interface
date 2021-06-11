@@ -227,7 +227,8 @@ body {
   min-height: 100vh;
   background-position: 0 -30vh;
   background-repeat: no-repeat;
-  background-color: #050822;
-  height:100vh;
+  // background-color: #050822;
+  background-color: #fff3e0;
+  // height:100vh;
 }
 `

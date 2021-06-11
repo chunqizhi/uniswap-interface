@@ -1,0 +1,31 @@
+.pcmenuactive{
+    position: relative;
+    opacity: 1;
+}
+.pcmenuactive::after{
+    content: '';
+    display: inline-block;
+    width: 2px;
+    height: 100%;
+    background-color:#8c5537;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.lastroe{
+    border-bottom: 1px solid #f8e0b9;
+}
+.menutopbox{
+    display: flex;
+    align-items: center;
+}
+.menutopbox img{
+    margin-right:5px;
+}
+.Powered{
+    color: #722f0d;
+    font-weight: bold;
+}
+.copyright{
+    color: #cc9677;
+}

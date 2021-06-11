@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const BodyWrapper = styled.div`
   position: relative;
-  max-width: 420px;
+  max-width: 450px;
   width: 100%;
   background: #fff9f0;
   // background: ${({ theme }) => theme.bg1};
