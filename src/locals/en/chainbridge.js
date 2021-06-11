@@ -13,4 +13,6 @@ export default {
     text12: 'Not yet open',
     text13: 'View records',
     text14: 'Single minimum limit 1 TTQ',
+    text15: 'Ethereum ecocurrency transactions more quickly, better and save choose TTQSWAP.COM',
+    text16: 'Create DEX and IMO, the largest ecological collection of DEFI. DAO is an integrated platform',
 }

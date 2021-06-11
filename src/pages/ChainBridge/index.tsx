@@ -184,8 +184,8 @@ export default function Home() {
             {/* 轮播图 */}
             <Bridgebg></Bridgebg>
             <Bridgetop>
-                <div className='Bridgetop1'>Ethereum生态币种交易 多快好省就选TTQSWAP.COM</div>
-                <div className='Bridgetop2'>打造DeFi生态最大的集DEX、IMO。DAO为一体的平台</div>
+                <div className='Bridgetop1'>{t('chainbridge.text15')}</div>
+                <div className='Bridgetop2'>{t('chainbridge.text16')}</div>
             </Bridgetop>
             {/* <Bridgeh1>{t('chainbridge.text01')}</Bridgeh1> */}
             <Bridgebox>

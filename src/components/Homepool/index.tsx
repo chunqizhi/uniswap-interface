@@ -10,6 +10,7 @@ import { useActiveWeb3React } from '../../hooks'
 import { useDarkModeManager } from '../../state/user/hooks'
 import home_cart2bg from "../../assets/images/home/home-card2-bg.png"
 import { useETHBalances } from '../../state/wallet/hooks'
+import './index.css'
 
 const Homesize = styled(NavLink)`
     font-size: 14px;

@@ -12,6 +12,7 @@ import ClaimModal from '../claim/ClaimModal'
 import Modal from '../Modal'
 import UniBalanceContent from './UniBalanceContent'
 import english_icon from '../../assets/images/home/nav-language-click.png'
+import china_icon from '../../assets/images/home/zh1.png'
 
 import i18n from "../../i18n"
 import { useTranslation } from "react-i18next"
@@ -184,7 +185,7 @@ function HeaderEnglish() {
     return (
       <>
         <TitleDiv>
-            <img width='28px' src={english_icon} alt="" /><span>简体中文</span>
+            <img width='28px' src={china_icon} alt="" /><span>简体中文</span>
         </TitleDiv>
       </>
     )

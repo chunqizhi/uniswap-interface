@@ -178,9 +178,9 @@ export default function Home() {
                 </Carousel>
                 {/* <img width="100%" style={{borderRadius:'10px'}} src={ require('../../assets/images/home/home-banner1.png') } alt="" /> */}
             </HomeBanner>
-            <Homelist>
+            <Homelist className="homelist">
                 <HomelistRow>
-                    <Homelistc>
+                    <Homelistc className='homelistc'>
                         <Homelisttitle>{t("home.text15")}</Homelisttitle>
                         <Homelistval>
                             <img width="21" height="21" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
@@ -188,26 +188,26 @@ export default function Home() {
                             <span>{formatNum(0)}</span>
                         </Homelistval>
                     </Homelistc>
-                    <Homelistc>
+                    <Homelistc className='homelistc'>
                         <Homelisttitle>TVL</Homelisttitle>
                         {/* <Homelistval>${formatNum(allBalance)}</Homelistval> */}
                         <Homelistval>${formatNum(0)}</Homelistval>
                     </Homelistc>
                 </HomelistRow>
                 <HomelistRow>
-                    <Homelistc>
+                    <Homelistc className='homelistc'>
                         <Homelisttitle>TTQ{t("home.text16")}</Homelisttitle>
                         {/* <Homelistval>{formatNum(rate)}</Homelistval> */}
                         <Homelistval>{formatNum(0)}</Homelistval>
                     </Homelistc>
-                    <Homelistc>
+                    <Homelistc className='homelistc'>
                         <Homelisttitle>TTQ{t("home.text17")}</Homelisttitle>
                         {/* <Homelistval>${formatNum(rate*1000000000)}</Homelistval> */}
                         <Homelistval>${formatNum(0)}</Homelistval>
                     </Homelistc>
                 </HomelistRow>
                 <HomelistRow>
-                    <Homelistc>
+                    <Homelistc className='homelistc'>
                         <Homelisttitle>{t("home.text18")}</Homelisttitle>
                         <Homelistval>
                             <img width="21" height="21" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
@@ -215,21 +215,21 @@ export default function Home() {
                             <span>{formatNum(0)}</span>
                         </Homelistval>
                     </Homelistc>
-                    <Homelistc>
+                    <Homelistc className='homelistc'>
                         <Homelisttitle>{t("home.text19")}</Homelisttitle>
                         {/* <Homelistval>${formatNum(allBlock * rate)}</Homelistval> */}
                         <Homelistval>${formatNum(0)}</Homelistval>
                     </Homelistc>
                 </HomelistRow>
                 <HomelistRow>
-                    <Homelistc>
+                    <Homelistc className='homelistc'>
                         <Homelisttitle>{t("home.text20")}TTQ{t("home.text21")}</Homelisttitle>
                         <Homelistval>
                             <img width="21" height="21" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
                             <span>0.00</span>
                         </Homelistval>
                     </Homelistc>
-                    <Homelistc>
+                    <Homelistc className='homelistc'>
                         <Homelisttitle>DAO{t("home.text22")}</Homelisttitle>
                         <Homelistval>
                             <img width="21" height="21" src={ require('../../assets/images/home/nav-logo.png') } alt="" />
