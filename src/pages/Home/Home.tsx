@@ -104,8 +104,7 @@ export default function Home() {
     const [allTotalSupply, setAllTotalSupply] = useState(0.00)//当前锁仓总量
     // const [mainList, setMainList] = useState([])
 
-    const clickListener = () => {
-    }
+    // const clickListener = () => {}
 
     // 判断是否是第一次加载页面  判断发送请求
     // const [ pageFlag, setPageFlag ] = useState(false);
@@ -150,11 +149,11 @@ export default function Home() {
             timer()
           }, 4000);
         }
-        window.addEventListener("click", clickListener, false)
+        // window.addEventListener("click", clickListener, false)
         // timerFn()
         timer()
         return function () {
-          window.removeEventListener("click", clickListener, false)
+        //   window.removeEventListener("click", clickListener, false)
           setTimeoutTimer && clearTimeout(setTimeoutTimer)
         }
       }, [])
@@ -242,45 +241,7 @@ export default function Home() {
                     </Homelistc>
                 </HomelistRow>
             </Homelist>
-            {/* <Homecart2>
-                <Homecarttop>
-                    <Homecart2tl>
-                        <img width='16px' height="16px" src={require('../../assets/images/home/hot.png')} alt="" />
-                        {t("home.text23")}
-                    </Homecart2tl>
-                    <Homesize to={"/mining"}>{t("home.text24")} ></Homesize>
-                </Homecarttop>
-
-                <Homecart2canter>
-                    {
-                        mainList.map((item,index) => {
-                            return(
-                                <Homecart2list to={`/provideLiquidity/${item.poolIndex}`} key={index}>
-                                    <Homecart2listt>
-                                        {
-                                            item.coin_name.indexOf('/') == '-1' ? (
-                                                <img style={{position: 'relative',zIndex:'2',marginRight:'7px'}} width="22" height="22" src={ item.pre_coin } alt="" />
-                                            ) : (
-                                                <div style={{display: 'flex'}}>
-                                                     <img style={{position: 'relative',zIndex:'2'}} width="22" height="22" src={ item.pre_coin } alt="" />
-                                                    <img style={{position: 'relative',left: '-7px'}} width="22" height="22" src={ item.next_coin } alt="" />
-                                                </div>
-                                            )
-                                        }
-                                        
-                                        <Homecart2name>{item.coin_name}</Homecart2name>
-                                    </Homecart2listt>
-                                    <Homecart2listb>
-                                        <div>{item.apy}</div>
-                                        <div>APY</div>
-                                    </Homecart2listb>
-                                </Homecart2list>
-                            )
-                        })
-                    }
-                </Homecart2canter>
-            </Homecart2> */}
-            <HomePool></HomePool>
+            <HomePool />
         </>
     )
 }

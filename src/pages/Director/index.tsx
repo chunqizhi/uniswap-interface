@@ -299,8 +299,7 @@ export default function Director() {
   const [inputValue, setInputVal] = useState('0')   //input的值
   const [stakedLp, setStakedLp] = useState('0.00')
   const [allTotalSupply, setAllTotalSupply] = useState(0.00) //当前总锁仓量
-  const clickListener = () => {
-  }
+  // const clickListener = () => {}
   const approveFn = (type) => {
     if (type == '7') {
         setIsImpower7(true)
@@ -399,6 +398,7 @@ export default function Director() {
     //     // console.log('总仓量',Number(res[0])+Number(res[1])+Number(res[2])+Number(res[3]))
     //     setAllTotalSupply(Number(res[2]))
     // })
+    getAllDao()
       
     }
     const timer = function () {
@@ -408,11 +408,11 @@ export default function Director() {
         timer()
       }, 4000);
     }
-    window.addEventListener("click", clickListener, false)
-    timerFn()
+    // window.addEventListener("click", clickListener, false)
+    // timerFn()
     timer()
     return function () {
-      window.removeEventListener("click", clickListener, false)
+      // window.removeEventListener("click", clickListener, false)
       setTimeoutTimer && clearTimeout(setTimeoutTimer)
     }
   }, [])
@@ -439,17 +439,17 @@ export default function Director() {
     
 //   })
   //
-  useEffect(() => {
-    // console.log('第一次加载')
-    getAllDao()
-    return () => {
-    //   console.log("DOM被移除");
-      timerd && clearTimeout(timerd)
-      isover(false, false, false, false)
-    }
-  }, [pageFlag])
-  const isover = (a, b, c, d) => {
-    if (a && b && c && d) {
+  // useEffect(() => {
+  //   // console.log('第一次加载')
+  //   getAllDao()
+  //   return () => {
+  //   //   console.log("DOM被移除");
+  //     timerd && clearTimeout(timerd)
+  //     isover(false, false, false, false)
+  //   }
+  // }, [pageFlag])
+  const isover = (c) => {
+    if (c) {
     //   console.log('useEffect 加载getdao')
       timerd && clearTimeout(timerd)
       getdao()
@@ -460,10 +460,11 @@ export default function Director() {
   // if (pageFlag) {
   // console.log(pageFlag);
   const getAllDao = () => {
-      let a = false
-      let b = false
+    // console.log('getAllDao == fun')
+      // let a = false
+      // let b = false
       let c = false
-      let d = false
+      // let d = false
     // API.getAlldao7().then(res => {
     //     // console.log('setTimeout =>', res)
     //     setDao7Name(res[0])
@@ -531,8 +532,9 @@ export default function Director() {
         }
         setDaoRestBlocks(newtime)
         setDaoCanWithdraw(res[5])
-        c = true
-        isover(true, true, c,true)
+        // c = true
+        // isover(true, true, c,true)
+        // isover(c)
       })
       // API.getAlldao60().then(res => {
       //   // console.log('setTimeout =>', res)

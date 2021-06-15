@@ -115,6 +115,27 @@ const LINK_TELEGRAM = 'https://t.me/TTQSWAPCOM'
 //推特
 const LINK_TWITTER = 'https://twitter.com/ttqswap'
 
+
+const formatNum = function (str: string|number,maxnum,minnum) {
+    if(str*1<0) return 0
+    str=""+str
+    let flag = str.indexOf('.') > 0
+    let temp
+    if(flag){
+        if( str.split('.')[0].length>4){
+            let pre = str.split('.')[0]
+            let next =  str.split('.')[1]
+            temp =pre+'.'+next.substring(0,maxnum)
+        }
+        else {
+            let pre = str.split('.')[0]
+            let next =  str.split('.')[1]
+            temp =pre+'.'+next.substring(0,minnum)
+        }
+    } else   temp =str
+
+    return temp
+}
 function newTransactionsFirst(a: TransactionDetails, b: TransactionDetails) {
     return b.addedTime - a.addedTime
   }
@@ -170,7 +191,7 @@ useEffect(() => {
         </Menutop>
         <Menuwallet>
             <div>{t("navbar.text06")}</div>
-            <div>{balance}</div>
+            <div>{formatNum(balance,6,10)}</div>
         </Menuwallet>
         <Menucenter>
             <Menucenterrow >

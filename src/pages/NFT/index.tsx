@@ -221,12 +221,11 @@ let timers
 
 export default function Director() {
   const { t } = useTranslation();
-  const [timerd, setTimer] = useState(0)
+  // const [timerd, setTimer] = useState(0)
   const [isApprovediv, setApprovediv] = useState(false) // 授权/非授权 isApprovedivdao
   const [text, settext] = useState(0)//弹窗提示
   const [allTotalSupply, setAllTotalSupply] = useState(0.00) //当前总锁仓量
-  const clickListener = () => {
-  }
+  // const clickListener = () => {}
   useEffect(() => {
     let setTimeoutTimer;
     const timerFn = function () {
@@ -244,11 +243,11 @@ export default function Director() {
         timer()
       }, 4000);
     }
-    window.addEventListener("click", clickListener, false)
-    timerFn()
+    // window.addEventListener("click", clickListener, false)
+    // timerFn()
     timer()
     return function () {
-      window.removeEventListener("click", clickListener, false)
+      // window.removeEventListener("click", clickListener, false)
       setTimeoutTimer && clearTimeout(setTimeoutTimer)
     }
   }, [])
@@ -269,13 +268,6 @@ export default function Director() {
       setApprovediv(false)
       clearTimeout(timers)
     }, 2000);
-  }
-
-
-  const getdao = () => {
-    let daotime = setTimeout(() => {
-    }, 6000);
-    setTimer(daotime)
   }
   return (
     <>
