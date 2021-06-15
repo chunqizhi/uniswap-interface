@@ -40,7 +40,7 @@ const Menubox = styled.div`
     min-width:200px;
     position: absolute;
     right: 100%;
-    top: 20%;
+    top: 150px;
     z-index: 99999;
     color:#946044;
 `
