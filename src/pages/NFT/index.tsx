@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 import { useTranslation } from "react-i18next"
 import styled from 'styled-components'
-
+import '../Director/index.css'
 import Data from '../../apis/api/data.js'
 import API from '../../apis/api/six.js'
 import cart1 from '../../assets/images/mining/driector-card-top.png'
@@ -77,23 +77,46 @@ const Directorh3 = styled(Directorh2)`
   color: #722F0D;
 `
 const Directortopbox = styled.div`
-  height:148px;
-  display: flex;
-  padding: 50px 0 30px;
-  margin-top:25px;
-  flex-direction: column;
-  align-items: center;
-  background-image: url(${cart1});
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  width: 100%;
-  box-shadow: 4px 11px 11px -12px #ccc;
-    border-radius: 12px;
-  >img{
-    position: absolute;
+height:auot;
+display: flex;
+padding: 9vh 0 30px;
+margin-top:25px;
+flex-direction: column;
+align-items: center;
+background-image: url(${cart1});
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+position: relative;
+width: 100%;
+box-shadow: 4px 11px 11px -12px #ccc;
+  border-radius: 12px;
+>img{
+  position: absolute;
+  left: 15%;
+  top: 8%;
+  transform-origin: 32vw 60vw;
+  transform:rotate(8deg);
+  animation: imganimation 1.5s cubic-bezier(0, 0.5, 0.34, 0.99) 0.5s forwards;
+  @keyframes imganimation {
+    0% {
+      transform:rotate(8deg);
+  　}
+    60%{
+      　transform:rotate(46deg);
+    }
+    80%{
+      　transform:rotate(36deg);
+    }
+    90%{
+      　transform:rotate(42deg);
+    }
+  　100% {
+    　transform:rotate(40deg);
+  　}
   }
-  max-width:450px;
+}
+max-width:450px;
 `
 const Nftcenter = styled.div`
   width:214px;
@@ -263,7 +286,8 @@ export default function Director() {
         <img src={title_name} alt="" />
       </Directortitle>
       <Directorh2>NFT{t("debris.text71")}</Directorh2>
-      <Directortopbox>
+      <Directortopbox className='directortopbox'>
+        <img width='30px' height='30px' src={ require("../../assets/images/mining/driector-card3.png")} alt="" />
         <DirectorAllTotalSupply>
           <Directoricon></Directoricon>
           {/* {formatNum(allTotalSupply)} */}
