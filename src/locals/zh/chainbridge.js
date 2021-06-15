@@ -13,6 +13,6 @@ export default {
     text12: '暂未开放',
     text13: '查看记录',
     text14: '单笔最小限额 1 TTQ',
-    text15: 'Ethereum生态币种交易 多快好省就选TTQSWAP.COM',
-    text16: '打造DeFi生态最大的集DEX、IMO。DAO为一体的平台',
+    text15: '打造聚合DEX、IMO、DAO的一站式DeFi生态平台',
+    text16: 'TTQSWAP.COM',
 }

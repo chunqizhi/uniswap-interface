@@ -1,15 +1,24 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect,useMemo } from 'react'
 // import { Text } from 'rebass'
 import { UnsupportedChainIdError, useWeb3React } from '@web3-react/core'
 // import { NavLink } from 'react-router-dom'
 import useENSName from '../../hooks/useENSName'
 import { useActiveWeb3React } from '../../hooks'
 import { NavLink } from "react-router-dom";
-
+import { useWalletModalToggle } from '../../state/application/hooks'
 import { shortenAddress } from '../../utils'
 import { useETHBalances } from '../../state/wallet/hooks'
 import API from '../../apis/api/six.js'
 import { useTranslation } from "react-i18next"
+import { ButtonSecondary } from '../Button'
+import WalletModal from '../WalletModal'
+import { TransactionDetails } from '../../state/transactions/reducer'
+
+import { isTransactionRecent, useAllTransactions } from '../../state/transactions/hooks'
+
+
+
+
 
 
 
@@ -41,6 +50,12 @@ const Menurow = styled.div`
     margin:10px 0;
 `
 const Menutop = styled(Menurow)`
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:10px;
+`
+const Menutop1 = styled(ButtonSecondary)`
     display:flex;
     align-items: center;
     justify-content: space-between;
@@ -100,19 +115,28 @@ const LINK_TELEGRAM = 'https://t.me/TTQSWAPCOM'
 //推特
 const LINK_TWITTER = 'https://twitter.com/ttqswap'
 
-function aaa(text){
-    console.log(typeof text)
+function newTransactionsFirst(a: TransactionDetails, b: TransactionDetails) {
+    return b.addedTime - a.addedTime
+  }
+function formattingtext(text){
+    // console.log(typeof text)
     return text && `${text.slice(0,3)}***${text.slice(text.length - 4 )}`
 }
-//新窗口打开链接
-function newopen(url) {
-    window.open(url)
-}
 export default function PcMenu() {
-  const { t } = useTranslation();
-
+    const { t } = useTranslation();
     const { account, connector, error } = useWeb3React()
+    const toggleWalletModal = useWalletModalToggle()
     const [balance, setBalance] = useState(0.00)//我的余额
+  const { ENSName } = useENSName(account ?? undefined)
+  const allTransactions = useAllTransactions()
+
+  const sortedRecentTransactions = useMemo(() => {
+    const txs = Object.values(allTransactions)
+    return txs.filter(isTransactionRecent).sort(newTransactionsFirst)
+  }, [allTransactions])
+
+  const pending = sortedRecentTransactions.filter(tx => !tx.receipt).map(tx => tx.hash)
+  const confirmed = sortedRecentTransactions.filter(tx => tx.receipt).map(tx => tx.hash)
 
 useEffect(() => {
     let setTimeoutTimer;
@@ -137,10 +161,10 @@ useEffect(() => {
   }, [])
   return (
     <Menubox>
-        <Menutop>
-            <div className='menutopbox'>
+        <Menutop onClick={toggleWalletModal}>
+            <div className='menutopbox' >
                 <img width="20px" src={wallet} alt="" />
-                <Text>{aaa(account)}</Text>
+                <Text>{formattingtext(account)}</Text>
             </div>
             <img width="20px" src={compile} alt="" />
         </Menutop>
@@ -182,9 +206,9 @@ useEffect(() => {
             </Menucenterrow>
             <Menucenterrow>
                 <Menucentericon2>
-                    <a href={(LINK_TELEGRAM)}><img width="20px" src={row_icon6} alt="" /></a> 
-                    <a href={(LINK_TWITTER)}><img width="20px" src={row_icon7} alt="" /></a> 
-                    <a href={(LINK_GITHUB)}><img width="20px" src={row_icon8} alt="" /></a>
+                    <a target="_blank" href={(LINK_TELEGRAM)}><img width="20px" src={row_icon6} alt="" /></a> 
+                    <a target="_blank" href={(LINK_TWITTER)}><img width="20px" src={row_icon7} alt="" /></a> 
+                    <a target="_blank" href={(LINK_GITHUB)}><img width="20px" src={row_icon8} alt="" /></a>
                 </Menucentericon2>
             </Menucenterrow>
             <Menucenterrow>
@@ -198,6 +222,9 @@ useEffect(() => {
                  </Menucentericon2>
             </Menucenterrow>
         </Menucenter>
+      <WalletModal ENSName={ENSName ?? undefined} pendingTransactions={pending} confirmedTransactions={confirmed} />
+
     </Menubox>
+    
   )
 }

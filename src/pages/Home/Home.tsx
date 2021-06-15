@@ -32,6 +32,9 @@ const HomeBanner = styled.div`
 const Hometolink = styled(NavLink)`
 
 `
+const Hometolink1 = styled.div`
+
+`
 const Homelist = styled.div`
     padding:20px;
     width:100%;
@@ -111,11 +114,11 @@ export default function Home() {
     const [slideList] = useState([{
         title: 'banner1',
         url: require('../../assets/images/home/home-banner1.jpg'),
-        path:'/home'
+        // path:'/home'
     },{
         title: 'banner2',
         url: require('../../assets/images/home/home-banner2.png'),
-        path:'/director'
+        // path:'/director'
     }]);
     useEffect(() => {
         let setTimeoutTimer;
@@ -166,14 +169,14 @@ export default function Home() {
                     dotActiveStyle={{ backgroundColor: '#06DD7A' }}
                     autoplayInterval={2000}>
                     {slideList.map((item, value) => (
-                        <Hometolink to={item.path} style={{ display: 'inline-block', width: '100%' }}>
+                        <Hometolink1 style={{ display: 'inline-block', width: '100%' }}>
                             <img
                                 src={ item.url }
                                 alt={ item.title }
                                 key={ value }
                                 style={{ width: '100%', verticalAlign: 'top',borderRadius:'15px' }}
                             />
-                        </Hometolink>
+                        </Hometolink1>
                     ))}
                 </Carousel>
                 {/* <img width="100%" style={{borderRadius:'10px'}} src={ require('../../assets/images/home/home-banner1.png') } alt="" /> */}

@@ -225,9 +225,7 @@ const formattingDate = function (getdate: string | number) {
   let hours = date.getHours()
   let minutes = date.getMinutes()
   let seconds = date.getSeconds()
-  let newmonth = month > 10 ? month : `0${month}`
-  let newday = day > 10 ? day : `0${day}`
-  let newdate = `${year}-${newmonth}-${newday} ${add0(hours)}:${add0(minutes)}:${add0(seconds)}`
+  let newdate = `${year}-${add0(month)}-${add0(day)} ${add0(hours)}:${add0(minutes)}:${add0(seconds)}`
   return newdate
 }
 

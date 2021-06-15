@@ -125,7 +125,7 @@ export default function HomePool() {
         {
             mainList.map((item,index) => {
                 return(
-                    <Homecart2list to={`/provideLiquidity/${item.poolIndex}`} key={index}>
+                    <Homecart2list className='Homecartlist' to={`/provideLiquidity/${item.poolIndex}`} key={index}>
                         <Homecart2listt>
                             {
                                 item.coin_name.indexOf('/') == '-1' ? (

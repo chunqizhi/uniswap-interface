@@ -6,4 +6,7 @@
     .homelist .homelistc{
         min-width: 190px;
     }
+    .Homecartlist{
+        min-width: 260px;
+    }
 }

@@ -101,11 +101,11 @@ display:flex;
 align-items: center;
 `
 const Titlename = styled.div`
-  // font-size:4.3vw;
+  // font-size:30px;
 //   width:32vw;
   color:#722F0D;
   margin-left:5px;
-  font-size: 15px;
+  font-size: 30px;
   font-family: MicrosoftYaHei;
   color: #722F0D;
   >div{
@@ -147,8 +147,8 @@ export default function PcHeader() {
       <HeaderRow>
         <HomeBtn01 id={`home-nav-link`} to={'/home'}> <img width={'34px'} src={darkMode ? LogoDark : LogoDark} alt="logo" />
           <Titlename>
-              <div>TTQ</div>
-              <div style={{'font-size':'12px'}}>TTQSWAP</div>
+              <div>TTQSWAP.COM</div>
+              {/* <div style={{'font-size':'12px'}}>TTQSWAP</div> */}
           </Titlename>
         </HomeBtn01>
         {/* <HeaderLinks>
