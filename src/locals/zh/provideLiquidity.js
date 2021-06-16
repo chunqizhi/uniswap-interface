@@ -23,4 +23,5 @@ export default {
     text22: '取出',
     text23: '存入',
     text24: '未质押',
+    text25: '授权中...',
 }

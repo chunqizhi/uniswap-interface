@@ -126,8 +126,7 @@ const history = creatHistory();
     const [stakedLp, setStakedLp] = useState('0.00')//已质押
     const [unStakedLp, setUnStakedLp] = useState('0.00')//未质押
     const [earned, setEarned] = useState('0.00')//当前收益
-    const clickListener = () => {
-    }
+    // const clickListener = () => {}
     const approveFn = () => {
         setPengingApprove(true)
         API.approve().then(res => {
@@ -175,11 +174,11 @@ const history = creatHistory();
                 timer()
             }, 4000);
         }
-        window.addEventListener("click", clickListener, false)
-        timerFn()
+        // window.addEventListener("click", clickListener, false)
+        // timerFn()
         timer()
         return function () {
-            window.removeEventListener("click", clickListener, false)
+            // window.removeEventListener("click", clickListener, false)
             setTimeoutTimer && clearTimeout(setTimeoutTimer)
         }
     }, [])
@@ -357,7 +356,7 @@ const history = creatHistory();
                 }
                 {
                     pengingApprove && (
-                        <Approvediv>授权中...</Approvediv>
+                        <Approvediv>{t("provideLiquidity.text25")}</Approvediv>
                     )
                 }
 

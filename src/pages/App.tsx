@@ -119,7 +119,6 @@ const [offsetWidth, setOffsetWidth] = useState(document.querySelector('body').of
   // })
   useEffect(() => {
     window.addEventListener('resize', e => {
-      console.log('78979878979res',e.target.innerWidth)
       setOffsetWidth(e.target.innerWidth)
     })
     // timer()
@@ -145,9 +144,9 @@ const [offsetWidth, setOffsetWidth] = useState(document.querySelector('body').of
           {
             offsetWidth > 1200 ? (<PcMenu />) : ''
           }
-          {/* <Popups />
-          <Polling />
-          <TopLevelModals /> */}
+          {/* <Popups /> */}
+          {/* <Polling /> */}
+          {/* <TopLevelModals /> */}
           <Web3ReactManager>
             <Switch>
               {/* Home页面 */}

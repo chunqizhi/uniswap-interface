@@ -18,10 +18,11 @@ export default {
     text17: 'MAX',
     text18: 'cancel',
     text19: 'confirm',
-    text20: 'No',
-    text21: 'income',
+    text20: 'No ',
+    text21: ' Income',
     text22: 'take out',
     text23: 'Deposit',
     text24: 'Not pledged',
+    text25: 'The authorization...',
 
 }

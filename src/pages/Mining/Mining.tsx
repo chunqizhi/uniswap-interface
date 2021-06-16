@@ -99,7 +99,7 @@ const { t } = useTranslation()
     // const [balance, setBalance] = useState(0.00)
     // 判断是否是第一次加载页面  判断发送请求
     // const [ pageFlag, setPageFlag ] = useState(false);
-    const clickListener = () => {}
+    // const clickListener = () => {}
 
     const nav_type = [
         {
@@ -127,10 +127,10 @@ const { t } = useTranslation()
             timer()
           }, 4000);
         }
-        window.addEventListener("click", clickListener, false)
+        // window.addEventListener("click", clickListener, false)
         timer()
         return function () {
-          window.removeEventListener("click", clickListener, false)
+        //   window.removeEventListener("click", clickListener, false)
           setTimeoutTimer && clearTimeout(setTimeoutTimer)
         }
       }, [])
