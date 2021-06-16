@@ -6,7 +6,7 @@ import Contract from '../contract/index.js'
 import API from '../contract/api.js'
 
 // pre-next  TPT/USDT 
-const trsAddr = `0x9ef1918a9bee17054b35108bd3e2665e2af1bb1b` // pre
+const tptAddr = `0x9ef1918a9bee17054b35108bd3e2665e2af1bb1b` // pre
 const usdtAddr = `0xa71EdC38d189767582C38A3145b5873052c3e47a` // next
 
 const trsUsdtPairAddr = `0x10eb89c6431807f7ba1eccbe14adecbd8ea8a390` // pre-next-pair
@@ -14,7 +14,7 @@ const trsUsdtPoolAddr = `0x92dA11FA19564A713ADF10b4F5F79fAaaBEefB7a` // pre-next
 
 
 const usdtTokenAddr = usdtAddr
-const huiwanTokenAddr = trsAddr
+const huiwanTokenAddr = tptAddr
 const huiwanUsdtMdexAddr = trsUsdtPairAddr
 const huiwanUsdtLoopAddr = trsUsdtPoolAddr
 

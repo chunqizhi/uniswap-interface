@@ -23,7 +23,7 @@
                     pre_coin: ETHICON,      // BTC icon
                     next_coin: HBTCICON,    // USDT icon
                     coin_name: "ETH/HBTC",  // 矿池币对名
-                    coin: "TRS",            // 挖矿奖励 货币名
+                    coin: "TTQ",            // 挖矿奖励 货币名
                     poolIndex: 'one',       // getCurrentPool 函数中对应的case
                     coin_price: 'ETHPRE',   // 计算tvl使用 btc 还是USDT 
                     key_word: 'main'        // main flat ideas

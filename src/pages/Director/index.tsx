@@ -247,30 +247,6 @@ export default function Director() {
 //   const [balanceFalse, setBalanceFalse] = useState(false)
   // 判断是否是第一次加载页面  判断发送请求
   const [pageFlag, setPageFlag] = useState(false);
-  //7
-  const [dao7name, setDao7Name] = useState('TTQ DAO-7')//仓名
-  const [dao7TotalSupply, setDao7TotalSupply] = useState(0.00)//总锁仓量
-  const [dao7BalanceOf, setDao7BalanceOf] = useState(0.00)//我的锁仓
-  const [allAvailableAmount7, setallAvailableAmount7] = useState(0.00)//解锁数量
-  const [Dao7RestBlocks, setDao7RestBlocks] = useState('')//解锁时间
-  const [isApprove7, setApprove7] = useState(false) // 授权/非授权
-  const [Dao7CanWithdraw, setDao7CanWithdraw] = useState(false) //是否可以提取
-  const [pengingApprove7, setPengingApprove7] = useState(false)//是否授权成功
-  const [isimpower7, setIsImpower7] = useState(false)//授权按钮变化
-  const [lockBlocks7, setLockBlocks7] = useState(false)//授权按钮变化
-
-  //15
-  const [dao15name, setDao15Name] = useState('TTQ DAO-15')
-  const [dao15TotalSupply, setDao15TotalSupply] = useState(0.00)
-  const [dao15BalanceOf, setDao15BalanceOf] = useState(0.00)
-  const [allAvailableAmount15, setallAvailableAmount15] = useState(0.00)
-  const [Dao15RestBlocks, setDao15RestBlocks] = useState('')
-  const [Dao15CanWithdraw, setDao15CanWithdraw] = useState(false) //是否可以提取
-  const [pengingApprove15, setPengingApprove15] = useState(false)//是否授权成功
-  const [isApprove15, setApprove15] = useState(false) // 授权/非授权
-  const [isimpower15, setIsImpower15] = useState(false)//授权按钮变化
-  const [lockBlocks15, setLockBlocks15] = useState(false)//授权按钮变化
-
   //30 
   const [daoname, setDaoName] = useState('TTQ DAO-30')
   const [daoTotalSupply, setDaoTotalSupply] = useState(0.00)
@@ -283,33 +259,13 @@ export default function Director() {
   const [isimpower, setIsImpower] = useState(false)//授权按钮变化
   const [lockBlocks, setLockBlocks] = useState(false)//授权按钮变化
 
-  //60
-  const [dao60name, setDao60Name] = useState('TTQ DAO-60')
-  const [dao60TotalSupply, setDao60TotalSupply] = useState(0.00)
-  const [dao60BalanceOf, setDao60BalanceOf] = useState(0.00)
-  const [allAvailableAmount60, setallAvailableAmount60] = useState(0.00)
-  const [Dao60RestBlocks, setDao60RestBlocks] = useState('')
-  const [isApprove60, setApprove60] = useState(false) // 授权/非授权
-  const [Dao60CanWithdraw, setDao60CanWithdraw] = useState(false) //是否可以提取
-  const [pengingApprove60, setPengingApprove60] = useState(false)//是否授权成功
-  const [isimpower60, setIsImpower60] = useState(false)//授权按钮变化
-  const [lockBlocks60, setLockBlocks60] = useState(false)//授权按钮变化
-  // 
   const [addFlag, setAddFlag] = useState(false)   //显示隐藏 抵押解押弹框
   const [inputValue, setInputVal] = useState('0')   //input的值
   const [stakedLp, setStakedLp] = useState('0.00')
   const [allTotalSupply, setAllTotalSupply] = useState(0.00) //当前总锁仓量
   // const clickListener = () => {}
   const approveFn = (type) => {
-    if (type == '7') {
-        setIsImpower7(true)
-        setPengingApprove7(true)
-      API.approveDao7().then(res => {
-      }).catch(error => {
-        setIsImpower7(false)
-        setPengingApprove7(false)
-      })
-    } else if (type == '30') {
+    if (type == '30') {
         setIsImpower(true)
         setPengingApprove(true)
       API.approveDao().then(res => {
@@ -318,25 +274,7 @@ export default function Director() {
         setIsImpower(false)
         setPengingApprove(false)
       })
-    } else if (type == '15') {
-        setIsImpower15(true)
-        setPengingApprove15(true)
-        API.approveDao15().then(res => {
-    }).catch(error => {
-        setIsImpower15(false)
-        setPengingApprove15(false)
-      })
-    } else if (type == '60') {
-        setIsImpower60(true)
-        setPengingApprove60(true)
-        API.approveDao60().then(res => {
-      }).catch(error => {
-        // console.log('授权失败',isimpower)
-        setIsImpower60(false)
-        setPengingApprove60(false)
-      })
     }
-
   }
   useEffect(() => {
     let setTimeoutTimer;
@@ -348,32 +286,7 @@ export default function Director() {
         }
         setApprove(res)
       })
-      // API.isApproveDao7().then(res => {
-      //   // console.log("是否授权7" + res)
-      //   if (res) {
-      //       setIsImpower7(false)
-      //   }
-      //   setApprove7(res)
-      // })
-      // API.isApproveDao15().then(res => {
-      //   // console.log("是否授权15" + res)
-      //   if (res) {
-      //       setIsImpower15(false)
-      //   }
-      //   setApprove15(res)
-      // })
-      // API.isApproveDao60().then(res => {
-      //   // console.log("是否授权60" + res)
-      //   if (res) {
-      //       setIsImpower60(false)
-      //   }
-      //   setApprove60(res)
-      // })
-      // Data.getTrsRate().then(async res => {
-      //   // console.log('trs价格 ==>',res.rate)
-      //   setRate(await res.rate)
-      //   // setRateFalse(true)
-      // })
+      
       //当前流动性质押
       // Data.getPoolListData('all').then(async res => {
       //   // console.log('质押')
@@ -460,58 +373,8 @@ export default function Director() {
   // if (pageFlag) {
   // console.log(pageFlag);
   const getAllDao = () => {
-    // console.log('getAllDao == fun')
-      // let a = false
-      // let b = false
       let c = false
-      // let d = false
-    // API.getAlldao7().then(res => {
-    //     // console.log('setTimeout =>', res)
-    //     setDao7Name(res[0])
-    //     setDao7TotalSupply(res[1])
-    //     setDao7BalanceOf(res[2])
-    //     setallAvailableAmount7(res[3])
-    //     let newtime = '00'
-    //     if (res[4] != '0') {
-    //       newtime = formattingDate(new Date().getTime() + res[4] * 3 * 1000)
-    //     } else {
-    //         if(res[6] > 0 && res[2] != 0){
-    //             newtime = `${t("director.text20")}`
-    //             setLockBlocks7(true)
-    //         }else{
-    //             newtime = "00"
-    //             setLockBlocks7(false)
-    //         }
-    //     }
-    //     setDao7RestBlocks(newtime)
-    //     setDao7CanWithdraw(res[5])
-    //     // console.log('lockBlocks ==>',res[6])
-    //     a = true
-    //     isover(a, b, c, d)
-    //   })
-      // API.getAlldao15().then(res => {
-      //   // console.log('setTimeout =>', res)
-      //   setDao15Name(res[0])
-      //   setDao15TotalSupply(res[1])
-      //   setDao15BalanceOf(res[2])
-      //   setallAvailableAmount15(res[3])
-      //   let newtime = '00'
-      //   if (res[4] != '0') {
-      //     newtime = formattingDate(new Date().getTime() + res[4] * 3 * 1000)
-      //   } else {
-      //       if(res[6] > 0 && res[2] != 0){
-      //           newtime = `${t("director.text20")}`
-      //           setLockBlocks15(true)
-      //       }else{
-      //           newtime = "00"
-      //           setLockBlocks15(false)
-      //       }
-      //   }
-      //   setDao15RestBlocks(newtime)
-      //   setDao15CanWithdraw(res[5])
-      //   b = true
-      //   isover(a, b, c, d)
-      // })
+     
       API.getAlldao30().then(res => {
         // console.log('setTimeout =>', res)
         setDaoName(res[0])
@@ -536,32 +399,6 @@ export default function Director() {
         // isover(true, true, c,true)
         // isover(c)
       })
-      // API.getAlldao60().then(res => {
-      //   // console.log('setTimeout =>', res)
-      //   setDao60Name(res[0])
-      //   setDao60TotalSupply(res[1])
-      //   setDao60BalanceOf(res[2])
-      //   setallAvailableAmount60(res[3])
-      //   let newtime = '00'
-      //   if (res[4] != '0') {
-      //     newtime = formattingDate(new Date().getTime() + res[4] * 3 * 1000)
-      //   } else {
-      //       if(res[6] > 0 && res[2] != 0){
-      //           newtime = `${t("director.text20")}`
-      //           setLockBlocks60(true)
-      //       }else{
-      //           newtime = "00"
-      //           setLockBlocks60(false)
-      //       }
-      //   }
-      //   setDao60RestBlocks(newtime)
-      //   setDao60CanWithdraw(res[5])
-      //   // setPageFlag(false);
-      //   d = true
-      //   isover(a, b, c, d)
-      // })
-      // setAllTotalSupply((dao7TotalSupply + dao15TotalSupply + daoTotalSupply + dao60TotalSupply))
-   
   }
 
   const getdao = () => {
@@ -573,81 +410,11 @@ export default function Director() {
   }
 
 
-
-  // //trs价格
-  // if (rateFalse) {
-  //   setRateFalse(false)
-  //   setTimeout(() => {
-  //     Data.getTrsRate().then(res => {
-  //       console.log('trs价格')
-  //       setRate(res.rate)
-  //       setRateFalse(true)
-  //     })
-  //   }, 3000);
-  // }
-
-  // //当前流动性质押
-  // if (allBalanceFalse) {
-  //   setAllBalanceFalse(false)
-  //   setTimeout(() => {
-  //     Data.getPoolListData('all').then(res => {
-  //       console.log('质押')
-  //       setAllBalance(res)
-  //       setAllBalanceFalse(true)
-  //     })
-  //   }, 3000);
-  // }
-
-  // //当前挖矿产出
-  // if (allBlockFalse) {
-  //   setAllBlockFalse(false)
-  //   setTimeout(() => {
-  //     Data.getAllBlock().then(res => {
-  //       console.log('产出')
-  //       setAllBock(res)
-  //       setAllBlockFalse(true)
-  //     })
-  //   }, 3000);
-  // }
-
-  // if (balanceFalse) {
-  //   setBalanceFalse(false)
-  //   setTimeout(() => {
-  //     API.getWalletAllTrs().then(res => {
-  //       console.log('所有')
-  //       setBalance(res)
-  //       setStakedLp(res)
-  //       setBalanceFalse(true)
-  //     })
-  //   }, 3000);
-  // }
-
   // 提取
   function extract(type) {
-      if (dao7BalanceOf > 0 && type == '7') {
-        if (Dao7CanWithdraw) {
-            API.Dao7Withdraw().then(res => {
-            })
-        }else{
-            toast('extract')
-        }
-      }else if(dao15BalanceOf > 0 && type == '15'){
-        if (Dao15CanWithdraw) {
-            API.Dao15Withdraw().then(res => {
-            })
-        }else{
-            toast('extract')
-        }
-      }else if(daoBalanceOf > 0 && type == '30'){
+      if(daoBalanceOf > 0 && type == '30'){
         if (DaoCanWithdraw) {
             API.DaoWithdraw().then(res => {
-            })
-        }else{
-            toast('extract')
-        }
-      }else if(dao60BalanceOf > 0 && type == '60'){
-        if (Dao60CanWithdraw) {
-            API.Dao60Withdraw().then(res => {
             })
         }else{
             toast('extract')
@@ -689,108 +456,6 @@ export default function Director() {
         </DirectorAllTotalSupply>
         <Directorh3>{t("director.text30")}(TTQ)</Directorh3>
       </Directortopbox>
-      {/*dao7 */}
-      {/* <Directorbox>
-        <Directortop>
-          <Directortopname>{dao7name}</Directortopname>
-          <Directortopimg></Directortopimg>
-        </Directortop>
-        <Directorrow>
-          <Directorname>{t("director.text22")}</Directorname>
-          <Directorapr>
-            365%
-            <img width="30" height="30" src={home_cart1} alt="" />
-          </Directorapr>
-        </Directorrow>
-        <Directorrow>
-          <Directorname>{t("director.text23")}</Directorname>
-          <Directornum>{formatNum(dao7TotalSupply)}</Directornum>
-        </Directorrow>
-        <Directorrow>
-          <Directorname>{t("director.text24")}</Directorname>
-          <Directornum>{formatNum(balance)}</Directornum>
-        </Directorrow>
-        <Directorrow>
-          <Directorname>{t("director.text25")}</Directorname>
-          <Directornum>{formatNum(dao7BalanceOf)}</Directornum>
-        </Directorrow>
-        <Directorrow>
-          <Directorname>{t("director.text26")}</Directorname>
-          <Directornum>{formatNum(allAvailableAmount7)}</Directornum>
-        </Directorrow>
-        <Directorrow>
-          <Directorname>{t("director.text27")}</Directorname>
-          <Directornum>{Dao7RestBlocks}</Directornum>
-        </Directorrow>
-        <Miningbottombtn>
-          <Miningbtn1 onClick={() => extract('7')}>{t("director.text28")}</Miningbtn1>
-          <Miningbtn2 onClick={
-            () => {
-              setAddFlagtype('7')
-              if (!isApprove7) {
-                if (pengingApprove7) {
-                  toast('locked')
-                }
-                else approveFn('7')
-                return
-              } else {
-                setAddFlag(true)
-                setPengingApprove7(false)
-              }
-            }}>{isimpower7 ? '授权中...' : t("director.text29")}</Miningbtn2>
-        </Miningbottombtn>
-      </Directorbox> */}
-      {/*dao15 */}
-      {/* <Directorbox>
-        <Directortop>
-          <Directortopname>{dao15name}</Directortopname>
-          <Directortopimg></Directortopimg>
-        </Directortop>
-        <Directorrow>
-          <Directorname>{t("director.text22")}</Directorname>
-          <Directorapr>
-            401.5%
-            <img width="30" height="30" src={home_cart1} alt="" />
-          </Directorapr>
-        </Directorrow>
-        <Directorrow>
-          <Directorname>{t("director.text23")}</Directorname>
-          <Directornum>{formatNum(dao15TotalSupply)}</Directornum>
-        </Directorrow>
-        <Directorrow>
-          <Directorname>{t("director.text24")}</Directorname>
-          <Directornum>{formatNum(balance)}</Directornum>
-        </Directorrow>
-        <Directorrow>
-          <Directorname>{t("director.text25")}</Directorname>
-          <Directornum>{formatNum(dao15BalanceOf)}</Directornum>
-        </Directorrow>
-        <Directorrow>
-          <Directorname>{t("director.text26")}</Directorname>
-          <Directornum>{formatNum(allAvailableAmount15)}</Directornum>
-        </Directorrow>
-        <Directorrow>
-          <Directorname>{t("director.text27")}</Directorname>
-          <Directornum>{Dao15RestBlocks}</Directornum>
-        </Directorrow>
-        <Miningbottombtn>
-          <Miningbtn1 onClick={() => extract('15')}>{t("director.text28")}</Miningbtn1>
-          <Miningbtn2 onClick={
-            () => {
-              setAddFlagtype('15')
-              if (!isApprove15) {
-                if (pengingApprove15) {
-                  toast('locked')
-                }
-                else approveFn('15')
-                return
-              } else {
-                setAddFlag(true)
-                setPengingApprove15(false)
-              }
-            }}>{isimpower15 ? '授权中...' : t("director.text29")}</Miningbtn2>
-        </Miningbottombtn>
-      </Directorbox> */}
       {/*dao30 */}
       <Directorbox>
         <Directortop>

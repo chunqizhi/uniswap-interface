@@ -9,7 +9,7 @@ export default {
     text08: '加载中',
     text09: '账户分析和应计费用',
     text10: '没有流动性',
-    text11: 'TreeSwap 流动性发现!',
+    text11: 'TTQSwap 流动性发现!',
     text12: '没看到你加入的交易池吗?',
     text13: '现在迁移',
     text14: '导入',

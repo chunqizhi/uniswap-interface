@@ -182,7 +182,7 @@ const [offsetWidth, setOffsetWidth] = useState(document.querySelector('body').of
               <Route exact strict path="/uni/:currencyIdA/:currencyIdB" component={Manage} />
               <Route exact strict path="/vote/:id" component={VotePage} />
               <Route exact strict path="/director" component={Director} />
-              <Route exact strict path="/market" component={Market} />
+              {/* <Route exact strict path="/market" component={Market} /> */}
               <Route exact strict path="/chainbridge" component={ChainBridge} />
               <Route exact strict path="/nft" component={NFT} />
               <Route component={RedirectPathToSwapOnly} />

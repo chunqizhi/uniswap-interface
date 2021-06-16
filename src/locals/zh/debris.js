@@ -11,7 +11,7 @@ export default {
     text09: '全部清除',
     text10: '您的交易将出现在这里……',
 // pages/earn/index
-    text11: 'TreeSwap 流动性矿业',
+    text11: 'TTQSwap 流动性矿业',
     text12: '存入您的流动性提供商令牌以接收TreeSwap协议治理令牌TTQ。',
     text13: '查询更多TTQ',
     text14: '参与池',

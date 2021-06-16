@@ -125,7 +125,7 @@ export default function Home() {
             API.getAllTotalSupply().then(res => {
                 setAllTotalSupply(Number(res[0])+Number(res[1])+Number(res[2])+Number(res[3]))
             })
-            Data.getTrsRate().then( res => {
+            Data.getTtqRate().then( res => {
                 setRate(res.rate)
             })
             Data.getPoolListData('all').then(res => {

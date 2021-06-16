@@ -950,7 +950,7 @@ class API {
     // pooldata
     getPoolData() {
         return new Promise((resolve, reject) => {
-            this.getTrsRate().then(res => {
+            this.getTtqRate().then(res => {
                 let {
                     precoin,
                     nextcoin,
@@ -975,7 +975,7 @@ class API {
     }
 
 
-    getTrsRate(type) {
+    getTtqRate(type) {
         return this.contract.initFnPromise().then(res => {
             return new Promise((resolve, reject) => {
                 this.contract.getBalanceFromHuiwanTokenContract((precoin) => {
@@ -1035,7 +1035,7 @@ class API {
                 })
             })
         }
-        // 获取用户trs数量 
+        // 获取用户ttq数量 
     getWalletAllTrs() {
             return this.contract.initFnPromise().then(res => {
                 return new Promise((resolve, reject) => {

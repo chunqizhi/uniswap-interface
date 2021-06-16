@@ -9,7 +9,7 @@ export default {
     text08: 'Loading',
     text09: 'Account analytics and accrued fees',
     text10: 'No liquidity found.',
-    text11: 'Uniswap V1 liquidity found!',
+    text11: 'TTQSWAP Liquidity Discovery!',
     text12: "Don't see a pool you joined?",
     text13: "Migrate now.",
     text14: 'Import it.',

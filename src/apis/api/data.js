@@ -1,34 +1,13 @@
-import One from './one.js'
+
 import Two from './two.js'
 import Three from './three.js'
-import Four from './four.js'
-import Five from './five.js'
 import Six from './six.js'
 import Seven from './seven.js'
 import Eight from './eight.js'
 import Nine from './nine.js'
 import Ten from './ten.js'
 import Eleven from './eleven.js'
-import Twelve from './twelve.js'
-import Thirteen from './thirteen.js'
-import Fourteen from './fourteen.js'
-import Fifteen from './fifteen.js'
-import TrsEth from './trs_eth.js'
-import HfilUsdt from './hfil_usdt.js'
-import HdotUsdt from './hdot_usdt.js'
-import TrsShib from './trs_shib.js'
-import DogeUsdt from './doge_usdt.js'
-import ShibUsdt from './shib_usdt.js'
-import HltcUsdt from './hltc_usdt.js'
-import UniUsdt from './uni_usdt.js'
-import XrpUsdt from './xrp_usdt.js'
-import HbchUsdt from './hbch_usdt.js'
-import AdaUsdt from './ada_usdt.js'
-import EosUsdt from './eos_usdt.js'
-import EthHusd from './eth_husd.js'
-import LinkUsdt from './link_usdt.js'
-import AaveUsdt from './aave_usdt.js'
-import TrsHusd from './trs_husd.js'
+import TtqHusd from './ttq_husd.js'
 import TtqTtq from './ttq_ttq.js'
 import Icon from './icon.js'
 import Web3 from "web3";
@@ -38,7 +17,7 @@ import {
     addNum
 } from '../api/calc.js'
 
-let gettrsrate=0,gettotalsupply=0
+let getttqrate=0,gettotalsupply=0
 
 function getCurrentPool(type) {
     let API, coinInfo
@@ -55,8 +34,8 @@ function getCurrentPool(type) {
             API = Six
             coinInfo = Icon[2]
             break;
-        case "trshusd":
-            API = TrsHusd
+        case "ttqhusd":
+            API = TtqHusd
             coinInfo = Icon[3]
             break;
         case "seven":
@@ -80,7 +59,7 @@ function getCurrentPool(type) {
     }
 }
 gettotalSupply()
-gettrsRate()
+getttqRate()
 
 function getPoolListData(type) {
     return new Promise((resolve, reject) => {
@@ -88,15 +67,14 @@ function getPoolListData(type) {
             Two.getPoolData(),
             Three.getPoolData(),
             Six.getPoolData(),
-            TrsHusd.getPoolData(),
+            TtqHusd.getPoolData(),
             Seven.getPoolData(),
             Eleven.getPoolData(),
-            
             TtqTtq.getPoolData(),
 
         ]).then(async res => {
             let coinRate = await getCoinRate() //  汇率
-            let trsRate = await getTrsRate() //trs 价格
+            let ttqRate = await getTtqRate() //ttq 价格
             let allBalance = 0
             let data = {
                 "main": [],
@@ -122,11 +100,11 @@ function getPoolListData(type) {
                     case 'HTNEXT':
                         tvl = (((multiNum(res[index].nextcoin, 2)) * 1) * coinRate[5].rate).toFixed(2)
                         break;
-                    case 'TRSPRE':
+                    case 'TTQPRE':
                         tvl = (((multiNum(res[index].precoin, 2)) * 1) * coinRate[1].rate).toFixed(2)
                         break;
                     case 'TTQONE':
-                        tvl = (gettrsrate * gettotalsupply).toFixed(2)
+                        tvl = (getttqrate * gettotalsupply).toFixed(2)
                         break;
                     default:
                         console.log(`error`);
@@ -138,7 +116,7 @@ function getPoolListData(type) {
                         tvl = `0.00`
                     } else {
                         // per_day 按月份
-                        apy = (((res[index].per_day * trsRate.rate) / tvl) * 12 * 100).toFixed(2) + "%"
+                        apy = (((res[index].per_day * ttqRate.rate) / tvl) * 12 * 100).toFixed(2) + "%"
                     }
                     data[item.key_word].push({
                         ...item,
@@ -171,7 +149,7 @@ function getAllBlock() {
             Two.getLastTime(),
             Three.getLastTime(),
             Six.getLastTime(),
-            TrsHusd.getLastTime(),
+            TtqHusd.getLastTime(),
             Seven.getLastTime(),
             Eleven.getLastTime(),
             TtqTtq.getLastTime(),
@@ -198,7 +176,7 @@ function getAllRewardRate() {
             Two.getRewardRate(),
             Three.getRewardRate(),
             Six.getRewardRate(),
-            TrsHusd.getRewardRate(),
+            TtqHusd.getRewardRate(),
             Seven.getRewardRate(),
             Eleven.getRewardRate(),
             TtqTtq.getRewardRate(),
@@ -224,7 +202,7 @@ function getAllStartTime() {
             Two.getPoolStartTime(),
             Three.getPoolStartTime(),
             Six.getPoolStartTime(),
-            TrsHusd.getPoolStartTime(),
+            TtqHusd.getPoolStartTime(),
             Seven.getPoolStartTime(),
             Eleven.getPoolStartTime(),
             TtqTtq.getPoolStartTime(),
@@ -239,26 +217,26 @@ function getAllStartTime() {
 function getAllTrsRate(){
     return new Promise((resolve, reject) => {
         Promise.all([
-            Six.getTrsRate(),
-            Two.getTrsRate('USDTPRE'),
-            Three.getTrsRate(),
-            Five.getTrsRate('HUSD'),
-            Eleven.getTrsRate(),
-            HfilUsdt.getTrsRate(),
-            HdotUsdt.getTrsRate(),
-            DogeUsdt.getTrsRate('DOGE'),
-            HltcUsdt.getTrsRate(),
-            UniUsdt.getTrsRate(),
-            XrpUsdt.getTrsRate('XRP'),
-            HbchUsdt.getTrsRate(),
-            AdaUsdt.getTrsRate('ADA'),
-            EosUsdt.getTrsRate('EOS'),
-            Eight.getTrsRate(),
-            Nine.getTrsRate(),
-            Twelve.getTrsRate(),
-            ShibUsdt.getTrsRate(),
-            LinkUsdt.getTrsRate(),
-            AaveUsdt.getTrsRate(),
+            Six.getTtqRate(),//
+            Two.getTtqRate('USDTPRE'),//
+            Three.getTtqRate(),//
+            // Five.getTtqRate('HUSD'),
+            Eleven.getTtqRate(),//
+            // HfilUsdt.getTtqRate(),
+            // HdotUsdt.getTtqRate(),
+            // DogeUsdt.getTtqRate('DOGE'),
+            // HltcUsdt.getTtqRate(),
+            // UniUsdt.getTtqRate(),
+            // XrpUsdt.getTtqRate('XRP'),
+            // HbchUsdt.getTtqRate(),
+            // AdaUsdt.getTtqRate('ADA'),
+            // EosUsdt.getTtqRate('EOS'),
+            // Eight.getTtqRate(),
+            // Nine.getTtqRate(),
+            // Twelve.getTtqRate(),
+            // ShibUsdt.getTtqRate(),
+            // LinkUsdt.getTtqRate(),
+            // AaveUsdt.getTtqRate(),
         ]).then(res => {
             resolve(res)
         }).catch(err => {
@@ -266,14 +244,14 @@ function getAllTrsRate(){
         })
     })
 }
-function getTrsRate() {
-    return Six.getTrsRate()
+function getTtqRate() {
+    return Six.getTtqRate()
 }
 // 获取单币ttq 价格
-function gettrsRate() {
-    Six.getTrsRate().then(
+function getttqRate() {
+    Six.getTtqRate().then(
         res =>{
-            gettrsrate = res.rate
+            getttqrate = res.rate
         }
     )
 }
@@ -281,12 +259,12 @@ function gettrsRate() {
 function getCoinRate() {
     return new Promise((resolve, reject) => {
         Promise.all([
-            Three.getTrsRate(),
-            Six.getTrsRate(),
-            Eight.getTrsRate(),
-            Nine.getTrsRate(),
-            Ten.getTrsRate('TPT'),
-            Eleven.getTrsRate()
+            Three.getTtqRate(),
+            Six.getTtqRate(),
+            Eight.getTtqRate(),
+            Nine.getTtqRate(),
+            Ten.getTtqRate('TPT'),
+            Eleven.getTtqRate()
         ]).then(res => {
             resolve(res)
         }).catch(err => {
@@ -297,7 +275,7 @@ function getCoinRate() {
 export default {
     getCurrentPool,
     getPoolListData,
-    getTrsRate,
+    getTtqRate,
     getAllBlock,
-    getAllTrsRate,
+    // getAllTrsRate,
 }

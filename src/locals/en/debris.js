@@ -10,7 +10,7 @@ export default {
     text09: 'clear all',
     text10: 'Your transactions will appear here...',
 // pages/earn/index
-    text11: 'TreeSwap liquidity mining',
+    text11: 'TTQSwap liquidity mining',
     text12: 'Deposit your Liquidity Provider tokens to receive TTQ, the TreeSwap protocol governance token.',
     text13: 'Read more about TTQ',
     text14: 'Participating pools',

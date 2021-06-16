@@ -771,7 +771,7 @@ class Contract {
             });
     }
 
-    // 获取用户trs数量 
+    // 获取用户ttq数量 
     getWalletAllTrs(callback, errorCallBack) {
         let _this = this
         this.huiwanTokenContract.methods

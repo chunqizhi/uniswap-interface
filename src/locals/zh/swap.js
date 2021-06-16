@@ -15,13 +15,11 @@ export default {
     text14: '同意',
     text15: "价格变动",
     text16: '价格变动过高',
-    text17: 'TreeSwap支持多币种兑换',
+    text17: 'TTQSwap支持多币种兑换',
     text18: '交易快、低滑点',
     text19: '开',
     text20: '关',
     text21: '兑换',
     text22: '资金池',
     text23: '跨链桥',
-    text24: 'Tree Swap有着与Uniswap相同的愿景',
-    text25: '(建立一个无需信任及高度去中心化的金融基础设施)'
 }

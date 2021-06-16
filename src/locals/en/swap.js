@@ -15,12 +15,11 @@ export default {
     text14: 'Approve',
     text15: "Price Impact High",
     text16: 'Price Impact Too High',
-    text17: 'TreeSwap supports multi-currency conversion',
+    text17: 'TTQSwap supports multi-currency conversion',
     text18: 'Trade fast, low slip point',
     text19: 'On',
     text20: 'Off',
     text21: 'Swap',
     text22: 'Capital pool',
     text23: 'Chain Bridge',
-    text24: 'Tree Swap has the same vision as Uniswap (Establish a financial infrastructure that does not require trust and is highly decentralized)'
-}
+ }

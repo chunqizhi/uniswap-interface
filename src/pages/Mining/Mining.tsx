@@ -136,11 +136,6 @@ const { t } = useTranslation()
       }, [])
     return (
         <>
-            {/* <Title /> */}
-            {/* <TopContent rate={formatNum(rate)} nav_list={nav_list} /> */}
-            {/* <Directortitle>
-                <img src={title_name} alt="" />
-            </Directortitle> */}
             <Headerbox>
                 <img width="40" height="40" src={require('../../assets/images/home/nav-logo.png')} alt="" />
                 <Headername>TTQSwap</Headername>
@@ -263,53 +258,6 @@ const { t } = useTranslation()
                     </div>
                 )
             }
-        </>
-    )
-}
-
-function Title() {
-    const { t } = useTranslation();
-    return (
-        <>
-            <TitleDiv>
-                <TitleSup>{t("mining.text01")}</TitleSup>
-            </TitleDiv>
-        </>
-    )
-}
-
-function TopContent(props) {
-    const { t } = useTranslation();
-    let { rate, nav_list } = props
-    return (
-        <>
-            <div className="mini-top">
-                <p className="title">{t("mining.text02")}</p>
-                <div className="mini-1-div">
-                    <p>
-                        <span>{t("mining.text03")}</span>
-                        <span>{rate}</span>
-                    </p>
-                </div>
-                <div className="top-div">
-                    {
-                        nav_list.map((item) => {
-                            return (
-                                <>
-                                    <div className="item" key={item.text}>
-                                        <div className="text">{item.text}</div>
-                                        <div className="balance">
-                                            {
-                                                formatNum(item.end_val)
-                                            }
-                                        </div>
-                                    </div>
-                                </>
-                            )
-                        })
-                    }
-                </div>
-            </div>
         </>
     )
 }

@@ -1,10 +1,20 @@
-export const shibAbi = [{
+export const ttqAbi = [{
         "inputs": [{
-            "internalType": "address",
-            "name": "lockProxyContractAddress",
-            "type": "address"
-        }],
-        "payable": false,
+                "internalType": "uint256",
+                "name": "initialSupply",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "name",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "symbol",
+                "type": "string"
+            }
+        ],
         "stateMutability": "nonpayable",
         "type": "constructor"
     },
@@ -57,7 +67,6 @@ export const shibAbi = [{
         "type": "event"
     },
     {
-        "constant": true,
         "inputs": [{
                 "internalType": "address",
                 "name": "owner",
@@ -75,12 +84,10 @@ export const shibAbi = [{
             "name": "",
             "type": "uint256"
         }],
-        "payable": false,
         "stateMutability": "view",
         "type": "function"
     },
     {
-        "constant": false,
         "inputs": [{
                 "internalType": "address",
                 "name": "spender",
@@ -98,12 +105,10 @@ export const shibAbi = [{
             "name": "",
             "type": "bool"
         }],
-        "payable": false,
         "stateMutability": "nonpayable",
         "type": "function"
     },
     {
-        "constant": true,
         "inputs": [{
             "internalType": "address",
             "name": "account",
@@ -115,12 +120,10 @@ export const shibAbi = [{
             "name": "",
             "type": "uint256"
         }],
-        "payable": false,
         "stateMutability": "view",
         "type": "function"
     },
     {
-        "constant": true,
         "inputs": [
 
         ],
@@ -130,12 +133,10 @@ export const shibAbi = [{
             "name": "",
             "type": "uint8"
         }],
-        "payable": false,
         "stateMutability": "view",
         "type": "function"
     },
     {
-        "constant": false,
         "inputs": [{
                 "internalType": "address",
                 "name": "spender",
@@ -153,12 +154,10 @@ export const shibAbi = [{
             "name": "",
             "type": "bool"
         }],
-        "payable": false,
         "stateMutability": "nonpayable",
         "type": "function"
     },
     {
-        "constant": false,
         "inputs": [{
                 "internalType": "address",
                 "name": "spender",
@@ -176,12 +175,10 @@ export const shibAbi = [{
             "name": "",
             "type": "bool"
         }],
-        "payable": false,
         "stateMutability": "nonpayable",
         "type": "function"
     },
     {
-        "constant": true,
         "inputs": [
 
         ],
@@ -191,12 +188,10 @@ export const shibAbi = [{
             "name": "",
             "type": "string"
         }],
-        "payable": false,
         "stateMutability": "view",
         "type": "function"
     },
     {
-        "constant": true,
         "inputs": [
 
         ],
@@ -206,12 +201,10 @@ export const shibAbi = [{
             "name": "",
             "type": "string"
         }],
-        "payable": false,
         "stateMutability": "view",
         "type": "function"
     },
     {
-        "constant": true,
         "inputs": [
 
         ],
@@ -221,12 +214,10 @@ export const shibAbi = [{
             "name": "",
             "type": "uint256"
         }],
-        "payable": false,
         "stateMutability": "view",
         "type": "function"
     },
     {
-        "constant": false,
         "inputs": [{
                 "internalType": "address",
                 "name": "recipient",
@@ -244,12 +235,10 @@ export const shibAbi = [{
             "name": "",
             "type": "bool"
         }],
-        "payable": false,
         "stateMutability": "nonpayable",
         "type": "function"
     },
     {
-        "constant": false,
         "inputs": [{
                 "internalType": "address",
                 "name": "sender",
@@ -272,7 +261,6 @@ export const shibAbi = [{
             "name": "",
             "type": "bool"
         }],
-        "payable": false,
         "stateMutability": "nonpayable",
         "type": "function"
     }
