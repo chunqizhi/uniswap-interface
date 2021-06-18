@@ -9,6 +9,7 @@ import CoinbaseWalletIcon from '../../assets/images/coinbaseWalletIcon.svg'
 import FortmaticIcon from '../../assets/images/fortmaticIcon.png'
 import PortisIcon from '../../assets/images/portisIcon.png'
 import WalletConnectIcon from '../../assets/images/walletConnectIcon.svg'
+import { useActiveWeb3React } from '../../hooks'
 import { fortmatic, injected, portis, walletconnect, walletlink } from '../../connectors'
 import { NetworkContextName } from '../../constants'
 import useENSName from '../../hooks/useENSName'
@@ -162,10 +163,16 @@ function StatusIcon({ connector }: { connector: AbstractConnector }) {
   }
   return null
 }
-
-function Web3StatusInner() {
+function Web3StatusInner({
+  Account
+}: {
+  Account?: string
+}) {
   const { t } = useTranslation()
-  const { account, connector, error } = useWeb3React()
+  // const { account } = useActiveWeb3React()
+  const account = Account
+  // const { account, connector, error } = useWeb3React()
+  const { connector, error } = useWeb3React()
 
   const { ENSName } = useENSName(account ?? undefined)
 
@@ -175,14 +182,17 @@ function Web3StatusInner() {
     const txs = Object.values(allTransactions)
     return txs.filter(isTransactionRecent).sort(newTransactionsFirst)
   }, [allTransactions])
+  // console.log('Account',Account)
+  // const accounts = useMemo(() => {
+  //   return useActiveWeb3React().account
+  // }, [account])
 
   const pending = sortedRecentTransactions.filter(tx => !tx.receipt).map(tx => tx.hash)
 
   const hasPendingTransactions = !!pending.length
   const hasSocks = useHasSocks()
   const toggleWalletModal = useWalletModalToggle()
-
-  if (account) {
+  if (account || Account) {
     return (
       <Web3StatusConnected id="web3-status-connected" onClick={toggleWalletModal} pending={hasPendingTransactions}>
         {hasPendingTransactions ? (
@@ -215,6 +225,7 @@ function Web3StatusInner() {
 }
 
 export default function Web3Status() {
+
   const { active, account } = useWeb3React()
   const contextNetwork = useWeb3React(NetworkContextName)
 
@@ -236,7 +247,7 @@ export default function Web3Status() {
 
   return (
     <>
-      <Web3StatusInner />
+      <Web3StatusInner Account={account} />
       <WalletModal ENSName={ENSName ?? undefined} pendingTransactions={pending} confirmedTransactions={confirmed} />
     </>
   )
