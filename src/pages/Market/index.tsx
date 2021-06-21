@@ -130,13 +130,68 @@ export default function Market() {
     // const [defaultlist, setDefaultlist] = useState([])
     // 如果是true 持续加载更新
     // if (pageFlag) {
-    const bbb = () =>{
-    timers && clearTimeout(timers)
-      timers = setTimeout(() => {
+    // const bbb = () =>{
+    // timers && clearTimeout(timers)
+    //   timers = setTimeout(() => {
+    //         Data.getAllTrsRate().then(res => {
+    //             setRate(res)
+    //         })
+    //         Data.getPoolListData().then(res => {
+    //             var nums = res.main.concat(res.flat, res.ideas);
+    //             let arr = []
+    //             nums.map(function (value, index, array) {
+    //                 if (value.coin_name.indexOf('USDT') !== -1 && value.coin_name.indexOf('TRS') == -1) {
+    //                     arr.push(value)
+    //                 }
+    //                 if (value.coin_name.indexOf('USDT') !== -1 && value.coin_name.indexOf('TRS') !== -1) {
+    //                     arr.unshift(value)
+    //                 }
+    //             });
+    //             setAllpoollist(arr)
+    //             setPageFlag(!pageFlag);
+    //         })
+    //         clearTimeout(timers)
+    //     }, 1500);
+    // // }
+    // }
+
+    // useEffect(()=>{
+    //     let isUnmount = false;
+    //     const aaa = () => {
+    //             Data.getAllTrsRate().then(res => {
+    //                 setRate(res)
+    //             })
+    //             Data.getPoolListData().then(res => {
+    //                 var nums = res.main.concat(res.flat, res.ideas);
+    //                 let arr = []
+    //                 nums.map(function (value, index, array) {
+    //                     if (value.coin_name.indexOf('USDT') !== -1 && value.coin_name.indexOf('TRS') == -1) {
+    //                         arr.push(value)
+    //                     }
+    //                     if (value.coin_name.indexOf('USDT') !== -1 && value.coin_name.indexOf('TRS') !== -1) {
+    //                         arr.unshift(value)
+    //                     }
+
+    //                 });
+    //                 setAllpoollist(arr)
+    //                 bbb()
+    //             })
+    //     }
+    //     aaa()
+    //     return () => isUnmount = true;
+    // },[pageFlag])
+
+
+    useEffect(() => {
+        let setTimeoutTimer;
+        const timerFn = function () {
+
             Data.getAllTrsRate().then(res => {
+                // console.log('getAllTrsRate')
                 setRate(res)
             })
             Data.getPoolListData().then(res => {
+                // console.log('getPoolListData')
                 var nums = res.main.concat(res.flat, res.ideas);
                 let arr = []
                 nums.map(function (value, index, array) {
@@ -146,40 +201,24 @@ export default function Market() {
                     if (value.coin_name.indexOf('USDT') !== -1 && value.coin_name.indexOf('TRS') !== -1) {
                         arr.unshift(value)
                     }
+
                 });
                 setAllpoollist(arr)
-                setPageFlag(!pageFlag);
+                // bbb()
             })
-            clearTimeout(timers)
-        }, 1500);
-    // }
-    }
-
-    useEffect(()=>{
-        let isUnmount = false;
-        const aaa = () => {
-                Data.getAllTrsRate().then(res => {
-                    setRate(res)
-                })
-                Data.getPoolListData().then(res => {
-                    var nums = res.main.concat(res.flat, res.ideas);
-                    let arr = []
-                    nums.map(function (value, index, array) {
-                        if (value.coin_name.indexOf('USDT') !== -1 && value.coin_name.indexOf('TRS') == -1) {
-                            arr.push(value)
-                        }
-                        if (value.coin_name.indexOf('USDT') !== -1 && value.coin_name.indexOf('TRS') !== -1) {
-                            arr.unshift(value)
-                        }
-
-                    });
-                    setAllpoollist(arr)
-                    bbb()
-                })
         }
-        aaa()
-        return () => isUnmount = true;
-    },[pageFlag])
+        const timer = function () {
+          setTimeoutTimer && clearTimeout(setTimeoutTimer)
+          timerFn()
+          setTimeoutTimer = setTimeout(() => {
+            timer()
+          }, 4000);
+        }
+        timer()
+        return function () {
+          setTimeoutTimer && clearTimeout(setTimeoutTimer)
+        }
+      }, [])
     // const toast = () => {
     //     setApprovediv(true)
     //     timers && clearTimeout(timers)

@@ -232,7 +232,7 @@ export default function Web3Status() {
   const { ENSName } = useENSName(account ?? undefined)
 
   const allTransactions = useAllTransactions()
-
+  
   const sortedRecentTransactions = useMemo(() => {
     const txs = Object.values(allTransactions)
     return txs.filter(isTransactionRecent).sort(newTransactionsFirst)

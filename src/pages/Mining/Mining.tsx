@@ -71,27 +71,58 @@ const { t } = useTranslation()
     const [allBlock, setAllBock] = useState(0.00)
     const [balance, setBalance] = useState(0.00)
     // 判断是否是第一次加载页面  判断发送请求
-    const [ pageFlag, setPageFlag ] = useState(false);
+    // const [ pageFlag, setPageFlag ] = useState(false);
 
     // 如果是true 持续加载更新
-    if (pageFlag) {
-        // console.log(pageFlag);
-        setTimeout(() => {
+    // if (pageFlag) {
+    //     // console.log(pageFlag);
+    //     setTimeout(() => {
+    //         Data.getPoolListData().then(res => {
+    //             console.log(`setMainList`, res);
+    //             setMainList(res)
+    //             setPageFlag(false);
+    //         })
+    //         Data.getAllBlock().then(res=>{
+    //             console.log(`setAllBock`,res)
+    //             setAllBock(res)
+    //         })
+    //         API.getWalletAllTrs().then(res => {
+    //             console.log(`setBalance`,res)
+    //             setBalance(res)
+    //         })
+    //     }, 3000);
+    // }
+    useEffect(() => {
+        let setTimeoutTimer;
+        const timerFn = function () {
+
             Data.getPoolListData().then(res => {
-                // console.log(`setMainList`, res);
+                console.log(`setMainList`, res);
                 setMainList(res)
-                setPageFlag(false);
+                // setPageFlag(false);
             })
             Data.getAllBlock().then(res=>{
-                // console.log(`setAllBock`,res)
+                console.log(`setAllBock`,res)
                 setAllBock(res)
             })
             API.getWalletAllTrs().then(res => {
-                // console.log(`setBalance`,res)
+                console.log(`setBalance`,res)
                 setBalance(res)
             })
-        }, 3000);
-    }
+          
+        }
+        const timer = function () {
+          setTimeoutTimer && clearTimeout(setTimeoutTimer)
+          timerFn()
+          setTimeoutTimer = setTimeout(() => {
+            timer()
+          }, 4000);
+        }
+        timer()
+        return function () {
+          setTimeoutTimer && clearTimeout(setTimeoutTimer)
+        }
+      }, [])
 
     const nav_type = [
         {
@@ -132,27 +163,27 @@ const { t } = useTranslation()
         },
     ];
 
-    useEffect(() => {
-        Data.getTrsRate().then(res => {
-            setRate(res.rate)
-        })
-        // 判断 如果是false 每个方法请求一次 加载出页面
-        if(!pageFlag) {
-            Data.getPoolListData().then(res => {
-                // console.log(`setMainList`, res);
-                setMainList(res);
-                setPageFlag(true);
-            })
-            Data.getAllBlock().then(res=>{
-                // console.log(`setAllBock`, res)
-                setAllBock(res)
-            })
-            API.getWalletAllTrs().then(res => {
-                // console.log(`setBalance`, res)
-                setBalance(res)
-            })
-        }
-    }, [pageFlag])
+    // useEffect(() => {
+    //     Data.getTrsRate().then(res => {
+    //         setRate(res.rate)
+    //     })
+    //     // 判断 如果是false 每个方法请求一次 加载出页面
+    //     if(!pageFlag) {
+    //         Data.getPoolListData().then(res => {
+    //             console.log(`setMainList`, res);
+    //             setMainList(res);
+    //             setPageFlag(true);
+    //         })
+    //         Data.getAllBlock().then(res=>{
+    //             console.log(`setAllBock`, res)
+    //             setAllBock(res)
+    //         })
+    //         API.getWalletAllTrs().then(res => {
+    //             console.log(`setBalance`, res)
+    //             setBalance(res)
+    //         })
+    //     }
+    // }, [pageFlag])
     return (
         <>
             <Title />
