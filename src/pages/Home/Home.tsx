@@ -275,11 +275,10 @@ export default function Home() {
                     dotActiveStyle={{ backgroundColor: '#06DD7A' }}
                     autoplayInterval={2000}>
                     {slideList.map((item, value) => (
-                        <Hometolink to={item.path} style={{ display: 'inline-block', width: '100%' }}>
+                        <Hometolink key={ value } to={item.path} style={{ display: 'inline-block', width: '100%' }}>
                             <img
                                 src={ item.url }
                                 alt={ item.title }
-                                key={ value }
                                 style={{ width: '100%', verticalAlign: 'top' }}
                             />
                         </Hometolink>

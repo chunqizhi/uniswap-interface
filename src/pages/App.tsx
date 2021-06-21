@@ -5,6 +5,8 @@ import GoogleAnalyticsReporter from '../components/analytics/GoogleAnalyticsRepo
 import AddressClaimModal from '../components/claim/AddressClaimModal'
 import Header from '../components/Header'
 import Polling from '../components/Header/Polling'
+import { useActiveWeb3React } from './../hooks'
+
 // import Tips from '../components/Tips/tips'
 // import URLWarning from '../components/Header/URLWarning'
 import Popups from '../components/Popups'
@@ -91,6 +93,8 @@ function TopLevelModals() {
 }
 
 export default function App() {
+  const { account } = useActiveWeb3React()
+  console.log('首页加载 =>',account)
   return (
     <Suspense fallback={null}>
       <Route component={GoogleAnalyticsReporter} />

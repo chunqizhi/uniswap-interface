@@ -53,9 +53,9 @@ function Desc() {
     return (
         <ul className="desc-ul-1">
             {
-                DescList.map((item) => {
+                DescList.map((item,value) => {
                     return (
-                        <li className="desc-li">
+                        <li className="desc-li" key={value}>
                             {/* <img src={item.icon} alt="" /> */}
                             <div className="desc-img"  style={{ background: `url('${item.icon}') center center /cover` }}></div>
                             <span className="desc-title">{t(item.title)}</span>
