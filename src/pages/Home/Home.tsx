@@ -224,7 +224,7 @@ export default function Home() {
     const [rate, setRate] = useState(0)
     const [allBalance, setAllBalance] = useState(0)
     // 判断是否是第一次加载页面  判断发送请求
-    const [ pageFlag, setPageFlag ] = useState(false);
+    // const [ pageFlag, setPageFlag ] = useState(false);
     // 轮播图
     // const [flag] = useState(true);
     const [slideList] = useState([{
@@ -237,30 +237,57 @@ export default function Home() {
         path:'/director'
     }]);
 
-    // 如果是true 持续加载更新
-    if (pageFlag) {
-          setTimeout(() => {
-              Data.getTrsRate().then(res => {
-                  setRate(res.rate)
-              })
+    useEffect(() => {
+        let setTimeoutTimer;
+        const timerFn = function () {
 
-              Data.getPoolListData('all').then(res => {
-                  setAllBalance(res)
-                  setPageFlag(false)
-              })
-          }, 1500);
-      }
-      useEffect(()=>{
-          if (!pageFlag) {
-              Data.getTrsRate().then(res => {
-                  setRate(res.rate)
-              })
-              Data.getPoolListData('all').then(res => {
-                  setAllBalance(res)
-                  setPageFlag(true)
-              })
-          }
-      },[pageFlag])
+            Data.getTrsRate().then(res => {
+                setRate(res.rate)
+            })
+
+            Data.getPoolListData('all').then(res => {
+                setAllBalance(res)
+                // setPageFlag(false)
+            })
+          
+        }
+        const timer = function () {
+          setTimeoutTimer && clearTimeout(setTimeoutTimer)
+          timerFn()
+          setTimeoutTimer = setTimeout(() => {
+            timer()
+          }, 4000);
+        }
+        timer()
+        return function () {
+          setTimeoutTimer && clearTimeout(setTimeoutTimer)
+        }
+      }, [])
+
+    // 如果是true 持续加载更新
+    // if (pageFlag) {
+    //       setTimeout(() => {
+    //           Data.getTrsRate().then(res => {
+    //               setRate(res.rate)
+    //           })
+
+    //           Data.getPoolListData('all').then(res => {
+    //               setAllBalance(res)
+    //               setPageFlag(false)
+    //           })
+    //       }, 1500);
+    //   }
+    //   useEffect(()=>{
+    //       if (!pageFlag) {
+    //           Data.getTrsRate().then(res => {
+    //               setRate(res.rate)
+    //           })
+    //           Data.getPoolListData('all').then(res => {
+    //               setAllBalance(res)
+    //               setPageFlag(true)
+    //           })
+    //       }
+    //   },[pageFlag])
     //   Data.getTrsRate1().then(res => {
     //     console.log("9999 =>",res.rate)
     // })

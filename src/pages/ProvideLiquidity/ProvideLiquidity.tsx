@@ -44,8 +44,6 @@ const { t } = useTranslation()
     const [stakedLp, setStakedLp] = useState('0.00')
     const [unStakedLp, setUnStakedLp] = useState('0.00')
     const [earned, setEarned] = useState('0.00')
-    const clickListener = () => {
-    }
     const approveFn = () => {
         API.approve().then(res => {
         setPengingApprove(true)
@@ -92,11 +90,8 @@ const { t } = useTranslation()
                 timer()
             }, 4000);
         }
-        window.addEventListener("click", clickListener, false)
-        timerFn()
         timer()
         return function () {
-            window.removeEventListener("click", clickListener, false)
             setTimeoutTimer && clearTimeout(setTimeoutTimer)
         }
     }, [])

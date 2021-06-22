@@ -135,8 +135,6 @@ export default function Director() {
   const [inputValue, setInputVal] = useState('0')   //input的值
   const [stakedLp, setStakedLp] = useState('0.00')
   const [allTotalSupply, setAllTotalSupply] = useState(0.00) //当前总锁仓量
-  const clickListener = () => {
-  }
   const approveFn = (type) => {
     if (type == '7') {
         setIsImpower7(true)
@@ -239,11 +237,8 @@ export default function Director() {
         timer()
       }, 4000);
     }
-    window.addEventListener("click", clickListener, false)
-    timerFn()
     timer()
     return function () {
-      window.removeEventListener("click", clickListener, false)
       setTimeoutTimer && clearTimeout(setTimeoutTimer)
     }
   }, [])
@@ -263,10 +258,6 @@ export default function Director() {
       clearTimeout(timers)
     }, 2000);
   }
-
-//   useEffect(() => {
-    
-//   })
   //
   useEffect(() => {
     // console.log('第一次加载')
