@@ -15,13 +15,13 @@ type ChainTokenList = {
   readonly [chainId in ChainId]: Token[]
 }
 
-export const DAI = new Token(ChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18, 'DAI', 'Dai Stablecoin')
-export const USDC = new Token(ChainId.MAINNET, '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', 6, 'USDC', 'USD//C')
-export const USDT = new Token(ChainId.MAINNET, '0xdAC17F958D2ee523a2206206994597C13D831ec7', 6, 'USDT', 'Tether USD')
-export const COMP = new Token(ChainId.MAINNET, '0xc00e94Cb662C3520282E6f5717214004A7f26888', 18, 'COMP', 'Compound')
-export const MKR = new Token(ChainId.MAINNET, '0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2', 18, 'MKR', 'Maker')
-export const AMPL = new Token(ChainId.MAINNET, '0xD46bA6D942050d489DBd938a2C909A5d5039A161', 9, 'AMPL', 'Ampleforth')
-export const WBTC = new Token(ChainId.MAINNET, '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599', 8, 'WBTC', 'Wrapped BTC')
+export const DAI = new Token(ChainId.HECO_MAINNET, '0x3d760a45d0887dfd89a2f5385a236b29cb46ed2a', 18, 'DAI-HECO', 'Heco-Peg DAIHECO')
+export const USDC = new Token(ChainId.HECO_MAINNET, '0x9362bbef4b8313a8aa9f0c9808b80577aa26b73b', 6, 'USDC-HECO', 'Heco-Peg USDCHECO')
+export const USDT = new Token(ChainId.HECO_MAINNET, '0xa71edc38d189767582c38a3145b5873052c3e47a', 18, 'USDTHECO', 'Heco-Peg USDTHECO')
+export const COMP = new Token(ChainId.HECO_MAINNET, '0xce0a5ca134fb59402b723412994b30e02f083842', 18, 'COMP', 'Heco-Peg COMP')
+export const MKR = new Token(ChainId.HECO_MAINNET, '0x34d75515090902a513f009f4505a750efaad63b0', 18, 'MKR', 'Heco-Peg MKR')
+export const AMPL = new Token(ChainId.HECO_MAINNET, '0xD46bA6D942050d489DBd938a2C909A5d5039A161', 9, 'AMPL', 'Ampleforth')
+export const WBTC = new Token(ChainId.HECO_MAINNET, '0x70d171d269d964d14af9617858540061e7be9ef1', 8, 'WBTC', 'Heco-Peg WBTCHECO')
 
 // Block time here is slightly higher (~1s) than average in order to avoid ongoing proposals past the displayed time
 export const AVERAGE_BLOCK_TIME_IN_SECS = 13
@@ -75,7 +75,7 @@ const WETH_ONLY: ChainTokenList = {
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT, COMP, MKR, WBTC]
+  [ChainId.HECO_MAINNET]: [...WETH_ONLY[ChainId.HECO_MAINNET], DAI, USDC, USDT, COMP, MKR, WBTC]
 }
 
 /**
