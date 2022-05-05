@@ -62,7 +62,7 @@ const formatNum = function (str: string|number) {
 }
 export default function Mining() {
 
-const { t } = useTranslation()
+    const { t } = useTranslation()
 
     const [flag, setFlag] = useState(0)
     const [type, setType] = useState('main')
@@ -72,7 +72,7 @@ const { t } = useTranslation()
     const [balance, setBalance] = useState(0.00)
     // 判断是否是第一次加载页面  判断发送请求
     const [ pageFlag, setPageFlag ] = useState(false);
-
+    
     // 如果是true 持续加载更新
     if (pageFlag) {
         // console.log(pageFlag);
@@ -82,14 +82,14 @@ const { t } = useTranslation()
                 setMainList(res)
                 setPageFlag(false);
             })
-            Data.getAllBlock().then(res=>{
-                // console.log(`setAllBock`,res)
-                setAllBock(res)
-            })
-            API.getWalletAllTrs().then(res => {
-                // console.log(`setBalance`,res)
-                setBalance(res)
-            })
+            // Data.getAllBlock().then(res=>{
+            //     // console.log(`setAllBock`,res)
+            //     setAllBock(res)
+            // })
+            // API.getWalletAllTrs().then(res => {
+            //     // console.log(`setBalance`,res)
+            //     setBalance(res)
+            // })
         }, 3000);
     }
 
@@ -143,14 +143,14 @@ const { t } = useTranslation()
                 setMainList(res);
                 setPageFlag(true);
             })
-            Data.getAllBlock().then(res=>{
-                // console.log(`setAllBock`, res)
-                setAllBock(res)
-            })
-            API.getWalletAllTrs().then(res => {
-                // console.log(`setBalance`, res)
-                setBalance(res)
-            })
+            // Data.getAllBlock().then(res=>{
+            //     // console.log(`setAllBock`, res)
+            //     setAllBock(res)
+            // })
+            // API.getWalletAllTrs().then(res => {
+            //     // console.log(`setBalance`, res)
+            //     setBalance(res)
+            // })
         }
     }, [pageFlag])
     return (

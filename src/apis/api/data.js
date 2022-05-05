@@ -45,126 +45,126 @@ function getCurrentPool(type) {
             coinInfo = Icon[0]
             API = One
             break;
-        case "two":
-            coinInfo = Icon[1]
-            API = Two
-            break;
-        case "three":
-            API = Three
-            coinInfo = Icon[2]
-            break;
-        case "four":
-            API = Four
-            coinInfo = Icon[3]
-            break;
-        case "five":
-            API = Five
-            coinInfo = Icon[4]
-            break;
-        case "six":
-            API = Six
-            coinInfo = Icon[5]
-            break;
-        case "seven":
-            API = Seven
-            coinInfo = Icon[6]
-            break;
-        case "eight":
-            API = Eight
-            coinInfo = Icon[7]
-            break;
-        case "nine":
-            API = Nine
-            coinInfo = Icon[8]
-            break;
+        // case "two":
+        //     coinInfo = Icon[1]
+        //     API = Two
+        //     break;
+        // case "three":
+        //     API = Three
+        //     coinInfo = Icon[2]
+        //     break;
+        // case "four":
+        //     API = Four
+        //     coinInfo = Icon[3]
+        //     break;
+        // case "five":
+        //     API = Five
+        //     coinInfo = Icon[4]
+        //     break;
+        // case "six":
+        //     API = Six
+        //     coinInfo = Icon[5]
+        //     break;
+        // case "seven":
+        //     API = Seven
+        //     coinInfo = Icon[6]
+        //     break;
+        // case "eight":
+        //     API = Eight
+        //     coinInfo = Icon[7]
+        //     break;
+        // case "nine":
+        //     API = Nine
+        //     coinInfo = Icon[8]
+        //     break;
             // case "ten":
             //     API = Ten
             //     coinInfo = Icon[9]
             //     break;
-        case "eleven":
-            API = Eleven
-            coinInfo = Icon[9]
-            break;
-        case "twelve":
-            API = Twelve
-            coinInfo = Icon[10]
-            break;
-        case "thirteen":
-            API = Thirteen
-            coinInfo = Icon[11]
-            break;
-        case "fourteen":
-            API = Fourteen
-            coinInfo = Icon[12]
-            break;
-        case "fifteen":
-            API = Fifteen
-            coinInfo = Icon[13]
-            break;
-        case "hfilusdt":
-            API = HfilUsdt
-            coinInfo = Icon[14]
-            break;
-        case "hdotusdt":
-            API = HdotUsdt
-            coinInfo = Icon[15]
-            break;
-        case "trsshib":
-            API = TrsShib
-            coinInfo = Icon[16]
-            break;
-        case "trseth":
-            API = TrsEth
-            coinInfo = Icon[17]
-            break;
-        case "dogeusdt":
-            API = DogeUsdt
-            coinInfo = Icon[18]
-            break;
-        case "shibusdt":
-            API = ShibUsdt
-            coinInfo = Icon[19]
-            break;
-        case "hltcusdt":
-            API = HltcUsdt
-            coinInfo = Icon[20]
-            break;
-        case "uniusdt":
-            API = UniUsdt
-            coinInfo = Icon[21]
-            break;
-        case "xrpusdt":
-            API = XrpUsdt
-            coinInfo = Icon[22]
-            break;
-        case "hbchusdt":
-            API = HbchUsdt
-            coinInfo = Icon[23]
-            break;
-        case "adausdt":
-            API = AdaUsdt
-            coinInfo = Icon[24]
-            break;
-        case "eosusdt":
-            API = EosUsdt
-            coinInfo = Icon[25]
-            break;
-        case "ethhusd":
-            API = EthHusd
-            coinInfo = Icon[26]
-            break;
-        case "linkusdt":
-            API = LinkUsdt
-            coinInfo = Icon[27]
-            break;
-        case "aaveusdt":
-            API = AaveUsdt
-            coinInfo = Icon[28]
-            break;
-        case "trshusd":
-            API = TrsHusd
-            coinInfo = Icon[29]
-            break;
+        // case "eleven":
+        //     API = Eleven
+        //     coinInfo = Icon[9]
+        //     break;
+        // case "twelve":
+        //     API = Twelve
+        //     coinInfo = Icon[10]
+        //     break;
+        // case "thirteen":
+        //     API = Thirteen
+        //     coinInfo = Icon[11]
+        //     break;
+        // case "fourteen":
+        //     API = Fourteen
+        //     coinInfo = Icon[12]
+        //     break;
+        // case "fifteen":
+        //     API = Fifteen
+        //     coinInfo = Icon[13]
+        //     break;
+        // case "hfilusdt":
+        //     API = HfilUsdt
+        //     coinInfo = Icon[14]
+        //     break;
+        // case "hdotusdt":
+        //     API = HdotUsdt
+        //     coinInfo = Icon[15]
+        //     break;
+        // case "trsshib":
+        //     API = TrsShib
+        //     coinInfo = Icon[16]
+        //     break;
+        // case "trseth":
+        //     API = TrsEth
+        //     coinInfo = Icon[17]
+        //     break;
+        // case "dogeusdt":
+        //     API = DogeUsdt
+        //     coinInfo = Icon[18]
+        //     break;
+        // case "shibusdt":
+        //     API = ShibUsdt
+        //     coinInfo = Icon[19]
+        //     break;
+        // case "hltcusdt":
+        //     API = HltcUsdt
+        //     coinInfo = Icon[20]
+        //     break;
+        // case "uniusdt":
+        //     API = UniUsdt
+        //     coinInfo = Icon[21]
+        //     break;
+        // case "xrpusdt":
+        //     API = XrpUsdt
+        //     coinInfo = Icon[22]
+        //     break;
+        // case "hbchusdt":
+        //     API = HbchUsdt
+        //     coinInfo = Icon[23]
+        //     break;
+        // case "adausdt":
+        //     API = AdaUsdt
+        //     coinInfo = Icon[24]
+        //     break;
+        // case "eosusdt":
+        //     API = EosUsdt
+        //     coinInfo = Icon[25]
+        //     break;
+        // case "ethhusd":
+        //     API = EthHusd
+        //     coinInfo = Icon[26]
+        //     break;
+        // case "linkusdt":
+        //     API = LinkUsdt
+        //     coinInfo = Icon[27]
+        //     break;
+        // case "aaveusdt":
+        //     API = AaveUsdt
+        //     coinInfo = Icon[28]
+        //     break;
+        // case "trshusd":
+        //     API = TrsHusd
+        //     coinInfo = Icon[29]
+        //     break;
         default:
             console.log('error')
     }
@@ -178,40 +178,43 @@ function getPoolListData(type) {
     return new Promise((resolve, reject) => {
         Promise.all([
             One.getPoolData(),
-            Two.getPoolData(),
-            Three.getPoolData(),
-            Four.getPoolData(),
-            Five.getPoolData(),
-            Six.getPoolData(),
-            Seven.getPoolData(),
-            Eight.getPoolData(),
-            Nine.getPoolData(),
-            // Ten.getPoolData(),
-            Eleven.getPoolData(),
-            Twelve.getPoolData(),
-            Thirteen.getPoolData(),
-            Fourteen.getPoolData(),
-            Fifteen.getPoolData(),
-            HfilUsdt.getPoolData(),
-            HdotUsdt.getPoolData(),
-            TrsShib.getPoolData(),
-            TrsEth.getPoolData(),
-            DogeUsdt.getPoolData(),
-            ShibUsdt.getPoolData(),
-            HltcUsdt.getPoolData(),
-            UniUsdt.getPoolData(),
-            XrpUsdt.getPoolData(),
-            HbchUsdt.getPoolData(),
-            AdaUsdt.getPoolData(),
-            EosUsdt.getPoolData(),
-            EthHusd.getPoolData(),
-            LinkUsdt.getPoolData(),
-            AaveUsdt.getPoolData(),
-            TrsHusd.getPoolData(),
+            // Two.getPoolData(),
+            // Three.getPoolData(),
+            // Four.getPoolData(),
+            // Five.getPoolData(),
+            // Six.getPoolData(),
+            // Seven.getPoolData(),
+            // Eight.getPoolData(),
+            // Nine.getPoolData(),
+            // // Ten.getPoolData(),
+            // Eleven.getPoolData(),
+            // Twelve.getPoolData(),
+            // Thirteen.getPoolData(),
+            // Fourteen.getPoolData(),
+            // Fifteen.getPoolData(),
+            // HfilUsdt.getPoolData(),
+            // HdotUsdt.getPoolData(),
+            // TrsShib.getPoolData(),
+            // TrsEth.getPoolData(),
+            // DogeUsdt.getPoolData(),
+            // ShibUsdt.getPoolData(),
+            // HltcUsdt.getPoolData(),
+            // UniUsdt.getPoolData(),
+            // XrpUsdt.getPoolData(),
+            // HbchUsdt.getPoolData(),
+            // AdaUsdt.getPoolData(),
+            // EosUsdt.getPoolData(),
+            // EthHusd.getPoolData(),
+            // LinkUsdt.getPoolData(),
+            // AaveUsdt.getPoolData(),
+            // TrsHusd.getPoolData(),
 
         ]).then(async res => {
+
             let coinRate = await getCoinRate() //  汇率
+            // let coinRate = [1] //  汇率
             let trsRate = await getTrsRate() //trs 价格
+            // let trsRate = 1 //trs 价格
             let allBalance = 0
             let data = {
                 "main": [],
@@ -220,31 +223,36 @@ function getPoolListData(type) {
             }
             let tvl, apy, isall = false
             Icon.forEach((item, index) => {
+                if (item.coin_name != 'ETH/HBTC') {
+                    return
+                }
+                console.log('%c 🚀🚀🚀😝data-->226, item =>','color:red;', item)
                 // if (index == 14) { debugger }
                 // precoin nextcoin 数量 2倍的usdt 取前/后币类的汇率 coinRate[0].rate
+                // console.log('item =>',item);
                 switch (item.coin_price) {
                     case 'ETHPRE':
                         tvl = (((multiNum(res[index].precoin, 2)) * 1) * coinRate[0].rate).toFixed(2)
                         break;
-                    case 'USDTPRE':
-                        tvl = (((multiNum(res[index].precoin, 2)) * 1)).toFixed(2)
-                        break;
-                    case 'USDTNEXT':
-                        tvl = (((multiNum(res[index].nextcoin, 2)) * 1)).toFixed(2)
-                        break;
-                    case 'HTPRE':
-                        tvl = (((multiNum(res[index].precoin, 2)) * 1) * coinRate[5].rate).toFixed(2)
-                        break;
-                    case 'HTNEXT':
-                        tvl = (((multiNum(res[index].nextcoin, 2)) * 1) * coinRate[5].rate).toFixed(2)
-                        break;
-                    case 'TRSPRE':
-                        tvl = (((multiNum(res[index].precoin, 2)) * 1) * coinRate[1].rate).toFixed(2)
-                        break;
+                    // case 'USDTPRE':
+                    //     tvl = (((multiNum(res[index].precoin, 2)) * 1)).toFixed(2)
+                    //     break;
+                    // case 'USDTNEXT':
+                    //     tvl = (((multiNum(res[index].nextcoin, 2)) * 1)).toFixed(2)
+                    //     break;
+                    // case 'HTPRE':
+                    //     tvl = (((multiNum(res[index].precoin, 2)) * 1) * coinRate[5].rate).toFixed(2)
+                    //     break;
+                    // case 'HTNEXT':
+                    //     tvl = (((multiNum(res[index].nextcoin, 2)) * 1) * coinRate[5].rate).toFixed(2)
+                    //     break;
+                    // case 'TRSPRE':
+                    //     tvl = (((multiNum(res[index].precoin, 2)) * 1) * coinRate[1].rate).toFixed(2)
+                    //     break;
                     default:
                         console.log(`error`);
                 }
-
+                console.log('res =>',res)
                 if (type !== 'all') {
                     if (res[index].supply === '0') {
                         apy = `0.00%`
@@ -459,7 +467,7 @@ function getAllTrsRate(){
     })
 }
 function getTrsRate() {
-    return Six.getTrsRate()
+    return One.getTrsRate()
 }
 // function getTrsRate1() {
 //     return Two.getTrsRate('USDTPRE')
@@ -469,12 +477,12 @@ function getTrsRate() {
 function getCoinRate() {
     return new Promise((resolve, reject) => {
         Promise.all([
-            Three.getTrsRate(),
-            Six.getTrsRate(),
-            Eight.getTrsRate(),
-            Nine.getTrsRate(),
-            Ten.getTrsRate('TPT'),
-            Eleven.getTrsRate()
+            One.getTrsRate(),
+            // Six.getTrsRate(),
+            // Eight.getTrsRate(),
+            // Nine.getTrsRate(),
+            // Ten.getTrsRate('TPT'),
+            // Eleven.getTrsRate()
         ]).then(res => {
             resolve(res)
         }).catch(err => {
