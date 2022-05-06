@@ -99,7 +99,7 @@ const { t } = useTranslation()
                 setRate(res.rate)
             })
             Data.getPoolListData().then(res => {
-                // console.log(`setMainList`, res);
+                console.log(`setMainList`, res);
                 setMainList(res)
                 // setPageFlag(false);
             })

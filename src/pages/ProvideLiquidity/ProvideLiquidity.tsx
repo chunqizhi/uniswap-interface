@@ -223,7 +223,7 @@ const { t } = useTranslation()
                                         {popType === 'stake' ? unStakedLp : stakedLp}
                                     </span>
                                 </p>
-                                {/* <div className="mask-input-box">
+                                <div className="mask-input-box">
                                     <input type="text" value={inputValue} onChange={
                                         (e) => {
                                             setInputVal(e.target.value)
@@ -244,7 +244,7 @@ const { t } = useTranslation()
                                             }
                                         }
                                     }>{t("provideLiquidity.text17")}</span>
-                                </div> */}
+                                </div>
                                 <div className="mask-bottom">
                                     <div className="bottom-btn left-btn" onClick={
                                         () => {
