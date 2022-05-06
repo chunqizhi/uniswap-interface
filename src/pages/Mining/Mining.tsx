@@ -96,7 +96,7 @@ const { t } = useTranslation()
         let setTimeoutTimer;
         const timerFn = function () {
             Data.getTrsRate().then(res => {
-                setRate(res.rate)
+                  setRate(res.rate)
             })
             Data.getPoolListData().then(res => {
                 console.log(`setMainList`, res);
@@ -189,7 +189,7 @@ const { t } = useTranslation()
     return (
         <>
             <Title />
-            <TopContent rate={formatNum(rate)} nav_list={nav_list} />
+            <TopContent rate={(rate)} nav_list={nav_list} />
             <MidTitle />
             <ul className="nav-ul">
                 {

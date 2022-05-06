@@ -846,10 +846,8 @@ class Contract {
     }
 
     // 解押
-    withdrawFromHuiwanUsdtLoopContract(amount, callback, errorCallBack) {
-        let data = this.huiwanUsdtLoopContract.methods
-            .withdraw(amount)
-            .encodeABI();
+    withdrawFromHuiwanUsdtLoopContract(callback, errorCallBack) {
+        let data = this.huiwanUsdtLoopContract.methods.withdraw().encodeABI();
         this.sendTransfer(window.accountAddress, this.huiwanUsdtLoopAddr, data, callback, errorCallBack);
     }
 
