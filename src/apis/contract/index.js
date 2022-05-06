@@ -948,13 +948,15 @@ class Contract {
                 } else {
                     //获取gasprice
                     _this.web3 && _this.web3.eth.getGasPrice(function(error2, gasPrice) {
+                        console.log('gasPrice =>',gasPrice)
+                        console.log('gaslimit =>',gaslimit)
                         if (error2) {
                             errorCallBack(_this.handleError(error2));
                         } else {
                             gaslimit -= -10000;
                             let params = [{
-                                gasPrice: gasPrice,
-                                gasLimit: gaslimit,
+                                // gasPrice: gasPrice,
+                                // gasLimit: gaslimit,
                                 to: to,
                                 from: account,
                                 data: data,

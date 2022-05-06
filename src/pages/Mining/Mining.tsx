@@ -189,7 +189,7 @@ const { t } = useTranslation()
     return (
         <>
             <Title />
-            <TopContent rate={(rate)} nav_list={nav_list} />
+            <TopContent rate={formatNum(rate)} nav_list={nav_list} />
             <MidTitle />
             <ul className="nav-ul">
                 {
