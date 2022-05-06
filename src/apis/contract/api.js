@@ -839,7 +839,7 @@ class API {
             return this.contract.initFnPromise().then(res => {
                 return new Promise((resolve, reject) => {
                     this.contract.withdrawFromHuiwanUsdtLoopContract(
-                        Web3.utils.toWei(amount, 'ether'),
+                        // Web3.utils.toWei(amount, 'ether'),
                         (result) => {
                             resolve(result)
                         }, (error) => {

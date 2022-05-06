@@ -269,7 +269,7 @@ const { t } = useTranslation()
                                                         // })
                                                         API.stakedLpOutPool().then(res => {
                                                             setAddFlag(false)
-                                                            // console.log("stakedLpOutPool:" + res)
+                                                            console.log("stakedLpOutPool:" + res)
                                                         })
                                                         break;
                                                     default:
