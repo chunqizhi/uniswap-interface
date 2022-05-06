@@ -64,7 +64,7 @@ export default function Mining() {
 
 const { t } = useTranslation()
 
-    const [flag, setFlag] = useState(0)
+    const [flag, setFlag] = useState(1)
     const [type, setType] = useState('flat')
     const [mainList, setMainList] = useState({ 'main': [], 'flat': [], 'ideas': [] })
     const [rate, setRate] = useState(0.00)
