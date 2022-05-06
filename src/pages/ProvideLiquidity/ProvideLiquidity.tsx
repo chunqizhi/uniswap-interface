@@ -35,6 +35,7 @@ const { t } = useTranslation()
     const poolIndex = props.match.params.poolIndex
     API = Data.getCurrentPool(poolIndex).API
     coinInfo = Data.getCurrentPool(poolIndex).coinInfo
+    console.log('coinInfo =>',coinInfo)
     const [addFlag, setAddFlag] = useState(false)   //显示隐藏 抵押解押弹框
     const [popType, setType] = useState('stake')    //当前弹框类型 stake/抵押    withdraw/解押
     const [isApprove, setApprove] = useState(false) // 授权/非授权
@@ -222,7 +223,7 @@ const { t } = useTranslation()
                                         {popType === 'stake' ? unStakedLp : stakedLp}
                                     </span>
                                 </p>
-                                <div className="mask-input-box">
+                                {/* <div className="mask-input-box">
                                     <input type="text" value={inputValue} onChange={
                                         (e) => {
                                             setInputVal(e.target.value)
@@ -243,7 +244,7 @@ const { t } = useTranslation()
                                             }
                                         }
                                     }>{t("provideLiquidity.text17")}</span>
-                                </div>
+                                </div> */}
                                 <div className="mask-bottom">
                                     <div className="bottom-btn left-btn" onClick={
                                         () => {
@@ -262,7 +263,11 @@ const { t } = useTranslation()
                                                         })
                                                         break;
                                                     case 'withdraw':
-                                                        API.stakedLpOutPool(inputValue).then(res => {
+                                                        // API.stakedLpOutPool(inputValue).then(res => {
+                                                        //     setAddFlag(false)
+                                                        //     // console.log("stakedLpOutPool:" + res)
+                                                        // })
+                                                        API.stakedLpOutPool().then(res => {
                                                             setAddFlag(false)
                                                             // console.log("stakedLpOutPool:" + res)
                                                         })

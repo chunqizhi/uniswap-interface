@@ -95,18 +95,20 @@ const { t } = useTranslation()
     useEffect(() => {
         let setTimeoutTimer;
         const timerFn = function () {
-
+            Data.getTrsRate().then(res => {
+                setRate(res.rate)
+            })
             Data.getPoolListData().then(res => {
                 // console.log(`setMainList`, res);
                 setMainList(res)
                 // setPageFlag(false);
             })
             Data.getAllBlock().then(res=>{
-                // console.log(`setAllBock`,res)
+                console.log(`setAllBock`,res)
                 setAllBock(res)
             })
             API.getWalletAllTrs().then(res => {
-                // console.log(`setBalance`,res)
+                console.log(`getWalletAllTrs`,res)
                 setBalance(res)
             })
           
