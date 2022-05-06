@@ -887,7 +887,7 @@ class API {
                 this.contract.getEarned(
                     window.accountAddress,
                     (result) => {
-                        let temp = Web3.utils.fromWei(result, 'gwei')
+                        let temp = Web3.utils.fromWei(result, 'ether')
                         resolve(temp)
                     }, (error) => {
                         reject(error)
