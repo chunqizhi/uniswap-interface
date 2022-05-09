@@ -251,7 +251,7 @@ function getPoolListData(type) {
                         apy = `0.00%`
                         tvl = `0.00`
                     } else {
-                        apy = (((res[index].per_day * trsRate.rate) / tvl) * 360 * 100).toFixed(2) + "%"
+                        apy = (((res[index].per_day * trsRate.rate) / tvl) * 365 * 100).toFixed(2) + "%"
                     }
                     data[item.key_word].push({
                         ...item,
@@ -471,12 +471,12 @@ function getTrsRate() {
 function getCoinRate() {
     return new Promise((resolve, reject) => {
         Promise.all([
-            // Three.getTrsRate(),
-            Six.getTrsRate(),
-            // Eight.getTrsRate(),
-            // Nine.getTrsRate(),
+            // Three.getTrsRate(),//eth
+            Six.getTrsRate(),//trs
+            // Eight.getTrsRate(),//mdx
+            // Nine.getTrsRate(),//bxh
             // Ten.getTrsRate('TPT'),
-            // Eleven.getTrsRate()
+            // Eleven.getTrsRate()//ht
         ]).then(res => {
             resolve(res)
         }).catch(err => {

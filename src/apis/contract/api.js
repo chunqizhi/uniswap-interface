@@ -777,8 +777,8 @@ class API {
                     this.contract.getInitreward((result) => {
                         let per = Web3.utils.fromWei(result, 'ether')
                         resolve({
-                            per_day: per * 1,
-                            per_month: per * 30
+                            per_day: per * 1 / 365,
+                            per_month: per * 30 / 365
                         })
                     }, (error) => {
                         reject(error)
