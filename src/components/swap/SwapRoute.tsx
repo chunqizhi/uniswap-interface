@@ -1,4 +1,4 @@
-import { Trade } from '@chun_11/uniswap-sdk'
+import { Trade } from '@chun_11/uniswap-sdk-btestnet'
 import React, { Fragment, memo, useContext } from 'react'
 import { ChevronRight } from 'react-feather'
 import { Flex } from 'rebass'

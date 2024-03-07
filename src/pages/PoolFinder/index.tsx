@@ -1,4 +1,4 @@
-import { Currency, ETHER, JSBI, TokenAmount } from '@chun_11/uniswap-sdk'
+import { Currency, ETHER, JSBI, TokenAmount } from '@chun_11/uniswap-sdk-btestnet'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Plus } from 'react-feather'
 import { Text } from 'rebass'

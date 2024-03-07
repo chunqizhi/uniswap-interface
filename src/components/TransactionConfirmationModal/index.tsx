@@ -1,4 +1,4 @@
-import { ChainId } from '@chun_11/uniswap-sdk'
+import { ChainId } from '@chun_11/uniswap-sdk-btestnet'
 import React, { useContext } from 'react'
 import styled, { ThemeContext } from 'styled-components'
 import Modal from '../Modal'

@@ -1,4 +1,4 @@
-import { Token, TokenAmount } from '@chun_11/uniswap-sdk'
+import { Token, TokenAmount } from '@chun_11/uniswap-sdk-btestnet'
 import { useMemo } from 'react'
 import { useAllTokenBalances } from '../../state/wallet/hooks'
 

@@ -78,7 +78,8 @@
     "start-server-and-test": "^1.11.0",
     "styled-components": "^4.2.0",
     "typescript": "^3.8.3",
-    "@chun_11/uniswap-sdk":"3.0.2"
+    "@chun_11/uniswap-sdk":"3.0.2",
+    "@chun_11/uniswap-sdk-btestnet":"1.0.0"
   },
   "resolutions": {
     "@walletconnect/web3-provider": "1.1.1-alpha.0"

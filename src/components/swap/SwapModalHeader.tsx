@@ -1,4 +1,4 @@
-import { Trade, TradeType } from '@chun_11/uniswap-sdk'
+import { Trade, TradeType } from '@chun_11/uniswap-sdk-btestnet'
 import React, { useContext, useMemo } from 'react'
 import { ArrowDown, AlertTriangle } from 'react-feather'
 import { Text } from 'rebass'

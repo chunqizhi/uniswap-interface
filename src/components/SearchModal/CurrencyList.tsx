@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, currencyEquals, ETHER, Token } from '@chun_11/uniswap-sdk'
+import { Currency, CurrencyAmount, currencyEquals, ETHER, Token } from '@chun_11/uniswap-sdk-btestnet'
 import React, { CSSProperties, MutableRefObject, useCallback, useMemo } from 'react'
 import { FixedSizeList } from 'react-window'
 import { Text } from 'rebass'

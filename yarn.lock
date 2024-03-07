@@ -1124,6 +1124,19 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
+"@chun_11/uniswap-sdk-btestnet@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@chun_11/uniswap-sdk-btestnet/-/uniswap-sdk-btestnet-1.0.0.tgz#f631772ea388a364a4f8f671bdafef6d25cd4c94"
+  integrity sha512-y5uhSxc/7oxvtOna8ITv9BxpWFJchGTURNklEeJuc75O4ahBSpJpODXaMR+u4jaudHdtMqNqgOHCg2xURiIEUQ==
+  dependencies:
+    "@uniswap/v2-core" "^1.0.0"
+    big.js "^5.2.2"
+    decimal.js-light "^2.5.0"
+    jsbi "^3.1.1"
+    tiny-invariant "^1.1.0"
+    tiny-warning "^1.0.3"
+    toformat "^2.0.0"
+
 "@chun_11/uniswap-sdk@3.0.2":
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/@chun_11/uniswap-sdk/-/uniswap-sdk-3.0.2.tgz#d3af663b5d2c4c2b5e3578a8230be944c6bb7664"

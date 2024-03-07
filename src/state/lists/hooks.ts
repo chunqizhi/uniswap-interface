@@ -1,4 +1,4 @@
-import { ChainId, Token } from '@chun_11/uniswap-sdk'
+import { ChainId, Token } from '@chun_11/uniswap-sdk-btestnet'
 import { Tags, TokenInfo, TokenList } from '@uniswap/token-lists'
 import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
@@ -36,7 +36,8 @@ const EMPTY_LIST: TokenAddressMap = {
   [ChainId.ROPSTEN]: {},
   [ChainId.GÖRLI]: {},
   [ChainId.MAINNET]: {},
-  [ChainId.MUMBAI]: {}
+  [ChainId.MUMBAI]: {},
+  [ChainId.BTestnet]: {}
 }
 
 const listCache: WeakMap<TokenList, TokenAddressMap> | null =

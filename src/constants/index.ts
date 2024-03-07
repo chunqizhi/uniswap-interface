@@ -1,9 +1,9 @@
-import { ChainId, JSBI, Percent, Token, WETH } from '@chun_11/uniswap-sdk'
+import { ChainId, JSBI, Percent, Token, WETH } from '@chun_11/uniswap-sdk-btestnet'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 
 import { fortmatic, injected, portis, walletconnect, walletlink } from '../connectors'
 
-export const ROUTER_ADDRESS = '0x6a6E15F9FaE842D985e20B5d8E19776C0132022b'
+export const ROUTER_ADDRESS = '0x0d55352cb79A90ddE3d28Eac64B0399EeAfD0776'
 
 // a list of tokens by chain
 type ChainTokenList = {
@@ -23,7 +23,8 @@ const WETH_ONLY: ChainTokenList = {
   [ChainId.RINKEBY]: [WETH[ChainId.RINKEBY]],
   [ChainId.GÖRLI]: [WETH[ChainId.GÖRLI]],
   [ChainId.KOVAN]: [WETH[ChainId.KOVAN]],
-  [ChainId.MUMBAI]: [WETH[ChainId.MUMBAI]]
+  [ChainId.MUMBAI]: [WETH[ChainId.MUMBAI]],
+  [ChainId.BTestnet]: [WETH[ChainId.BTestnet]]
 }
 
 // used to construct intermediary pairs for trading

@@ -1,4 +1,4 @@
-import { ChainId } from '@chun_11/uniswap-sdk'
+import { ChainId } from '@chun_11/uniswap-sdk-btestnet'
 import { FortmaticConnector as FortmaticConnectorCore } from '@web3-react/fortmatic-connector'
 
 export const OVERLAY_READY = 'OVERLAY_READY'

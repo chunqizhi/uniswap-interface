@@ -14,7 +14,7 @@ import {
   Trade,
   TradeType,
   WETH
-} from '@chun_11/uniswap-sdk'
+} from '@chun_11/uniswap-sdk-btestnet'
 import { useMemo } from 'react'
 import { useActiveWeb3React } from '../hooks'
 import { useAllTokens } from '../hooks/Tokens'

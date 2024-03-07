@@ -1,4 +1,4 @@
-import { Currency, ETHER, Token } from '@chun_11/uniswap-sdk'
+import { Currency, ETHER, Token } from '@chun_11/uniswap-sdk-btestnet'
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
 

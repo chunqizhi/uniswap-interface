@@ -1,4 +1,4 @@
-import { Percent } from '@chun_11/uniswap-sdk'
+import { Percent } from '@chun_11/uniswap-sdk-btestnet'
 import React from 'react'
 import { ONE_BIPS } from '../../constants'
 import { warningSeverity } from '../../utils/prices'
