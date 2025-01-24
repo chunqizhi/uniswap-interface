@@ -30,7 +30,7 @@ const NETWORK_URLS: {
   [ChainId.SEPOLIA]: `https://sepolia.infura.io/v3/${INFURA_KEY}`,
 }
 
-const SUPPORTED_CHAIN_IDS = [ChainId.MAINNET, ChainId.RINKEBY, ChainId.ROPSTEN, ChainId.KOVAN, ChainId.GÖRLI]
+const SUPPORTED_CHAIN_IDS = [ChainId.MAINNET, ChainId.RINKEBY, ChainId.ROPSTEN, ChainId.KOVAN, ChainId.SEPOLIA, ChainId.GÖRLI]
 
 export const network = new NetworkConnector({
   urls: NETWORK_URLS,

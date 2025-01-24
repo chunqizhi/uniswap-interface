@@ -27,6 +27,11 @@ export const COMMON_CONTRACT_NAMES: { [chainId in ChainId]?: { [address: string]
     [GOVERNANCE_ADDRESS[ChainId.GÖRLI]]: 'Goerli Governance',
     [TIMELOCK_ADDRESS[ChainId.GÖRLI]]: 'Goerli Timelock',
   },
+  [ChainId.SEPOLIA]: {
+    [UNI_ADDRESS[ChainId.SEPOLIA]]: 'Goerli UNI',
+    [GOVERNANCE_ADDRESS[ChainId.SEPOLIA]]: 'Goerli Governance',
+    [TIMELOCK_ADDRESS[ChainId.SEPOLIA]]: 'Goerli Timelock',
+  },
 }
 
 export const DEFAULT_AVERAGE_BLOCK_TIME_IN_SECS = 13

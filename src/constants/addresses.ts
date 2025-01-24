@@ -3,7 +3,7 @@ import { FACTORY_ADDRESS as V3_FACTORY_ADDRESS } from '@chun_11/v3-sdk'
 import { constructSameAddressMap } from '../utils/constructSameAddressMap'
 
 export const UNI_ADDRESS = constructSameAddressMap('0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984')
-export const MULTICALL2_ADDRESSES = constructSameAddressMap('0x5BA1e12693Dc8F9c48aAD8770482f4739bEeD696')
+export const MULTICALL2_ADDRESSES = constructSameAddressMap('0xE6C3161138294bE9921399A2D0995E407dB22238')
 export const V2_ROUTER_ADDRESS = constructSameAddressMap('0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D')
 export const GOVERNANCE_ADDRESS = constructSameAddressMap('0x5e4be8Bc9637f0EAA1A755019e06A68ce081D58F')
 export const TIMELOCK_ADDRESS = constructSameAddressMap('0x1a9C8182C09F50C8318d769245beA52c32BE35BC')
