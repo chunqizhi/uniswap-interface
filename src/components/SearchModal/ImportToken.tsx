@@ -1,6 +1,6 @@
 import { TokenList } from '@uniswap/token-lists/dist/types'
 import React from 'react'
-import { Token, Currency } from '@uniswap/sdk-core'
+import { Token, Currency } from '@chun_11/sdk-core'
 import styled from 'styled-components/macro'
 import { TYPE, CloseIcon } from 'theme'
 import Card from 'components/Card'
@@ -25,7 +25,7 @@ const Wrapper = styled.div`
   overflow: auto;
 `
 
-const WarningWrapper = styled(Card)<{ highWarning: boolean }>`
+const WarningWrapper = styled(Card) <{ highWarning: boolean }>`
   background-color: ${({ theme, highWarning }) =>
     highWarning ? transparentize(0.8, theme.red1) : transparentize(0.8, theme.yellow2)};
   width: fit-content;

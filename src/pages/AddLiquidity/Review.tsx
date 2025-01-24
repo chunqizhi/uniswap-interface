@@ -3,15 +3,15 @@ import { Field } from '../../state/mint/v3/actions'
 import { AutoColumn } from 'components/Column'
 import Card from 'components/Card'
 import styled from 'styled-components/macro'
-import { Currency, CurrencyAmount, Price } from '@uniswap/sdk-core'
-import { Position } from '@uniswap/v3-sdk'
+import { Currency, CurrencyAmount, Price } from '@chun_11/sdk-core'
+import { Position } from '@chun_11/v3-sdk'
 import { PositionPreview } from 'components/PositionPreview'
 
 const Wrapper = styled.div`
   padding-top: 12px;
 `
 
-export const Badge = styled(Card)<{ inRange?: boolean }>`
+export const Badge = styled(Card) <{ inRange?: boolean }>`
   width: fit-content;
   font-size: 14px;
   font-weight: 500;

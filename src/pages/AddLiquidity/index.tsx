@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react'
 import { TransactionResponse } from '@ethersproject/providers'
-import { Currency, CurrencyAmount, currencyEquals, Percent } from '@uniswap/sdk-core'
-import { WETH9 } from '@uniswap/sdk-core'
+import { Currency, CurrencyAmount, currencyEquals, Percent } from '@chun_11/sdk-core'
+import { WETH9 } from '@chun_11/sdk-core'
 import { AlertTriangle, AlertCircle } from 'react-feather'
 import ReactGA from 'react-ga'
 import { ZERO_PERCENT } from '../../constants/misc'
@@ -43,7 +43,7 @@ import {
   useRangeHopCallbacks,
   useV3DerivedMintInfo,
 } from 'state/mint/v3/hooks'
-import { FeeAmount, NonfungiblePositionManager } from '@uniswap/v3-sdk'
+import { FeeAmount, NonfungiblePositionManager } from '@chun_11/v3-sdk'
 import { useV3PositionFromTokenId } from 'hooks/useV3Positions'
 import { useDerivedPositionInfo } from 'hooks/useDerivedPositionInfo'
 import { PositionPreview } from 'components/PositionPreview'
@@ -204,18 +204,18 @@ export default function AddLiquidity({
       const { calldata, value } =
         hasExistingPosition && tokenId
           ? NonfungiblePositionManager.addCallParameters(position, {
-              tokenId,
-              slippageTolerance: allowedSlippage,
-              deadline: deadline.toString(),
-              useEther: currencyA.isEther || currencyB.isEther,
-            })
+            tokenId,
+            slippageTolerance: allowedSlippage,
+            deadline: deadline.toString(),
+            useEther: currencyA.isEther || currencyB.isEther,
+          })
           : NonfungiblePositionManager.addCallParameters(position, {
-              slippageTolerance: allowedSlippage,
-              recipient: account,
-              deadline: deadline.toString(),
-              useEther: currencyA.isEther || currencyB.isEther,
-              createPool: noLiquidity,
-            })
+            slippageTolerance: allowedSlippage,
+            recipient: account,
+            deadline: deadline.toString(),
+            useEther: currencyA.isEther || currencyB.isEther,
+            createPool: noLiquidity,
+          })
 
       const txn = {
         to: NONFUNGIBLE_POSITION_MANAGER_ADDRESSES[chainId],
@@ -264,11 +264,9 @@ export default function AddLiquidity({
     }
   }
 
-  const pendingText = `Supplying ${!depositADisabled ? parsedAmounts[Field.CURRENCY_A]?.toSignificant(6) : ''} ${
-    !depositADisabled ? currencies[Field.CURRENCY_A]?.symbol : ''
-  } ${!outOfRange ? 'and' : ''} ${!depositBDisabled ? parsedAmounts[Field.CURRENCY_B]?.toSignificant(6) : ''} ${
-    !depositBDisabled ? currencies[Field.CURRENCY_B]?.symbol : ''
-  }`
+  const pendingText = `Supplying ${!depositADisabled ? parsedAmounts[Field.CURRENCY_A]?.toSignificant(6) : ''} ${!depositADisabled ? currencies[Field.CURRENCY_A]?.symbol : ''
+    } ${!outOfRange ? 'and' : ''} ${!depositBDisabled ? parsedAmounts[Field.CURRENCY_B]?.toSignificant(6) : ''} ${!depositBDisabled ? currencies[Field.CURRENCY_B]?.symbol : ''
+    }`
 
   const handleCurrencySelect = useCallback(
     (currencyNew: Currency, currencyIdOther?: string): (string | undefined)[] => {
@@ -470,8 +468,7 @@ export default function AddLiquidity({
                               onLeftRangeInput('')
                               onRightRangeInput('')
                               history.push(
-                                `/add/${currencyIdB as string}/${currencyIdA as string}${
-                                  feeAmount ? '/' + feeAmount : ''
+                                `/add/${currencyIdB as string}/${currencyIdA as string}${feeAmount ? '/' + feeAmount : ''
                                 }`
                               )
                             }}

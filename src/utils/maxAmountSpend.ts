@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount } from '@uniswap/sdk-core'
+import { Currency, CurrencyAmount } from '@chun_11/sdk-core'
 import JSBI from 'jsbi'
 import { MIN_ETH } from '../constants/misc'
 

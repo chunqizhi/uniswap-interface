@@ -1,5 +1,5 @@
-import { ChainId, Token, CurrencyAmount, WETH9 } from '@uniswap/sdk-core'
-import { Pair } from '@uniswap/v2-sdk'
+import { ChainId, Token, CurrencyAmount, WETH9 } from '@chun_11/sdk-core'
+import { Pair } from '@chun_11/v2-sdk'
 import JSBI from 'jsbi'
 import { useMemo } from 'react'
 import { DAI, UNI, USDC, USDT, WBTC } from '../../constants/tokens'
@@ -81,13 +81,13 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
     () =>
       chainId
         ? STAKING_REWARDS_INFO[chainId]?.filter((stakingRewardInfo) =>
-            pairToFilterBy === undefined
-              ? true
-              : pairToFilterBy === null
+          pairToFilterBy === undefined
+            ? true
+            : pairToFilterBy === null
               ? false
               : pairToFilterBy.involvesToken(stakingRewardInfo.tokens[0]) &&
-                pairToFilterBy.involvesToken(stakingRewardInfo.tokens[1])
-          ) ?? []
+              pairToFilterBy.involvesToken(stakingRewardInfo.tokens[1])
+        ) ?? []
         : [],
     [chainId, pairToFilterBy]
   )

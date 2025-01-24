@@ -1518,6 +1518,41 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@chun_11/sdk-core@3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@chun_11/sdk-core/-/sdk-core-3.0.1.tgz#977e5c296fd6ff2d966e38fc911626927abc8e5e"
+  integrity sha512-v4zElVAjXUeUDcHZdY6eROCfijUMvwC2W/rf9YhyNEbMRhjDSRHLZIhuOD52lYV0HpVlWedvOW/+ygRkUp0qCA==
+  dependencies:
+    "@ethersproject/address" "^5.0.2"
+    big.js "^5.2.2"
+    decimal.js-light "^2.5.0"
+    jsbi "^3.1.4"
+    tiny-invariant "^1.1.0"
+    toformat "^2.0.0"
+
+"@chun_11/v2-sdk@3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@chun_11/v2-sdk/-/v2-sdk-3.0.1.tgz#dbc8e50bc642fb006efeb24eed31c36cc7ae4d31"
+  integrity sha512-MHPE/3saaBTEGu8MSDiQ9LJNdnAiI6jOLp+JTSaFTODTP/RrTQ8wDm67AjU5zm7kO5PEOSOInlGW3A/kD/0I3A==
+  dependencies:
+    "@chun_11/sdk-core" "3.0.1"
+    "@ethersproject/address" "^5.0.0"
+    "@ethersproject/solidity" "^5.0.0"
+    tiny-invariant "^1.1.0"
+    tiny-warning "^1.0.3"
+
+"@chun_11/v3-sdk@3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@chun_11/v3-sdk/-/v3-sdk-3.0.1.tgz#507fd7e51446678cf1caf74b45529c4b90b642d9"
+  integrity sha512-fRsi+D3DK+USZ85jZGJCeFX1xvrrW55VOn1YGTA2tT38SUdE1fNZeV+3I2YOvnTzW7F66s/jI+1lXNQo7Lh9vg==
+  dependencies:
+    "@chun_11/sdk-core" "3.0.1"
+    "@ethersproject/abi" "^5.0.12"
+    "@ethersproject/solidity" "^5.0.9"
+    "@uniswap/v3-periphery" "1.0.0"
+    tiny-invariant "^1.1.0"
+    tiny-warning "^1.0.3"
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"
@@ -4422,18 +4457,6 @@
   resolved "https://registry.yarnpkg.com/@uniswap/merkle-distributor/-/merkle-distributor-1.0.1.tgz#dc3d911f65a860fc3f0cae074bdcd08ed6a27a4d"
   integrity sha512-5gDiTI5hrXIh5UWTrxKYjw30QQDnpl8ckDSpefldNenDlYO1RKkdUYMYpvrqGi2r7YzLYTlO6+TDlNs6O7hDRw==
 
-"@uniswap/sdk-core@^3.0.0-alpha.1":
-  version "3.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@uniswap/sdk-core/-/sdk-core-3.0.0-alpha.1.tgz#8d735755818658fd4a6113cb6d30ed637f9e8347"
-  integrity sha512-dCRBMKtmVmQCoG6sju3j/ki81e82zyqcWm0g+eU3JU0hzbSo6i31wzkOQPHMRO6FcYIJ6+9qx3Sy0B7VoZ6t9g==
-  dependencies:
-    "@ethersproject/address" "^5.0.2"
-    big.js "^5.2.2"
-    decimal.js-light "^2.5.0"
-    jsbi "^3.1.4"
-    tiny-invariant "^1.1.0"
-    toformat "^2.0.0"
-
 "@uniswap/token-lists@^1.0.0-beta.19":
   version "1.0.0-beta.21"
   resolved "https://registry.yarnpkg.com/@uniswap/token-lists/-/token-lists-1.0.0-beta.21.tgz#5a4844236e328d3b0e87161c19edaace669e3e6e"
@@ -4457,17 +4480,6 @@
     "@uniswap/lib" "1.1.1"
     "@uniswap/v2-core" "1.0.0"
 
-"@uniswap/v2-sdk@^3.0.0-alpha.0":
-  version "3.0.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/@uniswap/v2-sdk/-/v2-sdk-3.0.0-alpha.0.tgz#5bbd3133f832bf8b36bacf9213b06de520313e28"
-  integrity sha512-KHgdCldJ0JY6NC7KImJuU00G5E7X3LNq5yyVy5tGqf2S9fzBf/az91tlVSZzkEyALmH+8RiSvtqKjSNMXTXTfw==
-  dependencies:
-    "@ethersproject/address" "^5.0.0"
-    "@ethersproject/solidity" "^5.0.0"
-    "@uniswap/sdk-core" "^3.0.0-alpha.1"
-    tiny-invariant "^1.1.0"
-    tiny-warning "^1.0.3"
-
 "@uniswap/v3-core@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@uniswap/v3-core/-/v3-core-1.0.0.tgz#6c24adacc4c25dceee0ba3ca142b35adbd7e359d"
@@ -4483,18 +4495,6 @@
     "@uniswap/v2-core" "1.0.1"
     "@uniswap/v3-core" "1.0.0"
     base64-sol "1.0.1"
-
-"@uniswap/v3-sdk@^3.0.0-alpha.6":
-  version "3.0.0-alpha.6"
-  resolved "https://registry.yarnpkg.com/@uniswap/v3-sdk/-/v3-sdk-3.0.0-alpha.6.tgz#8050c2970757446e38c024e1ed8f6771ad7aae98"
-  integrity sha512-FsOB2SAeLbZ9lANeaKnc12A+NSfZ2qTeKbRx7JJE9cJrhzR2fg1lSjI9foRcO3uz6aLE87cobELR815sZmPnTw==
-  dependencies:
-    "@ethersproject/abi" "^5.0.12"
-    "@ethersproject/solidity" "^5.0.9"
-    "@uniswap/sdk-core" "^3.0.0-alpha.1"
-    "@uniswap/v3-periphery" "1.0.0"
-    tiny-invariant "^1.1.0"
-    tiny-warning "^1.0.3"
 
 "@walletconnect/browser-utils@^1.4.2-rc.2":
   version "1.4.2-rc.2"

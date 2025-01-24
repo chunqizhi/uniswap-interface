@@ -1,4 +1,4 @@
-import { Currency, Token } from '@uniswap/sdk-core'
+import { Currency, Token } from '@chun_11/sdk-core'
 import flatMap from 'lodash.flatmap'
 import { useMemo } from 'react'
 import { ADDITIONAL_BASES, BASES_TO_CHECK_TRADES_AGAINST, CUSTOM_BASES } from '../constants/routing'
@@ -31,31 +31,31 @@ export function useAllCurrencyCombinations(currencyA?: Currency, currencyB?: Cur
     () =>
       tokenA && tokenB
         ? [
-            // the direct pair
-            [tokenA, tokenB],
-            // token A against all bases
-            ...bases.map((base): [Token, Token] => [tokenA, base]),
-            // token B against all bases
-            ...bases.map((base): [Token, Token] => [tokenB, base]),
-            // each base against all bases
-            ...basePairs,
-          ]
-            .filter((tokens): tokens is [Token, Token] => Boolean(tokens[0] && tokens[1]))
-            .filter(([t0, t1]) => t0.address !== t1.address)
-            .filter(([tokenA, tokenB]) => {
-              if (!chainId) return true
-              const customBases = CUSTOM_BASES[chainId]
+          // the direct pair
+          [tokenA, tokenB],
+          // token A against all bases
+          ...bases.map((base): [Token, Token] => [tokenA, base]),
+          // token B against all bases
+          ...bases.map((base): [Token, Token] => [tokenB, base]),
+          // each base against all bases
+          ...basePairs,
+        ]
+          .filter((tokens): tokens is [Token, Token] => Boolean(tokens[0] && tokens[1]))
+          .filter(([t0, t1]) => t0.address !== t1.address)
+          .filter(([tokenA, tokenB]) => {
+            if (!chainId) return true
+            const customBases = CUSTOM_BASES[chainId]
 
-              const customBasesA: Token[] | undefined = customBases?.[tokenA.address]
-              const customBasesB: Token[] | undefined = customBases?.[tokenB.address]
+            const customBasesA: Token[] | undefined = customBases?.[tokenA.address]
+            const customBasesB: Token[] | undefined = customBases?.[tokenB.address]
 
-              if (!customBasesA && !customBasesB) return true
+            if (!customBasesA && !customBasesB) return true
 
-              if (customBasesA && !customBasesA.find((base) => tokenB.equals(base))) return false
-              if (customBasesB && !customBasesB.find((base) => tokenA.equals(base))) return false
+            if (customBasesA && !customBasesA.find((base) => tokenB.equals(base))) return false
+            if (customBasesB && !customBasesB.find((base) => tokenA.equals(base))) return false
 
-              return true
-            })
+            return true
+          })
         : [],
     [tokenA, tokenB, bases, basePairs, chainId]
   )

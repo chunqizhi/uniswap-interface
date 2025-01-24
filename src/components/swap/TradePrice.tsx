@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { Price, Currency } from '@uniswap/sdk-core'
+import { Price, Currency } from '@chun_11/sdk-core'
 import { useContext } from 'react'
 import { Text } from 'rebass'
 import styled, { ThemeContext } from 'styled-components'

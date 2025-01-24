@@ -1,4 +1,4 @@
-import { CurrencyAmount, Token } from '@uniswap/sdk-core'
+import { CurrencyAmount, Token } from '@chun_11/sdk-core'
 import { BigNumber } from 'ethers'
 import useCurrentBlockTimestamp from 'hooks/useCurrentBlockTimestamp'
 import JSBI from 'jsbi'
@@ -144,14 +144,14 @@ export default function VotePage({
   const endDate: DateTime | undefined =
     proposalData && currentTimestamp && currentBlock
       ? DateTime.fromSeconds(
-          currentTimestamp
-            .add(
-              BigNumber.from(
-                (chainId && AVERAGE_BLOCK_TIME_IN_SECS[chainId]) ?? DEFAULT_AVERAGE_BLOCK_TIME_IN_SECS
-              ).mul(BigNumber.from(proposalData.endBlock - currentBlock))
-            )
-            .toNumber()
-        )
+        currentTimestamp
+          .add(
+            BigNumber.from(
+              (chainId && AVERAGE_BLOCK_TIME_IN_SECS[chainId]) ?? DEFAULT_AVERAGE_BLOCK_TIME_IN_SECS
+            ).mul(BigNumber.from(proposalData.endBlock - currentBlock))
+          )
+          .toNumber()
+      )
       : undefined
   const now: DateTime = DateTime.local()
 
@@ -215,8 +215,8 @@ export default function VotePage({
               {endDate && endDate < now
                 ? 'Voting ended ' + (endDate && endDate.toLocaleString(DateTime.DATETIME_FULL))
                 : proposalData
-                ? 'Voting ends approximately ' + (endDate && endDate.toLocaleString(DateTime.DATETIME_FULL))
-                : ''}
+                  ? 'Voting ends approximately ' + (endDate && endDate.toLocaleString(DateTime.DATETIME_FULL))
+                  : ''}
             </TYPE.main>
           </RowBetween>
           {proposalData && proposalData.status === ProposalState.Active && !showVotingButtons && (

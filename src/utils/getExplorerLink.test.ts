@@ -1,4 +1,4 @@
-import { ChainId } from '@uniswap/sdk-core'
+import { ChainId } from '@chun_11/sdk-core'
 import { ExplorerDataType, getExplorerLink } from './getExplorerLink'
 
 describe('#getExplorerLink', () => {

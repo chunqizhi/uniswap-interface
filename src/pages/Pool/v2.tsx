@@ -21,7 +21,7 @@ import { Dots } from '../../components/swap/styleds'
 import { CardSection, DataCard, CardNoise, CardBGImage } from '../../components/earn/styled'
 import { useStakingInfo } from '../../state/stake/hooks'
 import { BIG_INT_ZERO } from '../../constants/misc'
-import { Pair } from '@uniswap/v2-sdk'
+import { Pair } from '@chun_11/v2-sdk'
 
 const PageWrapper = styled(AutoColumn)`
   max-width: 640px;

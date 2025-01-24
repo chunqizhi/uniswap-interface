@@ -1,7 +1,7 @@
 import JSBI from 'jsbi'
 import React, { useCallback, useMemo, useState, useEffect } from 'react'
-import { Fraction, Percent, Price, Token, CurrencyAmount, WETH9 } from '@uniswap/sdk-core'
-import { FACTORY_ADDRESS } from '@uniswap/v2-sdk'
+import { Fraction, Percent, Price, Token, CurrencyAmount, WETH9 } from '@chun_11/sdk-core'
+import { FACTORY_ADDRESS } from '@chun_11/v2-sdk'
 import { Redirect, RouteComponentProps } from 'react-router'
 import { Text } from 'rebass'
 import { AutoColumn } from '../../components/Column'
@@ -21,7 +21,7 @@ import { calculateGasMargin } from '../../utils/calculateGasMargin'
 import { getExplorerLink, ExplorerDataType } from '../../utils/getExplorerLink'
 import { BodyWrapper } from '../AppBody'
 import { PoolState, usePool } from 'hooks/usePools'
-import { FeeAmount, Pool, Position, priceToClosestTick, TickMath } from '@uniswap/v3-sdk'
+import { FeeAmount, Pool, Position, priceToClosestTick, TickMath } from '@chun_11/v3-sdk'
 import { BlueCard, DarkGreyCard, LightCard, YellowCard } from 'components/Card'
 import { ApprovalState, useApproveCallback } from 'hooks/useApproveCallback'
 import { Dots } from 'components/swap/styleds'
@@ -204,13 +204,13 @@ function V2PairMigration({
   const position =
     typeof tickLower === 'number' && typeof tickUpper === 'number' && !invalidRange
       ? Position.fromAmounts({
-          pool: pool ?? new Pool(token0, token1, feeAmount, sqrtPrice, 0, tick, []),
-          tickLower,
-          tickUpper,
-          amount0: token0Value.quotient,
-          amount1: token1Value.quotient,
-          useFullPrecision: false, // we don't want full precision as this is used to calculate slippage amounts
-        })
+        pool: pool ?? new Pool(token0, token1, feeAmount, sqrtPrice, 0, tick, []),
+        tickLower,
+        tickUpper,
+        amount0: token0Value.quotient,
+        amount1: token1Value.quotient,
+        useFullPrecision: false, // we don't want full precision as this is used to calculate slippage amounts
+      })
       : undefined
 
   const v3Amount0Min = useMemo(

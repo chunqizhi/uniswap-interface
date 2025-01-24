@@ -1,5 +1,5 @@
 import { parseBytes32String } from '@ethersproject/strings'
-import { Currency, currencyEquals, ETHER, Token } from '@uniswap/sdk-core'
+import { Currency, currencyEquals, ETHER, Token } from '@chun_11/sdk-core'
 import { arrayify } from 'ethers/lib/utils'
 import { useMemo } from 'react'
 import { createTokenFilterFunction } from '../components/SearchModal/filtering'
@@ -114,8 +114,8 @@ function parseStringOrBytes32(str: string | undefined, bytes32: string | undefin
     ? str
     : // need to check for proper bytes string and valid terminator
     bytes32 && BYTES32_REGEX.test(bytes32) && arrayify(bytes32)[31] === 0
-    ? parseBytes32String(bytes32)
-    : defaultValue
+      ? parseBytes32String(bytes32)
+      : defaultValue
 }
 
 // undefined if invalid or does not exist

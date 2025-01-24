@@ -6,7 +6,7 @@ import styled, { keyframes } from 'styled-components'
 import { TYPE } from 'theme'
 import { AutoColumn } from 'components/Column'
 import { ButtonPrimary } from 'components/Button'
-import { FeeAmount } from '@uniswap/v3-sdk'
+import { FeeAmount } from '@chun_11/v3-sdk'
 import { formattedFeeAmount } from 'utils'
 
 const pulse = (color: string) => keyframes`
@@ -30,13 +30,13 @@ const SmallButton = styled(ButtonPrimary)`
   width: 48%;
 `
 
-const FocusedOutlineCard = styled(LightCard)<{ active?: boolean; pulsing?: boolean }>`
+const FocusedOutlineCard = styled(LightCard) <{ active?: boolean; pulsing?: boolean }>`
   border-color: ${({ active, theme }) => active && theme.blue1};
   padding: 12px;
   animation: ${({ pulsing, theme }) => pulsing && pulse(theme.blue1)} 0.8s linear;
 `
 
-const StyledInput = styled(NumericalInput)<{ usePercent?: boolean }>`
+const StyledInput = styled(NumericalInput) <{ usePercent?: boolean }>`
   /* background-color: ${({ theme }) => theme.bg0}; */
   text-align: center;
   margin-right: 12px;

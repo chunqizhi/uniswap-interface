@@ -1,4 +1,4 @@
-import { ChainId, Currency } from '@uniswap/sdk-core'
+import { ChainId, Currency } from '@chun_11/sdk-core'
 import React, { useMemo } from 'react'
 import styled from 'styled-components/macro'
 import EthereumLogo from '../../assets/images/ethereum-logo.png'
@@ -16,7 +16,7 @@ const StyledEthereumLogo = styled.img<{ size: string }>`
   border-radius: 24px;
 `
 
-const StyledLogo = styled(Logo)<{ size: string }>`
+const StyledLogo = styled(Logo) <{ size: string }>`
   width: ${({ size }) => size};
   height: ${({ size }) => size};
   border-radius: ${({ size }) => size};

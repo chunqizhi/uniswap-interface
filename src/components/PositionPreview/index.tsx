@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useContext } from 'react'
-import { Position } from '@uniswap/v3-sdk'
+import { Position } from '@chun_11/v3-sdk'
 import { LightCard } from 'components/Card'
 import { AutoColumn } from 'components/Column'
 import { TYPE } from 'theme'
@@ -8,7 +8,7 @@ import CurrencyLogo from 'components/CurrencyLogo'
 import { unwrappedToken } from 'utils/wrappedCurrency'
 import { Break } from 'components/earn/styled'
 import { useTranslation } from 'react-i18next'
-import { Currency } from '@uniswap/sdk-core'
+import { Currency } from '@chun_11/sdk-core'
 import RateToggle from 'components/RateToggle'
 import DoubleCurrencyLogo from 'components/DoubleLogo'
 import RangeBadge from 'components/Badge/RangeBadge'
@@ -39,8 +39,8 @@ export const PositionPreview = ({
       ? baseCurrencyDefault === currency0
         ? currency0
         : baseCurrencyDefault === currency1
-        ? currency1
-        : currency0
+          ? currency1
+          : currency0
       : currency0
   )
 

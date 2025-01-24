@@ -1,5 +1,5 @@
-import { Pair } from '@uniswap/v2-sdk'
-import { Currency, CurrencyAmount, Percent, Token } from '@uniswap/sdk-core'
+import { Pair } from '@chun_11/v2-sdk'
+import { Currency, CurrencyAmount, Percent, Token } from '@chun_11/sdk-core'
 import React, { useState, useCallback } from 'react'
 import styled from 'styled-components/macro'
 import { darken } from 'polished'
@@ -53,7 +53,7 @@ const Container = styled.div<{ hideInput: boolean }>`
   }
 `
 
-const CurrencySelect = styled(ButtonGray)<{ selected: boolean; hideInput?: boolean }>`
+const CurrencySelect = styled(ButtonGray) <{ selected: boolean; hideInput?: boolean }>`
   align-items: center;
   font-size: 24px;
   font-weight: 500;
@@ -107,7 +107,7 @@ const Aligner = styled.span`
   width: 100%;
 `
 
-const StyledDropDown = styled(DropDown)<{ selected: boolean }>`
+const StyledDropDown = styled(DropDown) <{ selected: boolean }>`
   margin: 0 0.25rem 0 0.35rem;
   height: 35%;
 
@@ -235,8 +235,8 @@ export default function CurrencyInputPanel({
                   <StyledTokenName className="token-symbol-container" active={Boolean(currency && currency.symbol)}>
                     {(currency && currency.symbol && currency.symbol.length > 20
                       ? currency.symbol.slice(0, 4) +
-                        '...' +
-                        currency.symbol.slice(currency.symbol.length - 5, currency.symbol.length)
+                      '...' +
+                      currency.symbol.slice(currency.symbol.length - 5, currency.symbol.length)
                       : currency?.symbol) || t('selectToken')}
                   </StyledTokenName>
                 )}
@@ -270,9 +270,9 @@ export default function CurrencyInputPanel({
                   >
                     {!hideBalance && !!currency && selectedCurrencyBalance
                       ? (customBalanceText ?? 'Balance: ') +
-                        formatTokenAmount(selectedCurrencyBalance, 4) +
-                        ' ' +
-                        currency.symbol
+                      formatTokenAmount(selectedCurrencyBalance, 4) +
+                      ' ' +
+                      currency.symbol
                       : '-'}
                   </TYPE.body>
                   {showMaxButton && selectedCurrencyBalance ? (

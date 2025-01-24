@@ -22,13 +22,13 @@ import ReactGA from 'react-ga'
 import { useActiveWeb3React } from 'hooks/web3'
 import { TransactionResponse } from '@ethersproject/providers'
 import { useTransactionAdder } from 'state/transactions/hooks'
-import { Percent, currencyEquals, Token, ETHER } from '@uniswap/sdk-core'
+import { Percent, currencyEquals, Token, ETHER } from '@chun_11/sdk-core'
 import { TYPE } from 'theme'
 import { Wrapper, SmallMaxButton, ResponsiveHeaderText } from './styled'
 import Loader from 'components/Loader'
 import DoubleCurrencyLogo from 'components/DoubleLogo'
 import { Break } from 'components/earn/styled'
-import { NonfungiblePositionManager } from '@uniswap/v3-sdk'
+import { NonfungiblePositionManager } from '@chun_11/v3-sdk'
 import useTheme from 'hooks/useTheme'
 import { AddRemoveTabs } from 'components/NavigationTabs'
 import RangeBadge from 'components/Badge/RangeBadge'
@@ -187,9 +187,8 @@ function Remove({ tokenId }: { tokenId: BigNumber }) {
     setTxnHash('')
   }, [onPercentSelectForSlider, txnHash])
 
-  const pendingText = `Removing ${liquidityValue0?.toSignificant(6)} ${
-    liquidityValue0?.currency?.symbol
-  } and ${liquidityValue1?.toSignificant(6)} ${liquidityValue1?.currency?.symbol}`
+  const pendingText = `Removing ${liquidityValue0?.toSignificant(6)} ${liquidityValue0?.currency?.symbol
+    } and ${liquidityValue1?.toSignificant(6)} ${liquidityValue1?.currency?.symbol}`
 
   function modalHeader() {
     return (
@@ -371,11 +370,11 @@ function Remove({ tokenId }: { tokenId: BigNumber }) {
               </LightCard>
 
               {liquidityValue0?.currency &&
-              liquidityValue1?.currency &&
-              (liquidityValue0.currency.isEther ||
-                liquidityValue1.currency.isEther ||
-                currencyEquals(unwrappedToken(liquidityValue0.currency as Token), ETHER) ||
-                currencyEquals(unwrappedToken(liquidityValue1.currency as Token), ETHER)) ? (
+                liquidityValue1?.currency &&
+                (liquidityValue0.currency.isEther ||
+                  liquidityValue1.currency.isEther ||
+                  currencyEquals(unwrappedToken(liquidityValue0.currency as Token), ETHER) ||
+                  currencyEquals(unwrappedToken(liquidityValue1.currency as Token), ETHER)) ? (
                 <RowBetween>
                   <TYPE.main>Collect as WETH</TYPE.main>
                   <Toggle

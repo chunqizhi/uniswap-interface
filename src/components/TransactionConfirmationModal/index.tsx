@@ -1,4 +1,4 @@
-import { ChainId, Currency } from '@uniswap/sdk-core'
+import { ChainId, Currency } from '@chun_11/sdk-core'
 import React, { useContext } from 'react'
 import styled, { ThemeContext } from 'styled-components'
 import { getExplorerLink, ExplorerDataType } from '../../utils/getExplorerLink'
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   width: 100%;
   padding: 1rem;
 `
-const Section = styled(AutoColumn)<{ inline?: boolean }>`
+const Section = styled(AutoColumn) <{ inline?: boolean }>`
   padding: ${({ inline }) => (inline ? '0' : '0')};
 `
 
@@ -28,7 +28,7 @@ const BottomSection = styled(Section)`
   border-bottom-right-radius: 20px;
 `
 
-const ConfirmedIcon = styled(ColumnCenter)<{ inline?: boolean }>`
+const ConfirmedIcon = styled(ColumnCenter) <{ inline?: boolean }>`
   padding: ${({ inline }) => (inline ? '20px 0' : '60px 0;')};
 `
 

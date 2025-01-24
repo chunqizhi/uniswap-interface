@@ -1,4 +1,4 @@
-import { ChainId } from '@uniswap/sdk-core'
+import { ChainId } from '@chun_11/sdk-core'
 import useScrollPosition from '@react-hook/window-scroll'
 import React, { useState } from 'react'
 import { Text } from 'rebass'
@@ -243,7 +243,7 @@ const StyledNavLink = styled(NavLink).attrs({
 
 const StyledExternalLink = styled(ExternalLink).attrs({
   activeClassName,
-})<{ isActive?: boolean }>`
+}) <{ isActive?: boolean }>`
   ${({ theme }) => theme.flexRowNoWrap}
   align-items: left;
   border-radius: 3rem;

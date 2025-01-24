@@ -1,6 +1,6 @@
-import { Currency, currencyEquals, Percent, TradeType } from '@uniswap/sdk-core'
-import { Trade as V2Trade } from '@uniswap/v2-sdk'
-import { Trade as V3Trade } from '@uniswap/v3-sdk'
+import { Currency, currencyEquals, Percent, TradeType } from '@chun_11/sdk-core'
+import { Trade as V2Trade } from '@chun_11/v2-sdk'
+import { Trade as V3Trade } from '@chun_11/v3-sdk'
 import React, { useCallback, useMemo } from 'react'
 import TransactionConfirmationModal, {
   ConfirmationModalContent,
@@ -59,9 +59,9 @@ export default function ConfirmSwapModal({
         (trade instanceof V2Trade &&
           originalTrade instanceof V2Trade &&
           tradeMeaningfullyDiffers(trade, originalTrade)) ||
-          (trade instanceof V3Trade &&
-            originalTrade instanceof V3Trade &&
-            tradeMeaningfullyDiffers(trade, originalTrade))
+        (trade instanceof V3Trade &&
+          originalTrade instanceof V3Trade &&
+          tradeMeaningfullyDiffers(trade, originalTrade))
       ),
     [originalTrade, trade]
   )
@@ -90,9 +90,8 @@ export default function ConfirmSwapModal({
   }, [onConfirm, showAcceptChanges, swapErrorMessage, trade])
 
   // text to show while loading
-  const pendingText = `Swapping ${trade?.inputAmount?.toSignificant(6)} ${
-    trade?.inputAmount?.currency?.symbol
-  } for ${trade?.outputAmount?.toSignificant(6)} ${trade?.outputAmount?.currency?.symbol}`
+  const pendingText = `Swapping ${trade?.inputAmount?.toSignificant(6)} ${trade?.inputAmount?.currency?.symbol
+    } for ${trade?.outputAmount?.toSignificant(6)} ${trade?.outputAmount?.currency?.symbol}`
 
   const confirmationContent = useCallback(
     () =>

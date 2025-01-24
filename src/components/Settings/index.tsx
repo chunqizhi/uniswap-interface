@@ -15,7 +15,7 @@ import QuestionHelper from '../QuestionHelper'
 import { RowBetween, RowFixed } from '../Row'
 import Toggle from '../Toggle'
 import TransactionSettings from '../TransactionSettings'
-import { Percent } from '@uniswap/sdk-core'
+import { Percent } from '@chun_11/sdk-core'
 
 const StyledMenuIcon = styled(Settings)`
   height: 20px;
@@ -202,13 +202,13 @@ export default function SettingsTab({ placeholderSlippage }: { placeholderSlippa
                 toggle={
                   expertMode
                     ? () => {
-                        toggleExpertMode()
-                        setShowConfirmation(false)
-                      }
+                      toggleExpertMode()
+                      setShowConfirmation(false)
+                    }
                     : () => {
-                        toggle()
-                        setShowConfirmation(true)
-                      }
+                      toggle()
+                      setShowConfirmation(true)
+                    }
                 }
               />
             </RowBetween>

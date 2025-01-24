@@ -2,8 +2,8 @@ import { useCallback, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, AppState } from '../index'
 import { Field, typeInput } from './actions'
-import { Pair } from '@uniswap/v2-sdk'
-import { Currency, Token, Percent, Price, CurrencyAmount } from '@uniswap/sdk-core'
+import { Pair } from '@chun_11/v2-sdk'
+import { Currency, Token, Percent, Price, CurrencyAmount } from '@chun_11/sdk-core'
 import JSBI from 'jsbi'
 import { PairState, useV2Pair } from '../../hooks/useV2Pairs'
 import { useTotalSupply } from '../../hooks/useTotalSupply'
@@ -87,9 +87,9 @@ export function useDerivedMintInfo(
     Boolean(totalSupply && JSBI.equal(totalSupply.quotient, ZERO)) ||
     Boolean(
       pairState === PairState.EXISTS &&
-        pair &&
-        JSBI.equal(pair.reserve0.quotient, ZERO) &&
-        JSBI.equal(pair.reserve1.quotient, ZERO)
+      pair &&
+      JSBI.equal(pair.reserve0.quotient, ZERO) &&
+      JSBI.equal(pair.reserve1.quotient, ZERO)
     )
 
   // balances
