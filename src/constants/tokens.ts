@@ -28,4 +28,5 @@ export const UNI: { [chainId in ChainId]: Token } = {
   [ChainId.GÖRLI]: new Token(ChainId.GÖRLI, UNI_ADDRESS[ChainId.GÖRLI], 18, 'UNI', 'Uniswap'),
   [ChainId.KOVAN]: new Token(ChainId.KOVAN, UNI_ADDRESS[ChainId.KOVAN], 18, 'UNI', 'Uniswap'),
   [ChainId.SEPOLIA]: new Token(ChainId.SEPOLIA, UNI_ADDRESS[ChainId.SEPOLIA], 18, 'UNI', 'Uniswap'),
+  [ChainId.BSC_TESTNET]: new Token(ChainId.BSC_TESTNET, UNI_ADDRESS[ChainId.BSC_TESTNET], 18, 'UNI', 'Uniswap'),
 }

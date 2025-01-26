@@ -28,9 +28,10 @@ const NETWORK_URLS: {
   [ChainId.GÖRLI]: `https://goerli.infura.io/v3/${INFURA_KEY}`,
   [ChainId.KOVAN]: `https://kovan.infura.io/v3/${INFURA_KEY}`,
   [ChainId.SEPOLIA]: `https://sepolia.infura.io/v3/${INFURA_KEY}`,
+  [ChainId.BSC_TESTNET]: `https://data-seed-prebsc-1-s3.bnbchain.org:8545`,
 }
 
-const SUPPORTED_CHAIN_IDS = [ChainId.MAINNET, ChainId.RINKEBY, ChainId.ROPSTEN, ChainId.KOVAN, ChainId.SEPOLIA, ChainId.GÖRLI]
+const SUPPORTED_CHAIN_IDS = [ChainId.MAINNET, ChainId.RINKEBY, ChainId.ROPSTEN, ChainId.KOVAN, ChainId.SEPOLIA, ChainId.GÖRLI, ChainId.BSC_TESTNET]
 
 export const network = new NetworkConnector({
   urls: NETWORK_URLS,

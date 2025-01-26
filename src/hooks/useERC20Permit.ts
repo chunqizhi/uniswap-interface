@@ -55,6 +55,9 @@ const PERMITTABLE_TOKENS: {
   [ChainId.SEPOLIA]: {
     [UNI[ChainId.SEPOLIA].address]: { type: PermitType.AMOUNT, name: 'Uniswap' },
   },
+  [ChainId.BSC_TESTNET]: {
+    [UNI[ChainId.BSC_TESTNET].address]: { type: PermitType.AMOUNT, name: 'Uniswap' },
+  },
 }
 
 export enum UseERC20PermitState {

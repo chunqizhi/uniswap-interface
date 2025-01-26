@@ -8,5 +8,6 @@ export function constructSameAddressMap<T extends string>(address: T): { [chainI
     [ChainId.RINKEBY]: address,
     [ChainId.GÖRLI]: address,
     [ChainId.SEPOLIA]: address,
+    [ChainId.BSC_TESTNET]: address,
   }
 }

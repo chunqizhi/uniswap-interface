@@ -32,6 +32,7 @@ const WETH_ONLY: ChainTokenList = {
   [ChainId.GÖRLI]: [WETH9[ChainId.GÖRLI]],
   [ChainId.KOVAN]: [WETH9[ChainId.KOVAN]],
   [ChainId.SEPOLIA]: [WETH9[ChainId.SEPOLIA]],
+  [ChainId.BSC_TESTNET]: [WETH9[ChainId.BSC_TESTNET]],
 }
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
